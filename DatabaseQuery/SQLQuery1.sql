@@ -45,73 +45,70 @@ DROP TABLE SANHINFOR
 
 
 -- MENU --
-CREATE TABLE MENU
+CREATE TABLE FOOD
 (
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	MATHUCDON AS RIGHT('TD' + CAST(ID AS VARCHAR(7)), 7) PERSISTED,
-	LOAITHUCDON VARCHAR(100),
 	TENMONAN VARCHAR(100)NOT NULL,
 	DONGIA MONEY NOT NULL,
 	NOTE VARCHAR(100) DEFAULT N'EMPTY'
 )
-INSERT INTO MENU 
+INSERT INTO FOOD 
 VALUES
+( 'Gỏi gà xé phay', 50000, DEFAULT),
+('Nem chua rán', 40000, DEFAULT),
+( 'Cá lóc kho tộ', 150000, DEFAULT),
+('Thịt kho tàu', 120000, DEFAULT),
+('Đùi gà tiềm sâm bổ lượng', 180000, DEFAULT),
+( 'Rau xào thập cẩm', 50000, DEFAULT),
+( 'Canh măng mọc', 50000, DEFAULT),
+('Trái cây theo mùa', 50000, DEFAULT),
+( 'Súp cua', 60000, DEFAULT),
+( 'Chả giò tôm thịt', 60000, DEFAULT),
+( 'Tôm sú nướng muối ớt', 200000, DEFAULT),
+( 'Bò lúc lắc', 180000, DEFAULT),
+( 'Gà ta hấp nấm hương', 150000, DEFAULT),
+( 'Rau xào nấm đông cô', 60000, DEFAULT),
+( 'Canh atiso hầm giò heo', 120000, DEFAULT),
+( 'Chè hạt sen long nhãn', 50000, DEFAULT),
+( 'Yến sào chưng hạt sen', 200000, DEFAULT),
+( 'Tôm hùm đất rang muối', 300000, DEFAULT),
+( 'Cá chình kho tộ', 250000, DEFAULT),
+( 'Bò xào nấm tuyết', 200000, DEFAULT),
+( 'Gà Đông Tảo luộc', 200000, DEFAULT),
+( 'Rau cải bó xôi xào nấm', 70000, DEFAULT),
+( 'Canh bào ngư tiềm gà', 250000, DEFAULT),
+( 'Bánh mousse chocolate', 70000, DEFAULT),
+( 'Salad cá ngừ đại dương', 80000, DEFAULT),
+( 'Foie gras áp chảo', 250000, DEFAULT),
+( 'Tôm sú hấp sả', 250000, DEFAULT),
+( 'Bò Wagyu nướng', 400000, DEFAULT),
+( 'Gà tiềm nhân sâm', 250000, DEFAULT),
+( 'Rau asparagus xào tỏi', 80000, DEFAULT),
+( 'Canh măng mọc cua bể', 200000, DEFAULT),
+( 'Bánh kem hoa quả', 100000, DEFAULT),
+( 'Súp bào ngư vi cá', 300000, DEFAULT),
+( 'Cua huỳnh đế hấp', 500000, DEFAULT),
+( 'Cá tầm nướng muối ớt', 350000, DEFAULT),
+( 'Bò phi lê sốt đỏ', 450000, DEFAULT),
+( 'Gà hầm sâm bổ lượng', 300000, DEFAULT),
+( 'Rau mầm đá xào nấm', 90000, DEFAULT),
+( 'Canh yến hầm hạt sen', 350000, DEFAULT),
+( 'Bánh kem fondant', 150000, DEFAULT)
 
--- Thực đơn Bình dân
-('Bình dân', 'Gỏi gà xé phay', 50000, DEFAULT),
-('Bình dân', 'Nem chua rán', 40000, DEFAULT),
-('Bình dân', 'Cá lóc kho tộ', 150000, DEFAULT),
-('Bình dân', 'Thịt kho tàu', 120000, DEFAULT),
-('Bình dân', 'Đùi gà tiềm sâm bổ lượng', 180000, DEFAULT),
-('Bình dân', 'Rau xào thập cẩm', 50000, DEFAULT),
-('Bình dân', 'Canh măng mọc', 50000, DEFAULT),
-('Bình dân', 'Trái cây theo mùa', 50000, DEFAULT),
-
--- Thực đơn Trung bình
-('Trung bình', 'Súp cua', 60000, DEFAULT),
-('Trung bình', 'Chả giò tôm thịt', 60000, DEFAULT),
-('Trung bình', 'Tôm sú nướng muối ớt', 200000, DEFAULT),
-('Trung bình', 'Bò lúc lắc', 180000, DEFAULT),
-('Trung bình', 'Gà ta hấp nấm hương', 150000, DEFAULT),
-('Trung bình', 'Rau xào nấm đông cô', 60000, DEFAULT),
-('Trung bình', 'Canh atiso hầm giò heo', 120000, DEFAULT),
-('Trung bình', 'Chè hạt sen long nhãn', 50000, DEFAULT),
-
--- Thực đơn Cao cấp
-('Cao cấp', 'Yến sào chưng hạt sen', 200000, DEFAULT),
-('Cao cấp', 'Tôm hùm đất rang muối', 300000, DEFAULT),
-('Cao cấp', 'Cá chình kho tộ', 250000, DEFAULT),
-('Cao cấp', 'Bò xào nấm tuyết', 200000, DEFAULT),
-('Cao cấp', 'Gà Đông Tảo luộc', 200000, DEFAULT),
-('Cao cấp', 'Rau cải bó xôi xào nấm', 70000, DEFAULT),
-('Cao cấp', 'Canh bào ngư tiềm gà', 250000, DEFAULT),
-('Cao cấp', 'Bánh mousse chocolate', 70000, DEFAULT),
-
--- Thực đơn Sang trọng
-('Sang trọng', 'Salad cá ngừ đại dương', 80000, DEFAULT),
-('Sang trọng', 'Foie gras áp chảo', 250000, DEFAULT),
-('Sang trọng', 'Tôm sú hấp sả', 250000, DEFAULT),
-('Sang trọng', 'Bò Wagyu nướng', 400000, DEFAULT),
-('Sang trọng', 'Gà tiềm nhân sâm', 250000, DEFAULT),
-('Sang trọng', 'Rau asparagus xào tỏi', 80000, DEFAULT),
-('Sang trọng', 'Canh măng mọc cua bể', 200000, DEFAULT),
-('Sang trọng', 'Bánh kem hoa quả', 100000, DEFAULT),
-
--- Thực đơn Đẳng cấp
-('Đẳng cấp', 'Súp bào ngư vi cá', 300000, DEFAULT),
-('Đẳng cấp', 'Cua huỳnh đế hấp', 500000, DEFAULT),
-('Đẳng cấp', 'Cá tầm nướng muối ớt', 350000, DEFAULT),
-('Đẳng cấp', 'Bò phi lê sốt đỏ', 450000, DEFAULT),
-('Đẳng cấp', 'Gà hầm sâm bổ lượng', 300000, DEFAULT),
-('Đẳng cấp', 'Rau mầm đá xào nấm', 90000, DEFAULT),
-('Đẳng cấp', 'Canh yến hầm hạt sen', 350000, DEFAULT),
-('Đẳng cấp', 'Bánh kem fondant', 150000, DEFAULT)
-
+CREATE TABLE FOODINUSE
+(
+	ID INT IDENTITY(1,1) PRIMARY KEY,
+	IDTHUCDON INT FOREIGN KEY REFERENCES FOOD(ID),
+)
 
 SELECT * FROM MENU
-WHERE LOAITHUCDON = 'Đẳng cấp'
+WHERE TENMONAN = 'Bánh kem fondant'
 DELETE FROM MENU
 DROP TABLE MENU
+DROP TABLE FOOD
+
+
 
 
 
@@ -135,6 +132,11 @@ CREATE TABLE DICHVU
 	LOAIDICHVU  VARCHAR(100)NOT NULL,
 	DICHVUNAME VARCHAR(100)NOT NULL,
 	GIADICHVU MONEY,
+)
+CREATE TABLE SVCINUSE
+(
+	ID INT IDENTITY(1,1) PRIMARY KEY,
+	IDTHUCDON INT FOREIGN KEY REFERENCES DICHVU(ID),
 )
 -- RƯỢU, BÁNH KEM, MC, BAN NHẠC, CA SĨ, DJ
 INSERT INTO DICHVU
@@ -256,7 +258,11 @@ CREATE TABLE NHANVIEN
 	CHUCVU NVARCHAR(100) NOT NULL,
 	CA NVARCHAR(100) NOT NULL,
 )
-
+CREATE TABLE NHANVIENINUSE
+(
+	ID INT IDENTITY(1,1) PRIMARY KEY,
+	IDNHANVIEN INT FOREIGN KEY REFERENCES NHANVIEN(ID),
+)
 INSERT INTO NHANVIEN (TENNHANVIEN, SODIENTHOAI, DIACHI, CHUCVU, CA)
 VALUES
 	(N'Nguyễn Văn A1', '0987654321', N'Đà Nẵng', 'Tiếp tân', N'Sáng'),
@@ -270,7 +276,7 @@ VALUES
 	(N'Nguyễn Văn A9', '0987654329', N'Đà Nẵng', 'Phục vụ', N'Tối'),
 	(N'Nguyễn Văn A10', '0987654330', N'Đà Nẵng', 'Tiếp tân', N'Sáng');
 SELECT * FROM NHANVIEN
-DROP TABLE NHANVIEN
+DROP TABLE NHANVIENINUSE
 
 
 
@@ -293,13 +299,13 @@ DROP TABLE NHANVIEN
 -- TIEC --
 CREATE TABLE TIEC
 (
-	ID INT IDENTITY(1,1) ,
-	MADATTIEC  AS RIGHT('DT' + CAST(ID AS VARCHAR(7)), 7) PERSISTED PRIMARY KEY,
-	IDNHANVIEN INT FOREIGN KEY REFERENCES NHANVIEN (ID),
+	ID INT IDENTITY(1,1)  PRIMARY KEY,
+	MADATTIEC  AS RIGHT('0T' + CAST(ID AS VARCHAR(7)), 7) PERSISTED,
+	IDNHANVIEN INT FOREIGN KEY REFERENCES NHANVIENINUSE(ID),
 	IDTHONGTINKHACHHANG INT FOREIGN KEY REFERENCES KHACHHANGINFOR(ID),
 	IDLOAISANH INT FOREIGN KEY REFERENCES SANHINFOR(ID),
-	IDDICHVU INT FOREIGN KEY REFERENCES DICHVU(ID),
-	IDTHUCDON INT FOREIGN KEY REFERENCES MENU(ID),
+	IDDICHVU INT FOREIGN KEY REFERENCES SVCINUSE(ID),
+	IDFOOD INT FOREIGN KEY REFERENCES FOODINUSE(ID),
 	SOLUONGNHANVIEN INT NOT NULL,
 	SOLUONGBAN INT,
 	--TRANGTHAI NVARCHAR(100) NOT NULL, 
