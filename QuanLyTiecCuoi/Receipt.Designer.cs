@@ -118,7 +118,7 @@
             this.panel1.Controls.Add(this.label30);
             this.panel1.Controls.Add(this.label20);
             this.panel1.Location = new System.Drawing.Point(16, 64);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1063, 138);
             this.panel1.TabIndex = 1;
@@ -126,7 +126,7 @@
             // Bride
             // 
             this.Bride.Location = new System.Drawing.Point(879, 80);
-            this.Bride.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bride.Margin = new System.Windows.Forms.Padding(4);
             this.Bride.Name = "Bride";
             this.Bride.Size = new System.Drawing.Size(169, 22);
             this.Bride.TabIndex = 21;
@@ -134,7 +134,7 @@
             // Groom
             // 
             this.Groom.Location = new System.Drawing.Point(879, 42);
-            this.Groom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Groom.Margin = new System.Windows.Forms.Padding(4);
             this.Groom.Name = "Groom";
             this.Groom.Size = new System.Drawing.Size(169, 22);
             this.Groom.TabIndex = 20;
@@ -142,7 +142,7 @@
             // phone
             // 
             this.phone.Location = new System.Drawing.Point(879, 10);
-            this.phone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.phone.Margin = new System.Windows.Forms.Padding(4);
             this.phone.Name = "phone";
             this.phone.Size = new System.Drawing.Size(169, 22);
             this.phone.TabIndex = 19;
@@ -150,7 +150,7 @@
             // email
             // 
             this.email.Location = new System.Drawing.Point(527, 85);
-            this.email.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.email.Margin = new System.Windows.Forms.Padding(4);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(241, 22);
             this.email.TabIndex = 18;
@@ -158,7 +158,7 @@
             // Address
             // 
             this.Address.Location = new System.Drawing.Point(527, 44);
-            this.Address.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Address.Margin = new System.Windows.Forms.Padding(4);
             this.Address.Name = "Address";
             this.Address.Size = new System.Drawing.Size(241, 22);
             this.Address.TabIndex = 17;
@@ -166,7 +166,7 @@
             // Customer
             // 
             this.Customer.Location = new System.Drawing.Point(527, 10);
-            this.Customer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Customer.Margin = new System.Windows.Forms.Padding(4);
             this.Customer.Name = "Customer";
             this.Customer.Size = new System.Drawing.Size(241, 22);
             this.Customer.TabIndex = 16;
@@ -174,7 +174,7 @@
             // Date
             // 
             this.Date.Location = new System.Drawing.Point(139, 84);
-            this.Date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Date.Margin = new System.Windows.Forms.Padding(4);
             this.Date.Name = "Date";
             this.Date.Size = new System.Drawing.Size(265, 22);
             this.Date.TabIndex = 15;
@@ -182,7 +182,7 @@
             // OrderDate
             // 
             this.OrderDate.Location = new System.Drawing.Point(139, 47);
-            this.OrderDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OrderDate.Margin = new System.Windows.Forms.Padding(4);
             this.OrderDate.Name = "OrderDate";
             this.OrderDate.Size = new System.Drawing.Size(265, 22);
             this.OrderDate.TabIndex = 14;
@@ -190,7 +190,7 @@
             // admin
             // 
             this.admin.Location = new System.Drawing.Point(139, 9);
-            this.admin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.admin.Margin = new System.Windows.Forms.Padding(4);
             this.admin.Name = "admin";
             this.admin.Size = new System.Drawing.Size(241, 22);
             this.admin.TabIndex = 11;
@@ -328,7 +328,7 @@
             this.panel2.Controls.Add(this.Service);
             this.panel2.Controls.Add(this.menu);
             this.panel2.Location = new System.Drawing.Point(16, 230);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(607, 359);
             this.panel2.TabIndex = 13;
@@ -337,7 +337,7 @@
             // 
             this.ServiceView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ServiceView.Location = new System.Drawing.Point(8, 210);
-            this.ServiceView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ServiceView.Margin = new System.Windows.Forms.Padding(4);
             this.ServiceView.Name = "ServiceView";
             this.ServiceView.RowHeadersWidth = 51;
             this.ServiceView.Size = new System.Drawing.Size(585, 134);
@@ -347,7 +347,7 @@
             // 
             this.Menuview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Menuview.Location = new System.Drawing.Point(8, 33);
-            this.Menuview.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Menuview.Margin = new System.Windows.Forms.Padding(4);
             this.Menuview.Name = "Menuview";
             this.Menuview.RowHeadersWidth = 51;
             this.Menuview.Size = new System.Drawing.Size(585, 154);
@@ -394,7 +394,7 @@
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Location = new System.Drawing.Point(648, 230);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(431, 359);
             this.panel3.TabIndex = 14;
@@ -402,7 +402,7 @@
             // Paidment
             // 
             this.Paidment.Location = new System.Drawing.Point(131, 287);
-            this.Paidment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Paidment.Margin = new System.Windows.Forms.Padding(4);
             this.Paidment.Name = "Paidment";
             this.Paidment.Size = new System.Drawing.Size(168, 22);
             this.Paidment.TabIndex = 33;
@@ -410,7 +410,7 @@
             // deposit
             // 
             this.deposit.Location = new System.Drawing.Point(131, 255);
-            this.deposit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deposit.Margin = new System.Windows.Forms.Padding(4);
             this.deposit.Name = "deposit";
             this.deposit.Size = new System.Drawing.Size(168, 22);
             this.deposit.TabIndex = 32;
@@ -418,7 +418,7 @@
             // Total
             // 
             this.Total.Location = new System.Drawing.Point(131, 223);
-            this.Total.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Total.Margin = new System.Windows.Forms.Padding(4);
             this.Total.Name = "Total";
             this.Total.Size = new System.Drawing.Size(168, 22);
             this.Total.TabIndex = 31;
@@ -426,7 +426,7 @@
             // DateLate
             // 
             this.DateLate.Location = new System.Drawing.Point(131, 170);
-            this.DateLate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DateLate.Margin = new System.Windows.Forms.Padding(4);
             this.DateLate.Name = "DateLate";
             this.DateLate.Size = new System.Drawing.Size(168, 22);
             this.DateLate.TabIndex = 30;
@@ -434,7 +434,7 @@
             // lateFee
             // 
             this.lateFee.Location = new System.Drawing.Point(131, 138);
-            this.lateFee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lateFee.Margin = new System.Windows.Forms.Padding(4);
             this.lateFee.Name = "lateFee";
             this.lateFee.Size = new System.Drawing.Size(168, 22);
             this.lateFee.TabIndex = 29;
@@ -442,7 +442,7 @@
             // totalService
             // 
             this.totalService.Location = new System.Drawing.Point(131, 106);
-            this.totalService.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.totalService.Margin = new System.Windows.Forms.Padding(4);
             this.totalService.Name = "totalService";
             this.totalService.Size = new System.Drawing.Size(168, 22);
             this.totalService.TabIndex = 28;
@@ -450,7 +450,7 @@
             // totalMenu
             // 
             this.totalMenu.Location = new System.Drawing.Point(131, 74);
-            this.totalMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.totalMenu.Margin = new System.Windows.Forms.Padding(4);
             this.totalMenu.Name = "totalMenu";
             this.totalMenu.Size = new System.Drawing.Size(168, 22);
             this.totalMenu.TabIndex = 27;
@@ -458,7 +458,7 @@
             // NumberofTable
             // 
             this.NumberofTable.Location = new System.Drawing.Point(131, 42);
-            this.NumberofTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumberofTable.Margin = new System.Windows.Forms.Padding(4);
             this.NumberofTable.Name = "NumberofTable";
             this.NumberofTable.Size = new System.Drawing.Size(168, 22);
             this.NumberofTable.TabIndex = 26;
@@ -466,7 +466,7 @@
             // VenueFee
             // 
             this.VenueFee.Location = new System.Drawing.Point(131, 10);
-            this.VenueFee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.VenueFee.Margin = new System.Windows.Forms.Padding(4);
             this.VenueFee.Name = "VenueFee";
             this.VenueFee.Size = new System.Drawing.Size(168, 22);
             this.VenueFee.TabIndex = 25;
@@ -579,7 +579,7 @@
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
-            this.splitter1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitter1.Margin = new System.Windows.Forms.Padding(4);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(4, 593);
             this.splitter1.TabIndex = 16;
@@ -588,7 +588,7 @@
             // customerID
             // 
             this.customerID.Location = new System.Drawing.Point(705, 25);
-            this.customerID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.customerID.Margin = new System.Windows.Forms.Padding(4);
             this.customerID.Name = "customerID";
             this.customerID.Size = new System.Drawing.Size(173, 22);
             this.customerID.TabIndex = 17;
@@ -618,9 +618,9 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Receipt";
-            this.Text = "Lập Hóa Đơn";
+            this.Text = "SS";
             this.Load += new System.EventHandler(this.Receipt_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
