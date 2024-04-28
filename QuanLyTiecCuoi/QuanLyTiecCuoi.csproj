@@ -48,7 +48,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -61,17 +64,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Receipt.cs">
+    <Compile Include="Booking.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Receipt.Designer.cs">
+    <Compile Include="Booking.Designer.cs">
+      <DependentUpon>Booking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Food.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Food.Designer.cs">
+      <DependentUpon>Food.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Venue\InsertVenue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Venue\InsertVenue.Designer.cs">
+      <DependentUpon>InsertVenue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recepit\Receipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recepit\Receipt.Designer.cs">
       <DependentUpon>Receipt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VenueManage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VenueManage.Designer.cs">
-      <DependentUpon>VenueManage.cs</DependentUpon>
     </Compile>
     <Compile Include="MainApp.cs">
       <SubType>Form</SubType>
@@ -88,11 +114,23 @@
     <Compile Include="MainClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Receipt.resx">
-      <DependentUpon>Receipt.cs</DependentUpon>
+    <Compile Include="Venue\Venue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Venue\Venue.Designer.cs">
+      <DependentUpon>Venue.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Booking.resx">
+      <DependentUpon>Booking.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VenueManage.resx">
-      <DependentUpon>VenueManage.cs</DependentUpon>
+    <EmbeddedResource Include="Food.resx">
+      <DependentUpon>Food.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recepit\Receipt.resx">
+      <DependentUpon>Receipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -108,7 +146,26 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Venue\InsertVenue.resx">
+      <DependentUpon>InsertVenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Venue\Venue.resx">
+      <DependentUpon>Venue.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DatabaseDataSet1.xsc">
+      <DependentUpon>DatabaseDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatabaseDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DatabaseDataSet1.xss">
+      <DependentUpon>DatabaseDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\DataSources\Venue.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -130,6 +187,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
+    <Content Include="Resources\sanh1.jpg" />
+    <None Include="Resources\Screenshot 2024-04-11 180728.png" />
+    <None Include="Resources\z4653448292201_7d6c6b1225cd2d3a23e009077e118464.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
