@@ -17,9 +17,10 @@ namespace QuanLyTiecCuoi
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new fLogin());
-            Application.Run(new Venue());
+            //Application.Run(new Venue());
             //Application.Run(new Receipt());
-        //    Application.Run(new Report());
+            //    Application.Run(new Report());
+            Application.Run(new Service());
 
         }
     }

@@ -75,11 +75,39 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseDataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Food.cs">
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FOOD\Food.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Food.Designer.cs">
+    <Compile Include="FOOD\Food.Designer.cs">
       <DependentUpon>Food.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FOOD\InsertFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FOOD\InsertFood.Designer.cs">
+      <DependentUpon>InsertFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QUANLYTIECCUOIDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QUANLYTIECCUOIDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Service\InsertService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\InsertService.Designer.cs">
+      <DependentUpon>InsertService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Service.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\Service.Designer.cs">
+      <DependentUpon>Service.cs</DependentUpon>
     </Compile>
     <Compile Include="Venue\InsertVenue.cs">
       <SubType>Form</SubType>
@@ -123,8 +151,11 @@
     <EmbeddedResource Include="Booking.resx">
       <DependentUpon>Booking.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Food.resx">
+    <EmbeddedResource Include="FOOD\Food.resx">
       <DependentUpon>Food.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FOOD\InsertFood.resx">
+      <DependentUpon>InsertFood.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
@@ -148,6 +179,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Service\InsertService.resx">
+      <DependentUpon>InsertService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\Service.resx">
+      <DependentUpon>Service.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Venue\InsertVenue.resx">
       <DependentUpon>InsertVenue.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +202,17 @@
     <None Include="DatabaseDataSet1.xss">
       <DependentUpon>DatabaseDataSet1.xsd</DependentUpon>
     </None>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\Venue.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -180,14 +228,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Database_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Database.mdf</DependentUpon>
-    </Content>
     <Content Include="Resources\sanh1.jpg" />
+    <None Include="QUANLYTIECCUOIDataSet.xsc">
+      <DependentUpon>QUANLYTIECCUOIDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYTIECCUOIDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QUANLYTIECCUOIDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QUANLYTIECCUOIDataSet.xss">
+      <DependentUpon>QUANLYTIECCUOIDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Resources\Screenshot 2024-04-11 180728.png" />
     <None Include="Resources\z4653448292201_7d6c6b1225cd2d3a23e009077e118464.jpg" />
   </ItemGroup>
@@ -206,5 +258,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

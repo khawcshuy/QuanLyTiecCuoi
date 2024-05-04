@@ -33,5 +33,27 @@ namespace QuanLyTiecCuoi.Properties {
                 return ((string)(this["DatabaseConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-M4GHD5G\\LUCY;Persist Security Info=True;User ID=sa;Password=1" +
+            "40403;TrustServerCertificate=True")]
+        public string ConnectionString {
+            get {
+                return ((string)(this["ConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-M4GHD5G\\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security " +
+            "Info=True;User ID=sa;TrustServerCertificate=True")]
+        public string QUANLYTIECCUOIConnectionString {
+            get {
+                return ((string)(this["QUANLYTIECCUOIConnectionString"]));
+            }
+        }
     }
 }
