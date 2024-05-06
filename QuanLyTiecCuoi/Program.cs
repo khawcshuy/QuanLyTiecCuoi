@@ -20,7 +20,11 @@ namespace QuanLyTiecCuoi
             //Application.Run(new Venue());
             //Application.Run(new Receipt());
             //    Application.Run(new Report());
-            Application.Run(new Service());
+            Booking bookingForm = new Booking();
+
+            // Pass the bookingForm instance to the Food form constructor
+            Food foodForm = new Food(bookingForm);
+            Application.Run(bookingForm);
 
         }
     }

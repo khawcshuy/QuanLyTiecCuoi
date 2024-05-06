@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,7 +55,7 @@ namespace QuanLyTiecCuoi.Service
             }
 
             // SQL query to insert a new venue
-            string insert_query = "INSERT INTO DICHVU (TENDICHVU, LOAIDICHVU,GIADICHVU, NOTE, PICTURE)  VALUES(@FoodName,@FoodPrice,@Note, @Image)";
+            string insert_query = "INSERT INTO DICHVU (TENDICHVU, LOAIDICHVU,GIADICHVU, NOTE, PICTURE)  VALUES(@ServiceName,@ServiceType ,@Note, @Image)";
 
             // Create a new connection
             using (SqlConnection connection = new SqlConnection(conString))
@@ -63,8 +64,8 @@ namespace QuanLyTiecCuoi.Service
                 using (SqlCommand cmd = new SqlCommand(insert_query, connection))
                 {
                     // Add parameters to the command
-                    cmd.Parameters.AddWithValue("@FoodName", FoodName);
-                    cmd.Parameters.AddWithValue("@FoodPrice", FoodPrice);
+                    cmd.Parameters.AddWithValue("@ServiceName", ServiceName);
+                    cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
                     cmd.Parameters.AddWithValue("@Note", note);
 
                     try
@@ -91,7 +92,7 @@ namespace QuanLyTiecCuoi.Service
                             cmd.ExecuteNonQuery();
 
                             // Show success message
-                            MessageBox.Show("Venue added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Service added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             // Reload data into DataGridView
 
@@ -99,7 +100,7 @@ namespace QuanLyTiecCuoi.Service
                         catch (Exception ex)
                         {
                             // Show error message if an error occurs during insertion
-                            MessageBox.Show("An error occurred while adding the venue: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("An error occurred while adding the Service: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     catch
@@ -111,7 +112,7 @@ namespace QuanLyTiecCuoi.Service
                 }
             }
 
-            _parentForm.LoadDataGridViewFood();
+            _parentForm.LoadDataGridViewService();
 
 
             // Đóng form insert

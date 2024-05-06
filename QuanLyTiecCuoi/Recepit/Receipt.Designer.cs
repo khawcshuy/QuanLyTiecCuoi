@@ -99,10 +99,10 @@ namespace QuanLyTiecCuoi
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 18);
+            this.label1.Location = new System.Drawing.Point(15, 22);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(218, 36);
+            this.label1.Size = new System.Drawing.Size(263, 40);
             this.label1.TabIndex = 0;
             this.label1.Text = "LẬP HÓA ĐƠN";
             // 
@@ -129,111 +129,111 @@ namespace QuanLyTiecCuoi
             this.TTHD.Controls.Add(this.label21);
             this.TTHD.Controls.Add(this.label30);
             this.TTHD.Controls.Add(this.label20);
-            this.TTHD.Location = new System.Drawing.Point(19, 76);
-            this.TTHD.Margin = new System.Windows.Forms.Padding(4);
+            this.TTHD.Location = new System.Drawing.Point(21, 95);
+            this.TTHD.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TTHD.Name = "TTHD";
-            this.TTHD.Size = new System.Drawing.Size(957, 195);
+            this.TTHD.Size = new System.Drawing.Size(1076, 243);
             this.TTHD.TabIndex = 1;
             // 
             // IdTiec
             // 
-            this.IdTiec.Location = new System.Drawing.Point(646, 164);
-            this.IdTiec.Margin = new System.Windows.Forms.Padding(4);
+            this.IdTiec.Location = new System.Drawing.Point(727, 205);
+            this.IdTiec.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.IdTiec.Name = "IdTiec";
-            this.IdTiec.Size = new System.Drawing.Size(241, 22);
+            this.IdTiec.Size = new System.Drawing.Size(271, 26);
             this.IdTiec.TabIndex = 23;
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(508, 168);
+            this.label23.Location = new System.Drawing.Point(572, 210);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(52, 17);
+            this.label23.Size = new System.Drawing.Size(63, 20);
             this.label23.TabIndex = 22;
             this.label23.Text = "ID Tiệc";
             // 
             // Bride
             // 
-            this.Bride.Location = new System.Drawing.Point(647, 124);
-            this.Bride.Margin = new System.Windows.Forms.Padding(4);
+            this.Bride.Location = new System.Drawing.Point(728, 155);
+            this.Bride.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Bride.Name = "Bride";
-            this.Bride.Size = new System.Drawing.Size(241, 22);
+            this.Bride.Size = new System.Drawing.Size(271, 26);
             this.Bride.TabIndex = 21;
             // 
             // Groom
             // 
-            this.Groom.Location = new System.Drawing.Point(647, 94);
-            this.Groom.Margin = new System.Windows.Forms.Padding(4);
+            this.Groom.Location = new System.Drawing.Point(728, 118);
+            this.Groom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Groom.Name = "Groom";
-            this.Groom.Size = new System.Drawing.Size(241, 22);
+            this.Groom.Size = new System.Drawing.Size(271, 26);
             this.Groom.TabIndex = 20;
             // 
             // Phone
             // 
-            this.Phone.Location = new System.Drawing.Point(647, 58);
-            this.Phone.Margin = new System.Windows.Forms.Padding(4);
+            this.Phone.Location = new System.Drawing.Point(728, 72);
+            this.Phone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Phone.Name = "Phone";
-            this.Phone.Size = new System.Drawing.Size(241, 22);
+            this.Phone.Size = new System.Drawing.Size(271, 26);
             this.Phone.TabIndex = 19;
             // 
             // Email
             // 
-            this.Email.Location = new System.Drawing.Point(647, 12);
-            this.Email.Margin = new System.Windows.Forms.Padding(4);
+            this.Email.Location = new System.Drawing.Point(728, 15);
+            this.Email.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(241, 22);
+            this.Email.Size = new System.Drawing.Size(271, 26);
             this.Email.TabIndex = 18;
             // 
             // Address
             // 
-            this.Address.Location = new System.Drawing.Point(197, 165);
-            this.Address.Margin = new System.Windows.Forms.Padding(4);
+            this.Address.Location = new System.Drawing.Point(222, 206);
+            this.Address.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Address.Name = "Address";
-            this.Address.Size = new System.Drawing.Size(241, 22);
+            this.Address.Size = new System.Drawing.Size(271, 26);
             this.Address.TabIndex = 17;
             // 
             // CustomerName
             // 
-            this.CustomerName.Location = new System.Drawing.Point(197, 130);
-            this.CustomerName.Margin = new System.Windows.Forms.Padding(4);
+            this.CustomerName.Location = new System.Drawing.Point(222, 162);
+            this.CustomerName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CustomerName.Name = "CustomerName";
-            this.CustomerName.Size = new System.Drawing.Size(241, 22);
+            this.CustomerName.Size = new System.Drawing.Size(271, 26);
             this.CustomerName.TabIndex = 16;
             // 
             // Date
             // 
-            this.Date.Location = new System.Drawing.Point(197, 94);
-            this.Date.Margin = new System.Windows.Forms.Padding(4);
+            this.Date.Location = new System.Drawing.Point(222, 118);
+            this.Date.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Date.Name = "Date";
-            this.Date.Size = new System.Drawing.Size(241, 22);
+            this.Date.Size = new System.Drawing.Size(271, 26);
             this.Date.TabIndex = 15;
             // 
             // OrderDate
             // 
-            this.OrderDate.Location = new System.Drawing.Point(197, 52);
-            this.OrderDate.Margin = new System.Windows.Forms.Padding(4);
+            this.OrderDate.Location = new System.Drawing.Point(222, 65);
+            this.OrderDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.OrderDate.Name = "OrderDate";
-            this.OrderDate.Size = new System.Drawing.Size(241, 22);
+            this.OrderDate.Size = new System.Drawing.Size(271, 26);
             this.OrderDate.TabIndex = 14;
             // 
             // admin
             // 
-            this.admin.Location = new System.Drawing.Point(197, 12);
-            this.admin.Margin = new System.Windows.Forms.Padding(4);
+            this.admin.Location = new System.Drawing.Point(222, 15);
+            this.admin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.admin.Name = "admin";
-            this.admin.Size = new System.Drawing.Size(241, 22);
+            this.admin.Size = new System.Drawing.Size(271, 26);
             this.admin.TabIndex = 11;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(508, 21);
+            this.label17.Location = new System.Drawing.Point(572, 26);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(42, 17);
+            this.label17.Size = new System.Drawing.Size(51, 20);
             this.label17.TabIndex = 10;
             this.label17.Text = "Email";
             // 
@@ -241,10 +241,10 @@ namespace QuanLyTiecCuoi
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(509, 128);
+            this.label3.Location = new System.Drawing.Point(573, 160);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 17);
+            this.label3.Size = new System.Drawing.Size(92, 20);
             this.label3.TabIndex = 9;
             this.label3.Text = "Tên cô dâu";
             // 
@@ -252,10 +252,10 @@ namespace QuanLyTiecCuoi
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(508, 97);
+            this.label15.Location = new System.Drawing.Point(572, 121);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(77, 17);
+            this.label15.Size = new System.Drawing.Size(89, 20);
             this.label15.TabIndex = 8;
             this.label15.Text = "Tên chú rể";
             // 
@@ -263,10 +263,10 @@ namespace QuanLyTiecCuoi
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(16, 169);
+            this.label19.Location = new System.Drawing.Point(18, 211);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(51, 17);
+            this.label19.Size = new System.Drawing.Size(61, 20);
             this.label19.TabIndex = 7;
             this.label19.Text = "Địa chỉ";
             // 
@@ -274,10 +274,10 @@ namespace QuanLyTiecCuoi
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(508, 59);
+            this.label18.Location = new System.Drawing.Point(572, 74);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(91, 17);
+            this.label18.Size = new System.Drawing.Size(106, 20);
             this.label18.TabIndex = 6;
             this.label18.Text = "Số điện thoại";
             // 
@@ -285,10 +285,10 @@ namespace QuanLyTiecCuoi
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(16, 95);
+            this.label22.Location = new System.Drawing.Point(18, 119);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(117, 17);
+            this.label22.Size = new System.Drawing.Size(139, 20);
             this.label22.TabIndex = 4;
             this.label22.Text = "Ngày tổ chức tiệc";
             // 
@@ -296,10 +296,10 @@ namespace QuanLyTiecCuoi
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(16, 53);
+            this.label21.Location = new System.Drawing.Point(18, 66);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(91, 17);
+            this.label21.Size = new System.Drawing.Size(107, 20);
             this.label21.TabIndex = 3;
             this.label21.Text = "Ngày đặt tiệc";
             // 
@@ -307,10 +307,10 @@ namespace QuanLyTiecCuoi
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(16, 134);
+            this.label30.Location = new System.Drawing.Point(18, 168);
             this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(95, 17);
+            this.label30.Size = new System.Drawing.Size(112, 20);
             this.label30.TabIndex = 2;
             this.label30.Text = "Người đặt tiệc";
             // 
@@ -318,10 +318,10 @@ namespace QuanLyTiecCuoi
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(16, 21);
+            this.label20.Location = new System.Drawing.Point(18, 26);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(124, 17);
+            this.label20.Size = new System.Drawing.Size(143, 20);
             this.label20.TabIndex = 1;
             this.label20.Text = "Người lập hóa đơn";
             // 
@@ -329,20 +329,20 @@ namespace QuanLyTiecCuoi
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.Location = new System.Drawing.Point(23, 63);
+            this.label2.Location = new System.Drawing.Point(26, 79);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(185, 20);
+            this.label2.Size = new System.Drawing.Size(219, 25);
             this.label2.TabIndex = 0;
             this.label2.Text = "THÔNG TIN HÓA ĐƠN";
             // 
             // label123
             // 
             this.label123.AutoSize = true;
-            this.label123.Location = new System.Drawing.Point(616, 33);
+            this.label123.Location = new System.Drawing.Point(693, 41);
             this.label123.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label123.Name = "label123";
-            this.label123.Size = new System.Drawing.Size(98, 16);
+            this.label123.Size = new System.Drawing.Size(118, 20);
             this.label123.TabIndex = 5;
             this.label123.Text = "Mã khách hàng";
             // 
@@ -350,10 +350,10 @@ namespace QuanLyTiecCuoi
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label4.Location = new System.Drawing.Point(23, 293);
+            this.label4.Location = new System.Drawing.Point(26, 366);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(177, 20);
+            this.label4.Size = new System.Drawing.Size(206, 25);
             this.label4.TabIndex = 12;
             this.label4.Text = "DANH SÁCH CHI PHÍ";
             // 
@@ -364,66 +364,66 @@ namespace QuanLyTiecCuoi
             this.panel2.Controls.Add(this.Menuview);
             this.panel2.Controls.Add(this.Service);
             this.panel2.Controls.Add(this.menu);
-            this.panel2.Location = new System.Drawing.Point(19, 303);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Location = new System.Drawing.Point(21, 379);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(567, 345);
+            this.panel2.Size = new System.Drawing.Size(638, 431);
             this.panel2.TabIndex = 13;
             // 
             // ServiceView
             // 
             this.ServiceView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ServiceView.Location = new System.Drawing.Point(8, 210);
-            this.ServiceView.Margin = new System.Windows.Forms.Padding(4);
+            this.ServiceView.Location = new System.Drawing.Point(9, 262);
+            this.ServiceView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ServiceView.Name = "ServiceView";
             this.ServiceView.RowHeadersWidth = 51;
-            this.ServiceView.Size = new System.Drawing.Size(543, 134);
+            this.ServiceView.Size = new System.Drawing.Size(611, 168);
             this.ServiceView.TabIndex = 17;
             // 
             // Menuview
             // 
             this.Menuview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Menuview.Location = new System.Drawing.Point(8, 33);
-            this.Menuview.Margin = new System.Windows.Forms.Padding(4);
+            this.Menuview.Location = new System.Drawing.Point(9, 41);
+            this.Menuview.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Menuview.Name = "Menuview";
             this.Menuview.RowHeadersWidth = 51;
-            this.Menuview.Size = new System.Drawing.Size(543, 154);
+            this.Menuview.Size = new System.Drawing.Size(611, 192);
             this.Menuview.TabIndex = 16;
             // 
             // Service
             // 
             this.Service.AutoSize = true;
-            this.Service.Location = new System.Drawing.Point(9, 191);
+            this.Service.Location = new System.Drawing.Point(10, 239);
             this.Service.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Service.Name = "Service";
-            this.Service.Size = new System.Drawing.Size(51, 16);
+            this.Service.Size = new System.Drawing.Size(61, 20);
             this.Service.TabIndex = 15;
             this.Service.Text = "Dịch vụ";
             // 
             // menu
             // 
             this.menu.AutoSize = true;
-            this.menu.Location = new System.Drawing.Point(9, 14);
+            this.menu.Location = new System.Drawing.Point(10, 18);
             this.menu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(63, 16);
+            this.menu.Size = new System.Drawing.Size(75, 20);
             this.menu.TabIndex = 14;
             this.menu.Text = "Thực đơn";
             // 
             // customerID
             // 
-            this.customerID.Location = new System.Drawing.Point(733, 30);
-            this.customerID.Margin = new System.Windows.Forms.Padding(4);
+            this.customerID.Location = new System.Drawing.Point(825, 38);
+            this.customerID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.customerID.Name = "customerID";
-            this.customerID.Size = new System.Drawing.Size(173, 22);
+            this.customerID.Size = new System.Drawing.Size(194, 26);
             this.customerID.TabIndex = 17;
             // 
             // btnSearchClick
             // 
-            this.btnSearchClick.Location = new System.Drawing.Point(913, 28);
+            this.btnSearchClick.Location = new System.Drawing.Point(1027, 35);
             this.btnSearchClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearchClick.Name = "btnSearchClick";
-            this.btnSearchClick.Size = new System.Drawing.Size(63, 23);
+            this.btnSearchClick.Size = new System.Drawing.Size(71, 29);
             this.btnSearchClick.TabIndex = 18;
             this.btnSearchClick.Text = "enter";
             this.btnSearchClick.UseVisualStyleBackColor = true;
@@ -442,20 +442,20 @@ namespace QuanLyTiecCuoi
             this.panel4.Controls.Add(this.label123);
             this.panel4.Controls.Add(this.panel3);
             this.panel4.Controls.Add(this.panel2);
-            this.panel4.Location = new System.Drawing.Point(9, 10);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4);
+            this.panel4.Location = new System.Drawing.Point(10, 12);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(991, 685);
+            this.panel4.Size = new System.Drawing.Size(1115, 856);
             this.panel4.TabIndex = 20;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label5.Location = new System.Drawing.Point(617, 292);
+            this.label5.Location = new System.Drawing.Point(694, 365);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 20);
+            this.label5.Size = new System.Drawing.Size(108, 25);
             this.label5.TabIndex = 15;
             this.label5.Text = "TÍNH TIỀN";
             // 
@@ -483,201 +483,201 @@ namespace QuanLyTiecCuoi
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Location = new System.Drawing.Point(607, 303);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Location = new System.Drawing.Point(683, 379);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(371, 345);
+            this.panel3.Size = new System.Drawing.Size(417, 431);
             this.panel3.TabIndex = 14;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(307, 295);
+            this.label24.Location = new System.Drawing.Point(345, 369);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(19, 16);
+            this.label24.Size = new System.Drawing.Size(23, 20);
             this.label24.TabIndex = 36;
             this.label24.Text = "%";
             // 
             // Discount
             // 
-            this.Discount.Location = new System.Drawing.Point(131, 287);
-            this.Discount.Margin = new System.Windows.Forms.Padding(4);
+            this.Discount.Location = new System.Drawing.Point(147, 359);
+            this.Discount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Discount.Name = "Discount";
-            this.Discount.Size = new System.Drawing.Size(168, 22);
+            this.Discount.Size = new System.Drawing.Size(188, 26);
             this.Discount.TabIndex = 35;
             this.Discount.TextChanged += new System.EventHandler(this.Discount_TextChanged);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(9, 295);
+            this.label16.Location = new System.Drawing.Point(10, 369);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(63, 16);
+            this.label16.Size = new System.Drawing.Size(76, 20);
             this.label16.TabIndex = 34;
             this.label16.Text = "Giảm Giá";
             // 
             // Paidment
             // 
-            this.Paidment.Location = new System.Drawing.Point(131, 317);
-            this.Paidment.Margin = new System.Windows.Forms.Padding(4);
+            this.Paidment.Location = new System.Drawing.Point(147, 396);
+            this.Paidment.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Paidment.Name = "Paidment";
-            this.Paidment.Size = new System.Drawing.Size(168, 22);
+            this.Paidment.Size = new System.Drawing.Size(188, 26);
             this.Paidment.TabIndex = 33;
             // 
             // deposit
             // 
-            this.deposit.Location = new System.Drawing.Point(131, 257);
-            this.deposit.Margin = new System.Windows.Forms.Padding(4);
+            this.deposit.Location = new System.Drawing.Point(147, 321);
+            this.deposit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.deposit.Name = "deposit";
-            this.deposit.Size = new System.Drawing.Size(168, 22);
+            this.deposit.Size = new System.Drawing.Size(188, 26);
             this.deposit.TabIndex = 32;
             // 
             // Total
             // 
-            this.Total.Location = new System.Drawing.Point(131, 223);
-            this.Total.Margin = new System.Windows.Forms.Padding(4);
+            this.Total.Location = new System.Drawing.Point(147, 279);
+            this.Total.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Total.Name = "Total";
-            this.Total.Size = new System.Drawing.Size(168, 22);
+            this.Total.Size = new System.Drawing.Size(188, 26);
             this.Total.TabIndex = 31;
             // 
             // DateLate
             // 
-            this.DateLate.Location = new System.Drawing.Point(131, 170);
-            this.DateLate.Margin = new System.Windows.Forms.Padding(4);
+            this.DateLate.Location = new System.Drawing.Point(147, 212);
+            this.DateLate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DateLate.Name = "DateLate";
-            this.DateLate.Size = new System.Drawing.Size(168, 22);
+            this.DateLate.Size = new System.Drawing.Size(188, 26);
             this.DateLate.TabIndex = 30;
             // 
             // PenaltyRatio
             // 
-            this.PenaltyRatio.Location = new System.Drawing.Point(131, 138);
-            this.PenaltyRatio.Margin = new System.Windows.Forms.Padding(4);
+            this.PenaltyRatio.Location = new System.Drawing.Point(147, 172);
+            this.PenaltyRatio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PenaltyRatio.Name = "PenaltyRatio";
-            this.PenaltyRatio.Size = new System.Drawing.Size(168, 22);
+            this.PenaltyRatio.Size = new System.Drawing.Size(188, 26);
             this.PenaltyRatio.TabIndex = 29;
             this.PenaltyRatio.TextChanged += new System.EventHandler(this.PenaltyRatio_TextChanged);
             // 
             // totalService
             // 
-            this.totalService.Location = new System.Drawing.Point(131, 106);
-            this.totalService.Margin = new System.Windows.Forms.Padding(4);
+            this.totalService.Location = new System.Drawing.Point(147, 132);
+            this.totalService.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.totalService.Name = "totalService";
-            this.totalService.Size = new System.Drawing.Size(168, 22);
+            this.totalService.Size = new System.Drawing.Size(188, 26);
             this.totalService.TabIndex = 28;
             // 
             // totalMenu
             // 
-            this.totalMenu.Location = new System.Drawing.Point(131, 74);
-            this.totalMenu.Margin = new System.Windows.Forms.Padding(4);
+            this.totalMenu.Location = new System.Drawing.Point(147, 92);
+            this.totalMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.totalMenu.Name = "totalMenu";
-            this.totalMenu.Size = new System.Drawing.Size(168, 22);
+            this.totalMenu.Size = new System.Drawing.Size(188, 26);
             this.totalMenu.TabIndex = 27;
             // 
             // NumberofTable
             // 
-            this.NumberofTable.Location = new System.Drawing.Point(131, 42);
-            this.NumberofTable.Margin = new System.Windows.Forms.Padding(4);
+            this.NumberofTable.Location = new System.Drawing.Point(147, 52);
+            this.NumberofTable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NumberofTable.Name = "NumberofTable";
-            this.NumberofTable.Size = new System.Drawing.Size(168, 22);
+            this.NumberofTable.Size = new System.Drawing.Size(188, 26);
             this.NumberofTable.TabIndex = 26;
             // 
             // VenueFee
             // 
-            this.VenueFee.Location = new System.Drawing.Point(131, 10);
-            this.VenueFee.Margin = new System.Windows.Forms.Padding(4);
+            this.VenueFee.Location = new System.Drawing.Point(147, 12);
+            this.VenueFee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.VenueFee.Name = "VenueFee";
-            this.VenueFee.Size = new System.Drawing.Size(168, 22);
+            this.VenueFee.Size = new System.Drawing.Size(188, 26);
             this.VenueFee.TabIndex = 25;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 325);
+            this.label14.Location = new System.Drawing.Point(10, 406);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(48, 16);
+            this.label14.Size = new System.Drawing.Size(57, 20);
             this.label14.TabIndex = 24;
             this.label14.Text = "Còn lại";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(7, 265);
+            this.label13.Location = new System.Drawing.Point(8, 331);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(61, 16);
+            this.label13.Size = new System.Drawing.Size(71, 20);
             this.label13.TabIndex = 23;
             this.label13.Text = "Tiền Cọc";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(7, 229);
+            this.label12.Location = new System.Drawing.Point(8, 286);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(66, 16);
+            this.label12.Size = new System.Drawing.Size(79, 20);
             this.label12.TabIndex = 22;
             this.label12.Text = "Tổng tiền:";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 178);
+            this.label11.Location = new System.Drawing.Point(10, 222);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(75, 16);
+            this.label11.Size = new System.Drawing.Size(90, 20);
             this.label11.TabIndex = 21;
             this.label11.Text = "Số ngày trễ";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 146);
+            this.label10.Location = new System.Drawing.Point(10, 182);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(66, 16);
+            this.label10.Size = new System.Drawing.Size(78, 20);
             this.label10.TabIndex = 20;
             this.label10.Text = "Tỉ số phạt";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(7, 114);
+            this.label9.Location = new System.Drawing.Point(8, 142);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(98, 16);
+            this.label9.Size = new System.Drawing.Size(117, 20);
             this.label9.TabIndex = 19;
             this.label9.Text = "Đơn giá dịch vụ";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 14);
+            this.label8.Location = new System.Drawing.Point(8, 18);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 16);
+            this.label8.Size = new System.Drawing.Size(81, 20);
             this.label8.TabIndex = 18;
             this.label8.Text = "Tiền Sảnh";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 82);
+            this.label7.Location = new System.Drawing.Point(4, 102);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(106, 16);
+            this.label7.Size = new System.Drawing.Size(130, 20);
             this.label7.TabIndex = 17;
             this.label7.Text = "Đơn giá thực đơn";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 50);
+            this.label6.Location = new System.Drawing.Point(8, 62);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 16);
+            this.label6.Size = new System.Drawing.Size(93, 20);
             this.label6.TabIndex = 16;
             this.label6.Text = "Số bàn tiệc:";
             // 
@@ -686,10 +686,10 @@ namespace QuanLyTiecCuoi
             this.ConfirmButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ConfirmButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.ConfirmButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ConfirmButton.Location = new System.Drawing.Point(810, 716);
-            this.ConfirmButton.Margin = new System.Windows.Forms.Padding(4);
+            this.ConfirmButton.Location = new System.Drawing.Point(911, 895);
+            this.ConfirmButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ConfirmButton.Name = "ConfirmButton";
-            this.ConfirmButton.Size = new System.Drawing.Size(176, 38);
+            this.ConfirmButton.Size = new System.Drawing.Size(198, 48);
             this.ConfirmButton.TabIndex = 21;
             this.ConfirmButton.Text = "Xác Nhận";
             this.ConfirmButton.UseVisualStyleBackColor = false;
@@ -697,16 +697,17 @@ namespace QuanLyTiecCuoi
             // 
             // Receipt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1001, 759);
+            this.ClientSize = new System.Drawing.Size(1126, 949);
             this.Controls.Add(this.ConfirmButton);
             this.Controls.Add(this.panel4);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Receipt";
-            this.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Text = "Lập Hóa Đơn";
+            this.Load += new System.EventHandler(this.Receipt_Load);
             this.TTHD.ResumeLayout(false);
             this.TTHD.PerformLayout();
             this.panel2.ResumeLayout(false);

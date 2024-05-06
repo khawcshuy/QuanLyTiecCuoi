@@ -15,53 +15,63 @@ namespace QuanLyTiecCuoi
 {
     public partial class Food : Form
     {
-        public Food()
+
+        private Booking _parentForm;
+
+        public Food(Booking parentForm)
         {
             InitializeComponent();
+            _parentForm = parentForm;
         }
+
+        public bool isChoosing = true;
         private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
 
-        
+        public List<int> selectedIDs;
         private void Food_Load(object sender, EventArgs e)
         {
             String query = "SELECT * FROM FOOD";
 
             using (SqlConnection connection = new SqlConnection(conString))
             {
+
                 // Tạo một đối tượng DataAdapter và SelectCommand
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = new SqlCommand(query, connection);
 
-                // Mở kết nối
                 connection.Open();
+                if (isChoosing)
+                {
+                    DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
+                    selectColumn.HeaderText = "Select";
+                    selectColumn.Name = "Select";
+                    selectColumn.DataPropertyName = "SELECT"; // Replace "SELECT" with the actual column name in your database
+                    selectColumn.ReadOnly = false; // Allow selection
+                    dataGridViewFood.Columns.Add(selectColumn);
+                    Confirm.Size = new System.Drawing.Size(180, 40);
+                }
                 FoodId.DataPropertyName = "ID";
                 PictureFood.DataPropertyName = "PICTURE";
                 FoodName.DataPropertyName = "TENMONAN";
                 FoodPrice.DataPropertyName = "DONGIA";
                 FoodNote.DataPropertyName = "NOTE";
-                
-                // Tạo một DataTable để chứa dữ liệu
+
+
                 DataTable dataTable = new DataTable();
 
-                // Sử dụng DataAdapter để lấy dữ liệu từ cơ sở dữ liệu và điền vào DataTable
                 adapter.Fill(dataTable);
 
-                // Đóng kết nối
                 connection.Close();
-               
 
-                // Tìm cột hình ảnh trong DataGridView
-                DataGridViewImageColumn imageColumn = dataGridView1.Columns["Image"] as DataGridViewImageColumn;
 
-                // Đảm bảo rằng cột hình ảnh được tìm thấy và thiết lập ImageLayout thành Zoom
+                DataGridViewImageColumn imageColumn = dataGridViewFood.Columns["Image"] as DataGridViewImageColumn;
+
                 if (imageColumn != null)
                 {
                     imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                 }
 
-                // Gán DataTable làm nguồn dữ liệu cho dataGridView1
                 dataGridViewFood.DataSource = dataTable;
-
             }
         }
 
@@ -72,11 +82,9 @@ namespace QuanLyTiecCuoi
 
             using (SqlConnection connection = new SqlConnection(conString))
             {
-                // Tạo một đối tượng DataAdapter và SelectCommand
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = new SqlCommand(query, connection);
 
-                // Mở kết nối
                 connection.Open();
                 FoodId.DataPropertyName = "ID";
                 PictureFood.DataPropertyName = "PICTURE";
@@ -84,26 +92,20 @@ namespace QuanLyTiecCuoi
                 FoodPrice.DataPropertyName = "DONGIA";
                 FoodNote.DataPropertyName = "NOTE";
 
-                // Tạo một DataTable để chứa dữ liệu
                 DataTable dataTable = new DataTable();
 
-                // Sử dụng DataAdapter để lấy dữ liệu từ cơ sở dữ liệu và điền vào DataTable
                 adapter.Fill(dataTable);
 
-                // Đóng kết nối
                 connection.Close();
 
 
-                // Tìm cột hình ảnh trong DataGridView
                 DataGridViewImageColumn imageColumn = dataGridView1.Columns["Image"] as DataGridViewImageColumn;
 
-                // Đảm bảo rằng cột hình ảnh được tìm thấy và thiết lập ImageLayout thành Zoom
                 if (imageColumn != null)
                 {
                     imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                 }
 
-                // Gán DataTable làm nguồn dữ liệu cho dataGridView1
                 dataGridViewFood.DataSource = dataTable;
 
             }
@@ -138,7 +140,7 @@ namespace QuanLyTiecCuoi
             int currentIndex = dataGridViewFood.CurrentCell.RowIndex;
             string IDChange = Convert.ToString(dataGridViewFood.Rows[currentIndex].Cells["FoodId"].Value);
             string FoodNameChange = Convert.ToString(dataGridViewFood.Rows[currentIndex].Cells["FoodName"].Value);
-            string FoodPriceChange = Convert.ToString(dataGridViewFood.Rows[currentIndex].Cells["FoodPrice"].Value); 
+            string FoodPriceChange = Convert.ToString(dataGridViewFood.Rows[currentIndex].Cells["FoodPrice"].Value);
             string NoteChange = Convert.ToString(dataGridViewFood.Rows[currentIndex].Cells["FoodNote"].Value);
 
             using (SqlConnection connection = new SqlConnection(conString))
@@ -247,18 +249,44 @@ namespace QuanLyTiecCuoi
 
         private void dataGridViewFood_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (isEditing && dataGridViewFood.Columns[e.ColumnIndex].Name == "FoodPicture" && e.RowIndex != -1)
-          {
-             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg;*.gif;*.png)|*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG";
+            if (isEditing && dataGridViewFood.Columns[e.ColumnIndex].Name == "FoodPicture" && e.RowIndex != -1 && !isChoosing)
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg;*.gif;*.png)|*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG";
 
-              if (dialog.ShowDialog() == DialogResult.OK)
-               {
-                  string imagePath = dialog.FileName;
-                  byte[] imageData = File.ReadAllBytes(imagePath);
-                dataGridView1.Rows[e.RowIndex].Cells["FoodPicture"].Value = imageData;
-           }
-           }
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    string imagePath = dialog.FileName;
+                    byte[] imageData = File.ReadAllBytes(imagePath);
+                    dataGridViewFood.Rows[e.RowIndex].Cells["FoodPicture"].Value = imageData;
+                }
+            }
+            else
+            {
+                dataGridViewFood.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                int currentRowIndex = e.RowIndex;
+                if (currentRowIndex >= 0 && currentRowIndex < dataGridViewFood.Rows.Count)
+                {
+                    DataGridViewCell selectedCell = dataGridViewFood.Rows[currentRowIndex].Cells["SELECT"];
+
+                    // Check if the cell is not null
+                    if (selectedCell != null)
+                    {
+                        // Check if the value of the cell is true
+                        if (selectedCell.Value != null && (bool)selectedCell.Value)
+                        {
+                            // If it's true, set it to false
+                            selectedCell.Value = false;
+                        }
+                        else
+                        {
+                            // If it's false or null, set it to true
+                            selectedCell.Value = true;
+                        }
+                    }
+                }
+              
+            }
         }
 
         private void AddFood_Click(object sender, EventArgs e)
@@ -266,6 +294,33 @@ namespace QuanLyTiecCuoi
             // Corrected variable name to insertVenueForm
             InsertFood insertFoodForm = new InsertFood(this);
             insertFoodForm.ShowDialog();
+        }
+
+        public delegate void ConfirmEventHandler(List<string> selectedFoods);
+
+        // Define an event based on the delegate
+        public event ConfirmEventHandler ConfirmEvent;
+       
+
+        private void Confirm_Click_1(object sender, EventArgs e)
+        {
+            List<string> selectedFoods = new List<string>();
+
+            // Iterate through the DataGridView to collect selected food IDs
+            foreach (DataGridViewRow row in dataGridViewFood.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["SELECT"].Value))
+                {
+                    string foodID = row.Cells["FoodId"].Value.ToString(); // Assuming the ID column name is "ID"
+                    selectedFoods.Add(foodID);
+                }
+            }
+
+            // Raise the event and pass the list
+            ConfirmEvent?.Invoke(selectedFoods);
+
+            // Close the Food form
+            this.Close();
         }
     }
 }

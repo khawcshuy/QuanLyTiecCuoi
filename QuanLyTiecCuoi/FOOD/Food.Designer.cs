@@ -57,6 +57,7 @@
             this.ChangeFood = new System.Windows.Forms.Button();
             this.AddFood = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.Confirm = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -244,7 +245,7 @@
             this.panel2.Location = new System.Drawing.Point(15, 11);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1099, 918);
+            this.panel2.Size = new System.Drawing.Size(1099, 882);
             this.panel2.TabIndex = 3;
             // 
             // button1
@@ -285,9 +286,10 @@
             this.dataGridViewFood.Name = "dataGridViewFood";
             this.dataGridViewFood.ReadOnly = true;
             this.dataGridViewFood.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewFood.RowHeadersVisible = false;
             this.dataGridViewFood.RowHeadersWidth = 51;
             this.dataGridViewFood.RowTemplate.Height = 100;
-            this.dataGridViewFood.Size = new System.Drawing.Size(1064, 752);
+            this.dataGridViewFood.Size = new System.Drawing.Size(1064, 734);
             this.dataGridViewFood.TabIndex = 0;
             this.dataGridViewFood.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFood_CellContentClick);
             // 
@@ -380,11 +382,25 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Danh Sách Món Ăn";
             // 
+            // Confirm
+            // 
+            this.Confirm.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Confirm.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Confirm.Location = new System.Drawing.Point(924, 889);
+            this.Confirm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Confirm.Name = "Confirm";
+            this.Confirm.Size = new System.Drawing.Size(0, 0);
+            this.Confirm.TabIndex = 9;
+            this.Confirm.Text = "Xac Nhan";
+            this.Confirm.UseVisualStyleBackColor = false;
+            this.Confirm.Click += new System.EventHandler(this.Confirm_Click_1);
+            // 
             // Food
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1126, 949);
+            this.Controls.Add(this.Confirm);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -432,5 +448,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FoodName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FoodPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn FoodNote;
+        private System.Windows.Forms.Button Confirm;
     }
 }

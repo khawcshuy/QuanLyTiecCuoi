@@ -467,7 +467,10 @@ namespace QuanLyTiecCuoi
             Paidment.Text = Paid.ToString();
         }
 
-        
+        private void Receipt_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
