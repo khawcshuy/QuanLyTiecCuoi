@@ -80,14 +80,14 @@
             this.ChooseMenu = new System.Windows.Forms.Button();
             this.ServiceView = new System.Windows.Forms.DataGridView();
             this.MenuBookingView = new System.Windows.Forms.DataGridView();
+            this.FoodId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FoodName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FoodPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Service = new System.Windows.Forms.Label();
             this.menu = new System.Windows.Forms.Label();
             this.OrderDate = new System.Windows.Forms.DateTimePicker();
             this.label21 = new System.Windows.Forms.Label();
             this.Confirm = new System.Windows.Forms.Button();
-            this.FoodId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FoodName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FoodPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.TTHD.SuspendLayout();
@@ -677,6 +677,28 @@
             this.MenuBookingView.RowHeadersWidth = 51;
             this.MenuBookingView.Size = new System.Drawing.Size(670, 175);
             this.MenuBookingView.TabIndex = 16;
+            this.MenuBookingView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MenuBookingView_CellContentClick);
+            // 
+            // FoodId
+            // 
+            this.FoodId.HeaderText = "ID";
+            this.FoodId.MinimumWidth = 8;
+            this.FoodId.Name = "FoodId";
+            this.FoodId.Width = 150;
+            // 
+            // FoodName
+            // 
+            this.FoodName.HeaderText = "Tên Món Ăn";
+            this.FoodName.MinimumWidth = 8;
+            this.FoodName.Name = "FoodName";
+            this.FoodName.Width = 150;
+            // 
+            // FoodPrice
+            // 
+            this.FoodPrice.HeaderText = "Đơn Giá";
+            this.FoodPrice.MinimumWidth = 8;
+            this.FoodPrice.Name = "FoodPrice";
+            this.FoodPrice.Width = 150;
             // 
             // Service
             // 
@@ -729,27 +751,6 @@
             this.Confirm.Text = "Xác Nhận";
             this.Confirm.UseVisualStyleBackColor = false;
             this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
-            // 
-            // FoodId
-            // 
-            this.FoodId.HeaderText = "ID";
-            this.FoodId.MinimumWidth = 8;
-            this.FoodId.Name = "FoodId";
-            this.FoodId.Width = 150;
-            // 
-            // FoodName
-            // 
-            this.FoodName.HeaderText = "Tên Món Ăn";
-            this.FoodName.MinimumWidth = 8;
-            this.FoodName.Name = "FoodName";
-            this.FoodName.Width = 150;
-            // 
-            // FoodPrice
-            // 
-            this.FoodPrice.HeaderText = "Đơn Giá";
-            this.FoodPrice.MinimumWidth = 8;
-            this.FoodPrice.Name = "FoodPrice";
-            this.FoodPrice.Width = 150;
             // 
             // Booking
             // 

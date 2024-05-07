@@ -163,18 +163,23 @@ namespace QuanLyTiecCuoi
 
         }
 
+        private List<string> ListSelectedFood;
+
         private void ChooseMenu_Click(object sender, EventArgs e)
         {
             Food foodForm = new Food(this);
             foodForm.ConfirmEvent += FoodForm_ConfirmEvent;
-
-            // Show the Food form
+            if(ListSelectedFood != null)
+            {    
+            foodForm.SelectedFoods = ListSelectedFood;
+}           foodForm.isChoosing = true;
             foodForm.Show();
         }
 
 
         private void FoodForm_ConfirmEvent(List<string> selectedFoods)
         {
+            ListSelectedFood = selectedFoods;
             // Construct the SQL query with a WHERE clause to filter by selected food IDs
             string query = "SELECT ID, TENMONAN, DONGIA FROM FOOD WHERE ID IN (" + string.Join(",", selectedFoods) + ")";
 
@@ -204,6 +209,9 @@ namespace QuanLyTiecCuoi
             }
         }
 
+        private void MenuBookingView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
     }
 }

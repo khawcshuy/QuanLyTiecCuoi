@@ -19,10 +19,13 @@ namespace QuanLyTiecCuoi
             //Application.Run(new fLogin());
             //Application.Run(new Venue());
             //Application.Run(new Receipt());
-            //    Application.Run(new Report());
+            //Food foodForm = new Food();
+
+            //// Hiển thị form Food
+            //Application.Run(foodForm);
             Booking bookingForm = new Booking();
 
-            // Pass the bookingForm instance to the Food form constructor
+            //// Pass the bookingForm instance to the Food form constructor
             Food foodForm = new Food(bookingForm);
             Application.Run(bookingForm);
 

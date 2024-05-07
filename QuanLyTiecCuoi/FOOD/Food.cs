@@ -18,16 +18,54 @@ namespace QuanLyTiecCuoi
 
         private Booking _parentForm;
 
-        public Food(Booking parentForm)
+        public Food(Booking parentForm = null)
         {
+            if (parentForm == null)
+            {
+                InitializeComponent();
+            }
+            else
+            { 
             InitializeComponent();
-            _parentForm = parentForm;
+            _parentForm = parentForm;}    
         }
 
-        public bool isChoosing = true;
+        public List<string> SelectedFoods;
+      
+        public bool isChoosing = false;
         private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
 
-        public List<int> selectedIDs;
+
+        private void SelectedFood()
+        {
+            if (SelectedFoods != null)
+            {
+                foreach (string indexString in SelectedFoods)
+                {
+                    if (int.TryParse(indexString, out int rowIndex))
+                    {
+                        DataGridViewCell selectedCell = dataGridViewFood.Rows[rowIndex].Cells["SELECT"];
+
+                        if (selectedCell != null)
+                        {
+                            if (selectedCell.Value != null && (bool)selectedCell.Value)
+                            {
+                                selectedCell.Value = false;
+                            }
+                            else
+                            {
+                                selectedCell.Value = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+
+                        Console.WriteLine($"Failed to convert '{indexString}' to an integer.");
+                    }
+                }
+            }
+        }
         private void Food_Load(object sender, EventArgs e)
         {
             String query = "SELECT * FROM FOOD";
@@ -49,6 +87,7 @@ namespace QuanLyTiecCuoi
                     selectColumn.ReadOnly = false; // Allow selection
                     dataGridViewFood.Columns.Add(selectColumn);
                     Confirm.Size = new System.Drawing.Size(180, 40);
+                   
                 }
                 FoodId.DataPropertyName = "ID";
                 PictureFood.DataPropertyName = "PICTURE";
@@ -58,7 +97,7 @@ namespace QuanLyTiecCuoi
 
 
                 DataTable dataTable = new DataTable();
-
+              
                 adapter.Fill(dataTable);
 
                 connection.Close();
@@ -72,12 +111,17 @@ namespace QuanLyTiecCuoi
                 }
 
                 dataGridViewFood.DataSource = dataTable;
+                if(isChoosing)
+                {    
+                SelectedFood(); }
+
             }
         }
 
 
         public void LoadDataGridViewFood()
         {
+
             String query = "SELECT * FROM FOOD";
 
             using (SqlConnection connection = new SqlConnection(conString))
@@ -92,9 +136,31 @@ namespace QuanLyTiecCuoi
                 FoodPrice.DataPropertyName = "DONGIA";
                 FoodNote.DataPropertyName = "NOTE";
 
-                DataTable dataTable = new DataTable();
+                if (isChoosing)
+                {
+                    DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
+                    selectColumn.HeaderText = "Select";
+                    selectColumn.Name = "Select";
+                    selectColumn.DataPropertyName = "SELECT"; // Replace "SELECT" with the actual column name in your database
+                    selectColumn.ReadOnly = false; // Allow selection
+                    dataGridViewFood.Columns.Add(selectColumn);
+                    Confirm.Size = new System.Drawing.Size(180, 40);
+                  
 
+                }
+                DataTable dataTable = new DataTable();
+                if (SelectedFoods != null)
+                {
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        if (SelectedFoods.Contains(row["FoodId"].ToString()))
+                        {
+                            row["select"] = true;
+                        }
+                    }
+                    }
                 adapter.Fill(dataTable);
+
 
                 connection.Close();
 
@@ -261,8 +327,9 @@ namespace QuanLyTiecCuoi
                     dataGridViewFood.Rows[e.RowIndex].Cells["FoodPicture"].Value = imageData;
                 }
             }
-            else
-            {
+                
+            if(isChoosing)
+            { 
                 dataGridViewFood.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 int currentRowIndex = e.RowIndex;
                 if (currentRowIndex >= 0 && currentRowIndex < dataGridViewFood.Rows.Count)
@@ -300,24 +367,29 @@ namespace QuanLyTiecCuoi
 
         // Define an event based on the delegate
         public event ConfirmEventHandler ConfirmEvent;
-       
+
+        //private void FoodForm_ConfirmEvent(List<string> selectedFoods)
+        //{
+        //    this.selectedFoods = selectedFoods;
+        //    LoadDataGridViewFood();
+        //}
 
         private void Confirm_Click_1(object sender, EventArgs e)
         {
-            List<string> selectedFoods = new List<string>();
 
+            SelectedFoods = new List<string>();
             // Iterate through the DataGridView to collect selected food IDs
             foreach (DataGridViewRow row in dataGridViewFood.Rows)
             {
                 if (Convert.ToBoolean(row.Cells["SELECT"].Value))
                 {
                     string foodID = row.Cells["FoodId"].Value.ToString(); // Assuming the ID column name is "ID"
-                    selectedFoods.Add(foodID);
+                    SelectedFoods.Add(foodID);
                 }
             }
 
             // Raise the event and pass the list
-            ConfirmEvent?.Invoke(selectedFoods);
+            ConfirmEvent?.Invoke(SelectedFoods);
 
             // Close the Food form
             this.Close();
