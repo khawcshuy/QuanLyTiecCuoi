@@ -34,7 +34,7 @@
             this.Image = new System.Windows.Forms.DataGridViewImageColumn();
             this.VenueName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VenueType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VenueState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VenueState = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaxTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MinTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +47,7 @@
             this.AddVenue = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.Confirm = new System.Windows.Forms.Button();
             this.venueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -72,7 +73,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 100;
-            this.dataGridView1.Size = new System.Drawing.Size(946, 602);
+            this.dataGridView1.Size = new System.Drawing.Size(946, 571);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
@@ -118,6 +119,8 @@
             this.VenueState.MinimumWidth = 6;
             this.VenueState.Name = "VenueState";
             this.VenueState.ReadOnly = true;
+            this.VenueState.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.VenueState.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.VenueState.Width = 125;
             // 
             // MaxTable
@@ -150,6 +153,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.Confirm);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.SearchVenue);
             this.panel1.Controls.Add(this.dataGridView1);
@@ -230,6 +234,18 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // Confirm
+            // 
+            this.Confirm.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Confirm.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Confirm.Location = new System.Drawing.Point(799, 683);
+            this.Confirm.Name = "Confirm";
+            this.Confirm.Size = new System.Drawing.Size(0, 0);
+            this.Confirm.TabIndex = 44;
+            this.Confirm.Text = "Xác Nhận";
+            this.Confirm.UseVisualStyleBackColor = false;
+            this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
+            // 
             // venueBindingSource
             // 
             this.venueBindingSource.DataSource = typeof(QuanLyTiecCuoi.Venue);
@@ -268,9 +284,10 @@
         private System.Windows.Forms.DataGridViewImageColumn Image;
         private System.Windows.Forms.DataGridViewTextBoxColumn VenueName;
         private System.Windows.Forms.DataGridViewTextBoxColumn VenueType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VenueState;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn VenueState;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaxTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn MinTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn Note;
+        private System.Windows.Forms.Button Confirm;
     }
 }

@@ -97,6 +97,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QUANLYTIECCUOIDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="QUANLYTIECCUOIDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QUANLYTIECCUOIDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Service\InsertService.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +244,17 @@
     </None>
     <None Include="QUANLYTIECCUOIDataSet.xss">
       <DependentUpon>QUANLYTIECCUOIDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYTIECCUOIDataSet1.xsc">
+      <DependentUpon>QUANLYTIECCUOIDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYTIECCUOIDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QUANLYTIECCUOIDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QUANLYTIECCUOIDataSet1.xss">
+      <DependentUpon>QUANLYTIECCUOIDataSet1.xsd</DependentUpon>
     </None>
     <None Include="Resources\Screenshot 2024-04-11 180728.png" />
     <None Include="Resources\z4653448292201_7d6c6b1225cd2d3a23e009077e118464.jpg" />

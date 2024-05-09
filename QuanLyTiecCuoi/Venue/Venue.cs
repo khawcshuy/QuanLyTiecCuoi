@@ -10,18 +10,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
 
 namespace QuanLyTiecCuoi
 {
     public partial class Venue : Form
     {
-        public Venue()
+
+
+        private Booking _parentForm;
+
+
+        public Venue(Booking parentForm = null)
         {
-            InitializeComponent();
+            if (parentForm == null)
+            {
+                InitializeComponent();
+            }
+            else
+            {
+                InitializeComponent();
+                _parentForm = parentForm;
+            }
         }
 
 
-        private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
+        //private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
+
+        private bool ChangingState;
+
+        public bool isChoosing = false;
+
+        public int VenueSelectedId;
+
+
+        private string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
+
 
         private bool isEditing = false;
 
@@ -54,6 +78,17 @@ namespace QuanLyTiecCuoi
                 MaxTable.DataPropertyName = "MAXTABLE";
                 MinTable.DataPropertyName = "MINMONEY";
                 Note.DataPropertyName = "NOTE";
+                if (isChoosing)
+                {
+                    DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
+                    selectColumn.HeaderText = "Select";
+                    selectColumn.Name = "Select";
+                    selectColumn.DataPropertyName = "SELECT"; // Replace "SELECT" with the actual column name in your database
+                    selectColumn.ReadOnly = false; // Allow selection
+                    dataGridView1.Columns.Add(selectColumn);
+                    Confirm.Size = new System.Drawing.Size(180, 40);
+
+                }
 
                 // Tìm cột hình ảnh trong DataGridView
                 DataGridViewImageColumn imageColumn = dataGridView1.Columns["Image"] as DataGridViewImageColumn;
@@ -72,7 +107,7 @@ namespace QuanLyTiecCuoi
 
 
 
-      
+
         // Method to load data into the DataGridView
         public void LoadDataIntoDataGridView()
         {
@@ -100,7 +135,18 @@ namespace QuanLyTiecCuoi
 
                     // Add a column for the image data
 
+                    if (isChoosing)
+                    {
+                        DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
+                        selectColumn.HeaderText = "Select";
+                        selectColumn.Name = "Select";
+                        selectColumn.DataPropertyName = "SELECT"; // Replace "SELECT" with the actual column name in your database
+                        selectColumn.ReadOnly = false; // Allow selection
+                        dataGridView1.Columns.Add(selectColumn);
+                        Confirm.Size = new System.Drawing.Size(180, 40);
 
+
+                    }
                     // Set the DataPropertyName for each column in the DataGridView
                     VenueId.DataPropertyName = "ID";
                     Image.DataPropertyName = "PICTURE";
@@ -132,11 +178,44 @@ namespace QuanLyTiecCuoi
         private void AddVenue_Click(object sender, EventArgs e)
         {
             // Corrected variable name to insertVenueForm
+            ChangingState = true;
+            dataGridView1.ReadOnly = false;
+            ChangeVenue.Text = "Chỉnh sửa";
+            isEditing = false;
+
+
+
             InsertVenue insertVenueForm = new InsertVenue(this);
             insertVenueForm.ShowDialog();
         }
 
 
+
+        private void SelectedVenue(bool isChoosing)
+        {
+            if (!isChoosing)
+            {
+                // Lấy chỉ mục hàng dựa trên VenueSelectedId
+              
+                
+                    DataGridViewCell selectedCell = dataGridView1.Rows[VenueSelectedId].Cells["SELECT"];
+
+                    if (selectedCell != null)
+                    {
+                        // Đảo giá trị của ô SELECT
+                        selectedCell.Value = !(bool)selectedCell.Value;
+                    }
+                
+                else
+                {
+                    Console.WriteLine($"Failed to convert '{VenueSelectedId}' to a valid row index.");
+                }
+            }
+            else
+            {
+                // Nếu isChoosing là true, không có gì cần phải làm ở đây
+            }
+        }
 
 
 
@@ -192,7 +271,7 @@ namespace QuanLyTiecCuoi
                             // Thực thi lệnh SQL xóa
                             deleteCmd.ExecuteNonQuery();
 
-                            // Hiển thị thông báo khi xóa thành công
+          
                             MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             // Tải lại dữ liệu vào DataGridView sau khi xóa
@@ -226,63 +305,88 @@ namespace QuanLyTiecCuoi
             else
             {
 
-                SaveChangesToDatabase();
+                SaveChangesToDatabase(ChangingState);
             }
         }
 
-        private void SaveChangesToDatabase()
+        private void SaveChangesToDatabase(bool ChangingState = false)
         {
-            int currentIndex = dataGridView1.CurrentCell.RowIndex;
-            string IDChange = Convert.ToString(dataGridView1.Rows[currentIndex].Cells["VenueId"].Value);
-            string VenueNameChange = Convert.ToString(dataGridView1.Rows[currentIndex].Cells["VenueName"].Value);
-            string VenueTypeChange = Convert.ToString(dataGridView1.Rows[currentIndex].Cells["VenueType"].Value);
-            string VenueStateChange = Convert.ToString(dataGridView1.Rows[currentIndex].Cells["VenueState"].Value);
-            string MaxTableChange = Convert.ToString(dataGridView1.Rows[currentIndex].Cells["MaxTable"].Value);
-            string MinTableChange = Convert.ToString(dataGridView1.Rows[currentIndex].Cells["MinTable"].Value);
-            string NoteChange = Convert.ToString(dataGridView1.Rows[currentIndex].Cells["Note"].Value);
-
             using (SqlConnection connection = new SqlConnection(conString))
             {
-                string updateStr = "UPDATE SANHINFOR SET TENSANH = @VenueName, LOAISANH = @VenueType, TRANGTHAISANH = @VenueState, MaxTable = @MaxTable, MinMoney = @MinTable, Note = @Note WHERE ID = @ID";
+                connection.Open();
 
-                using (SqlCommand updateCmd = new SqlCommand(updateStr, connection))
+                // Duyệt qua từng hàng trong DataGridView
+                foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    updateCmd.Parameters.AddWithValue("@ID", IDChange);
-                    updateCmd.Parameters.AddWithValue("@VenueName", VenueNameChange);
-                    updateCmd.Parameters.AddWithValue("@VenueType", VenueTypeChange);
-                    updateCmd.Parameters.AddWithValue("@VenueState", VenueStateChange);
-                    updateCmd.Parameters.AddWithValue("@MaxTable", MaxTableChange);
-                    updateCmd.Parameters.AddWithValue("@MinTable", MinTableChange);
-                    updateCmd.Parameters.AddWithValue("@Note", NoteChange);
-
-                    try
+                    // Kiểm tra hàng không phải là hàng mới và không phải là hàng dùng để thêm mới
+                    if (!row.IsNewRow && row.Cells["VenueId"].Value != null)
                     {
-                        connection.Open();
+                        string IDChange = Convert.ToString(row.Cells["VenueId"].Value);
+                        string VenueNameChange = Convert.ToString(row.Cells["VenueName"].Value);
+                        string VenueTypeChange = Convert.ToString(row.Cells["VenueType"].Value);
+                        string VenueStateChange = Convert.ToString(row.Cells["VenueState"].Value);
+                        string MaxTableChange = Convert.ToString(row.Cells["MaxTable"].Value);
+                        string MinTableChange = Convert.ToString(row.Cells["MinTable"].Value);
+                        string NoteChange = Convert.ToString(row.Cells["Note"].Value);
+                        byte[] imageData = null; // Initialize imageData variable
+                        object cellValue = row.Cells["image"].Value; // Get the value of the cell
 
-                        updateCmd.ExecuteNonQuery();
+                        // Check if the cell value is not DBNull
+                        if (cellValue != DBNull.Value)
+                        {
+                            // If the value is not DBNull, cast it to byte[]
+                            imageData = (byte[])cellValue;
+                        }
+                        else
+                        {
+                            // If the value is DBNull, use an empty byte array
+                            imageData = new byte[0];
+                        }
 
-                        MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        string updateStr = "UPDATE SANHINFOR SET TENSANH = @VenueName, LOAISANH = @VenueType, TRANGTHAISANH = @VenueState, MaxTable = @MaxTable, MinMoney = @MinTable, Note = @Note, PICTURE = @ImageData WHERE ID = @ID";
 
-                        LoadDataIntoDataGridView();
+                        using (SqlCommand updateCmd = new SqlCommand(updateStr, connection))
+                        {
+                            updateCmd.Parameters.AddWithValue("@ID", IDChange);
+                            updateCmd.Parameters.AddWithValue("@VenueName", VenueNameChange);
+                            updateCmd.Parameters.AddWithValue("@VenueType", VenueTypeChange);
+                            updateCmd.Parameters.AddWithValue("@VenueState", VenueStateChange);
+                            updateCmd.Parameters.AddWithValue("@MaxTable", MaxTableChange);
+                            updateCmd.Parameters.AddWithValue("@MinTable", MinTableChange);
+                            updateCmd.Parameters.AddWithValue("@Note", NoteChange);
+                            updateCmd.Parameters.AddWithValue("@ImageData", imageData);
 
-                        dataGridView1.ReadOnly = false;
-                        ChangeVenue.Text = "Chỉnh sửa";
-                        isEditing = false;
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("An error occurred while updating the record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            try
+                            {
+                                updateCmd.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("An error occurred while updating the record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
                     }
                 }
+
+                if(!ChangingState)
+                {
+                    MessageBox.Show("All records updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ChangingState = false;
+                }
+                LoadDataIntoDataGridView();
+
+                dataGridView1.ReadOnly = false;
+                ChangeVenue.Text = "Chỉnh sửa";
+                isEditing = false;
             }
         }
 
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-           
-       
-            if (isEditing && dataGridView1.Columns[e.ColumnIndex].Name == "Image" && e.RowIndex != -1)
+
+
+            if (isEditing && dataGridView1.Columns[e.ColumnIndex].Name == "Image" && e.RowIndex != -1 && !isChoosing)
             { 
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg;*.gif;*.png)|*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG";
@@ -294,6 +398,65 @@ namespace QuanLyTiecCuoi
                     dataGridView1.Rows[e.RowIndex].Cells["Image"].Value = imageData;
                 }
             }
+
+            if (isChoosing)
+            {
+                // Đặt chế độ chọn thành FullRowSelect để chỉ chọn một dòng
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+                int currentRowIndex = e.RowIndex;
+                if (currentRowIndex >= 0 && currentRowIndex < dataGridView1.Rows.Count)
+                {
+                    // Lấy ô "SELECT" của dòng hiện tại
+                    DataGridViewCell selectedCell = dataGridView1.Rows[currentRowIndex].Cells["SELECT"];
+
+                    // Kiểm tra nếu ô không phải là null
+                    if (selectedCell != null)
+                    {
+                        // Đặt giá trị của ô thành true
+                        selectedCell.Value = true;
+
+                        // Vòng lặp để đặt giá trị của tất cả các ô khác trong cột "SELECT" thành false
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            if (row.Index != currentRowIndex)
+                            {
+                                DataGridViewCell otherCell = row.Cells["SELECT"];
+                                if (otherCell != null)
+                                {
+                                    otherCell.Value = false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+
+        public delegate void ConfirmEventHandler(int VenueSelectedId);
+
+        // Define an event based on the delegate
+        public event ConfirmEventHandler ConfirmEvent; 
+
+        private void Confirm_Click(object sender, EventArgs e)
+        {
+           
+            // Iterate through the DataGridView to collect selected food IDs
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["SELECT"].Value))
+                {
+                    int.TryParse(row.Cells["VenueId"].Value.ToString(), out VenueSelectedId); // Assuming the ID column name is "ID"
+                }
+            }
+
+            // Raise the event and pass the list
+            ConfirmEvent?.Invoke(VenueSelectedId);
+
+            // Close the Food form
+            this.Close();
         }
     }
 }

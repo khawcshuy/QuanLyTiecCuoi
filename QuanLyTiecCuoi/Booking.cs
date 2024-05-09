@@ -18,7 +18,8 @@ namespace QuanLyTiecCuoi
         {
             InitializeComponent();
         }
-        private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
+        //private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
+        private string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
 
         private void Booking_Load(object sender, EventArgs e)
         {
@@ -212,6 +213,81 @@ namespace QuanLyTiecCuoi
         private void MenuBookingView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void Venue_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
+        private int VenueSelectedId;
+        private void VenueForm_ConfirmEvent(int VenueSelectedId)
+        {
+            // Construct the SQL query with a WHERE clause to filter by selected venue ID
+            string query = "SELECT TENSANH FROM SANHINFOR WHERE ID = @VenueId";
+
+            using (SqlConnection connection = new SqlConnection(conString))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = new SqlCommand(query, connection);
+
+                // Thêm tham số cho VenueId
+                adapter.SelectCommand.Parameters.AddWithValue("@VenueId", VenueSelectedId);
+
+                // Khởi tạo DataTable để lưu kết quả
+                DataTable dataTable = new DataTable();
+
+                try
+                {
+                    // Mở kết nối
+                    connection.Open();
+
+                    // Thực hiện truy vấn và điền kết quả vào DataTable
+                    adapter.Fill(dataTable);
+
+                    // Đóng kết nối
+                    connection.Close();
+
+                    // Kiểm tra nếu có dữ liệu được trả về
+                    if (dataTable.Rows.Count > 0)
+                    {
+                        // Lấy dòng đầu tiên từ DataTable
+                        DataRow row = dataTable.Rows[0];
+
+                        // Hiển thị thông tin của Venue
+                        Venue.Text = row["TENSANH"].ToString(); // Sử dụng tên cột chứa TENSANH
+                    }
+                    else
+                    {
+                        // Nếu không có dữ liệu được trả về, xử lý tùy theo yêu cầu của bạn
+                        MessageBox.Show("Không tìm thấy Venue có ID: " + VenueSelectedId, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý các ngoại lệ khi thực hiện truy vấn
+                    MessageBox.Show("Lỗi khi thực hiện truy vấn: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
+
+
+
+        private void Venue_Click(object sender, EventArgs e)
+        {
+            Venue VenueForm = new Venue(this);
+            VenueForm.ConfirmEvent += VenueForm_ConfirmEvent;
+            VenueForm.VenueSelectedId = this.VenueSelectedId;
+
+
+            VenueForm.isChoosing = true;
+            VenueForm.Show();
         }
     }
 }

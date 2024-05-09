@@ -29,11 +29,23 @@ namespace QuanLyTiecCuoi
             InitializeComponent();
             _parentForm = parentForm;}    
         }
+        
+
+
+
+
+
 
         public List<string> SelectedFoods;
       
         public bool isChoosing = false;
-        private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
+
+        private bool ChangingState = false;
+
+        private bool isEditing = false;
+        //private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
+
+        private string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
 
 
         private void SelectedFood()
@@ -90,7 +102,7 @@ namespace QuanLyTiecCuoi
                    
                 }
                 FoodId.DataPropertyName = "ID";
-                PictureFood.DataPropertyName = "PICTURE";
+                PictureFood.DataPropertyName = "Picture";
                 FoodName.DataPropertyName = "TENMONAN";
                 FoodPrice.DataPropertyName = "DONGIA";
                 FoodNote.DataPropertyName = "NOTE";
@@ -103,7 +115,7 @@ namespace QuanLyTiecCuoi
                 connection.Close();
 
 
-                DataGridViewImageColumn imageColumn = dataGridViewFood.Columns["Image"] as DataGridViewImageColumn;
+                DataGridViewImageColumn imageColumn = dataGridViewFood.Columns["PictureFood"] as DataGridViewImageColumn;
 
                 if (imageColumn != null)
                 {
@@ -131,7 +143,7 @@ namespace QuanLyTiecCuoi
 
                 connection.Open();
                 FoodId.DataPropertyName = "ID";
-                PictureFood.DataPropertyName = "PICTURE";
+                PictureFood.DataPropertyName = "Picture";
                 FoodName.DataPropertyName = "TENMONAN";
                 FoodPrice.DataPropertyName = "DONGIA";
                 FoodNote.DataPropertyName = "NOTE";
@@ -165,7 +177,7 @@ namespace QuanLyTiecCuoi
                 connection.Close();
 
 
-                DataGridViewImageColumn imageColumn = dataGridView1.Columns["Image"] as DataGridViewImageColumn;
+                DataGridViewImageColumn imageColumn = dataGridViewFood.Columns["PictureFood"] as DataGridViewImageColumn;
 
                 if (imageColumn != null)
                 {
@@ -203,48 +215,75 @@ namespace QuanLyTiecCuoi
 
         private void SaveChangesToDatabase()
         {
-            int currentIndex = dataGridViewFood.CurrentCell.RowIndex;
-            string IDChange = Convert.ToString(dataGridViewFood.Rows[currentIndex].Cells["FoodId"].Value);
-            string FoodNameChange = Convert.ToString(dataGridViewFood.Rows[currentIndex].Cells["FoodName"].Value);
-            string FoodPriceChange = Convert.ToString(dataGridViewFood.Rows[currentIndex].Cells["FoodPrice"].Value);
-            string NoteChange = Convert.ToString(dataGridViewFood.Rows[currentIndex].Cells["FoodNote"].Value);
-
             using (SqlConnection connection = new SqlConnection(conString))
             {
-                string updateStr = "UPDATE FOOD SET TENMONAN = @FoodNameChange, DONGIA = @FoodPriceChange, Note = @Note WHERE ID = @ID";
+                connection.Open();
 
-                using (SqlCommand updateCmd = new SqlCommand(updateStr, connection))
+                // Duyệt qua từng hàng trong DataGridView
+                foreach (DataGridViewRow row in dataGridViewFood.Rows)
                 {
-                    updateCmd.Parameters.AddWithValue("@ID", IDChange);
-                    updateCmd.Parameters.AddWithValue("@FoodNameChange", FoodNameChange);
-                    updateCmd.Parameters.AddWithValue("@FoodPriceChange", FoodPriceChange);
-
-                    updateCmd.Parameters.AddWithValue("@Note", NoteChange);
-
-                    try
+                    // Kiểm tra hàng không phải là hàng mới và không phải là hàng dùng để thêm mới
+                    if (!row.IsNewRow && row.Cells["FoodId"].Value != null)
                     {
-                        connection.Open();
+                        int IDChange = Convert.ToInt32(row.Cells["FoodId"].Value);
+                        string FoodNameChange = Convert.ToString(row.Cells["FoodName"].Value);
+                        string FoodPriceChange = Convert.ToString(row.Cells["FoodPrice"].Value);
+                        string NoteChange = Convert.ToString(row.Cells["FoodNote"].Value);
+                        byte[] imageData = null; // Initialize imageData variable
+                        object cellValue = row.Cells["PictureFood"].Value; // Get the value of the cell
 
-                        updateCmd.ExecuteNonQuery();
+                        // Check if the cell value is not DBNull
+                        if (cellValue != DBNull.Value)
+                        {
+                            // If the value is not DBNull, cast it to byte[]
+                            imageData = (byte[])cellValue;
+                        }
+                        else
+                        {
+                            // If the value is DBNull, use an empty byte array
+                            imageData = new byte[0];
+                        }
 
-                        MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        LoadDataGridViewFood();
+                        string updateStr = "UPDATE FOOD SET TENMONAN = @FoodNameChange, DONGIA = @FoodPriceChange, Note = @Note, Picture = @image WHERE ID = @ID";
 
-                        dataGridViewFood.ReadOnly = false;
-                        ChangeFood.Text = "Chỉnh sửa";
-                        isEditing = false;
+                        using (SqlCommand updateCmd = new SqlCommand(updateStr, connection))
+                        {
+                            updateCmd.Parameters.AddWithValue("@ID", IDChange);
+                            updateCmd.Parameters.AddWithValue("@FoodNameChange", FoodNameChange);
+                            updateCmd.Parameters.AddWithValue("@FoodPriceChange", FoodPriceChange);
+                             updateCmd.Parameters.AddWithValue("@image", imageData);
+                            updateCmd.Parameters.AddWithValue("@Note", NoteChange);
+
+                           
+                            try
+                            {
+                                updateCmd.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("An error occurred while updating the record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("An error occurred while updating the record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+
                 }
             }
+            if (!ChangingState)
+            {
+                MessageBox.Show("All records updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ChangingState = false;
+            }
+            LoadDataGridViewFood();
+
+            dataGridView1.ReadOnly = false;
+            ChangeVenue.Text = "Chỉnh sửa";
+            isEditing = false;
         }
 
 
-        private bool isEditing = false;
+       
         private void button2_Click(object sender, EventArgs e)
         {
             if (!isEditing)
@@ -265,7 +304,7 @@ namespace QuanLyTiecCuoi
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 // Lấy chỉ mục của hàng đang được chọn
-                int currentIndex = dataGridView1.CurrentCell.RowIndex;
+                int currentIndex = dataGridViewFood.CurrentCell.RowIndex;
 
                 // Lấy giá trị của cột ID từ hàng được chọn
                 string ID = dataGridView1.Rows[currentIndex].Cells["FoodId"].Value.ToString();
@@ -315,7 +354,7 @@ namespace QuanLyTiecCuoi
 
         private void dataGridViewFood_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (isEditing && dataGridViewFood.Columns[e.ColumnIndex].Name == "FoodPicture" && e.RowIndex != -1 && !isChoosing)
+            if (isEditing && dataGridViewFood.Columns[e.ColumnIndex].Name == "PictureFood" && e.RowIndex != -1 && !isChoosing)
             {
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg;*.gif;*.png)|*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG";
@@ -324,7 +363,7 @@ namespace QuanLyTiecCuoi
                 {
                     string imagePath = dialog.FileName;
                     byte[] imageData = File.ReadAllBytes(imagePath);
-                    dataGridViewFood.Rows[e.RowIndex].Cells["FoodPicture"].Value = imageData;
+                    dataGridViewFood.Rows[e.RowIndex].Cells["PictureFood"].Value = imageData;
                 }
             }
                 
