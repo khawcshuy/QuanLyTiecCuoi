@@ -330,20 +330,26 @@ namespace QuanLyTiecCuoi
                         string NoteChange = Convert.ToString(row.Cells["Note"].Value);
                         byte[] imageData = null; // Initialize imageData variable
                         object cellValue = row.Cells["image"].Value; // Get the value of the cell
+                        string updateStr = "UPDATE SANHINFOR SET TENSANH = @VenueName, LOAISANH = @VenueType, TRANGTHAISANH = @VenueState, MaxTable = @MaxTable, MinMoney = @MinTable, Note = @Note, PICTURE = @ImageData WHERE ID = @ID";
+
+
 
                         // Check if the cell value is not DBNull
                         if (cellValue != DBNull.Value)
                         {
                             // If the value is not DBNull, cast it to byte[]
                             imageData = (byte[])cellValue;
+                             updateStr = "UPDATE SANHINFOR SET TENSANH = @VenueName, LOAISANH = @VenueType, TRANGTHAISANH = @VenueState, MaxTable = @MaxTable, MinMoney = @MinTable, Note = @Note, PICTURE = @ImageData WHERE ID = @ID";
+
                         }
                         else
                         {
                             // If the value is DBNull, use an empty byte array
                             imageData = new byte[0];
+                             updateStr = "UPDATE SANHINFOR SET TENSANH = @VenueName, LOAISANH = @VenueType, TRANGTHAISANH = @VenueState, MaxTable = @MaxTable, MinMoney = @MinTable, Note = @Note WHERE ID = @ID";
+
                         }
 
-                        string updateStr = "UPDATE SANHINFOR SET TENSANH = @VenueName, LOAISANH = @VenueType, TRANGTHAISANH = @VenueState, MaxTable = @MaxTable, MinMoney = @MinTable, Note = @Note, PICTURE = @ImageData WHERE ID = @ID";
 
                         using (SqlCommand updateCmd = new SqlCommand(updateStr, connection))
                         {

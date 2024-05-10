@@ -1,4 +1,4 @@
-﻿using QuanLyTiecCuoi.FOOD;
+﻿using QuanLyTiecCuoi.SERVICE;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -90,7 +90,19 @@ namespace QuanLyTiecCuoi
                 adapter.SelectCommand = new SqlCommand(query, connection);
 
                 connection.Open();
-                if (isChoosing)
+                bool selectColumnExists = false;
+                if(isChoosing)
+                {    
+                foreach (DataGridViewColumn column in dataGridViewFood.Columns)
+                {
+                    if (column.Name == "Select")
+                    {
+                        selectColumnExists = true;
+                        break;
+                    }
+                }
+
+                if (!selectColumnExists)
                 {
                     DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
                     selectColumn.HeaderText = "Select";
@@ -99,8 +111,8 @@ namespace QuanLyTiecCuoi
                     selectColumn.ReadOnly = false; // Allow selection
                     dataGridViewFood.Columns.Add(selectColumn);
                     Confirm.Size = new System.Drawing.Size(180, 40);
-                   
-                }
+                } }
+
                 FoodId.DataPropertyName = "ID";
                 PictureFood.DataPropertyName = "Picture";
                 FoodName.DataPropertyName = "TENMONAN";
@@ -148,7 +160,17 @@ namespace QuanLyTiecCuoi
                 FoodPrice.DataPropertyName = "DONGIA";
                 FoodNote.DataPropertyName = "NOTE";
 
-                if (isChoosing)
+                bool selectColumnExists = false;
+                foreach (DataGridViewColumn column in dataGridViewFood.Columns)
+                {
+                    if (column.Name == "Select")
+                    {
+                        selectColumnExists = true;
+                        break;
+                    }
+                }
+
+                if (!selectColumnExists)
                 {
                     DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
                     selectColumn.HeaderText = "Select";
@@ -157,9 +179,8 @@ namespace QuanLyTiecCuoi
                     selectColumn.ReadOnly = false; // Allow selection
                     dataGridViewFood.Columns.Add(selectColumn);
                     Confirm.Size = new System.Drawing.Size(180, 40);
-                  
-
                 }
+
                 DataTable dataTable = new DataTable();
                 if (SelectedFoods != null)
                 {
@@ -229,6 +250,7 @@ namespace QuanLyTiecCuoi
                         string FoodNameChange = Convert.ToString(row.Cells["FoodName"].Value);
                         string FoodPriceChange = Convert.ToString(row.Cells["FoodPrice"].Value);
                         string NoteChange = Convert.ToString(row.Cells["FoodNote"].Value);
+                        string updateStr = "UPDATE FOOD SET TENMONAN = @FoodNameChange, DONGIA = @FoodPriceChange, Note = @Note, Picture = @image WHERE ID = @ID";
                         byte[] imageData = null; // Initialize imageData variable
                         object cellValue = row.Cells["PictureFood"].Value; // Get the value of the cell
 
@@ -237,15 +259,16 @@ namespace QuanLyTiecCuoi
                         {
                             // If the value is not DBNull, cast it to byte[]
                             imageData = (byte[])cellValue;
+                            updateStr = "UPDATE FOOD SET TENMONAN = @FoodNameChange, DONGIA = @FoodPriceChange, Note = @Note, Picture = @image WHERE ID = @ID";
                         }
                         else
                         {
                             // If the value is DBNull, use an empty byte array
                             imageData = new byte[0];
+                            updateStr = "UPDATE FOOD SET TENMONAN = @FoodNameChange, DONGIA = @FoodPriceChange, Note = @Note WHERE ID = @ID";
                         }
 
 
-                        string updateStr = "UPDATE FOOD SET TENMONAN = @FoodNameChange, DONGIA = @FoodPriceChange, Note = @Note, Picture = @image WHERE ID = @ID";
 
                         using (SqlCommand updateCmd = new SqlCommand(updateStr, connection))
                         {
@@ -354,7 +377,7 @@ namespace QuanLyTiecCuoi
 
         private void dataGridViewFood_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (isEditing && dataGridViewFood.Columns[e.ColumnIndex].Name == "PictureFood" && e.RowIndex != -1 && !isChoosing)
+            if (isEditing && dataGridViewFood.Columns[e.ColumnIndex].Name == "PictureFood" && e.RowIndex != -1)
             {
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg;*.gif;*.png)|*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG";
@@ -407,11 +430,7 @@ namespace QuanLyTiecCuoi
         // Define an event based on the delegate
         public event ConfirmEventHandler ConfirmEvent;
 
-        //private void FoodForm_ConfirmEvent(List<string> selectedFoods)
-        //{
-        //    this.selectedFoods = selectedFoods;
-        //    LoadDataGridViewFood();
-        //}
+
 
         private void Confirm_Click_1(object sender, EventArgs e)
         {

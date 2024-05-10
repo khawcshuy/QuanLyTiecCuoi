@@ -1,4 +1,4 @@
-﻿namespace QuanLyTiecCuoi.FOOD
+﻿namespace QuanLyTiecCuoi.SERVICE
 {
     partial class InsertFood
     {

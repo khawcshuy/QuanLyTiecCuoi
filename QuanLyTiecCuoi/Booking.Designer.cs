@@ -38,13 +38,9 @@
             this.label25 = new System.Windows.Forms.Label();
             this.deposit = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.Total = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.totalService = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.totalMenu = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.VenueFee = new System.Windows.Forms.TextBox();
+            this.NumberTableFee = new System.Windows.Forms.TextBox();
             this.IdTiec = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -78,7 +74,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.ChooseService = new System.Windows.Forms.Button();
             this.ChooseMenu = new System.Windows.Forms.Button();
-            this.ServiceView = new System.Windows.Forms.DataGridView();
+            this.ServiceBookingView = new System.Windows.Forms.DataGridView();
+            this.ServiceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuBookingView = new System.Windows.Forms.DataGridView();
             this.FoodId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FoodName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,12 +88,16 @@
             this.OrderDate = new System.Windows.Forms.DateTimePicker();
             this.label21 = new System.Windows.Forms.Label();
             this.Confirm = new System.Windows.Forms.Button();
+            this.VenueFee = new System.Windows.Forms.Label();
+            this.totalService = new System.Windows.Forms.Label();
+            this.totalMenu = new System.Windows.Forms.Label();
+            this.Total = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.TTHD.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchResult)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ServiceView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ServiceBookingView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuBookingView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,6 +135,10 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.Total);
+            this.panel1.Controls.Add(this.totalMenu);
+            this.panel1.Controls.Add(this.totalService);
+            this.panel1.Controls.Add(this.VenueFee);
             this.panel1.Controls.Add(this.Discount);
             this.panel1.Controls.Add(this.label24);
             this.panel1.Controls.Add(this.label16);
@@ -138,13 +146,9 @@
             this.panel1.Controls.Add(this.label25);
             this.panel1.Controls.Add(this.deposit);
             this.panel1.Controls.Add(this.label23);
-            this.panel1.Controls.Add(this.Total);
             this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.totalService);
             this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.totalMenu);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.VenueFee);
+            this.panel1.Controls.Add(this.NumberTableFee);
             this.panel1.Location = new System.Drawing.Point(654, 336);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
@@ -194,7 +198,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(16, 86);
+            this.label25.Location = new System.Drawing.Point(17, 85);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(106, 16);
@@ -220,15 +224,6 @@
             this.label23.TabIndex = 47;
             this.label23.Text = "Đơn giá dịch vụ";
             // 
-            // Total
-            // 
-            this.Total.Location = new System.Drawing.Point(138, 150);
-            this.Total.Margin = new System.Windows.Forms.Padding(4);
-            this.Total.Name = "Total";
-            this.Total.Size = new System.Drawing.Size(146, 22);
-            this.Total.TabIndex = 59;
-            this.Total.TextChanged += new System.EventHandler(this.Total_TextChanged);
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -239,14 +234,6 @@
             this.label12.TabIndex = 50;
             this.label12.Text = "Tổng tiền:";
             this.label12.Click += new System.EventHandler(this.label12_Click);
-            // 
-            // totalService
-            // 
-            this.totalService.Location = new System.Drawing.Point(138, 114);
-            this.totalService.Margin = new System.Windows.Forms.Padding(4);
-            this.totalService.Name = "totalService";
-            this.totalService.Size = new System.Drawing.Size(146, 22);
-            this.totalService.TabIndex = 56;
             // 
             // label13
             // 
@@ -259,29 +246,14 @@
             this.label13.Text = "Tiền Cọc";
             this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
-            // totalMenu
+            // NumberTableFee
             // 
-            this.totalMenu.Location = new System.Drawing.Point(138, 82);
-            this.totalMenu.Margin = new System.Windows.Forms.Padding(4);
-            this.totalMenu.Name = "totalMenu";
-            this.totalMenu.Size = new System.Drawing.Size(146, 22);
-            this.totalMenu.TabIndex = 55;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(138, 50);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(146, 22);
-            this.textBox2.TabIndex = 54;
-            // 
-            // VenueFee
-            // 
-            this.VenueFee.Location = new System.Drawing.Point(138, 18);
-            this.VenueFee.Margin = new System.Windows.Forms.Padding(4);
-            this.VenueFee.Name = "VenueFee";
-            this.VenueFee.Size = new System.Drawing.Size(146, 22);
-            this.VenueFee.TabIndex = 53;
+            this.NumberTableFee.Location = new System.Drawing.Point(138, 50);
+            this.NumberTableFee.Margin = new System.Windows.Forms.Padding(4);
+            this.NumberTableFee.Name = "NumberTableFee";
+            this.NumberTableFee.Size = new System.Drawing.Size(146, 22);
+            this.NumberTableFee.TabIndex = 54;
+            this.NumberTableFee.TextChanged += new System.EventHandler(this.NumberTableFee_TextChanged);
             // 
             // IdTiec
             // 
@@ -441,6 +413,7 @@
             this.NumberOfTable.Name = "NumberOfTable";
             this.NumberOfTable.Size = new System.Drawing.Size(241, 22);
             this.NumberOfTable.TabIndex = 25;
+            this.NumberOfTable.TextChanged += new System.EventHandler(this.NumberOfTable_TextChanged);
             // 
             // label6
             // 
@@ -625,7 +598,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.ChooseService);
             this.panel2.Controls.Add(this.ChooseMenu);
-            this.panel2.Controls.Add(this.ServiceView);
+            this.panel2.Controls.Add(this.ServiceBookingView);
             this.panel2.Controls.Add(this.MenuBookingView);
             this.panel2.Controls.Add(this.Service);
             this.panel2.Controls.Add(this.menu);
@@ -645,6 +618,7 @@
             this.ChooseService.TabIndex = 45;
             this.ChooseService.Text = "Chọn Dịch Vụ";
             this.ChooseService.UseVisualStyleBackColor = false;
+            this.ChooseService.Click += new System.EventHandler(this.ChooseService_Click);
             // 
             // ChooseMenu
             // 
@@ -658,15 +632,49 @@
             this.ChooseMenu.UseVisualStyleBackColor = false;
             this.ChooseMenu.Click += new System.EventHandler(this.ChooseMenu_Click);
             // 
-            // ServiceView
+            // ServiceBookingView
             // 
-            this.ServiceView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ServiceView.Location = new System.Drawing.Point(8, 210);
-            this.ServiceView.Margin = new System.Windows.Forms.Padding(4);
-            this.ServiceView.Name = "ServiceView";
-            this.ServiceView.RowHeadersWidth = 51;
-            this.ServiceView.Size = new System.Drawing.Size(596, 134);
-            this.ServiceView.TabIndex = 17;
+            this.ServiceBookingView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ServiceBookingView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ServiceId,
+            this.ServiceName,
+            this.ServiceType,
+            this.ServicePrice});
+            this.ServiceBookingView.Location = new System.Drawing.Point(8, 210);
+            this.ServiceBookingView.Margin = new System.Windows.Forms.Padding(4);
+            this.ServiceBookingView.Name = "ServiceBookingView";
+            this.ServiceBookingView.RowHeadersVisible = false;
+            this.ServiceBookingView.RowHeadersWidth = 51;
+            this.ServiceBookingView.Size = new System.Drawing.Size(596, 134);
+            this.ServiceBookingView.TabIndex = 17;
+            // 
+            // ServiceId
+            // 
+            this.ServiceId.HeaderText = "ID";
+            this.ServiceId.MinimumWidth = 6;
+            this.ServiceId.Name = "ServiceId";
+            this.ServiceId.Width = 125;
+            // 
+            // ServiceName
+            // 
+            this.ServiceName.HeaderText = "Ten Dich Vu";
+            this.ServiceName.MinimumWidth = 6;
+            this.ServiceName.Name = "ServiceName";
+            this.ServiceName.Width = 125;
+            // 
+            // ServiceType
+            // 
+            this.ServiceType.HeaderText = "Loai Dich Vu";
+            this.ServiceType.MinimumWidth = 6;
+            this.ServiceType.Name = "ServiceType";
+            this.ServiceType.Width = 125;
+            // 
+            // ServicePrice
+            // 
+            this.ServicePrice.HeaderText = "Đơn Gía";
+            this.ServicePrice.MinimumWidth = 6;
+            this.ServicePrice.Name = "ServicePrice";
+            this.ServicePrice.Width = 125;
             // 
             // MenuBookingView
             // 
@@ -678,7 +686,8 @@
             this.MenuBookingView.Location = new System.Drawing.Point(8, 33);
             this.MenuBookingView.Margin = new System.Windows.Forms.Padding(4);
             this.MenuBookingView.Name = "MenuBookingView";
-            this.MenuBookingView.RowHeadersWidth = 51;
+            this.MenuBookingView.RowHeadersVisible = false;
+            this.MenuBookingView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.MenuBookingView.Size = new System.Drawing.Size(596, 140);
             this.MenuBookingView.TabIndex = 16;
             this.MenuBookingView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MenuBookingView_CellContentClick);
@@ -755,6 +764,46 @@
             this.Confirm.UseVisualStyleBackColor = false;
             this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
             // 
+            // VenueFee
+            // 
+            this.VenueFee.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.VenueFee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.VenueFee.Location = new System.Drawing.Point(138, 16);
+            this.VenueFee.Name = "VenueFee";
+            this.VenueFee.Size = new System.Drawing.Size(146, 22);
+            this.VenueFee.TabIndex = 32;
+            this.VenueFee.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // totalService
+            // 
+            this.totalService.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.totalService.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.totalService.Location = new System.Drawing.Point(138, 118);
+            this.totalService.Name = "totalService";
+            this.totalService.Size = new System.Drawing.Size(146, 22);
+            this.totalService.TabIndex = 64;
+            this.totalService.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // totalMenu
+            // 
+            this.totalMenu.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.totalMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.totalMenu.Location = new System.Drawing.Point(138, 82);
+            this.totalMenu.Name = "totalMenu";
+            this.totalMenu.Size = new System.Drawing.Size(146, 22);
+            this.totalMenu.TabIndex = 65;
+            this.totalMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Total
+            // 
+            this.Total.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Total.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Total.Location = new System.Drawing.Point(138, 152);
+            this.Total.Name = "Total";
+            this.Total.Size = new System.Drawing.Size(146, 22);
+            this.Total.TabIndex = 66;
+            this.Total.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Booking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -774,7 +823,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SearchResult)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ServiceView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ServiceBookingView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuBookingView)).EndInit();
             this.ResumeLayout(false);
 
@@ -804,7 +853,7 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView ServiceView;
+        private System.Windows.Forms.DataGridView ServiceBookingView;
         private System.Windows.Forms.DataGridView MenuBookingView;
         private System.Windows.Forms.Label Service;
         private System.Windows.Forms.Label menu;
@@ -827,13 +876,9 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox deposit;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox Total;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox totalService;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox totalMenu;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox VenueFee;
+        private System.Windows.Forms.TextBox NumberTableFee;
         private System.Windows.Forms.Button ChooseService;
         private System.Windows.Forms.Button ChooseMenu;
         private System.Windows.Forms.DataGridView SearchResult;
@@ -842,5 +887,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FoodName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FoodPrice;
         private System.Windows.Forms.Label Venue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ServicePrice;
+        private System.Windows.Forms.Label totalService;
+        private System.Windows.Forms.Label VenueFee;
+        private System.Windows.Forms.Label totalMenu;
+        private System.Windows.Forms.Label Total;
     }
 }

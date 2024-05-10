@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyTiecCuoi.FOOD
+namespace QuanLyTiecCuoi.SERVICE
 {
     public partial class InsertFood : Form
     {

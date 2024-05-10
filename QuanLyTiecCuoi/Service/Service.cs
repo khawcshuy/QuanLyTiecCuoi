@@ -1,5 +1,4 @@
-﻿using QuanLyTiecCuoi.FOOD;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,80 +9,101 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyTiecCuoi.Service;
+
 
 namespace QuanLyTiecCuoi.Service
 {
     public partial class Service : Form
     {
-        public Service()
+        private Booking _parentForm;
+
+        public Service(Booking parentForm = null)
         {
-            InitializeComponent();
+            if (parentForm == null)
+            {
+                InitializeComponent();
+            }
+            else
+            {
+                InitializeComponent();
+                _parentForm = parentForm;
+            }
         }
-        private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
+
+
+
+
+        public List<string> SelectedService;
+
+        public bool isChoosing = false;
+
+        private bool ChangingState = false;
+
         private bool isEditing = false;
+        //private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
+
+        private string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
         private void Service_Load(object sender, EventArgs e)
         {
-            String query = "SELECT * FROM DICHVU"; // Thay đổi từ FOOD sang DICHVU
-
-            using (SqlConnection connection = new SqlConnection(conString))
-            {
-                // Tạo một đối tượng DataAdapter và SelectCommand
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                adapter.SelectCommand = new SqlCommand(query, connection);
-
-                // Mở kết nối
-                connection.Open();
-                ServiceId.DataPropertyName = "ID";
-                ServiceName.DataPropertyName = "TENDICHVU"; // Thay đổi từ TENMONAN sang TENDICHVU
-                ServicePrice.DataPropertyName = "GIADICHVU"; // Thay đổi từ DONGIA sang GIADICHVU
-                ServiceType.DataPropertyName = "LOAIDICHVU";
-                ServiceNote.DataPropertyName = "NOTE"; // Kiểm tra xem cột NOTE có tồn tại trong bảng DICHVU không
-
-                // Tạo một DataTable để chứa dữ liệu
-                DataTable dataTable = new DataTable();
-
-                // Sử dụng DataAdapter để lấy dữ liệu từ cơ sở dữ liệu và điền vào DataTable
-                adapter.Fill(dataTable);
-
-                // Đóng kết nối
-                connection.Close();
-
-
-                // Gán DataTable làm nguồn dữ liệu cho dataGridView1
-                dataGridViewService.DataSource = dataTable;
-            }
+            LoadDataGridViewService();
         }
 
 
         public void LoadDataGridViewService()
         {
-            String query = "SELECT * FROM DICHVU"; // Thay đổi từ FOOD sang DICHVU
+            String query = "SELECT * FROM DICHVU"; 
 
             using (SqlConnection connection = new SqlConnection(conString))
             {
-                // Tạo một đối tượng DataAdapter và SelectCommand
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = new SqlCommand(query, connection);
 
-                // Mở kết nối
                 connection.Open();
                 ServiceId.DataPropertyName = "ID";
-                ServiceName.DataPropertyName = "TENDICHVU"; // Thay đổi từ TENMONAN sang TENDICHVU
-                ServicePrice.DataPropertyName = "GIADICHVU"; // Thay đổi từ DONGIA sang GIADICHVU
+                ServiceName.DataPropertyName = "TENDICHVU"; 
+                ServicePrice.DataPropertyName = "GIADICHVU"; 
                 ServiceType.DataPropertyName = "LOAIDICHVU";
-                ServiceNote.DataPropertyName = "NOTE"; // Kiểm tra xem cột NOTE có tồn tại trong bảng DICHVU không
+                ServiceNote.DataPropertyName = "NOTE";
 
-                // Tạo một DataTable để chứa dữ liệu
                 DataTable dataTable = new DataTable();
+                bool selectColumnExists = false;
+                if (isChoosing)
+                {
+                    foreach (DataGridViewColumn column in dataGridViewService.Columns)
+                    {
+                        if (column.Name == "Select")
+                        {
+                            selectColumnExists = true;
+                            break;
+                        }
+                    }
 
-                // Sử dụng DataAdapter để lấy dữ liệu từ cơ sở dữ liệu và điền vào DataTable
+                    if (!selectColumnExists)
+                    {
+                        DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
+                        selectColumn.HeaderText = "Select";
+                        selectColumn.Name = "Select";
+                        selectColumn.DataPropertyName = "SELECT"; // Replace "SELECT" with the actual column name in your database
+                        selectColumn.ReadOnly = false; // Allow selection
+                        dataGridViewService.Columns.Add(selectColumn);
+                        Confirm.Size = new System.Drawing.Size(180, 40);
+                    }
+                }
                 adapter.Fill(dataTable);
-
-                // Đóng kết nối
+                if (SelectedService != null)
+                {
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        if (SelectedService.Contains(row["ServiceId"].ToString()))
+                        {
+                            row["select"] = true;
+                        }
+                    }
+                }
                 connection.Close();
 
 
-                // Gán DataTable làm nguồn dữ liệu cho dataGridView1
                 dataGridViewService.DataSource = dataTable;
             }
         }
@@ -146,56 +166,8 @@ namespace QuanLyTiecCuoi.Service
             }
         }
 
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    if (dataGridView1.SelectedRows.Count > 0)
-        //    {
-        //        int currentIndex = dataGridView1.CurrentCell.RowIndex;
-        //        string ID = dataGridView1.Rows[currentIndex].Cells["FoodId"].Value.ToString();
 
-        //        string deleteStr = "DELETE FROM DICHVU WHERE ID = @ID";
-
-        //        using (SqlConnection connection = new SqlConnection(conString))
-        //        {
-        //            using (SqlCommand deleteCmd = new SqlCommand(deleteStr, connection))
-        //            {
-        //                deleteCmd.Parameters.AddWithValue("@ID", ID);
-
-        //                try
-        //                {
-        //                    connection.Open();
-        //                    deleteCmd.ExecuteNonQuery();
-        //                    MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //                    LoadDataGridViewFood();
-        //                }
-        //                catch (Exception ex)
-        //                {
-        //                    MessageBox.Show("An error occurred while deleting the record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                }
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Please select a record to delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
-
-        private void dataGridViewFood_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (isEditing && dataGridViewService.Columns[e.ColumnIndex].Name == "FoodPicture" && e.RowIndex != -1)
-            {
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg;*.gif;*.png)|*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG";
-
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    string imagePath = dialog.FileName;
-                    byte[] imageData = File.ReadAllBytes(imagePath);
-                    dataGridViewService.Rows[e.RowIndex].Cells["PictureFood"].Value = imageData;
-                }
-            }
-        }
+       
 
         private void AddFood_Click(object sender, EventArgs e)
         {
@@ -223,6 +195,69 @@ namespace QuanLyTiecCuoi.Service
             }
         }
 
-       
+
+
+        public delegate void ConfirmEventHandler(List<string> SelectedService);
+
+        // Define an event based on the delegate
+        public event ConfirmEventHandler ConfirmEvent;
+
+
+        private void Confirm_Click(object sender, EventArgs e)
+        {
+            SelectedService = new List<string>();
+            // Iterate through the DataGridView to collect selected food IDs
+            foreach (DataGridViewRow row in dataGridViewService.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["SELECT"].Value))
+                {
+                    string ServiceID = row.Cells["ServiceId"].Value.ToString(); // Assuming the ID column name is "ID"
+                    SelectedService.Add(ServiceID);
+                }
+            }
+
+            // Raise the event and pass the list
+            ConfirmEvent?.Invoke(SelectedService);
+
+            // Close the Food form
+            this.Close();
+        }
+
+        private void dataGridViewService_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (isEditing && dataGridViewService.Columns[e.ColumnIndex].Name == "FoodPicture" && e.RowIndex != -1)
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg;*.gif;*.png)|*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG";
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    string imagePath = dialog.FileName;
+                    byte[] imageData = File.ReadAllBytes(imagePath);
+                    dataGridViewService.Rows[e.RowIndex].Cells["PictureFood"].Value = imageData;
+                }
+            }
+            if (isChoosing)
+            {
+                dataGridViewService.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                int currentRowIndex = e.RowIndex;
+                if (currentRowIndex >= 0 && currentRowIndex < dataGridViewService.Rows.Count)
+                {
+                    DataGridViewCell selectedCell = dataGridViewService.Rows[currentRowIndex].Cells["SELECT"];
+
+                    if (selectedCell != null)
+                    {
+                        if (selectedCell.Value != null && (bool)selectedCell.Value)
+                        {
+                            selectedCell.Value = false;
+                        }
+                        else
+                        {
+                            selectedCell.Value = true;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

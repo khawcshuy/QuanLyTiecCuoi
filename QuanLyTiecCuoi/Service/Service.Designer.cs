@@ -29,24 +29,26 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Confirm = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.SearchService = new System.Windows.Forms.TextBox();
             this.dataGridViewService = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ChangeService = new System.Windows.Forms.Button();
-            this.AddFood = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.ServiceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ServiceNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ChangeService = new System.Windows.Forms.Button();
+            this.AddFood = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.Confirm);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.SearchService);
             this.panel2.Controls.Add(this.dataGridViewService);
@@ -54,30 +56,40 @@
             this.panel2.Controls.Add(this.ChangeService);
             this.panel2.Controls.Add(this.AddFood);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Location = new System.Drawing.Point(14, 15);
+            this.panel2.Location = new System.Drawing.Point(12, 12);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1099, 918);
+            this.panel2.Size = new System.Drawing.Size(977, 734);
             this.panel2.TabIndex = 4;
+            // 
+            // Confirm
+            // 
+            this.Confirm.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Confirm.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Confirm.Location = new System.Drawing.Point(802, 699);
+            this.Confirm.Name = "Confirm";
+            this.Confirm.Size = new System.Drawing.Size(160, 32);
+            this.Confirm.TabIndex = 44;
+            this.Confirm.Text = "Xác Nhận";
+            this.Confirm.UseVisualStyleBackColor = false;
+            this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(803, 80);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Location = new System.Drawing.Point(714, 64);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 40);
+            this.button1.Size = new System.Drawing.Size(160, 32);
             this.button1.TabIndex = 8;
             this.button1.Text = "- Xóa Sảnh";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // SearchService
             // 
-            this.SearchService.Location = new System.Drawing.Point(108, 86);
-            this.SearchService.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SearchService.Location = new System.Drawing.Point(96, 69);
             this.SearchService.Name = "SearchService";
-            this.SearchService.Size = new System.Drawing.Size(201, 26);
+            this.SearchService.Size = new System.Drawing.Size(179, 22);
             this.SearchService.TabIndex = 7;
             this.SearchService.TextChanged += new System.EventHandler(this.SearchService_TextChanged);
             // 
@@ -92,59 +104,15 @@
             this.ServicePrice,
             this.ServiceNote});
             this.dataGridViewService.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dataGridViewService.Location = new System.Drawing.Point(18, 128);
-            this.dataGridViewService.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridViewService.Location = new System.Drawing.Point(16, 102);
             this.dataGridViewService.Name = "dataGridViewService";
             this.dataGridViewService.ReadOnly = true;
             this.dataGridViewService.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridViewService.RowHeadersWidth = 51;
             this.dataGridViewService.RowTemplate.Height = 100;
-            this.dataGridViewService.Size = new System.Drawing.Size(1064, 752);
+            this.dataGridViewService.Size = new System.Drawing.Size(946, 591);
             this.dataGridViewService.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 90);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 20);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Tìm Dich Vu";
-            // 
-            // ChangeService
-            // 
-            this.ChangeService.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ChangeService.Location = new System.Drawing.Point(587, 80);
-            this.ChangeService.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ChangeService.Name = "ChangeService";
-            this.ChangeService.Size = new System.Drawing.Size(180, 40);
-            this.ChangeService.TabIndex = 5;
-            this.ChangeService.Text = "Chỉnh sửa sảnh";
-            this.ChangeService.UseVisualStyleBackColor = false;
-            this.ChangeService.Click += new System.EventHandler(this.ChangeService_Click);
-            // 
-            // AddFood
-            // 
-            this.AddFood.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.AddFood.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.AddFood.Location = new System.Drawing.Point(374, 80);
-            this.AddFood.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.AddFood.Name = "AddFood";
-            this.AddFood.Size = new System.Drawing.Size(180, 40);
-            this.AddFood.TabIndex = 4;
-            this.AddFood.Text = "+ Thêm Sảnh Mới";
-            this.AddFood.UseVisualStyleBackColor = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label4.Location = new System.Drawing.Point(1, 16);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(331, 40);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Danh Sách Dich Vu";
+            this.dataGridViewService.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewService_CellContentClick);
             // 
             // ServiceId
             // 
@@ -189,12 +157,55 @@
             this.ServiceNote.ReadOnly = true;
             this.ServiceNote.Width = 125;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 72);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Tìm Dich Vu";
+            // 
+            // ChangeService
+            // 
+            this.ChangeService.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ChangeService.Location = new System.Drawing.Point(522, 64);
+            this.ChangeService.Name = "ChangeService";
+            this.ChangeService.Size = new System.Drawing.Size(160, 32);
+            this.ChangeService.TabIndex = 5;
+            this.ChangeService.Text = "Chỉnh sửa sảnh";
+            this.ChangeService.UseVisualStyleBackColor = false;
+            this.ChangeService.Click += new System.EventHandler(this.ChangeService_Click);
+            // 
+            // AddFood
+            // 
+            this.AddFood.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.AddFood.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.AddFood.Location = new System.Drawing.Point(332, 64);
+            this.AddFood.Name = "AddFood";
+            this.AddFood.Size = new System.Drawing.Size(160, 32);
+            this.AddFood.TabIndex = 4;
+            this.AddFood.Text = "+ Thêm Sảnh Mới";
+            this.AddFood.UseVisualStyleBackColor = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.label4.Location = new System.Drawing.Point(1, 13);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(276, 36);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Danh Sách Dich Vu";
+            // 
             // Service
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1126, 949);
+            this.ClientSize = new System.Drawing.Size(1001, 759);
             this.Controls.Add(this.panel2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Service";
             this.Text = "Service";
             this.Load += new System.EventHandler(this.Service_Load);
@@ -220,5 +231,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ServiceType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ServicePrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ServiceNote;
+        private System.Windows.Forms.Button Confirm;
     }
 }
