@@ -18,16 +18,16 @@ namespace QuanLyTiecCuoi
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new fLogin());
             //Application.Run(new Venue());
-            //Application.Run(new Receipt());
+            Application.Run(new Receipt());
             //Food foodform = new Food();
 
             ////// Hiển thị form Food
-            //Application.Run(foodform);
-            Booking bookingform = new Booking();
+            ////Application.Run(foodform);
+            //Booking bookingform = new Booking();
 
-            //// pass the bookingform instance to the food form constructor
-            Food foodform = new Food(bookingform);
-            Application.Run(bookingform);
+            ////// pass the bookingform instance to the food form constructor
+            //Food foodform = new Food(bookingform);
+            //Application.Run(bookingform);
 
         }
     }

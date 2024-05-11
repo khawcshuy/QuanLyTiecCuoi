@@ -52,6 +52,7 @@ namespace QuanLyTiecCuoi.Service
 
         public void LoadDataGridViewService()
         {
+            
             String query = "SELECT * FROM DICHVU"; 
 
             using (SqlConnection connection = new SqlConnection(conString))

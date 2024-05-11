@@ -36,6 +36,9 @@ namespace QuanLyTiecCuoi
 
 
         //private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
+        public DateTime AvailableVenueDate;
+
+        public string AvailableVenueShift;
 
         private bool ChangingState;
 
@@ -51,71 +54,73 @@ namespace QuanLyTiecCuoi
 
         private void Venue_Load(object sender, EventArgs e)
         {
-            String query = "SELECT * FROM SANHINFOR";
-
-            using (SqlConnection connection = new SqlConnection(conString))
-            {
-                // Tạo một đối tượng DataAdapter và SelectCommand
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                adapter.SelectCommand = new SqlCommand(query, connection);
-
-                // Mở kết nối
-                connection.Open();
-
-                // Tạo một DataTable để chứa dữ liệu
-                DataTable dataTable = new DataTable();
-
-                // Sử dụng DataAdapter để lấy dữ liệu từ cơ sở dữ liệu và điền vào DataTable
-                adapter.Fill(dataTable);
-
-                // Đóng kết nối
-                connection.Close();
-                VenueId.DataPropertyName = "ID";
-                Image.DataPropertyName = "PICTURE";
-                VenueName.DataPropertyName = "TENSANH";
-                VenueType.DataPropertyName = "LOAISANH";
-                VenueState.DataPropertyName = "TRANGTHAISANH";
-                MaxTable.DataPropertyName = "MAXTABLE";
-                MinTable.DataPropertyName = "MINMONEY";
-                Note.DataPropertyName = "NOTE";
-                if (isChoosing)
-                {
-                    DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
-                    selectColumn.HeaderText = "Select";
-                    selectColumn.Name = "Select";
-                    selectColumn.DataPropertyName = "SELECT"; // Replace "SELECT" with the actual column name in your database
-                    selectColumn.ReadOnly = false; // Allow selection
-                    dataGridView1.Columns.Add(selectColumn);
-                    Confirm.Size = new System.Drawing.Size(180, 40);
-
-                }
-
-                // Tìm cột hình ảnh trong DataGridView
-                DataGridViewImageColumn imageColumn = dataGridView1.Columns["Image"] as DataGridViewImageColumn;
-
-                // Đảm bảo rằng cột hình ảnh được tìm thấy và thiết lập ImageLayout thành Zoom
-                if (imageColumn != null)
-                {
-                    imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                }
-
-                // Gán DataTable làm nguồn dữ liệu cho dataGridView1
-                dataGridView1.DataSource = dataTable;
-
+            LoadDataIntoDataGridView();
             }
-        }
 
 
 
 
-        // Method to load data into the DataGridView
         public void LoadDataIntoDataGridView()
         {
             string query = "SELECT * FROM SANHINFOR";
+            if (isChoosing)
+            {
+                 query = "SELECT * FROM SANHINFOR WHERE ID NOT IN (SELECT IDLOAISANH FROM TIEC WHERE NGAYTOCHUC = @Ngay AND CA = @Ca)";
+
+                using (SqlConnection connection = new SqlConnection(conString))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Ngay", AvailableVenueDate.Date);
+
+                        command.Parameters.AddWithValue("@Ca", AvailableVenueShift);
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        VenueId.DataPropertyName = "ID";
+                        Image.DataPropertyName = "PICTURE";
+                        VenueName.DataPropertyName = "TENSANH";
+                        VenueType.DataPropertyName = "LOAISANH";
+                        VenueState.DataPropertyName = "TRANGTHAISANH";
+                        MaxTable.DataPropertyName = "MAXTABLE";
+                        MinTable.DataPropertyName = "MINMONEY";
+                        Note.DataPropertyName = "NOTE";
+
+
+
+                        bool selectColumnExists = false;
+                        if (isChoosing)
+                        {
+                            foreach (DataGridViewColumn column in dataGridView1.Columns)
+                            {
+                                if (column.Name == "Select")
+                                {
+                                    selectColumnExists = true;
+                                    break;
+                                }
+                            }
+
+                            if (!selectColumnExists)
+                            {
+                                DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
+                                selectColumn.HeaderText = "Select";
+                                selectColumn.Name = "Select";
+                                selectColumn.DataPropertyName = "SELECT"; 
+                                selectColumn.ReadOnly = false;
+                                dataGridView1.Columns.Add(selectColumn);
+                                Confirm.Size = new System.Drawing.Size(180, 40);
+                            }
+                        }
+                        SelectRowById();
+                        dataGridView1.DataSource = table;
+                    }
+                }
+            }
+            else {
+           
 
             using (SqlConnection connection = new SqlConnection(conString))
             {
-                // Create a data adapter and set the select command
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = new SqlCommand(query, connection);
 
@@ -124,30 +129,15 @@ namespace QuanLyTiecCuoi
 
                 try
                 {
-                    // Open the connection
                     connection.Open();
 
-                    // Fill the DataTable with data from the database
                     adapter.Fill(dataTable);
 
                     // Close the connection
                     connection.Close();
 
-                    // Add a column for the image data
 
-                    if (isChoosing)
-                    {
-                        DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
-                        selectColumn.HeaderText = "Select";
-                        selectColumn.Name = "Select";
-                        selectColumn.DataPropertyName = "SELECT"; // Replace "SELECT" with the actual column name in your database
-                        selectColumn.ReadOnly = false; // Allow selection
-                        dataGridView1.Columns.Add(selectColumn);
-                        Confirm.Size = new System.Drawing.Size(180, 40);
-
-
-                    }
-                    // Set the DataPropertyName for each column in the DataGridView
+                   
                     VenueId.DataPropertyName = "ID";
                     Image.DataPropertyName = "PICTURE";
                     VenueName.DataPropertyName = "TENSANH";
@@ -170,7 +160,37 @@ namespace QuanLyTiecCuoi
                     MessageBox.Show("An error occurred while loading data into the DataGridView: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            }
         }
+
+        private void SelectRowById()
+        {
+            // Duyệt qua từng hàng trong DataGridView
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                int rowId;
+                if (int.TryParse(row.Cells["ID"].Value.ToString(), out rowId))
+                {
+                    // Kiểm tra xem ID của hàng có trùng với ID đã chọn hay không
+                    if (rowId == VenueSelectedId)
+                    {
+                        // Lấy ô checkbox từ cột "SELECT"
+                        DataGridViewCheckBoxCell checkBoxCell = row.Cells["SELECT"] as DataGridViewCheckBoxCell;
+                        if (checkBoxCell != null)
+                        {
+                            // Thiết lập giá trị của ô checkbox thành true
+                            checkBoxCell.Value = true;
+                        }
+
+                        // Thoát khỏi vòng lặp sau khi tìm thấy và thiết lập giá trị
+                        return;
+                    }
+                }
+            }
+
+         
+        }
+
 
 
 

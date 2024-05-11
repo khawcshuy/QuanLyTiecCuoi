@@ -21,7 +21,8 @@ namespace QuanLyTiecCuoi.SERVICE
             _parentForm = parentForm;
         }
         public string imglocation = "";
-        private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
+        //private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
+        private string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
 
         private void INSERTFOOD_Load(object sender, EventArgs e)
         {

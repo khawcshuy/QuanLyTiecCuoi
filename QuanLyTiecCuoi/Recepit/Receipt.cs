@@ -16,7 +16,7 @@ namespace QuanLyTiecCuoi
 
     public partial class Receipt : Form
     {
-        private float PenaltyRatioValue = 0.1f;
+        private decimal PenaltyRatioValue = 0.1m;
 
         private string conString = @"Data Source=ADMINISTRATOR;Initial Catalog=QUANLYTIECCUOI;Integrated Security=True;Connect Timeout=30;";
 
@@ -28,6 +28,7 @@ namespace QuanLyTiecCuoi
 
         public class CustomerInfo
         {
+            public string Customerid { get; set; }
             public string CustomerName { get; set; }
             public string Address { get; set; }
             public string Email { get; set; }
@@ -39,13 +40,14 @@ namespace QuanLyTiecCuoi
 
             public int numberOftable {  get; set; }
 
-            public float Deposit { get; set; }
+            public decimal Deposit { get; set; }
 
             public int IdTiec { get; private set; }
 
             // Constructor để khởi tạo một đối tượng CustomerInfo từ một SqlDataReader
             public CustomerInfo(SqlDataReader reader)
             {
+                Customerid = reader["ID"].ToString();
                 CustomerName = reader["TENKHACHHANG"].ToString();
                 Address = reader["DIACHI"].ToString();
                 Email = reader["EMAIL"].ToString();
@@ -54,23 +56,23 @@ namespace QuanLyTiecCuoi
                 Bride = reader["TENCHURE"].ToString();
                 OrderDate = (DateTime)reader["NGAYLAP"];
                 DueDate = (DateTime)reader["NGAYTOCHUC"];
-                Deposit = (float)reader.GetDecimal(reader.GetOrdinal("TIENCOC"));
+                Deposit = (decimal)reader.GetDecimal(reader.GetOrdinal("TIENCOC"));
                 numberOftable = (Int32)reader["SOLUONGBAN"];
                 IdTiec = (Int32)reader["IDTIEC"];
             }
         }
 
-        private CustomerInfo LoadCustomerInfo(string customerId)
+        private CustomerInfo LoadCustomerInfo(string IdTiec)
         {
             CustomerInfo customerInfo = null;
 
             using (SqlConnection con = new SqlConnection(conString))
             {
                 con.Open();
-                string query = "SELECT *,T.ID AS IDTIEC FROM KHACHHANGINFOR I inner join TIEC T ON I.ID = T.IDTHONGTINKHACHHANG  WHERE I.ID = @customerId";
+                string query = "SELECT *,T.ID AS IDTIEC FROM KHACHHANGINFOR I inner join TIEC T ON I.ID = T.IDTHONGTINKHACHHANG  WHERE T.ID = @IdTiec";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@customerId", customerId);
+                    cmd.Parameters.AddWithValue("@IdTiec", IdTiec);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
@@ -102,11 +104,11 @@ namespace QuanLyTiecCuoi
             Date.Value = customer.DueDate;
             deposit.Text = customer.Deposit.ToString();
             NumberofTable.Text = customer.numberOftable.ToString();
-            IdTiec.Text = customer.IdTiec.ToString();
+            IdKhachhang.Text = customer.Customerid.ToString();
         }
-        private float loadFood(string customerId)
+        private decimal loadFood(string customerId)
         {
-            float total = 0;
+            decimal total = 0.0m;
             using (SqlConnection con = new SqlConnection(conString))
             {
                 con.Open();
@@ -123,14 +125,10 @@ namespace QuanLyTiecCuoi
                     foreach (DataRow row in dt.Rows)
                     {
                         // Lấy giá trị từ cột DONGIA của mỗi dòng và cộng dồn vào biến totalMenu
-                        total += Convert.ToSingle(row["DONGIA"]);
-                        object noteValue = row["NOTE"];
+                        decimal dongia = (decimal)row["DONGIA"];
+                        total += dongia;
 
-                        // Kiểm tra nếu giá trị là null, thay thế bằng một khoảng trắng
-                        if (noteValue == DBNull.Value)
-                        {
-                            row["NOTE"] = ""; // Thay thế bằng khoảng trắng
-                        }
+                       
                     }
 
                     if (dt.Rows.Count > 0)
@@ -156,9 +154,9 @@ namespace QuanLyTiecCuoi
         }
 
 
-        private float LoadService(string customerId)
+        private decimal LoadService(string customerId)
         {
-            float totalSer = 0;
+            decimal totalSer = 0.0m;
             using (SqlConnection con = new SqlConnection(conString))
             {
                 con.Open();
@@ -179,8 +177,7 @@ namespace QuanLyTiecCuoi
                     {
                         foreach (DataRow row in dt.Rows)
                         {
-                            // Lấy giá trị từ cột DONGIA của mỗi dòng và cộng dồn vào biến totalMenu
-                            totalSer += Convert.ToSingle(row["GIADICHVU"]);
+                            totalSer += (decimal)row["GIADICHVU"];
                            
                         }
                         ServiceView.DataSource = dt;
@@ -219,9 +216,9 @@ namespace QuanLyTiecCuoi
 
 
 
-        private float LoadHD(string customerId)
+        private decimal LoadHD(string customerId)
         {
-            float VenuePrice = 0; // Khởi tạo VenuePrice ban đầu
+            decimal VenuePrice = 0.0m; // Khởi tạo VenuePrice ban đầu
 
             using (SqlConnection con = new SqlConnection(conString))
             {
@@ -234,8 +231,7 @@ namespace QuanLyTiecCuoi
                     {
                         if (reader.Read()) // Kiểm tra nếu có dòng dữ liệu được trả về
                         {
-                            // Ép kiểu giá trị từ cột MINMONEY sang float và gán cho VenuePrice
-                            VenuePrice = (float)reader.GetDecimal(reader.GetOrdinal("MINMONEY"));
+                            VenuePrice = reader.GetDecimal(reader.GetOrdinal("MINMONEY"));
                             VenueFee.Text = VenuePrice.ToString();
                         }
                         else
@@ -279,17 +275,17 @@ namespace QuanLyTiecCuoi
         
         private void RecalculateTotal()
         {
-            string customerId = customerID.Text;
+            string customerId = tiecId.Text;
             CustomerInfo customer = LoadCustomerInfo(customerId);
             DateTime partyDate = customer.DueDate;
 
-            float Venue = LoadHD(customerId);
+            decimal Venue = LoadHD(customerId);
 
-            float totalFood = loadFood(customerId);
+            decimal totalFood = loadFood(customerId);
 
-            float totalService = LoadService(customerId);
+            decimal totalService = LoadService(customerId);
 
-            float TienPhat = (PenaltyRatioValue * (float)CalculateDaysLate(partyDate));
+            decimal TienPhat = (PenaltyRatioValue * (decimal)CalculateDaysLate(partyDate));
 
            
 
@@ -297,12 +293,12 @@ namespace QuanLyTiecCuoi
             if (!int.TryParse(Discount.Text, out discount))
             {
                 discount = 0;
-            } 
+            }
 
-            float total = (customer.numberOftable * totalFood) + totalService + Venue;
-            float totalHD = total + total*TienPhat;
+            decimal total = (customer.numberOftable * totalFood) + totalService + Venue;
+            decimal totalHD = total + total*TienPhat;
             Total.Text = totalHD.ToString();
-            float Paid = totalHD - customer.Deposit;
+            decimal Paid = totalHD - customer.Deposit;
 
             Paidment.Text = Paid.ToString();
         }
@@ -310,15 +306,16 @@ namespace QuanLyTiecCuoi
         private void btnSearchClick_Click(object sender, EventArgs e)
         {
             RecalculateTotal();
-            float totalFood = 0;
-            float totalSer = 0;
+            decimal totalFood = 0.0m;
+            decimal totalSer = 0.0m;
             DateTime partyDate = DateTime.Today;
-            string customerId = customerID.Text;
-            totalFood = loadFood(customerId);
-            CustomerInfo customer = LoadCustomerInfo(customerId);
+            string IdTiec = tiecId.Text;
+        
+            CustomerInfo customer = LoadCustomerInfo(IdTiec);
+            totalFood = loadFood(customer.Customerid);
             partyDate = customer.DueDate;
-            totalSer = LoadService(customerId);
-            LoadHD(customerId);
+            totalSer = LoadService(customer.Customerid);
+            LoadHD(customer.Customerid);
             PenaltyRatio.Text = PenaltyRatioValue.ToString();
             DateLate.Text = CalculateDaysLate(partyDate).ToString();
             
@@ -332,7 +329,7 @@ namespace QuanLyTiecCuoi
 
         private void PenaltyRatio_TextChanged(object sender, EventArgs e)
         {
-            if (float.TryParse(PenaltyRatio.Text, out float newRatio))
+            if (decimal.TryParse(PenaltyRatio.Text, out decimal newRatio))
             {
                 // Cập nhật giá trị của biến tỉ số phạt
                 PenaltyRatioValue = newRatio;
@@ -424,9 +421,9 @@ namespace QuanLyTiecCuoi
 
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            int customerId = Int16.Parse(customerID.Text);
+            int customerId = Int16.Parse(tiecId.Text);
             float totalBill = float.Parse(Total.Text); 
-            int IdTiecValue = Int16.Parse(IdTiec.Text);
+            int IdTiecValue = Int16.Parse(IdKhachhang.Text);
             float Paid  = float.Parse(Paidment.Text);
 
             SaveHoaDon(customerId, IdTiecValue, totalBill, Paid);
@@ -437,37 +434,42 @@ namespace QuanLyTiecCuoi
 
         private void Discount_TextChanged(object sender, EventArgs e)
         {
-            string customerId = customerID.Text;
+            string customerId = tiecId.Text;
             CustomerInfo customer = LoadCustomerInfo(customerId);
             DateTime partyDate = customer.DueDate;
 
-            float Venue = LoadHD(customerId);
+            decimal Venue = LoadHD(customerId);
 
-            float totalFood = loadFood(customerId);
+            decimal totalFood = loadFood(customerId);
 
-            float totalService = LoadService(customerId);
+            decimal totalService = LoadService(customerId);
 
-            float TienPhat = (PenaltyRatioValue * (float)CalculateDaysLate(partyDate));
+            decimal TienPhat = (PenaltyRatioValue * (decimal)CalculateDaysLate(partyDate));
 
 
 
-            int discount;
-            if (!int.TryParse(Discount.Text, out discount))
+            decimal discount;
+            if (!decimal.TryParse(Discount.Text, out discount))
             {
                 discount = 0;
                 Discount.Text = "0";
             }
 
-            float total = (customer.numberOftable * totalFood) + totalService + Venue;
+            decimal total = (customer.numberOftable * totalFood) + totalService + Venue;
             total = total - total*discount/100;
-            float totalHD = total + total * TienPhat;
+            decimal totalHD = total + total * TienPhat;
             Total.Text = totalHD.ToString();
-            float Paid = totalHD - customer.Deposit;
+            decimal Paid = totalHD - customer.Deposit;
 
             Paidment.Text = Paid.ToString();
         }
 
         private void Receipt_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void customerID_TextChanged(object sender, EventArgs e)
         {
 
         }

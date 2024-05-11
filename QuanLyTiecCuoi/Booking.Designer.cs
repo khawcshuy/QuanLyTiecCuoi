@@ -31,9 +31,13 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Discount = new System.Windows.Forms.TextBox();
+            this.DepositeRatio = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.Total = new System.Windows.Forms.Label();
+            this.totalMenu = new System.Windows.Forms.Label();
+            this.totalService = new System.Windows.Forms.Label();
+            this.VenueFee = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.deposit = new System.Windows.Forms.TextBox();
@@ -46,18 +50,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TTHD = new System.Windows.Forms.Panel();
+            this.MinMoneyValue = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.MaxTable = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.ShiftParty = new System.Windows.Forms.ComboBox();
             this.Venue = new System.Windows.Forms.Label();
             this.SearchResult = new System.Windows.Forms.DataGridView();
             this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ReservedTable = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.NumberOfTable = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.Shift = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.Bride = new System.Windows.Forms.TextBox();
-            this.Groom = new System.Windows.Forms.TextBox();
+            this.BrideName = new System.Windows.Forms.TextBox();
+            this.GroomName = new System.Windows.Forms.TextBox();
             this.Email = new System.Windows.Forms.TextBox();
             this.Address = new System.Windows.Forms.TextBox();
             this.CustomerName = new System.Windows.Forms.TextBox();
@@ -88,10 +96,6 @@
             this.OrderDate = new System.Windows.Forms.DateTimePicker();
             this.label21 = new System.Windows.Forms.Label();
             this.Confirm = new System.Windows.Forms.Button();
-            this.VenueFee = new System.Windows.Forms.Label();
-            this.totalService = new System.Windows.Forms.Label();
-            this.totalMenu = new System.Windows.Forms.Label();
-            this.Total = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.TTHD.SuspendLayout();
@@ -135,13 +139,13 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.DepositeRatio);
+            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.Total);
             this.panel1.Controls.Add(this.totalMenu);
             this.panel1.Controls.Add(this.totalService);
             this.panel1.Controls.Add(this.VenueFee);
-            this.panel1.Controls.Add(this.Discount);
             this.panel1.Controls.Add(this.label24);
-            this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label26);
             this.panel1.Controls.Add(this.label25);
             this.panel1.Controls.Add(this.deposit);
@@ -155,14 +159,64 @@
             this.panel1.Size = new System.Drawing.Size(302, 354);
             this.panel1.TabIndex = 28;
             // 
-            // Discount
+            // DepositeRatio
             // 
-            this.Discount.Location = new System.Drawing.Point(138, 191);
-            this.Discount.Margin = new System.Windows.Forms.Padding(4);
-            this.Discount.Name = "Discount";
-            this.Discount.Size = new System.Drawing.Size(146, 22);
-            this.Discount.TabIndex = 63;
-            this.Discount.TextChanged += new System.EventHandler(this.Discount_TextChanged);
+            this.DepositeRatio.Location = new System.Drawing.Point(138, 185);
+            this.DepositeRatio.Margin = new System.Windows.Forms.Padding(4);
+            this.DepositeRatio.Name = "DepositeRatio";
+            this.DepositeRatio.Size = new System.Drawing.Size(146, 22);
+            this.DepositeRatio.TabIndex = 68;
+            this.DepositeRatio.TextChanged += new System.EventHandler(this.DepositeRatio_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(13, 191);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 16);
+            this.label11.TabIndex = 67;
+            this.label11.Text = "Tỉ lệ cọc tiền";
+            // 
+            // Total
+            // 
+            this.Total.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Total.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Total.Location = new System.Drawing.Point(138, 152);
+            this.Total.Name = "Total";
+            this.Total.Size = new System.Drawing.Size(146, 22);
+            this.Total.TabIndex = 66;
+            this.Total.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // totalMenu
+            // 
+            this.totalMenu.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.totalMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.totalMenu.Location = new System.Drawing.Point(138, 82);
+            this.totalMenu.Name = "totalMenu";
+            this.totalMenu.Size = new System.Drawing.Size(146, 22);
+            this.totalMenu.TabIndex = 65;
+            this.totalMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // totalService
+            // 
+            this.totalService.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.totalService.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.totalService.Location = new System.Drawing.Point(138, 118);
+            this.totalService.Name = "totalService";
+            this.totalService.Size = new System.Drawing.Size(146, 22);
+            this.totalService.TabIndex = 64;
+            this.totalService.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // VenueFee
+            // 
+            this.VenueFee.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.VenueFee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.VenueFee.Location = new System.Drawing.Point(138, 16);
+            this.VenueFee.Name = "VenueFee";
+            this.VenueFee.Size = new System.Drawing.Size(146, 22);
+            this.VenueFee.TabIndex = 32;
+            this.VenueFee.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label24
             // 
@@ -173,17 +227,6 @@
             this.label24.Size = new System.Drawing.Size(68, 16);
             this.label24.TabIndex = 46;
             this.label24.Text = "Tiền Sảnh";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(17, 194);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(63, 16);
-            this.label16.TabIndex = 62;
-            this.label16.Text = "Giảm Giá";
-            this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
             // label26
             // 
@@ -198,7 +241,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(17, 85);
+            this.label25.Location = new System.Drawing.Point(14, 85);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(106, 16);
@@ -207,7 +250,7 @@
             // 
             // deposit
             // 
-            this.deposit.Location = new System.Drawing.Point(138, 229);
+            this.deposit.Location = new System.Drawing.Point(138, 225);
             this.deposit.Margin = new System.Windows.Forms.Padding(4);
             this.deposit.Name = "deposit";
             this.deposit.Size = new System.Drawing.Size(146, 22);
@@ -217,7 +260,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(14, 118);
+            this.label23.Location = new System.Drawing.Point(14, 121);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(98, 16);
@@ -238,7 +281,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(17, 229);
+            this.label13.Location = new System.Drawing.Point(14, 228);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(61, 16);
@@ -251,9 +294,10 @@
             this.NumberTableFee.Location = new System.Drawing.Point(138, 50);
             this.NumberTableFee.Margin = new System.Windows.Forms.Padding(4);
             this.NumberTableFee.Name = "NumberTableFee";
+            this.NumberTableFee.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.NumberTableFee.Size = new System.Drawing.Size(146, 22);
             this.NumberTableFee.TabIndex = 54;
-            this.NumberTableFee.TextChanged += new System.EventHandler(this.NumberTableFee_TextChanged);
+            this.NumberTableFee.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // IdTiec
             // 
@@ -301,17 +345,21 @@
             // TTHD
             // 
             this.TTHD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TTHD.Controls.Add(this.MinMoneyValue);
+            this.TTHD.Controls.Add(this.label27);
+            this.TTHD.Controls.Add(this.MaxTable);
+            this.TTHD.Controls.Add(this.label20);
+            this.TTHD.Controls.Add(this.ShiftParty);
             this.TTHD.Controls.Add(this.Venue);
             this.TTHD.Controls.Add(this.SearchResult);
             this.TTHD.Controls.Add(this.label9);
-            this.TTHD.Controls.Add(this.textBox1);
+            this.TTHD.Controls.Add(this.ReservedTable);
             this.TTHD.Controls.Add(this.label8);
             this.TTHD.Controls.Add(this.NumberOfTable);
             this.TTHD.Controls.Add(this.label6);
-            this.TTHD.Controls.Add(this.Shift);
             this.TTHD.Controls.Add(this.label5);
-            this.TTHD.Controls.Add(this.Bride);
-            this.TTHD.Controls.Add(this.Groom);
+            this.TTHD.Controls.Add(this.BrideName);
+            this.TTHD.Controls.Add(this.GroomName);
             this.TTHD.Controls.Add(this.Email);
             this.TTHD.Controls.Add(this.Address);
             this.TTHD.Controls.Add(this.CustomerName);
@@ -330,11 +378,63 @@
             this.TTHD.Size = new System.Drawing.Size(939, 244);
             this.TTHD.TabIndex = 1;
             // 
+            // MinMoneyValue
+            // 
+            this.MinMoneyValue.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.MinMoneyValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MinMoneyValue.Location = new System.Drawing.Point(845, 210);
+            this.MinMoneyValue.Name = "MinMoneyValue";
+            this.MinMoneyValue.Size = new System.Drawing.Size(83, 22);
+            this.MinMoneyValue.TabIndex = 36;
+            this.MinMoneyValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label27
+            // 
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(693, 212);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(145, 16);
+            this.label27.TabIndex = 35;
+            this.label27.Text = "Gía thực đơn tối thiểu";
+            // 
+            // MaxTable
+            // 
+            this.MaxTable.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.MaxTable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MaxTable.Location = new System.Drawing.Point(646, 210);
+            this.MaxTable.Name = "MaxTable";
+            this.MaxTable.Size = new System.Drawing.Size(39, 22);
+            this.MaxTable.TabIndex = 34;
+            this.MaxTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label20
+            // 
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(494, 210);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(145, 16);
+            this.label20.TabIndex = 33;
+            this.label20.Text = "Số Lượng Bàn Tối đa";
+            // 
+            // ShiftParty
+            // 
+            this.ShiftParty.FormattingEnabled = true;
+            this.ShiftParty.Items.AddRange(new object[] {
+            "Sáng",
+            "Tối"});
+            this.ShiftParty.Location = new System.Drawing.Point(197, 210);
+            this.ShiftParty.Name = "ShiftParty";
+            this.ShiftParty.Size = new System.Drawing.Size(241, 24);
+            this.ShiftParty.TabIndex = 32;
+            this.ShiftParty.Text = "Chọn Ca";
+            // 
             // Venue
             // 
             this.Venue.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Venue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Venue.Location = new System.Drawing.Point(643, 177);
+            this.Venue.Location = new System.Drawing.Point(646, 177);
             this.Venue.Name = "Venue";
             this.Venue.Size = new System.Drawing.Size(241, 22);
             this.Venue.TabIndex = 31;
@@ -387,13 +487,14 @@
             this.label9.TabIndex = 28;
             this.label9.Text = "Sảnh";
             // 
-            // textBox1
+            // ReservedTable
             // 
-            this.textBox1.Location = new System.Drawing.Point(646, 132);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(241, 22);
-            this.textBox1.TabIndex = 27;
+            this.ReservedTable.Location = new System.Drawing.Point(646, 132);
+            this.ReservedTable.Margin = new System.Windows.Forms.Padding(4);
+            this.ReservedTable.Name = "ReservedTable";
+            this.ReservedTable.Size = new System.Drawing.Size(241, 22);
+            this.ReservedTable.TabIndex = 27;
+            this.ReservedTable.TextChanged += new System.EventHandler(this.ReservedTable_TextChanged);
             // 
             // label8
             // 
@@ -426,20 +527,11 @@
             this.label6.TabIndex = 24;
             this.label6.Text = "Số Lượng Bàn";
             // 
-            // Shift
-            // 
-            this.Shift.Location = new System.Drawing.Point(197, 214);
-            this.Shift.Margin = new System.Windows.Forms.Padding(4);
-            this.Shift.Name = "Shift";
-            this.Shift.Size = new System.Drawing.Size(241, 22);
-            this.Shift.TabIndex = 23;
-            this.Shift.TextChanged += new System.EventHandler(this.Shift_TextChanged);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(18, 217);
+            this.label5.Location = new System.Drawing.Point(18, 209);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(25, 17);
@@ -447,21 +539,21 @@
             this.label5.Text = "Ca";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // Bride
+            // BrideName
             // 
-            this.Bride.Location = new System.Drawing.Point(646, 54);
-            this.Bride.Margin = new System.Windows.Forms.Padding(4);
-            this.Bride.Name = "Bride";
-            this.Bride.Size = new System.Drawing.Size(241, 22);
-            this.Bride.TabIndex = 21;
+            this.BrideName.Location = new System.Drawing.Point(646, 54);
+            this.BrideName.Margin = new System.Windows.Forms.Padding(4);
+            this.BrideName.Name = "BrideName";
+            this.BrideName.Size = new System.Drawing.Size(241, 22);
+            this.BrideName.TabIndex = 21;
             // 
-            // Groom
+            // GroomName
             // 
-            this.Groom.Location = new System.Drawing.Point(646, 18);
-            this.Groom.Margin = new System.Windows.Forms.Padding(4);
-            this.Groom.Name = "Groom";
-            this.Groom.Size = new System.Drawing.Size(241, 22);
-            this.Groom.TabIndex = 20;
+            this.GroomName.Location = new System.Drawing.Point(646, 18);
+            this.GroomName.Margin = new System.Windows.Forms.Padding(4);
+            this.GroomName.Name = "GroomName";
+            this.GroomName.Size = new System.Drawing.Size(241, 22);
+            this.GroomName.TabIndex = 20;
             // 
             // Email
             // 
@@ -647,6 +739,7 @@
             this.ServiceBookingView.RowHeadersWidth = 51;
             this.ServiceBookingView.Size = new System.Drawing.Size(596, 134);
             this.ServiceBookingView.TabIndex = 17;
+            this.ServiceBookingView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ServiceBookingView_CellContentClick);
             // 
             // ServiceId
             // 
@@ -735,6 +828,7 @@
             // 
             // OrderDate
             // 
+            this.OrderDate.Enabled = false;
             this.OrderDate.Location = new System.Drawing.Point(716, 47);
             this.OrderDate.Margin = new System.Windows.Forms.Padding(4);
             this.OrderDate.Name = "OrderDate";
@@ -763,46 +857,6 @@
             this.Confirm.Text = "Xác Nhận";
             this.Confirm.UseVisualStyleBackColor = false;
             this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
-            // 
-            // VenueFee
-            // 
-            this.VenueFee.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.VenueFee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.VenueFee.Location = new System.Drawing.Point(138, 16);
-            this.VenueFee.Name = "VenueFee";
-            this.VenueFee.Size = new System.Drawing.Size(146, 22);
-            this.VenueFee.TabIndex = 32;
-            this.VenueFee.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // totalService
-            // 
-            this.totalService.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.totalService.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.totalService.Location = new System.Drawing.Point(138, 118);
-            this.totalService.Name = "totalService";
-            this.totalService.Size = new System.Drawing.Size(146, 22);
-            this.totalService.TabIndex = 64;
-            this.totalService.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // totalMenu
-            // 
-            this.totalMenu.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.totalMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.totalMenu.Location = new System.Drawing.Point(138, 82);
-            this.totalMenu.Name = "totalMenu";
-            this.totalMenu.Size = new System.Drawing.Size(146, 22);
-            this.totalMenu.TabIndex = 65;
-            this.totalMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Total
-            // 
-            this.Total.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Total.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Total.Location = new System.Drawing.Point(138, 152);
-            this.Total.Name = "Total";
-            this.Total.Size = new System.Drawing.Size(146, 22);
-            this.Total.TabIndex = 66;
-            this.Total.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Booking
             // 
@@ -835,8 +889,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel TTHD;
-        private System.Windows.Forms.TextBox Bride;
-        private System.Windows.Forms.TextBox Groom;
+        private System.Windows.Forms.TextBox BrideName;
+        private System.Windows.Forms.TextBox GroomName;
         private System.Windows.Forms.TextBox Phone;
         private System.Windows.Forms.TextBox Email;
         private System.Windows.Forms.TextBox Address;
@@ -858,20 +912,17 @@
         private System.Windows.Forms.Label Service;
         private System.Windows.Forms.Label menu;
         private System.Windows.Forms.Button Confirm;
-        private System.Windows.Forms.TextBox Shift;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox NumberOfTable;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox IdTiec;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox ReservedTable;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox Discount;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox deposit;
@@ -895,5 +946,12 @@
         private System.Windows.Forms.Label VenueFee;
         private System.Windows.Forms.Label totalMenu;
         private System.Windows.Forms.Label Total;
+        private System.Windows.Forms.TextBox DepositeRatio;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox ShiftParty;
+        private System.Windows.Forms.Label MaxTable;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label MinMoneyValue;
+        private System.Windows.Forms.Label label27;
     }
 }
