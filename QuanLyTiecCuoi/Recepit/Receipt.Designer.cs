@@ -87,12 +87,16 @@ namespace QuanLyTiecCuoi
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.ConfirmButton = new System.Windows.Forms.Button();
+            this.SearchTiecAndKhachHang = new System.Windows.Forms.DataGridView();
+            this.IdTiec = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerNameFind = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TTHD.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ServiceView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Menuview)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchTiecAndKhachHang)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -130,7 +134,7 @@ namespace QuanLyTiecCuoi
             this.TTHD.Controls.Add(this.label30);
             this.TTHD.Controls.Add(this.label20);
             this.TTHD.Location = new System.Drawing.Point(19, 76);
-            this.TTHD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TTHD.Margin = new System.Windows.Forms.Padding(4);
             this.TTHD.Name = "TTHD";
             this.TTHD.Size = new System.Drawing.Size(957, 195);
             this.TTHD.TabIndex = 1;
@@ -138,7 +142,7 @@ namespace QuanLyTiecCuoi
             // IdKhachhang
             // 
             this.IdKhachhang.Location = new System.Drawing.Point(646, 164);
-            this.IdKhachhang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.IdKhachhang.Margin = new System.Windows.Forms.Padding(4);
             this.IdKhachhang.Name = "IdKhachhang";
             this.IdKhachhang.Size = new System.Drawing.Size(241, 22);
             this.IdKhachhang.TabIndex = 23;
@@ -157,7 +161,7 @@ namespace QuanLyTiecCuoi
             // Bride
             // 
             this.Bride.Location = new System.Drawing.Point(647, 124);
-            this.Bride.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bride.Margin = new System.Windows.Forms.Padding(4);
             this.Bride.Name = "Bride";
             this.Bride.Size = new System.Drawing.Size(241, 22);
             this.Bride.TabIndex = 21;
@@ -165,7 +169,7 @@ namespace QuanLyTiecCuoi
             // Groom
             // 
             this.Groom.Location = new System.Drawing.Point(647, 94);
-            this.Groom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Groom.Margin = new System.Windows.Forms.Padding(4);
             this.Groom.Name = "Groom";
             this.Groom.Size = new System.Drawing.Size(241, 22);
             this.Groom.TabIndex = 20;
@@ -173,7 +177,7 @@ namespace QuanLyTiecCuoi
             // Phone
             // 
             this.Phone.Location = new System.Drawing.Point(647, 58);
-            this.Phone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Phone.Margin = new System.Windows.Forms.Padding(4);
             this.Phone.Name = "Phone";
             this.Phone.Size = new System.Drawing.Size(241, 22);
             this.Phone.TabIndex = 19;
@@ -181,7 +185,7 @@ namespace QuanLyTiecCuoi
             // Email
             // 
             this.Email.Location = new System.Drawing.Point(647, 12);
-            this.Email.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Email.Margin = new System.Windows.Forms.Padding(4);
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(241, 22);
             this.Email.TabIndex = 18;
@@ -189,7 +193,7 @@ namespace QuanLyTiecCuoi
             // Address
             // 
             this.Address.Location = new System.Drawing.Point(197, 165);
-            this.Address.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Address.Margin = new System.Windows.Forms.Padding(4);
             this.Address.Name = "Address";
             this.Address.Size = new System.Drawing.Size(241, 22);
             this.Address.TabIndex = 17;
@@ -197,7 +201,7 @@ namespace QuanLyTiecCuoi
             // CustomerName
             // 
             this.CustomerName.Location = new System.Drawing.Point(197, 130);
-            this.CustomerName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.Size = new System.Drawing.Size(241, 22);
             this.CustomerName.TabIndex = 16;
@@ -205,7 +209,7 @@ namespace QuanLyTiecCuoi
             // Date
             // 
             this.Date.Location = new System.Drawing.Point(197, 94);
-            this.Date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Date.Margin = new System.Windows.Forms.Padding(4);
             this.Date.Name = "Date";
             this.Date.Size = new System.Drawing.Size(241, 22);
             this.Date.TabIndex = 15;
@@ -213,7 +217,7 @@ namespace QuanLyTiecCuoi
             // OrderDate
             // 
             this.OrderDate.Location = new System.Drawing.Point(197, 52);
-            this.OrderDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OrderDate.Margin = new System.Windows.Forms.Padding(4);
             this.OrderDate.Name = "OrderDate";
             this.OrderDate.Size = new System.Drawing.Size(241, 22);
             this.OrderDate.TabIndex = 14;
@@ -221,7 +225,7 @@ namespace QuanLyTiecCuoi
             // admin
             // 
             this.admin.Location = new System.Drawing.Point(197, 12);
-            this.admin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.admin.Margin = new System.Windows.Forms.Padding(4);
             this.admin.Name = "admin";
             this.admin.Size = new System.Drawing.Size(241, 22);
             this.admin.TabIndex = 11;
@@ -339,7 +343,7 @@ namespace QuanLyTiecCuoi
             // label123
             // 
             this.label123.AutoSize = true;
-            this.label123.Location = new System.Drawing.Point(657, 34);
+            this.label123.Location = new System.Drawing.Point(656, 27);
             this.label123.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label123.Name = "label123";
             this.label123.Size = new System.Drawing.Size(56, 16);
@@ -365,7 +369,7 @@ namespace QuanLyTiecCuoi
             this.panel2.Controls.Add(this.Service);
             this.panel2.Controls.Add(this.menu);
             this.panel2.Location = new System.Drawing.Point(19, 303);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(567, 345);
             this.panel2.TabIndex = 13;
@@ -374,7 +378,7 @@ namespace QuanLyTiecCuoi
             // 
             this.ServiceView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ServiceView.Location = new System.Drawing.Point(8, 210);
-            this.ServiceView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ServiceView.Margin = new System.Windows.Forms.Padding(4);
             this.ServiceView.Name = "ServiceView";
             this.ServiceView.RowHeadersWidth = 51;
             this.ServiceView.Size = new System.Drawing.Size(543, 134);
@@ -384,7 +388,7 @@ namespace QuanLyTiecCuoi
             // 
             this.Menuview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Menuview.Location = new System.Drawing.Point(8, 33);
-            this.Menuview.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Menuview.Margin = new System.Windows.Forms.Padding(4);
             this.Menuview.Name = "Menuview";
             this.Menuview.RowHeadersWidth = 51;
             this.Menuview.Size = new System.Drawing.Size(543, 154);
@@ -412,8 +416,8 @@ namespace QuanLyTiecCuoi
             // 
             // tiecId
             // 
-            this.tiecId.Location = new System.Drawing.Point(733, 30);
-            this.tiecId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tiecId.Location = new System.Drawing.Point(732, 23);
+            this.tiecId.Margin = new System.Windows.Forms.Padding(4);
             this.tiecId.Name = "tiecId";
             this.tiecId.Size = new System.Drawing.Size(173, 22);
             this.tiecId.TabIndex = 17;
@@ -421,7 +425,7 @@ namespace QuanLyTiecCuoi
             // 
             // btnSearchClick
             // 
-            this.btnSearchClick.Location = new System.Drawing.Point(913, 28);
+            this.btnSearchClick.Location = new System.Drawing.Point(912, 21);
             this.btnSearchClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearchClick.Name = "btnSearchClick";
             this.btnSearchClick.Size = new System.Drawing.Size(63, 23);
@@ -433,6 +437,7 @@ namespace QuanLyTiecCuoi
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.SearchTiecAndKhachHang);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.btnSearchClick);
             this.panel4.Controls.Add(this.label2);
@@ -444,7 +449,7 @@ namespace QuanLyTiecCuoi
             this.panel4.Controls.Add(this.panel3);
             this.panel4.Controls.Add(this.panel2);
             this.panel4.Location = new System.Drawing.Point(9, 10);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(991, 685);
             this.panel4.TabIndex = 20;
@@ -485,7 +490,7 @@ namespace QuanLyTiecCuoi
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Location = new System.Drawing.Point(607, 303);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(371, 345);
             this.panel3.TabIndex = 14;
@@ -503,7 +508,7 @@ namespace QuanLyTiecCuoi
             // Discount
             // 
             this.Discount.Location = new System.Drawing.Point(131, 287);
-            this.Discount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Discount.Margin = new System.Windows.Forms.Padding(4);
             this.Discount.Name = "Discount";
             this.Discount.Size = new System.Drawing.Size(168, 22);
             this.Discount.TabIndex = 35;
@@ -522,7 +527,7 @@ namespace QuanLyTiecCuoi
             // Paidment
             // 
             this.Paidment.Location = new System.Drawing.Point(131, 317);
-            this.Paidment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Paidment.Margin = new System.Windows.Forms.Padding(4);
             this.Paidment.Name = "Paidment";
             this.Paidment.Size = new System.Drawing.Size(168, 22);
             this.Paidment.TabIndex = 33;
@@ -530,7 +535,7 @@ namespace QuanLyTiecCuoi
             // deposit
             // 
             this.deposit.Location = new System.Drawing.Point(131, 257);
-            this.deposit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deposit.Margin = new System.Windows.Forms.Padding(4);
             this.deposit.Name = "deposit";
             this.deposit.Size = new System.Drawing.Size(168, 22);
             this.deposit.TabIndex = 32;
@@ -538,7 +543,7 @@ namespace QuanLyTiecCuoi
             // Total
             // 
             this.Total.Location = new System.Drawing.Point(131, 223);
-            this.Total.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Total.Margin = new System.Windows.Forms.Padding(4);
             this.Total.Name = "Total";
             this.Total.Size = new System.Drawing.Size(168, 22);
             this.Total.TabIndex = 31;
@@ -546,7 +551,7 @@ namespace QuanLyTiecCuoi
             // DateLate
             // 
             this.DateLate.Location = new System.Drawing.Point(131, 170);
-            this.DateLate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DateLate.Margin = new System.Windows.Forms.Padding(4);
             this.DateLate.Name = "DateLate";
             this.DateLate.Size = new System.Drawing.Size(168, 22);
             this.DateLate.TabIndex = 30;
@@ -554,7 +559,7 @@ namespace QuanLyTiecCuoi
             // PenaltyRatio
             // 
             this.PenaltyRatio.Location = new System.Drawing.Point(131, 138);
-            this.PenaltyRatio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PenaltyRatio.Margin = new System.Windows.Forms.Padding(4);
             this.PenaltyRatio.Name = "PenaltyRatio";
             this.PenaltyRatio.Size = new System.Drawing.Size(168, 22);
             this.PenaltyRatio.TabIndex = 29;
@@ -563,7 +568,7 @@ namespace QuanLyTiecCuoi
             // totalService
             // 
             this.totalService.Location = new System.Drawing.Point(131, 106);
-            this.totalService.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.totalService.Margin = new System.Windows.Forms.Padding(4);
             this.totalService.Name = "totalService";
             this.totalService.Size = new System.Drawing.Size(168, 22);
             this.totalService.TabIndex = 28;
@@ -571,7 +576,7 @@ namespace QuanLyTiecCuoi
             // totalMenu
             // 
             this.totalMenu.Location = new System.Drawing.Point(131, 74);
-            this.totalMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.totalMenu.Margin = new System.Windows.Forms.Padding(4);
             this.totalMenu.Name = "totalMenu";
             this.totalMenu.Size = new System.Drawing.Size(168, 22);
             this.totalMenu.TabIndex = 27;
@@ -579,7 +584,7 @@ namespace QuanLyTiecCuoi
             // NumberofTable
             // 
             this.NumberofTable.Location = new System.Drawing.Point(131, 42);
-            this.NumberofTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumberofTable.Margin = new System.Windows.Forms.Padding(4);
             this.NumberofTable.Name = "NumberofTable";
             this.NumberofTable.Size = new System.Drawing.Size(168, 22);
             this.NumberofTable.TabIndex = 26;
@@ -587,7 +592,7 @@ namespace QuanLyTiecCuoi
             // VenueFee
             // 
             this.VenueFee.Location = new System.Drawing.Point(131, 10);
-            this.VenueFee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.VenueFee.Margin = new System.Windows.Forms.Padding(4);
             this.VenueFee.Name = "VenueFee";
             this.VenueFee.Size = new System.Drawing.Size(168, 22);
             this.VenueFee.TabIndex = 25;
@@ -688,13 +693,55 @@ namespace QuanLyTiecCuoi
             this.ConfirmButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.ConfirmButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ConfirmButton.Location = new System.Drawing.Point(810, 716);
-            this.ConfirmButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ConfirmButton.Margin = new System.Windows.Forms.Padding(4);
             this.ConfirmButton.Name = "ConfirmButton";
             this.ConfirmButton.Size = new System.Drawing.Size(176, 38);
             this.ConfirmButton.TabIndex = 21;
             this.ConfirmButton.Text = "Xác Nhận";
             this.ConfirmButton.UseVisualStyleBackColor = false;
             this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
+            // 
+            // SearchTiecAndKhachHang
+            // 
+            this.SearchTiecAndKhachHang.AllowUserToAddRows = false;
+            this.SearchTiecAndKhachHang.AllowUserToDeleteRows = false;
+            this.SearchTiecAndKhachHang.AllowUserToResizeColumns = false;
+            this.SearchTiecAndKhachHang.AllowUserToResizeRows = false;
+            this.SearchTiecAndKhachHang.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SearchTiecAndKhachHang.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchTiecAndKhachHang.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.SearchTiecAndKhachHang.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.SearchTiecAndKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SearchTiecAndKhachHang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdTiec,
+            this.CustomerNameFind});
+            this.SearchTiecAndKhachHang.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SearchTiecAndKhachHang.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SearchTiecAndKhachHang.Location = new System.Drawing.Point(732, 49);
+            this.SearchTiecAndKhachHang.Name = "SearchTiecAndKhachHang";
+            this.SearchTiecAndKhachHang.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.SearchTiecAndKhachHang.RowHeadersVisible = false;
+            this.SearchTiecAndKhachHang.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.SearchTiecAndKhachHang.RowTemplate.Height = 24;
+            this.SearchTiecAndKhachHang.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.SearchTiecAndKhachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.SearchTiecAndKhachHang.Size = new System.Drawing.Size(174, 0);
+            this.SearchTiecAndKhachHang.TabIndex = 19;
+            this.SearchTiecAndKhachHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SearchTiecAndKhachHang_CellContentClick);
+            // 
+            // IdTiec
+            // 
+            this.IdTiec.HeaderText = "ID Tiệc";
+            this.IdTiec.MinimumWidth = 6;
+            this.IdTiec.Name = "IdTiec";
+            this.IdTiec.Width = 60;
+            // 
+            // CustomerNameFind
+            // 
+            this.CustomerNameFind.HeaderText = "Tên KH";
+            this.CustomerNameFind.MinimumWidth = 6;
+            this.CustomerNameFind.Name = "CustomerNameFind";
+            this.CustomerNameFind.Width = 125;
             // 
             // Receipt
             // 
@@ -704,7 +751,7 @@ namespace QuanLyTiecCuoi
             this.ClientSize = new System.Drawing.Size(1001, 759);
             this.Controls.Add(this.ConfirmButton);
             this.Controls.Add(this.panel4);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Receipt";
             this.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Text = "Lập Hóa Đơn";
@@ -719,6 +766,7 @@ namespace QuanLyTiecCuoi
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchTiecAndKhachHang)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -783,6 +831,9 @@ namespace QuanLyTiecCuoi
         private TextBox Discount;
         private Label label16;
         private Label label24;
+        private DataGridView SearchTiecAndKhachHang;
+        private DataGridViewTextBoxColumn IdTiec;
+        private DataGridViewTextBoxColumn CustomerNameFind;
     }
 
 

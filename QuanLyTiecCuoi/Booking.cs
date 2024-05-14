@@ -19,13 +19,15 @@ namespace QuanLyTiecCuoi
 {
     public partial class Booking : Form
     {
-        public Booking()
+        private string conString;
+
+        public Booking(string _conString)
         {
             InitializeComponent();
             CalculateTotal();
+            conString = _conString;
         }
         //private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
-        private string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
 
         private decimal DepositeRatioValue = 10.0m;
 
@@ -217,11 +219,13 @@ namespace QuanLyTiecCuoi
 
         private void ChooseMenu_Click(object sender, EventArgs e)
         {
-            Food foodForm = new Food(this);
+            Food foodForm = new Food(conString,this);
             foodForm.ConfirmEvent += FoodForm_ConfirmEvent;
             if (ListSelectedFood != null)
             {
                 foodForm.SelectedFoods = ListSelectedFood;
+                foodForm._conString = conString;
+               
             }
             foodForm.isChoosing = true;
 
@@ -349,7 +353,8 @@ namespace QuanLyTiecCuoi
                 VenueForm.ConfirmEvent += VenueForm_ConfirmEvent;
                 VenueForm.VenueSelectedId = this.VenueSelectedId;
                 VenueForm.AvailableVenueDate = Date.Value.Date;
-
+                VenueForm.conString = conString
+                    ;
                 VenueForm.AvailableVenueShift = ShiftParty.Text;
                 VenueForm.isChoosing = true;
                 VenueForm.Show();
@@ -404,13 +409,13 @@ namespace QuanLyTiecCuoi
         private void ChooseService_Click(object sender, EventArgs e)
         {
 
-            QuanLyTiecCuoi.Service.Service serviceForm = new QuanLyTiecCuoi.Service.Service(this);
+            QuanLyTiecCuoi.Service.Service serviceForm = new QuanLyTiecCuoi.Service.Service(this,conString);
             serviceForm.ConfirmEvent += ServiceForm_ConfirmEvent;
             if (ListSelectedFood != null)
             {
                 serviceForm.SelectedService = ListSelectedService;
             }
-            serviceForm.isChoosing = true;
+            serviceForm.conString = conString;
             serviceForm.Show();
         }
 

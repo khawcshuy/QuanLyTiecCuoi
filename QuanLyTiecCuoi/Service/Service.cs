@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.IdentityModel.Tokens;
 using QuanLyTiecCuoi.Service;
 
 
@@ -17,33 +18,36 @@ namespace QuanLyTiecCuoi.Service
     public partial class Service : Form
     {
         private Booking _parentForm;
-
-        public Service(Booking parentForm = null)
+        public string conString;
+        public Service(string _conString, Booking parentForm = null)
         {
-            if (parentForm == null)
-            {
-                InitializeComponent();
-            }
-            else
-            {
-                InitializeComponent();
-                _parentForm = parentForm;
-            }
+            InitializeComponent();
+
+            conString = _conString;
+
+            _parentForm = parentForm;
+
         }
 
-
-
+        public Service(Booking booking,string _conString)
+        {
+            this.booking = booking;
+            this.conString = _conString;
+        }
 
         public List<string> SelectedService;
 
-        public bool isChoosing = false;
 
         private bool ChangingState = false;
 
         private bool isEditing = false;
+        private Booking booking;
+
         //private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
 
-        private string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
+        //private string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
+
+
         private void Service_Load(object sender, EventArgs e)
         {
             LoadDataGridViewService();
@@ -53,7 +57,7 @@ namespace QuanLyTiecCuoi.Service
         public void LoadDataGridViewService()
         {
             
-            String query = "SELECT * FROM DICHVU"; 
+            String query = "SELECT * FROM DICHVU WHERE TRANGTHAIDICHVU = 1"; 
 
             using (SqlConnection connection = new SqlConnection(conString))
             {
@@ -65,11 +69,9 @@ namespace QuanLyTiecCuoi.Service
                 ServiceName.DataPropertyName = "TENDICHVU"; 
                 ServicePrice.DataPropertyName = "GIADICHVU"; 
                 ServiceType.DataPropertyName = "LOAIDICHVU";
-                ServiceNote.DataPropertyName = "NOTE";
-
                 DataTable dataTable = new DataTable();
                 bool selectColumnExists = false;
-                if (isChoosing)
+                if (_parentForm != null)
                 {
                     foreach (DataGridViewColumn column in dataGridViewService.Columns)
                     {
@@ -116,20 +118,22 @@ namespace QuanLyTiecCuoi.Service
             string IDChange = Convert.ToString(dataGridViewService.Rows[currentIndex].Cells["ServiceId"].Value);
             string ServiceNameChange = Convert.ToString(dataGridViewService.Rows[currentIndex].Cells["ServiceName"].Value);
             string ServicePriceChange = Convert.ToString(dataGridViewService.Rows[currentIndex].Cells["ServicePrice"].Value);
-            string NoteChange = Convert.ToString(dataGridViewService.Rows[currentIndex].Cells["ServiceNote"].Value);
             string ServiceTypeChange = Convert.ToString(dataGridViewService.Rows[currentIndex].Cells["ServiceType"].Value);
 
-            using (SqlConnection connection = new SqlConnection(conString))
+            if (string.IsNullOrEmpty(IDChange) && string.IsNullOrEmpty(ServiceNameChange) && string.IsNullOrEmpty(ServicePriceChange) && string.IsNullOrEmpty(ServiceTypeChange))
+            { return;
+            }
+            else
+                using (SqlConnection connection = new SqlConnection(conString))
             {
-                string updateStr = "UPDATE DICHVU SET TENDICHVU = @ServiceNameChange, GIADICHVU = @ServicePriceChange, NOTE = @Note, LOAIDICHVU = @ServiceTypeChange WHERE ID = @ID"; // Thay đổi từ FOOD sang DICHVU, TENDICHVU, GIADICHVU, NOTE
+                string updateStr = "UPDATE DICHVU SET TENDICHVU = @ServiceNameChange, GIADICHVU = @ServicePriceChange, LOAIDICHVU = @ServiceTypeChange WHERE ID = @ID"; // Thay đổi từ FOOD sang DICHVU, TENDICHVU, GIADICHVU, NOTE
 
                 using (SqlCommand updateCmd = new SqlCommand(updateStr, connection))
                 {
                     updateCmd.Parameters.AddWithValue("@ID", IDChange);
                     updateCmd.Parameters.AddWithValue("@ServiceNameChange", ServiceNameChange);
                     updateCmd.Parameters.AddWithValue("@ServicePriceChange", ServicePriceChange);
-
-                    updateCmd.Parameters.AddWithValue("@Note", NoteChange);
+                    updateCmd.Parameters.AddWithValue("ServiceTypeChange", ServiceTypeChange);
 
                     try
                     {
@@ -141,9 +145,7 @@ namespace QuanLyTiecCuoi.Service
 
                         LoadDataGridViewService();
 
-                        dataGridViewService.ReadOnly = false;
-                        ChangeService.Text = "Chỉnh sửa";
-                        isEditing = false;
+                        
                     }
                     catch (Exception ex)
                     {
@@ -151,6 +153,9 @@ namespace QuanLyTiecCuoi.Service
                     }
                 }
             }
+            dataGridViewService.ReadOnly = false;
+            ChangeService.Text = "Chỉnh sửa";
+            isEditing = false;
         }
 
         private void ChangeService_Click(object sender, EventArgs e)
@@ -163,6 +168,7 @@ namespace QuanLyTiecCuoi.Service
             }
             else
             {
+                ChangeService.Text = "Chỉnh sửa dịch vụ";
                 SaveChangesToDatabase();
             }
         }
@@ -173,6 +179,7 @@ namespace QuanLyTiecCuoi.Service
         private void AddFood_Click(object sender, EventArgs e)
         {
             InsertService insertServiceForm = new InsertService(this);
+            insertServiceForm.conString = conString;
             insertServiceForm.ShowDialog();
         }
 
@@ -180,7 +187,7 @@ namespace QuanLyTiecCuoi.Service
         {
             string searchText = SearchService.Text.Trim();
 
-            string query = "SELECT * FROM DICHVU WHERE [ID] LIKE '%' + @searchText + '%' OR [TENDICHVU] LIKE '%' + @searchText + '%' OR [GIADICHVU] LIKE '%' + @searchText + '%' OR [NOTE] LIKE '%' + @searchText"; // Thay đổi từ FOOD sang DICHVU, TENDICHVU, GIADICHVU
+            string query = "SELECT * FROM DICHVU WHERE [ID] LIKE '%' + @searchText + '%' OR [TENDICHVU] LIKE '%' + @searchText + '%' OR [GIADICHVU] LIKE '%' + @searchText + '%'"; // Thay đổi từ FOOD sang DICHVU, TENDICHVU, GIADICHVU
 
             using (SqlConnection connection = new SqlConnection(conString))
             {
@@ -200,45 +207,30 @@ namespace QuanLyTiecCuoi.Service
 
         public delegate void ConfirmEventHandler(List<string> SelectedService);
 
-        // Define an event based on the delegate
         public event ConfirmEventHandler ConfirmEvent;
 
 
         private void Confirm_Click(object sender, EventArgs e)
         {
             SelectedService = new List<string>();
-            // Iterate through the DataGridView to collect selected food IDs
             foreach (DataGridViewRow row in dataGridViewService.Rows)
             {
                 if (Convert.ToBoolean(row.Cells["SELECT"].Value))
                 {
-                    string ServiceID = row.Cells["ServiceId"].Value.ToString(); // Assuming the ID column name is "ID"
+                    string ServiceID = row.Cells["ServiceId"].Value.ToString(); 
                     SelectedService.Add(ServiceID);
                 }
             }
 
-            // Raise the event and pass the list
             ConfirmEvent?.Invoke(SelectedService);
 
-            // Close the Food form
             this.Close();
         }
 
         private void dataGridViewService_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (isEditing && dataGridViewService.Columns[e.ColumnIndex].Name == "FoodPicture" && e.RowIndex != -1)
-            {
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg;*.gif;*.png)|*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG";
-
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    string imagePath = dialog.FileName;
-                    byte[] imageData = File.ReadAllBytes(imagePath);
-                    dataGridViewService.Rows[e.RowIndex].Cells["PictureFood"].Value = imageData;
-                }
-            }
-            if (isChoosing)
+ 
+            if (_parentForm != null)
             {
                 dataGridViewService.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 int currentRowIndex = e.RowIndex;
@@ -258,6 +250,55 @@ namespace QuanLyTiecCuoi.Service
                         }
                     }
                 }
+            }
+        }
+
+        private void AddService_Click(object sender, EventArgs e)
+        {
+            InsertService insertServiceForm = new InsertService(this);
+            insertServiceForm.conString = conString;
+            insertServiceForm.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Int32 selectedCellCount = dataGridViewService.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                int currentIndex = dataGridViewService.CurrentCell.RowIndex;
+
+                int ID = Convert.ToInt32(dataGridViewService.Rows[currentIndex].Cells["ServiceId"].Value);
+
+                string storedProcedureName = "CheckAndUpdateServiceStatus";
+
+                using (SqlConnection connection = new SqlConnection(conString))
+                {
+                    using (SqlCommand command = new SqlCommand(storedProcedureName, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@IDDICHVU", ID);
+
+                        try
+                        {
+                            connection.Open();
+
+                            command.ExecuteNonQuery();
+
+                            MessageBox.Show("Record updated/deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                           LoadDataGridViewService();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("An error occurred while updating/deleting the record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a record to update/delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

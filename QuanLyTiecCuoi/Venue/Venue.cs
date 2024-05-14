@@ -20,8 +20,8 @@ namespace QuanLyTiecCuoi
 
         private Booking _parentForm;
 
-
-        public Venue(Booking parentForm = null)
+        public string conString;
+        public Venue(Booking parentForm = null, string conString = null)
         {
             if (parentForm == null)
             {
@@ -32,6 +32,8 @@ namespace QuanLyTiecCuoi
                 InitializeComponent();
                 _parentForm = parentForm;
             }
+
+            this.conString = conString;
         }
 
 
@@ -47,7 +49,7 @@ namespace QuanLyTiecCuoi
         public int VenueSelectedId;
 
 
-        private string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
+        //private string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
 
 
         private bool isEditing = false;
@@ -62,10 +64,10 @@ namespace QuanLyTiecCuoi
 
         public void LoadDataIntoDataGridView()
         {
-            string query = "SELECT * FROM SANHINFOR";
-            if (isChoosing)
+            string query = "SELECT ID,PICTURE, TENSANH,LOAISANH,MAXTABLE,MINMONEY,NOTE FROM SANHINFOR where TRANGTHAISANH = 1 ";
+            if (_parentForm != null)
             {
-                 query = "SELECT * FROM SANHINFOR WHERE ID NOT IN (SELECT IDLOAISANH FROM TIEC WHERE NGAYTOCHUC = @Ngay AND CA = @Ca)";
+                 query = "SELECT ID,PICTURE, TENSANH,LOAISANH,MAXTABLE,MINMONEY,NOTE FROM SANHINFOR WHERE ID NOT IN (SELECT IDLOAISANH FROM TIEC WHERE NGAYTOCHUC = @Ngay AND CA = @Ca ) AND TRANGTHAISANH = 1 ";
 
                 using (SqlConnection connection = new SqlConnection(conString))
                 {
@@ -81,7 +83,6 @@ namespace QuanLyTiecCuoi
                         Image.DataPropertyName = "PICTURE";
                         VenueName.DataPropertyName = "TENSANH";
                         VenueType.DataPropertyName = "LOAISANH";
-                        VenueState.DataPropertyName = "TRANGTHAISANH";
                         MaxTable.DataPropertyName = "MAXTABLE";
                         MinTable.DataPropertyName = "MINMONEY";
                         Note.DataPropertyName = "NOTE";
@@ -89,8 +90,7 @@ namespace QuanLyTiecCuoi
 
 
                         bool selectColumnExists = false;
-                        if (isChoosing)
-                        {
+                      
                             foreach (DataGridViewColumn column in dataGridView1.Columns)
                             {
                                 if (column.Name == "Select")
@@ -110,7 +110,7 @@ namespace QuanLyTiecCuoi
                                 dataGridView1.Columns.Add(selectColumn);
                                 Confirm.Size = new System.Drawing.Size(180, 40);
                             }
-                        }
+                      
                         SelectRowById();
                         dataGridView1.DataSource = table;
                     }
@@ -142,30 +142,27 @@ namespace QuanLyTiecCuoi
                     Image.DataPropertyName = "PICTURE";
                     VenueName.DataPropertyName = "TENSANH";
                     VenueType.DataPropertyName = "LOAISANH";
-                    VenueState.DataPropertyName = "TRANGTHAISANH";
                     MaxTable.DataPropertyName = "MAXTABLE";
                     MinTable.DataPropertyName = "MINMONEY";
                     Note.DataPropertyName = "NOTE";
 
-                    // Set the AutoSizeRowsMode and AutoSizeColumnsMode for the DataGridView
-                    dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-                    // Assign the DataTable as the data source for the DataGridView
-                    dataGridView1.DataSource = dataTable;
-                }
+                        dataGridView1.DataSource = dataTable;
+                    }
                 catch (Exception ex)
                 {
-                    // Handle any exceptions that occur during data loading
                     MessageBox.Show("An error occurred while loading data into the DataGridView: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
+            }
+            if (Image != null)
+            {
+                Image.ImageLayout = DataGridViewImageCellLayout.Zoom;
             }
         }
 
         private void SelectRowById()
         {
-            // Duyệt qua từng hàng trong DataGridView
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 int rowId;
@@ -260,57 +257,50 @@ namespace QuanLyTiecCuoi
             }
         }
 
-      
+
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            Int32 selectedCellCount = dataGridView1.GetCellCount(DataGridViewElementStates.Selected);
+            if (    selectedCellCount > 0)
             {
-                // Lấy chỉ mục của hàng đang được chọn
                 int currentIndex = dataGridView1.CurrentCell.RowIndex;
 
-                // Lấy giá trị của cột ID từ hàng được chọn
-                string ID = dataGridView1.Rows[currentIndex].Cells["VenueId"].Value.ToString();
+                int ID = Convert.ToInt32(dataGridView1.Rows[currentIndex].Cells["VenueId"].Value);
 
-                // Tạo câu lệnh SQL để xóa dữ liệu từ bảng SANHINFOR
-                string deleteStr = "DELETE FROM SANHINFOR WHERE ID = @ID";
+                string storedProcedureName = "CheckAndUpdateSanhStatus"; 
 
-                // Tạo kết nối SQL và lệnh SQL để thực thi xóa
                 using (SqlConnection connection = new SqlConnection(conString))
                 {
-                    using (SqlCommand deleteCmd = new SqlCommand(deleteStr, connection))
+                    using (SqlCommand command = new SqlCommand(storedProcedureName, connection))
                     {
-                        // Thêm tham số @ID vào lệnh SQL
-                        deleteCmd.Parameters.AddWithValue("@ID", ID);
+                        command.CommandType = CommandType.StoredProcedure; 
+
+                        command.Parameters.AddWithValue("@IDSanh", ID); 
 
                         try
                         {
-                            // Mở kết nối
                             connection.Open();
 
-                            // Thực thi lệnh SQL xóa
-                            deleteCmd.ExecuteNonQuery();
+                            command.ExecuteNonQuery();
 
-          
-                            MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Record updated/deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            // Tải lại dữ liệu vào DataGridView sau khi xóa
                             LoadDataIntoDataGridView();
                         }
                         catch (Exception ex)
                         {
-                            // Hiển thị thông báo lỗi nếu có lỗi xảy ra khi xóa
-                            MessageBox.Show("An error occurred while deleting the record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("An error occurred while updating/deleting the record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
             }
             else
             {
-                // Hiển thị thông báo nếu không có hàng nào được chọn
-                MessageBox.Show("Please select a record to delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please select a record to update/delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
 
 
 
@@ -335,10 +325,9 @@ namespace QuanLyTiecCuoi
             {
                 connection.Open();
 
-                // Duyệt qua từng hàng trong DataGridView
+ 
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    // Kiểm tra hàng không phải là hàng mới và không phải là hàng dùng để thêm mới
                     if (!row.IsNewRow && row.Cells["VenueId"].Value != null)
                     {
                         string IDChange = Convert.ToString(row.Cells["VenueId"].Value);
@@ -348,23 +337,20 @@ namespace QuanLyTiecCuoi
                         string MaxTableChange = Convert.ToString(row.Cells["MaxTable"].Value);
                         string MinTableChange = Convert.ToString(row.Cells["MinTable"].Value);
                         string NoteChange = Convert.ToString(row.Cells["Note"].Value);
-                        byte[] imageData = null; // Initialize imageData variable
-                        object cellValue = row.Cells["image"].Value; // Get the value of the cell
+                        byte[] imageData = null; 
+                        object cellValue = row.Cells["image"].Value;
                         string updateStr = "UPDATE SANHINFOR SET TENSANH = @VenueName, LOAISANH = @VenueType, TRANGTHAISANH = @VenueState, MaxTable = @MaxTable, MinMoney = @MinTable, Note = @Note, PICTURE = @ImageData WHERE ID = @ID";
 
 
 
-                        // Check if the cell value is not DBNull
                         if (cellValue != DBNull.Value)
                         {
-                            // If the value is not DBNull, cast it to byte[]
                             imageData = (byte[])cellValue;
                              updateStr = "UPDATE SANHINFOR SET TENSANH = @VenueName, LOAISANH = @VenueType, TRANGTHAISANH = @VenueState, MaxTable = @MaxTable, MinMoney = @MinTable, Note = @Note, PICTURE = @ImageData WHERE ID = @ID";
 
                         }
                         else
                         {
-                            // If the value is DBNull, use an empty byte array
                             imageData = new byte[0];
                              updateStr = "UPDATE SANHINFOR SET TENSANH = @VenueName, LOAISANH = @VenueType, TRANGTHAISANH = @VenueState, MaxTable = @MaxTable, MinMoney = @MinTable, Note = @Note WHERE ID = @ID";
 
@@ -427,22 +413,17 @@ namespace QuanLyTiecCuoi
 
             if (isChoosing)
             {
-                // Đặt chế độ chọn thành FullRowSelect để chỉ chọn một dòng
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
                 int currentRowIndex = e.RowIndex;
                 if (currentRowIndex >= 0 && currentRowIndex < dataGridView1.Rows.Count)
                 {
-                    // Lấy ô "SELECT" của dòng hiện tại
                     DataGridViewCell selectedCell = dataGridView1.Rows[currentRowIndex].Cells["SELECT"];
 
-                    // Kiểm tra nếu ô không phải là null
                     if (selectedCell != null)
                     {
-                        // Đặt giá trị của ô thành true
                         selectedCell.Value = true;
 
-                        // Vòng lặp để đặt giá trị của tất cả các ô khác trong cột "SELECT" thành false
                         foreach (DataGridViewRow row in dataGridView1.Rows)
                         {
                             if (row.Index != currentRowIndex)
@@ -463,25 +444,21 @@ namespace QuanLyTiecCuoi
 
         public delegate void ConfirmEventHandler(int VenueSelectedId);
 
-        // Define an event based on the delegate
         public event ConfirmEventHandler ConfirmEvent; 
 
         private void Confirm_Click(object sender, EventArgs e)
         {
            
-            // Iterate through the DataGridView to collect selected food IDs
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (Convert.ToBoolean(row.Cells["SELECT"].Value))
                 {
-                    int.TryParse(row.Cells["VenueId"].Value.ToString(), out VenueSelectedId); // Assuming the ID column name is "ID"
+                    int.TryParse(row.Cells["VenueId"].Value.ToString(), out VenueSelectedId); 
                 }
             }
 
-            // Raise the event and pass the list
             ConfirmEvent?.Invoke(VenueSelectedId);
 
-            // Close the Food form
             this.Close();
         }
     }

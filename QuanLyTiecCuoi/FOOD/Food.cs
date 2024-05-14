@@ -17,23 +17,17 @@ namespace QuanLyTiecCuoi
     {
 
         private Booking _parentForm;
+        public string _conString;
 
-        public Food(Booking parentForm = null)
+
+        public Food(string conString, Booking parentForm = null)
         {
-            if (parentForm == null)
-            {
-                InitializeComponent();
-            }
-            else
-            { 
-            InitializeComponent();
-            _parentForm = parentForm;}    
+            InitializeComponent(); 
+
+            _conString = conString;
+
+            _parentForm = parentForm;
         }
-        
-
-
-
-
 
 
         public List<string> SelectedFoods;
@@ -43,9 +37,8 @@ namespace QuanLyTiecCuoi
         private bool ChangingState = false;
 
         private bool isEditing = false;
-        //private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
 
-        private string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
+      
 
 
         private void SelectedFood()
@@ -80,123 +73,56 @@ namespace QuanLyTiecCuoi
         }
         private void Food_Load(object sender, EventArgs e)
         {
-            String query = "SELECT * FROM FOOD";
-
-            using (SqlConnection connection = new SqlConnection(conString))
-            {
-
-                // Tạo một đối tượng DataAdapter và SelectCommand
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                adapter.SelectCommand = new SqlCommand(query, connection);
-
-                connection.Open();
-                bool selectColumnExists = false;
-                if(isChoosing)
-                {    
-                foreach (DataGridViewColumn column in dataGridViewFood.Columns)
-                {
-                    if (column.Name == "Select")
-                    {
-                        selectColumnExists = true;
-                        break;
-                    }
-                }
-
-                if (!selectColumnExists)
-                {
-                    DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
-                    selectColumn.HeaderText = "Select";
-                    selectColumn.Name = "Select";
-                    selectColumn.DataPropertyName = "SELECT"; // Replace "SELECT" with the actual column name in your database
-                    selectColumn.ReadOnly = false; // Allow selection
-                    dataGridViewFood.Columns.Add(selectColumn);
-                    Confirm.Size = new System.Drawing.Size(180, 40);
-                } }
-
-                FoodId.DataPropertyName = "ID";
-                PictureFood.DataPropertyName = "Picture";
-                FoodName.DataPropertyName = "TENMONAN";
-                FoodPrice.DataPropertyName = "DONGIA";
-                FoodNote.DataPropertyName = "NOTE";
-
-
-                DataTable dataTable = new DataTable();
-              
-                adapter.Fill(dataTable);
-
-                connection.Close();
-
-
-                DataGridViewImageColumn imageColumn = dataGridViewFood.Columns["PictureFood"] as DataGridViewImageColumn;
-
-                if (imageColumn != null)
-                {
-                    imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                }
-
-                dataGridViewFood.DataSource = dataTable;
-                if(isChoosing)
-                {    
-                SelectedFood(); }
-
-            }
+            LoadDataGridViewFood();
         }
 
 
         public void LoadDataGridViewFood()
         {
+            String query = "SELECT ID,Picture,DONGIA,NOTE TENMONAN FROM FOOD where TRANGTHAIMONAN = 1";
 
-            String query = "SELECT * FROM FOOD";
-
-            using (SqlConnection connection = new SqlConnection(conString))
+            using (SqlConnection connection = new SqlConnection(_conString))
             {
+                // Create a NpgsqlDataAdapter and SelectCommand
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = new SqlCommand(query, connection);
 
                 connection.Open();
+                bool selectColumnExists = false;
+                if (_parentForm != null)
+                {
+                    foreach (DataGridViewColumn column in dataGridViewFood.Columns)
+                    {
+                        if (column.Name == "Select")
+                        {
+                            selectColumnExists = true;
+                            break;
+                        }
+                    }
+
+                    if (!selectColumnExists)
+                    {
+                        DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
+                        selectColumn.HeaderText = "Select";
+                        selectColumn.Name = "Select";
+                        selectColumn.DataPropertyName = "SELECT"; // Replace "SELECT" with the actual column name in your database
+                        selectColumn.ReadOnly = false; // Allow selection
+                        dataGridViewFood.Columns.Add(selectColumn);
+                        Confirm.Size = new System.Drawing.Size(180, 40);
+                    }
+                }
+
                 FoodId.DataPropertyName = "ID";
                 PictureFood.DataPropertyName = "Picture";
                 FoodName.DataPropertyName = "TENMONAN";
                 FoodPrice.DataPropertyName = "DONGIA";
                 FoodNote.DataPropertyName = "NOTE";
 
-                bool selectColumnExists = false;
-                foreach (DataGridViewColumn column in dataGridViewFood.Columns)
-                {
-                    if (column.Name == "Select")
-                    {
-                        selectColumnExists = true;
-                        break;
-                    }
-                }
-
-                if (!selectColumnExists)
-                {
-                    DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
-                    selectColumn.HeaderText = "Select";
-                    selectColumn.Name = "Select";
-                    selectColumn.DataPropertyName = "SELECT"; // Replace "SELECT" with the actual column name in your database
-                    selectColumn.ReadOnly = false; // Allow selection
-                    dataGridViewFood.Columns.Add(selectColumn);
-                    Confirm.Size = new System.Drawing.Size(180, 40);
-                }
-
                 DataTable dataTable = new DataTable();
-                if (SelectedFoods != null)
-                {
-                    foreach (DataRow row in dataTable.Rows)
-                    {
-                        if (SelectedFoods.Contains(row["FoodId"].ToString()))
-                        {
-                            row["select"] = true;
-                        }
-                    }
-                    }
+
                 adapter.Fill(dataTable);
 
-
                 connection.Close();
-
 
                 DataGridViewImageColumn imageColumn = dataGridViewFood.Columns["PictureFood"] as DataGridViewImageColumn;
 
@@ -206,7 +132,10 @@ namespace QuanLyTiecCuoi
                 }
 
                 dataGridViewFood.DataSource = dataTable;
-
+                if (_parentForm != null)
+                {
+                    SelectedFood();
+                }
             }
         }
 
@@ -218,7 +147,7 @@ namespace QuanLyTiecCuoi
 
             string query = "SELECT * FROM FOOD WHERE [ID] LIKE '%' + @searchText + '%' OR [TENMONAN] LIKE '%' + @searchText + '%' OR [DONGIA] LIKE '%' + @searchText + '%' OR [NOTE] LIKE '%' + @searchText";
 
-            using (SqlConnection connection = new SqlConnection(conString))
+            using (SqlConnection connection = new SqlConnection(_conString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -236,7 +165,7 @@ namespace QuanLyTiecCuoi
 
         private void SaveChangesToDatabase()
         {
-            using (SqlConnection connection = new SqlConnection(conString))
+            using (SqlConnection connection = new SqlConnection(_conString))
             {
                 connection.Open();
 
@@ -324,51 +253,43 @@ namespace QuanLyTiecCuoi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            Int32 selectedCellCount = dataGridViewFood.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
             {
-                // Lấy chỉ mục của hàng đang được chọn
                 int currentIndex = dataGridViewFood.CurrentCell.RowIndex;
 
-                // Lấy giá trị của cột ID từ hàng được chọn
-                string ID = dataGridView1.Rows[currentIndex].Cells["FoodId"].Value.ToString();
+                int ID = Convert.ToInt32(dataGridViewFood.Rows[currentIndex].Cells["FoodId"].Value);
 
-                // Tạo câu lệnh SQL để xóa dữ liệu từ bảng SANHINFOR
-                string deleteStr = "DELETE FROM FOOD WHERE ID = @ID";
+                string storedProcedureName = "CheckAndUpdateFoodStatus";
 
-                // Tạo kết nối SQL và lệnh SQL để thực thi xóa
-                using (SqlConnection connection = new SqlConnection(conString))
+                using (SqlConnection connection = new SqlConnection(_conString))
                 {
-                    using (SqlCommand deleteCmd = new SqlCommand(deleteStr, connection))
+                    using (SqlCommand command = new SqlCommand(storedProcedureName, connection))
                     {
-                        // Thêm tham số @ID vào lệnh SQL
-                        deleteCmd.Parameters.AddWithValue("@ID", ID);
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@IDfood", ID);
 
                         try
                         {
-                            // Mở kết nối
                             connection.Open();
 
-                            // Thực thi lệnh SQL xóa
-                            deleteCmd.ExecuteNonQuery();
+                            command.ExecuteNonQuery();
 
-                            // Hiển thị thông báo khi xóa thành công
-                            MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Record updated/deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            // Tải lại dữ liệu vào DataGridView sau khi xóa
                             LoadDataGridViewFood();
                         }
                         catch (Exception ex)
                         {
-                            // Hiển thị thông báo lỗi nếu có lỗi xảy ra khi xóa
-                            MessageBox.Show("An error occurred while deleting the record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("An error occurred while updating/deleting the record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
             }
             else
             {
-                // Hiển thị thông báo nếu không có hàng nào được chọn
-                MessageBox.Show("Please select a record to delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please select a record to update/delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -421,7 +342,7 @@ namespace QuanLyTiecCuoi
         private void AddFood_Click(object sender, EventArgs e)
         {
             // Corrected variable name to insertVenueForm
-            InsertFood insertFoodForm = new InsertFood(this);
+            InsertFood insertFoodForm = new InsertFood(this, _conString);
             insertFoodForm.ShowDialog();
         }
 

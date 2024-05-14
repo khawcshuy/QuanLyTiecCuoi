@@ -18,12 +18,13 @@ namespace QuanLyTiecCuoi
     {
         private decimal PenaltyRatioValue = 0.1m;
 
-        private string conString = @"Data Source=ADMINISTRATOR;Initial Catalog=QUANLYTIECCUOI;Integrated Security=True;Connect Timeout=30;";
+        private string conString;
 
 
-        public Receipt()
+        public Receipt(String conString)
         {
             InitializeComponent();
+            this.conString = conString;
         }
 
         public class CustomerInfo
@@ -471,6 +472,76 @@ namespace QuanLyTiecCuoi
 
         private void customerID_TextChanged(object sender, EventArgs e)
         {
+            string SearchText = tiecId.Text.Trim();
+            string FindIdTiec = "SELECT T.ID , TENKHACHHANG FROM TIEC T, KHACHHANGINFOR K WHERE T.IDTHONGTINKHACHHANG = K.ID AND( K.DIENTHOAI LIKE '%' + @searchText + '%' OR T.ID LIKE '%' + @searchText + '%' OR TENKHACHHANG LIKE '%' + @searchText + '%' )";
+
+            if (tiecId.TextLength > 1)
+            {
+               
+
+
+                using (SqlConnection con = new SqlConnection(conString))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand(FindIdTiec, con))
+                    {
+                        cmd.Parameters.AddWithValue("@searchText", SearchText);
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        if (table.Rows.Count > 0 && table != null)
+                        {
+                            IdTiec.DataPropertyName = "ID";
+                            CustomerNameFind.DataPropertyName = "TENKHACHHANG";
+                            SearchTiecAndKhachHang.DataSource = table;
+                            int rowHeight = 30;
+                            int headerHeight = 20; 
+
+                            SearchTiecAndKhachHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+                            SearchTiecAndKhachHang.ColumnHeadersHeight = headerHeight;
+
+                            int totalHeight = SearchTiecAndKhachHang.Rows.Count * rowHeight + headerHeight;
+                            SearchTiecAndKhachHang.Height = totalHeight;
+                        }
+                        else
+                        {
+                            SearchTiecAndKhachHang.Height = 0;
+                        }
+                    }
+                }
+            }
+            else if (Phone.TextLength <= 0)
+            {
+                SearchTiecAndKhachHang.Height = 0;
+            }
+        }
+
+        private void SearchTiecAndKhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                string id = SearchTiecAndKhachHang.Rows[e.RowIndex].Cells["IdTiec"].Value.ToString();
+
+                SearchTiecAndKhachHang.Height = 0;
+                
+                tiecId.Text = id;
+            }
+
+
+            RecalculateTotal();
+            decimal totalFood = 0.0m;
+            decimal totalSer = 0.0m;
+            DateTime partyDate = DateTime.Today;
+            string IdTiec = tiecId.Text;
+
+            CustomerInfo customer = LoadCustomerInfo(IdTiec);
+            totalFood = loadFood(customer.Customerid);
+            partyDate = customer.DueDate;
+            totalSer = LoadService(customer.Customerid);
+            LoadHD(customer.Customerid);
+            PenaltyRatio.Text = PenaltyRatioValue.ToString();
+            DateLate.Text = CalculateDaysLate(partyDate).ToString();
 
         }
     }

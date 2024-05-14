@@ -37,10 +37,9 @@
             this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServiceNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.ChangeService = new System.Windows.Forms.Button();
-            this.AddFood = new System.Windows.Forms.Button();
+            this.AddService = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
@@ -54,7 +53,7 @@
             this.panel2.Controls.Add(this.dataGridViewService);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.ChangeService);
-            this.panel2.Controls.Add(this.AddFood);
+            this.panel2.Controls.Add(this.AddService);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Location = new System.Drawing.Point(12, 12);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -82,8 +81,9 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(160, 32);
             this.button1.TabIndex = 8;
-            this.button1.Text = "- Xóa Sảnh";
+            this.button1.Text = "- Xóa DV";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // SearchService
             // 
@@ -101,13 +101,13 @@
             this.ServiceId,
             this.ServiceName,
             this.ServiceType,
-            this.ServicePrice,
-            this.ServiceNote});
+            this.ServicePrice});
             this.dataGridViewService.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridViewService.Location = new System.Drawing.Point(16, 102);
             this.dataGridViewService.Name = "dataGridViewService";
             this.dataGridViewService.ReadOnly = true;
             this.dataGridViewService.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewService.RowHeadersVisible = false;
             this.dataGridViewService.RowHeadersWidth = 51;
             this.dataGridViewService.RowTemplate.Height = 100;
             this.dataGridViewService.Size = new System.Drawing.Size(946, 591);
@@ -134,7 +134,7 @@
             // ServiceType
             // 
             this.ServiceType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ServiceType.HeaderText = "Loai Dich Vu";
+            this.ServiceType.HeaderText = "Loại Dịch Vụ";
             this.ServiceType.MinimumWidth = 6;
             this.ServiceType.Name = "ServiceType";
             this.ServiceType.ReadOnly = true;
@@ -148,14 +148,6 @@
             this.ServicePrice.Name = "ServicePrice";
             this.ServicePrice.ReadOnly = true;
             this.ServicePrice.Width = 125;
-            // 
-            // ServiceNote
-            // 
-            this.ServiceNote.HeaderText = "Ghi Chú";
-            this.ServiceNote.MinimumWidth = 6;
-            this.ServiceNote.Name = "ServiceNote";
-            this.ServiceNote.ReadOnly = true;
-            this.ServiceNote.Width = 125;
             // 
             // label3
             // 
@@ -173,20 +165,21 @@
             this.ChangeService.Name = "ChangeService";
             this.ChangeService.Size = new System.Drawing.Size(160, 32);
             this.ChangeService.TabIndex = 5;
-            this.ChangeService.Text = "Chỉnh sửa sảnh";
+            this.ChangeService.Text = "Chỉnh sửa dịch vụ";
             this.ChangeService.UseVisualStyleBackColor = false;
             this.ChangeService.Click += new System.EventHandler(this.ChangeService_Click);
             // 
-            // AddFood
+            // AddService
             // 
-            this.AddFood.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.AddFood.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.AddFood.Location = new System.Drawing.Point(332, 64);
-            this.AddFood.Name = "AddFood";
-            this.AddFood.Size = new System.Drawing.Size(160, 32);
-            this.AddFood.TabIndex = 4;
-            this.AddFood.Text = "+ Thêm Sảnh Mới";
-            this.AddFood.UseVisualStyleBackColor = false;
+            this.AddService.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.AddService.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.AddService.Location = new System.Drawing.Point(332, 64);
+            this.AddService.Name = "AddService";
+            this.AddService.Size = new System.Drawing.Size(160, 32);
+            this.AddService.TabIndex = 4;
+            this.AddService.Text = "+ Thêm DV Mới";
+            this.AddService.UseVisualStyleBackColor = false;
+            this.AddService.Click += new System.EventHandler(this.AddService_Click);
             // 
             // label4
             // 
@@ -224,13 +217,12 @@
         private System.Windows.Forms.DataGridView dataGridViewService;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button ChangeService;
-        private System.Windows.Forms.Button AddFood;
+        private System.Windows.Forms.Button AddService;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button Confirm;
         private System.Windows.Forms.DataGridViewTextBoxColumn ServiceId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ServiceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ServiceType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ServicePrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceNote;
-        private System.Windows.Forms.Button Confirm;
     }
 }

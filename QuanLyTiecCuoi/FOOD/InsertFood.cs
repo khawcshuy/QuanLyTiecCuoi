@@ -9,20 +9,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Npgsql;
 
 namespace QuanLyTiecCuoi.SERVICE
 {
     public partial class InsertFood : Form
     {
         private Food _parentForm;
-        public InsertFood(Food parentForm)
+        public string conString;
+
+        public InsertFood(Food parentForm , String _conString)
         {
             InitializeComponent();
             _parentForm = parentForm;
+          
+            conString = _conString;
+            
+           
         }
         public string imglocation = "";
         //private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
-        private string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
 
         private void INSERTFOOD_Load(object sender, EventArgs e)
         {
@@ -55,7 +61,7 @@ namespace QuanLyTiecCuoi.SERVICE
             }
 
             // SQL query to insert a new venue
-            string insert_query = "INSERT INTO FOOD (TENMONAN, DONGIA, NOTE, PICTURE)  VALUES(@FoodName,@FoodPrice,@Note, @Image)";
+            string insert_query = "INSERT INTO food (TENMONAN, DONGIA, NOTE, PICTURE) VALUES (@FoodName, @FoodPrice, @Note, @Image)";
 
             // Create a new connection
             using (SqlConnection connection = new SqlConnection(conString))
