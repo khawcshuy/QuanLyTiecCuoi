@@ -97,10 +97,8 @@ BEGIN
 
     DECLARE @NgayToChuc DATE;
     
-    -- Kiểm tra xem IDfood có trong bảng FOODINUSE hay không
     IF EXISTS (SELECT 1 FROM FOODINUSE WHERE IDTHUCDON = @IDfood)
     BEGIN
-        -- Lấy ngày tổ chức từ bảng TIEC dựa trên IDtiec
         SELECT @NgayToChuc = NGAYTOCHUC
         FROM TIEC
         WHERE ID = (SELECT IDtiec FROM FOODINUSE WHERE IDTHUCDON = @IDfood);
@@ -115,7 +113,6 @@ BEGIN
         END
         ELSE
         BEGIN
-            -- Tiến hành cập nhật trạng thái của IDfood trong bảng SANHINFOR
             UPDATE FOOD
             SET TRANGTHAIMONAN = 0
             WHERE ID = @IDfood;
@@ -123,7 +120,6 @@ BEGIN
     END
     ELSE
     BEGIN
-        -- Xóa bản ghi nếu không có trong bảng FOODINUSE
         DELETE FROM FOOD WHERE ID = @IDfood;
     END
 END
@@ -140,7 +136,6 @@ BEGIN
     
     IF EXISTS (SELECT 1 FROM DICHVUINUSE WHERE IDDICHVU = @IDDICHVU)
     BEGIN
-        -- Lấy ngày tổ chức từ bảng TIEC dựa trên IDtiec
         SELECT @NgayToChuc = NGAYTOCHUC
         FROM TIEC
         WHERE ID = (SELECT IDTIEC FROM DICHVUINUSE WHERE IDDICHVU = @IDDICHVU);
@@ -155,7 +150,6 @@ BEGIN
         END
         ELSE
         BEGIN
-            -- Tiến hành cập nhật trạng thái của IDfood trong bảng SANHINFOR
             UPDATE DICHVU
             SET TRANGTHAIDICHVU = 0
             WHERE ID = @IDDICHVU;
@@ -163,7 +157,6 @@ BEGIN
     END
     ELSE
     BEGIN
-        -- Xóa bản ghi nếu không có trong bảng FOODINUSE
         DELETE FROM DICHVU WHERE ID = @IDDICHVU;
     END
 END
