@@ -18,11 +18,11 @@ namespace QuanLyTiecCuoi
             Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new QuanLyTiecCuoi.Service.Service(conString, null));
-            Application.Run(new Receipt(conString));
+            //Application.Run(new Receipt(conString));
             //Food foodform = new Food(conString, null);
 
             //Application.Run(foodform);
-
+            Application.Run(new Report())
 
             //Venue Venue = new Venue(null, conString);
             //Application.Run(Venue);

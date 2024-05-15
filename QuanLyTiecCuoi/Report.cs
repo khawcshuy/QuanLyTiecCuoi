@@ -19,14 +19,17 @@ namespace QuanLyTiecCuoi
 
         private void listView1_load(object sender, EventArgs e)
         {
-            LsParty.Columns[0].Width = (int) (LsParty.Width * 0.2);
-            LsParty.Columns[1].Width = (int)(LsParty.Width * 0.2);
-            LsParty.Columns[2].Width = (int)(LsParty.Width * 0.2);
-            LsParty.Columns[3].Width = (int)(LsParty.Width * 0.2);
-            LsParty.Columns[4].Width = (int)(LsParty.Width * 0.2);
-            LsParty.View = View.Details;
-            LsParty.GridLines = true;
-            LsParty.FullRowSelect = true;
+          
+        }
+
+        private void Report_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
