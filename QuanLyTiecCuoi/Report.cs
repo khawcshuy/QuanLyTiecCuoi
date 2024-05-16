@@ -169,12 +169,11 @@ namespace QuanLyTiecCuoi
                     cmd.Parameters.AddWithValue("@THANG", currentMonth);
 
                     // Add output parameters
-                    cmd.Parameters.Add("@DTThang", SqlDbType.Money).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("@DTThang1", SqlDbType.Money).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("@DTThang2", SqlDbType.Money).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("@DTThang3", SqlDbType.Money).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("@DTThang4", SqlDbType.Money).Direction = ParameterDirection.Output;
-
+                    cmd.Parameters.Add("@DTThang5", SqlDbType.Money).Direction = ParameterDirection.Output;
 
                     cmd.Parameters.Add("@SoLuongTiec1", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("@SoLuongTiec2", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -182,61 +181,50 @@ namespace QuanLyTiecCuoi
                     cmd.Parameters.Add("@SoLuongTiec4", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("@SoLuongTiec5", SqlDbType.Int).Direction = ParameterDirection.Output;
 
+                    cmd.Parameters.Add("@Month1", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@Year1", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@Month2", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@Year2", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@Month3", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@Year3", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@Month4", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@Year4", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@Month5", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@Year5", SqlDbType.Int).Direction = ParameterDirection.Output;
+
                     con.Open();
                     cmd.ExecuteNonQuery();
 
                     // Retrieve the output values
-                    decimal DTThang = (decimal)cmd.Parameters["@DTThang"].Value;
-                    decimal DTThang1 = (decimal)cmd.Parameters["@DTThang1"].Value;
-                    decimal DTThang2 = (decimal)cmd.Parameters["@DTThang2"].Value;
-                    decimal DTThang3 = (decimal)cmd.Parameters["@DTThang3"].Value;
-                    decimal DTThang4 = (decimal)cmd.Parameters["@DTThang4"].Value;
-                    int SoLuongTiec1 = (int)cmd.Parameters["@SoLuongTiec1"].Value;
-                    int SoLuongTiec2 = (int)cmd.Parameters["@SoLuongTiec2"].Value;
-                    int SoLuongTiec3 = (int)cmd.Parameters["@SoLuongTiec3"].Value;
-                    int SoLuongTiec4 = (int)cmd.Parameters["@SoLuongTiec4"].Value;
-                    int SoLuongTiec5 = (int)cmd.Parameters["@SoLuongTiec5"].Value;
-                    // Generate month labels
-                    chart1.Series.Clear();
+                    
 
-                    // Generate month labels
-                    string[] monthLabels = new string[5];
+                    decimal?[] DTThangValues = new decimal?[5];
+                    int?[] SoLuongTiecValues = new int?[5];
+                    int?[] MonthValues = new int?[5];
+                    int?[] YearValues = new int?[5];
+
                     for (int i = 0; i < 5; i++)
                     {
-                        int month = currentMonth - i;
-                        int year = currentYear;
-
-                        if (month <= 0)
-                        {
-                            month += 12;
-                            year--;
-                        }
-
-                        // Kiểm tra tính hợp lệ của tháng và năm trước khi tạo đối tượng DateTime
-                        if (year > 0 && month > 0 && month <= 12)
-                        {
-                            monthLabels[i] = new DateTime(year, month, 1).ToString("MMMM yyyy");
-                        }
-                        else
-                        {
-                            // Xử lý trường hợp không hợp lệ (ví dụ: tháng <= 0 hoặc tháng > 12)
-                            monthLabels[i] = "Invalid Date";
-                        }
+                        DTThangValues[i] = cmd.Parameters["@DTThang" + (i + 1)].Value == DBNull.Value ? null : (decimal?)cmd.Parameters["@DTThang" + (i + 1)].Value;
+                        SoLuongTiecValues[i] = cmd.Parameters["@SoLuongTiec" + (i + 1)].Value == DBNull.Value ? null : (int?)cmd.Parameters["@SoLuongTiec" + (i + 1)].Value;
+                        MonthValues[i] = cmd.Parameters["@Month" + (i + 1)].Value == DBNull.Value ? null : (int?)cmd.Parameters["@Month" + (i + 1)].Value;
+                        YearValues[i] = cmd.Parameters["@Year" + (i + 1)].Value == DBNull.Value ? null : (int?)cmd.Parameters["@Year" + (i + 1)].Value;
                     }
 
-
                     // Bind the data to the chart
-                    var chartData = new List<Tuple<string, decimal, int>>
-{
-    Tuple.Create(monthLabels[0], DTThang, SoLuongTiec1),
-    Tuple.Create(monthLabels[1], DTThang1, SoLuongTiec2),
-    Tuple.Create(monthLabels[2], DTThang2, SoLuongTiec3),
-    Tuple.Create(monthLabels[3], DTThang3, SoLuongTiec4),
-    Tuple.Create(monthLabels[4], DTThang4, SoLuongTiec5)
-};
+                    var chartData = new List<Tuple<string, decimal, int, int, int>>();
 
-                    // Create Series1 for column chart
-                    var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (DTThangValues[i].HasValue && SoLuongTiecValues[i].HasValue && MonthValues[i].HasValue && YearValues[i].HasValue)
+                        {
+                            string monthLabel = $"{new DateTime(YearValues[i].Value, MonthValues[i].Value, 1):MMMM yyyy}";
+                            chartData.Add(Tuple.Create(monthLabel, DTThangValues[i].Value, SoLuongTiecValues[i].Value, MonthValues[i].Value, YearValues[i].Value));
+                        }
+                    }
+                    chart1.Series.Clear();
+                   // Create Series1 for column chart
+                   var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
                     {
                         Name = "Doanh Thu Mỗi Tháng",
                         IsValueShownAsLabel = true,
@@ -258,19 +246,15 @@ namespace QuanLyTiecCuoi
                         // Add data to Series1 (column chart)
                         if (data.Item2 != 0)
                         {
-                            var point = series1.Points.AddXY(data.Item1, data.Item2);
+                            var point = series1.Points.AddXY($"{data.Item1}", data.Item2);
                         }
 
-                        // Add data to Series2 (line chart)
-                        if (data.Item3 != 0)
-                        {
-                            var point = series2.Points.AddXY(data.Item1, data.Item3);
-                        }
                     }
                 }
             }
         }
-        private void CalculateDailyRevenueRatio(string Thang = null, string Nam = null)
+
+                        private void CalculateDailyRevenueRatio(string Thang = null, string Nam = null)
         {
             if (Thang == null)
             {
