@@ -218,6 +218,139 @@ WHERE MONTH(H.NGAYXUATHOADON) = @THANG  AND @NAM = YEAR(NGAYXUATHOADON);
 
 END
 
+GO
+CREATE OR ALTER PROCEDURE GetNearest5month
+    @THANG INT,
+    @NAM INT,
+    @DTThang5 MONEY OUT,
+    @DTThang1 MONEY OUT,
+    @DTThang2 MONEY OUT,
+    @DTThang3 MONEY OUT,
+    @DTThang4 MONEY OUT,
+    @SoLuongTiec1 INT OUT,
+    @SoLuongTiec2 INT OUT,
+    @SoLuongTiec3 INT OUT,
+    @SoLuongTiec4 INT OUT,
+    @SoLuongTiec5 INT OUT,
+    @Month1 INT OUT, 
+    @Year1 INT OUT,
+    @Month2 INT OUT, 
+    @Year2 INT OUT,
+    @Month3 INT OUT, 
+    @Year3 INT OUT,
+    @Month4 INT OUT, 
+    @Year4 INT OUT,
+    @Month5 INT OUT, 
+    @Year5 INT OUT
+AS
+BEGIN
+    IF @NAM IS NULL
+        SET @NAM = YEAR(GETDATE());
+
+    IF @THANG IS NULL
+        SET @THANG = MONTH(GETDATE());
+
+    -- Variables to hold month and year calculations
+    DECLARE @Months TABLE (Thang INT, Nam INT);
+
+    INSERT INTO @Months (Thang, Nam)
+    SELECT TOP (5) MONTH(NGAYXUATHOADON) AS Thang, YEAR(NGAYXUATHOADON) AS Nam
+    FROM [QUANLYTIECCUOI].[dbo].[HOADON]
+    GROUP BY MONTH(NGAYXUATHOADON), YEAR(NGAYXUATHOADON)
+    ORDER BY Nam DESC, Thang DESC;
+
+    SELECT TOP 1 @Month1 = Thang, @Year1 = Nam FROM @Months;
+    DELETE TOP(1) FROM @Months;
+    SELECT TOP 1 @Month2 = Thang, @Year2 = Nam FROM @Months;
+    DELETE TOP(1) FROM @Months;
+    SELECT TOP 1 @Month3 = Thang, @Year3 = Nam FROM @Months;
+    DELETE TOP(1) FROM @Months;
+    SELECT TOP 1 @Month4 = Thang, @Year4 = Nam FROM @Months;
+    DELETE TOP(1) FROM @Months;
+    SELECT TOP 1 @Month5 = Thang, @Year5 = Nam FROM @Months;
+
+    -- Calculate the sums and counts for each month
+    IF @Month1 IS NOT NULL AND @Year1 IS NOT NULL
+    BEGIN
+        SELECT 
+            @DTThang1 = ISNULL(SUM(TONGTIEN), 0),
+            @SoLuongTiec1 = COUNT(IDTIEC)
+        FROM HOADON
+        WHERE MONTH(NGAYXUATHOADON) = @Month1 AND YEAR(NGAYXUATHOADON) = @Year1;
+    END
+
+    IF @Month2 IS NOT NULL AND @Year2 IS NOT NULL
+    BEGIN
+        SELECT 
+            @DTThang2 = ISNULL(SUM(TONGTIEN), 0),
+            @SoLuongTiec2 = COUNT(IDTIEC)
+        FROM HOADON
+        WHERE MONTH(NGAYXUATHOADON) = @Month2 AND YEAR(NGAYXUATHOADON) = @Year2;
+    END
+
+    IF @Month3 IS NOT NULL AND @Year3 IS NOT NULL
+    BEGIN
+        SELECT 
+            @DTThang3 = ISNULL(SUM(TONGTIEN), 0),
+            @SoLuongTiec3 = COUNT(IDTIEC)
+        FROM HOADON
+        WHERE MONTH(NGAYXUATHOADON) = @Month3 AND YEAR(NGAYXUATHOADON) = @Year3;
+    END
+
+    IF @Month4 IS NOT NULL AND @Year4 IS NOT NULL
+    BEGIN
+        SELECT 
+            @DTThang4 = ISNULL(SUM(TONGTIEN), 0),
+            @SoLuongTiec4 = COUNT(IDTIEC)
+        FROM HOADON
+        WHERE MONTH(NGAYXUATHOADON) = @Month4 AND YEAR(NGAYXUATHOADON) = @Year4;
+    END
+
+    IF @Month5 IS NOT NULL AND @Year5 IS NOT NULL
+    BEGIN
+        SELECT 
+            @DTThang5 = ISNULL(SUM(TONGTIEN), 0),
+            @SoLuongTiec5 = COUNT(IDTIEC)
+        FROM HOADON
+        WHERE MONTH(NGAYXUATHOADON) = @Month5 AND YEAR(NGAYXUATHOADON) = @Year5;
+    END
+END;
 
 
 
+
+
+
+
+
+go
+CREATE OR ALTER PROCEDURE CalculateDailyRevenueRatio
+    @Month INT,
+    @Year INT
+AS
+BEGIN
+    -- Calculate total revenue for the month
+    DECLARE @TotalRevenue DECIMAL(18, 2);
+    SELECT @TotalRevenue = ISNULL(SUM(TONGTIEN), 0)
+    FROM HOADON
+    WHERE MONTH(NGAYXUATHOADON) = @Month AND YEAR(NGAYXUATHOADON) = @Year;
+
+    -- Calculate daily revenue and ratio for each day of the month
+    SELECT
+        DAY(NGAYXUATHOADON) AS DayOfMonth,
+        SUM(TONGTIEN) AS DailyRevenue,
+        CASE
+            WHEN @TotalRevenue = 0 THEN 0 -- To handle division by zero
+            ELSE SUM(TONGTIEN) / @TotalRevenue
+        END AS RevenueRatio
+    FROM
+        HOADON
+    WHERE
+        MONTH(NGAYXUATHOADON) = @Month AND YEAR(NGAYXUATHOADON) = @Year
+    GROUP BY
+        DAY(NGAYXUATHOADON)
+    ORDER BY
+        DayOfMonth;
+END;
+
+ 
