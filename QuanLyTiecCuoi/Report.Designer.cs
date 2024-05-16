@@ -28,15 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ReportOfMonth = new System.Windows.Forms.Label();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewReport = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdTiec = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalMoney = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiscountPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.RevenueValue = new System.Windows.Forms.Label();
             this.TotalVenueValue = new System.Windows.Forms.Label();
@@ -50,12 +65,19 @@
             this.totalTableValue = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.GetMonthYear = new System.Windows.Forms.TextBox();
+            this.FindMonth = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            this.flowLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,17 +94,57 @@
             // 
             // flowLayoutPanel3
             // 
+            this.flowLayoutPanel3.Controls.Add(this.chart2);
             this.flowLayoutPanel3.Location = new System.Drawing.Point(662, 48);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(315, 289);
             this.flowLayoutPanel3.TabIndex = 5;
             // 
+            // chart2
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
+            this.chart2.Location = new System.Drawing.Point(3, 3);
+            this.chart2.Name = "chart2";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart2.Series.Add(series1);
+            this.chart2.Size = new System.Drawing.Size(300, 300);
+            this.chart2.TabIndex = 0;
+            this.chart2.Text = "chart2";
+            // 
             // flowLayoutPanel4
             // 
+            this.flowLayoutPanel4.Controls.Add(this.chart1);
             this.flowLayoutPanel4.Location = new System.Drawing.Point(407, 343);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(570, 383);
             this.flowLayoutPanel4.TabIndex = 4;
+            // 
+            // chart1
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(3, 3);
+            this.chart1.Name = "chart1";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Legend = "Legend1";
+            series3.Name = "Series2";
+            this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
+            this.chart1.Size = new System.Drawing.Size(567, 380);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "Doanh Thu 5 Tháng Gần Nhất";
             // 
             // pictureBox10
             // 
@@ -134,15 +196,68 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
-            // dataGridView1
+            // dataGridViewReport
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 343);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(367, 383);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridViewReport.AllowUserToAddRows = false;
+            this.dataGridViewReport.AllowUserToDeleteRows = false;
+            this.dataGridViewReport.AllowUserToOrderColumns = true;
+            this.dataGridViewReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.IdTiec,
+            this.CustomerName,
+            this.TotalMoney,
+            this.InvoiceDate,
+            this.DiscountPercent});
+            this.dataGridViewReport.Location = new System.Drawing.Point(19, 343);
+            this.dataGridViewReport.Name = "dataGridViewReport";
+            this.dataGridViewReport.RowHeadersVisible = false;
+            this.dataGridViewReport.RowHeadersWidth = 51;
+            this.dataGridViewReport.RowTemplate.Height = 24;
+            this.dataGridViewReport.Size = new System.Drawing.Size(367, 383);
+            this.dataGridViewReport.TabIndex = 0;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Width = 125;
+            // 
+            // IdTiec
+            // 
+            this.IdTiec.HeaderText = "Mã Tiệc";
+            this.IdTiec.MinimumWidth = 6;
+            this.IdTiec.Name = "IdTiec";
+            this.IdTiec.Width = 125;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.HeaderText = "Tên Khách Hàng";
+            this.CustomerName.MinimumWidth = 6;
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.Width = 125;
+            // 
+            // TotalMoney
+            // 
+            this.TotalMoney.HeaderText = "Tổng Tiền";
+            this.TotalMoney.MinimumWidth = 6;
+            this.TotalMoney.Name = "TotalMoney";
+            this.TotalMoney.Width = 125;
+            // 
+            // InvoiceDate
+            // 
+            this.InvoiceDate.HeaderText = "Ngày Xuất Hóa Đơn";
+            this.InvoiceDate.MinimumWidth = 6;
+            this.InvoiceDate.Name = "InvoiceDate";
+            this.InvoiceDate.Width = 125;
+            // 
+            // DiscountPercent
+            // 
+            this.DiscountPercent.HeaderText = "Phần Trăm Giảm Gía";
+            this.DiscountPercent.MinimumWidth = 6;
+            this.DiscountPercent.Name = "DiscountPercent";
+            this.DiscountPercent.Width = 125;
             // 
             // label1
             // 
@@ -274,12 +389,41 @@
             this.pictureBox2.TabIndex = 33;
             this.pictureBox2.TabStop = false;
             // 
+            // GetMonthYear
+            // 
+            this.GetMonthYear.Location = new System.Drawing.Point(780, 20);
+            this.GetMonthYear.Name = "GetMonthYear";
+            this.GetMonthYear.Size = new System.Drawing.Size(142, 22);
+            this.GetMonthYear.TabIndex = 36;
+            // 
+            // FindMonth
+            // 
+            this.FindMonth.Location = new System.Drawing.Point(928, 19);
+            this.FindMonth.Name = "FindMonth";
+            this.FindMonth.Size = new System.Drawing.Size(49, 23);
+            this.FindMonth.TabIndex = 37;
+            this.FindMonth.Text = "ent";
+            this.FindMonth.UseVisualStyleBackColor = true;
+            this.FindMonth.Click += new System.EventHandler(this.FindMonth_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(653, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(121, 16);
+            this.label2.TabIndex = 38;
+            this.label2.Text = "Nhập Tháng/ Năm ";
+            // 
             // Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1001, 759);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.FindMonth);
+            this.Controls.Add(this.GetMonthYear);
             this.Controls.Add(this.totalTableValue);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.pictureBox2);
@@ -293,7 +437,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.RevenueValue);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewReport);
             this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.pictureBox12);
             this.Controls.Add(this.pictureBox8);
@@ -305,12 +449,16 @@
             this.Name = "Report";
             this.Text = "Bao Cao Thang";
             this.Load += new System.EventHandler(this.Report_Load);
+            this.flowLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -327,7 +475,7 @@
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox12;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewReport;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label RevenueValue;
         private System.Windows.Forms.Label TotalVenueValue;
@@ -341,5 +489,16 @@
         private System.Windows.Forms.Label totalTableValue;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdTiec;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalMoney;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiscountPercent;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.TextBox GetMonthYear;
+        private System.Windows.Forms.Button FindMonth;
+        private System.Windows.Forms.Label label2;
     }
 }
