@@ -22,7 +22,7 @@ namespace QuanLyTiecCuoi
             //Food foodform = new Food(conString, null);
 
             //Application.Run(foodform);
-            Application.Run(new Report())
+            Application.Run(new Report(conString));
 
             //Venue Venue = new Venue(null, conString);
             //Application.Run(Venue);
@@ -30,7 +30,7 @@ namespace QuanLyTiecCuoi
 
             //Booking bookingform = new Booking(conString);
 
-            //////// pass the bookingform instance to the food form constructor
+            ////// pass the bookingform instance to the food form constructor
             //Food foodform = new Food(conString, bookingform);
             //Application.Run(bookingform);
 

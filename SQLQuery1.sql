@@ -25,6 +25,7 @@ CREATE TABLE SANHINFOR
 	TRANGTHAISANH BIT NOT NULL,
 	NOTE NVARCHAR(100) DEFAULT N' ',
 	PICTURE Image NULL,
+
 )
 INSERT INTO SANHINFOR 
 VALUES(N'Sảnh Violet',N'A',100,1000000,100000000,0,DEFAULT,(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x));
@@ -53,38 +54,40 @@ CREATE TABLE FOOD
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	TENMONAN VARCHAR(100)NOT NULL,
 	DONGIA MONEY NOT NULL,
-	NOTE VARCHAR(100) DEFAULT N' '
+	PICTURE Image NULL,
+	NOTE VARCHAR(100) DEFAULT N' ',
+	TRANGTHAIMONAN BIT DEFAULT 1,
 )
 INSERT INTO FOOD 
 VALUES
-( 'Gỏi gà xé phay', 50000, DEFAULT),
-('Nem chua rán', 40000, DEFAULT),
-( 'Cá lóc kho tộ', 150000, DEFAULT),
-('Thịt kho tàu', 120000, DEFAULT),
-('Đùi gà tiềm sâm bổ lượng', 180000, DEFAULT),
-( 'Rau xào thập cẩm', 50000, DEFAULT),
-( 'Canh măng mọc', 50000, DEFAULT),
-('Trái cây theo mùa', 50000, DEFAULT),
-( 'Súp cua', 60000, DEFAULT),
-( 'Chả giò tôm thịt', 60000, DEFAULT),
-( 'Tôm sú nướng muối ớt', 200000, DEFAULT),
-( 'Bò lúc lắc', 180000, DEFAULT),
-( 'Gà ta hấp nấm hương', 150000, DEFAULT),
-( 'Rau xào nấm đông cô', 60000, DEFAULT),
-( 'Canh atiso hầm giò heo', 120000, DEFAULT),
-( 'Chè hạt sen long nhãn', 50000, DEFAULT),
-( 'Yến sào chưng hạt sen', 200000, DEFAULT),
-( 'Tôm hùm đất rang muối', 300000, DEFAULT),
-( 'Cá chình kho tộ', 250000, DEFAULT),
-( 'Bò xào nấm tuyết', 200000, DEFAULT),
-( 'Gà Đông Tảo luộc', 200000, DEFAULT),
-( 'Rau cải bó xôi xào nấm', 70000, DEFAULT),
-( 'Canh bào ngư tiềm gà', 250000, DEFAULT),
-( 'Bánh mousse chocolate', 70000, DEFAULT),
-( 'Salad cá ngừ đại dương', 80000, DEFAULT),
-( 'Foie gras áp chảo', 250000, DEFAULT),
-( 'Tôm sú hấp sả', 250000, DEFAULT),
-( 'Bò Wagyu nướng', 400000, DEFAULT),
+( 'Gỏi gà xé phay', 50000,(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), DEFAULT,DEFAULT),
+('Nem chua rán', 40000,(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), DEFAULT,DEFAULT),
+( 'Cá lóc kho tộ', 150000,(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), DEFAULT,DEFAULT),
+('Thịt kho tàu', 120000,(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), DEFAULT,DEFAULT),
+('Đùi gà tiềm sâm bổ lượng',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 180000, DEFAULT,DEFAULT),
+( 'Rau xào thập cẩm',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 50000, DEFAULT,DEFAULT),
+( 'Canh măng mọc',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 50000, DEFAULT),
+('Trái cây theo mùa',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 50000, DEFAULT),
+( 'Súp cua', 60000,(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), DEFAULT),
+( 'Chả giò tôm thịt',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 60000, DEFAULT),
+( 'Tôm sú nướng muối ớt',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 200000, DEFAULT),
+( 'Bò lúc lắc', 180000,(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), DEFAULT),
+( 'Gà ta hấp nấm hương',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 150000, DEFAULT),
+( 'Rau xào nấm đông cô',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 60000, DEFAULT),
+( 'Canh atiso hầm giò heo',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 120000, DEFAULT),
+( 'Chè hạt sen long nhãn',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 50000, DEFAULT),
+( 'Yến sào chưng hạt sen',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 200000, DEFAULT),
+( 'Tôm hùm đất rang muối'	,(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 300000, DEFAULT),
+( 'Cá chình kho tộ',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 250000, DEFAULT),
+( 'Bò xào nấm tuyết',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 200000, DEFAULT),
+( 'Gà Đông Tảo luộc',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 200000, DEFAULT),
+( 'Rau cải bó xôi xào nấm',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 70000, DEFAULT),
+( 'Canh bào ngư tiềm gà',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 250000, DEFAULT),
+( 'Bánh mousse chocolate',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 70000, DEFAULT),
+( 'Salad cá ngừ đại dương',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 80000, DEFAULT),
+( 'Foie gras áp chảo',(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), 250000, DEFAULT),
+( 'Tôm sú hấp sả', 250000,(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), DEFAULT),
+( 'Bò Wagyu nướng', 400000,(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), DEFAULT),
 ( 'Gà tiềm nhân sâm', 250000, DEFAULT),
 ( 'Rau asparagus xào tỏi', 80000, DEFAULT),
 ( 'Canh măng mọc cua bể', 200000, DEFAULT),
@@ -136,6 +139,8 @@ CREATE TABLE DICHVU
 	LOAIDICHVU  VARCHAR(100)NOT NULL,
 	TENDICHVU VARCHAR(100)NOT NULL,
 	GIADICHVU MONEY,
+	PICTURE image NULL,
+	TRANGTHAIDICHVU BIT DEFAULT 1
 )
 CREATE TABLE DICHVUINUSE
 (
@@ -145,11 +150,11 @@ CREATE TABLE DICHVUINUSE
 -- RƯỢU, BÁNH KEM, MC, BAN NHẠC, CA SĨ, DJ
 INSERT INTO DICHVU
 VALUES
-	('Rượu', 'Chateau Musar Jeune Red', 850000),
-	('Rượu', 'Montes Alpha Cabernet Sauvignon', 650000),
-	('Rượu', 'Yellow Tail Shiraz', 380000),
-	('Rượu', 'Domaine Marcel Deiss Blanc de Blancs Alsace Grand Cru Altenberg de Bergheim', 1400000),
-	('Rượu', 'Cloudy Bay Sauvignon Blanc', 750000),
+	('Rượu', 'Chateau Musar Jeune Red', 850000,(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), DEFAULT),
+	('Rượu', 'Montes Alpha Cabernet Sauvignon', 650000,(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), DEFAULT),
+	('Rượu', 'Yellow Tail Shiraz', 380000,(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), DEFAULT),
+	('Rượu', 'Domaine Marcel Deiss Blanc de Blancs Alsace Grand Cru Altenberg de Bergheim', 1400000,(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), DEFAULT),
+	('Rượu', 'Cloudy Bay Sauvignon Blanc', 750000,(SELECT BulkColumn FROM OPENROWSET(BULK 'C:\TuyetMinh\QuanLyTiecCuoi\Venue - Image\sảnh tiệc cưới 1.jpg', SINGLE_BLOB) AS x), DEFAULT),
 	('Bánh kem', 'Bánh kem fondant', 1500000),
 	('Bánh kem', 'Bánh kem buttercream', 1000000),
 	('Bánh kem', 'Bánh kem macaron', 1800000),
@@ -328,7 +333,7 @@ CREATE TABLE HOADON
 	IDTIEC INT FOREIGN KEY REFERENCES TIEC(ID),
 	TONGTIEN MONEY,
 	THUCTRA MONEY,
-	GIAMGIA INT DEFAULT NULL
+	GIAMGIA INT DEFAULT NULL,
 	NGAYXUATHOADON DATETIME, --THEM O DAY
 )
 
