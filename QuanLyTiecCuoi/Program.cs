@@ -16,23 +16,28 @@ namespace QuanLyTiecCuoi
         {
             string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
             Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
+            Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new QuanLyTiecCuoi.Service.Service(conString, null));
-            //Application.Run(new Receipt(conString));
+            //application.run(new receipt(constring));
             //Food foodform = new Food(conString, null);
 
             //Application.Run(foodform);
-            Application.Run(new Report(conString));
+            ////Application.Run(new Report(conString));
 
             //Venue Venue = new Venue(null, conString);
+
             //Application.Run(Venue);
             ////// Hiển thị form Food
 
-            //Booking bookingform = new Booking(conString);
 
-            ////// pass the bookingform instance to the food form constructor
-            //Food foodform = new Food(conString, bookingform);
-            //Application.Run(bookingform);
+            //// pass the bookingform instance to the food form constructor
+            //Food foodform = new Food(conString, null);
+            //Application.Run(foodform);
+
+            // GỌI BOOKING 
+            Booking bookingform = new Booking(conString);
+
+            Application.Run(bookingform);
 
         }
     }

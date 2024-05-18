@@ -24,9 +24,9 @@ namespace QuanLyTiecCuoi
         {
             InitializeComponent(); 
 
-            _conString = conString;
-
+           
             _parentForm = parentForm;
+            _conString = conString; 
         }
 
 
@@ -38,7 +38,7 @@ namespace QuanLyTiecCuoi
 
         private bool isEditing = false;
 
-      
+
 
 
         private void SelectedFood()
@@ -49,28 +49,44 @@ namespace QuanLyTiecCuoi
                 {
                     if (int.TryParse(indexString, out int rowIndex))
                     {
-                        DataGridViewCell selectedCell = dataGridViewFood.Rows[rowIndex].Cells["SELECT"];
-
-                        if (selectedCell != null)
+                        // Check if rowIndex is within the valid range of rows in the DataGridView
+                        if (rowIndex >= 0 && rowIndex < dataGridViewFood.Rows.Count)
                         {
-                            if (selectedCell.Value != null && (bool)selectedCell.Value)
+                            // Check if the "SELECT" column exists
+                            if (dataGridViewFood.Columns.Contains("SELECT"))
                             {
-                                selectedCell.Value = false;
+                                DataGridViewCell selectedCell = dataGridViewFood.Rows[rowIndex].Cells["SELECT"];
+
+                                if (selectedCell != null)
+                                {
+                                    if (selectedCell.Value != null && (bool)selectedCell.Value)
+                                    {
+                                        selectedCell.Value = false;
+                                    }
+                                    else
+                                    {
+                                        selectedCell.Value = true;
+                                    }
+                                }
                             }
                             else
                             {
-                                selectedCell.Value = true;
+                                Console.WriteLine("The column 'SELECT' does not exist.");
                             }
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Row index {rowIndex} is out of range.");
                         }
                     }
                     else
                     {
-
                         Console.WriteLine($"Failed to convert '{indexString}' to an integer.");
                     }
                 }
             }
         }
+
         private void Food_Load(object sender, EventArgs e)
         {
             LoadDataGridViewFood();
@@ -105,8 +121,8 @@ namespace QuanLyTiecCuoi
                         DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
                         selectColumn.HeaderText = "Select";
                         selectColumn.Name = "Select";
-                        selectColumn.DataPropertyName = "SELECT"; // Replace "SELECT" with the actual column name in your database
-                        selectColumn.ReadOnly = false; // Allow selection
+                        selectColumn.DataPropertyName = "SELECT";
+                        selectColumn.ReadOnly = false; 
                         dataGridViewFood.Columns.Add(selectColumn);
                         Confirm.Size = new System.Drawing.Size(180, 40);
                     }
@@ -169,10 +185,8 @@ namespace QuanLyTiecCuoi
             {
                 connection.Open();
 
-                // Duyệt qua từng hàng trong DataGridView
                 foreach (DataGridViewRow row in dataGridViewFood.Rows)
                 {
-                    // Kiểm tra hàng không phải là hàng mới và không phải là hàng dùng để thêm mới
                     if (!row.IsNewRow && row.Cells["FoodId"].Value != null)
                     {
                         int IDChange = Convert.ToInt32(row.Cells["FoodId"].Value);
@@ -180,13 +194,12 @@ namespace QuanLyTiecCuoi
                         string FoodPriceChange = Convert.ToString(row.Cells["FoodPrice"].Value);
                         string NoteChange = Convert.ToString(row.Cells["FoodNote"].Value);
                         string updateStr = "UPDATE FOOD SET TENMONAN = @FoodNameChange, DONGIA = @FoodPriceChange, Note = @Note, Picture = @image WHERE ID = @ID";
-                        byte[] imageData = null; // Initialize imageData variable
-                        object cellValue = row.Cells["PictureFood"].Value; // Get the value of the cell
+                        byte[] imageData = null; 
+                        object cellValue = row.Cells["PictureFood"].Value; 
 
-                        // Check if the cell value is not DBNull
                         if (cellValue != DBNull.Value)
                         {
-                            // If the value is not DBNull, cast it to byte[]
+       
                             imageData = (byte[])cellValue;
                             updateStr = "UPDATE FOOD SET TENMONAN = @FoodNameChange, DONGIA = @FoodPriceChange, Note = @Note, Picture = @image WHERE ID = @ID";
                         }
