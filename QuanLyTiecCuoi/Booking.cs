@@ -409,7 +409,7 @@ namespace QuanLyTiecCuoi
         private void ChooseService_Click(object sender, EventArgs e)
         {
 
-            QuanLyTiecCuoi.Service.Service serviceForm = new QuanLyTiecCuoi.Service.Service(this,conString);
+            QuanLyTiecCuoi.Service.myService serviceForm = new QuanLyTiecCuoi.Service.myService(this,conString);
             serviceForm.ConfirmEvent += ServiceForm_ConfirmEvent;
             if (ListSelectedFood != null)
             {

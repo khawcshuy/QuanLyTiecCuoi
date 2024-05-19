@@ -133,6 +133,16 @@ namespace QuanLyTiecCuoi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap White_Gold_Elegant_Wedding_Organizer_Logo {
+            get {
+                object obj = ResourceManager.GetObject("White Gold Elegant Wedding Organizer Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap z4653448292201_7d6c6b1225cd2d3a23e009077e118464 {
             get {
                 object obj = ResourceManager.GetObject("z4653448292201_7d6c6b1225cd2d3a23e009077e118464", resourceCulture);

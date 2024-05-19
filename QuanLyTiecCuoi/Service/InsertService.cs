@@ -14,9 +14,9 @@ namespace QuanLyTiecCuoi.Service
 {
     public partial class InsertService : Form
     {
-        private Service _parentForm;
+        private myService _parentForm;
         public string conString;
-        public InsertService(Service parentForm)
+        public InsertService(myService parentForm)
         {
             InitializeComponent();
             _parentForm = parentForm;

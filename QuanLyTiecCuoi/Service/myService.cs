@@ -15,11 +15,11 @@ using QuanLyTiecCuoi.Service;
 
 namespace QuanLyTiecCuoi.Service
 {
-    public partial class Service : Form
+    public partial class myService : Form
     {
-        private Booking _parentForm;
+        private Form _parentForm;
         public string conString;
-        public Service(string _conString, Booking parentForm = null)
+        public myService(string _conString, Form parentForm = null)
         {
             InitializeComponent();
 
@@ -29,9 +29,9 @@ namespace QuanLyTiecCuoi.Service
 
         }
 
-        public Service(Booking booking,string _conString)
+        public myService(Form booking,string _conString)
         {
-            this.booking = booking;
+            this._parentForm = booking;
             this.conString = _conString;
         }
 

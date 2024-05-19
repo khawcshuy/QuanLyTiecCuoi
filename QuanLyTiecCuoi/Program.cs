@@ -1,9 +1,9 @@
-﻿using System;
+﻿using QuanLyTiecCuoi.DESIGN;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace QuanLyTiecCuoi
 {
     internal static class Program
@@ -14,7 +14,7 @@ namespace QuanLyTiecCuoi
         [STAThread]
         static void Main()
         {
-            string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
+            string conString = @"Data Source = Doraemon\SQLEXPRESS; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new QuanLyTiecCuoi.Service.Service(conString, null));
@@ -35,9 +35,8 @@ namespace QuanLyTiecCuoi
             //Application.Run(foodform);
 
             // GỌI BOOKING 
-            Booking bookingform = new Booking(conString);
-
-            Application.Run(bookingform);
+            MainForm mainForm = new MainForm(conString);
+            Application.Run(mainForm);
 
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace QuanLyTiecCuoi.Service
 {
-    partial class Service
+    partial class myService
     {
         /// <summary>
         /// Required designer variable.
