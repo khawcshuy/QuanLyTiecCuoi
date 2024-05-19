@@ -37,7 +37,8 @@ namespace QuanLyTiecCuoi
             // GỌI BOOKING 
             MainForm mainForm = new MainForm(conString);
             Application.Run(mainForm);
-
+            /*TrangThaiSanh form1 = new TrangThaiSanh();
+            Application.Run(form1);*/
         }
     }
 }

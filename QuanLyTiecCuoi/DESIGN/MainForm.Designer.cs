@@ -30,25 +30,27 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.panelLogo = new System.Windows.Forms.Panel();
             this.iconButtonVenue = new FontAwesome.Sharp.IconButton();
             this.iconButtonService = new FontAwesome.Sharp.IconButton();
             this.iconButtonMenu = new FontAwesome.Sharp.IconButton();
             this.iconButtonBooking = new FontAwesome.Sharp.IconButton();
             this.iconButtonDashBoard = new FontAwesome.Sharp.IconButton();
+            this.panelLogo = new System.Windows.Forms.Panel();
             this.ButtonHome = new System.Windows.Forms.PictureBox();
             this.panelDesktop = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.iconButtonVenueState = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonHome)).BeginInit();
             this.panelDesktop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(45)))), ((int)(((byte)(93)))));
+            this.panelMenu.Controls.Add(this.iconButtonVenueState);
             this.panelMenu.Controls.Add(this.iconButtonVenue);
             this.panelMenu.Controls.Add(this.iconButtonService);
             this.panelMenu.Controls.Add(this.iconButtonMenu);
@@ -61,15 +63,6 @@
             this.panelMenu.Size = new System.Drawing.Size(240, 658);
             this.panelMenu.TabIndex = 0;
             this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
-            // 
-            // panelLogo
-            // 
-            this.panelLogo.Controls.Add(this.ButtonHome);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(240, 180);
-            this.panelLogo.TabIndex = 1;
             // 
             // iconButtonVenue
             // 
@@ -191,6 +184,15 @@
             this.iconButtonDashBoard.UseVisualStyleBackColor = false;
             this.iconButtonDashBoard.Click += new System.EventHandler(this.iconButtonDashBoard_Click);
             // 
+            // panelLogo
+            // 
+            this.panelLogo.Controls.Add(this.ButtonHome);
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(240, 180);
+            this.panelLogo.TabIndex = 1;
+            // 
             // ButtonHome
             // 
             this.ButtonHome.Image = ((System.Drawing.Image)(resources.GetObject("ButtonHome.Image")));
@@ -204,23 +206,47 @@
             // 
             // panelDesktop
             // 
-            this.panelDesktop.Controls.Add(this.pictureBox1);
+            this.panelDesktop.Controls.Add(this.pictureBoxLogo);
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktop.Location = new System.Drawing.Point(240, 0);
             this.panelDesktop.Name = "panelDesktop";
             this.panelDesktop.Size = new System.Drawing.Size(872, 658);
             this.panelDesktop.TabIndex = 1;
             // 
-            // pictureBox1
+            // pictureBoxLogo
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(872, 658);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogo.Image")));
+            this.pictureBoxLogo.Location = new System.Drawing.Point(342, 229);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(184, 196);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLogo.TabIndex = 1;
+            this.pictureBoxLogo.TabStop = false;
+            // 
+            // iconButtonVenueState
+            // 
+            this.iconButtonVenueState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(45)))), ((int)(((byte)(93)))));
+            this.iconButtonVenueState.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButtonVenueState.FlatAppearance.BorderSize = 0;
+            this.iconButtonVenueState.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButtonVenueState.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            this.iconButtonVenueState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(248)))));
+            this.iconButtonVenueState.IconChar = FontAwesome.Sharp.IconChar.CircleInfo;
+            this.iconButtonVenueState.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(248)))));
+            this.iconButtonVenueState.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButtonVenueState.IconSize = 32;
+            this.iconButtonVenueState.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButtonVenueState.Location = new System.Drawing.Point(0, 530);
+            this.iconButtonVenueState.Name = "iconButtonVenueState";
+            this.iconButtonVenueState.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButtonVenueState.Size = new System.Drawing.Size(240, 70);
+            this.iconButtonVenueState.TabIndex = 7;
+            this.iconButtonVenueState.Text = "State";
+            this.iconButtonVenueState.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButtonVenueState.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButtonVenueState.UseVisualStyleBackColor = false;
+            this.iconButtonVenueState.Click += new System.EventHandler(this.IconButtonVenueState_Click);
             // 
             // MainForm
             // 
@@ -240,7 +266,7 @@
             this.panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ButtonHome)).EndInit();
             this.panelDesktop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -256,6 +282,7 @@
         private FontAwesome.Sharp.IconButton iconButtonVenue;
         private System.Windows.Forms.PictureBox ButtonHome;
         private System.Windows.Forms.Panel panelDesktop;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxLogo;
+        private FontAwesome.Sharp.IconButton iconButtonVenueState;
     }
 }

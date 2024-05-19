@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyTiecCuoi.DESIGN;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace QuanLyTiecCuoi
 {
     public partial class fLogin : Form
     {
+        private string constring;
         public fLogin()
         {
             InitializeComponent();
@@ -28,7 +30,7 @@ namespace QuanLyTiecCuoi
                 MessageBox.Show("Bạn có thật sự muốn thoát chương trình không?", "Thông báo", MessageBoxButtons.OK);
             }
             else {
-                MainApp mainApp = new MainApp();
+                MainForm mainApp = new MainForm(constring);
                 this.Hide();
                 mainApp.ShowDialog();
                 this.Show();

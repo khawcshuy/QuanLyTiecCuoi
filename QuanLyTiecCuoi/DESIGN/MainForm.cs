@@ -151,5 +151,11 @@ namespace QuanLyTiecCuoi.DESIGN
         {
 
         }
+
+        private void IconButtonVenueState_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color6);
+            OpenChildForm(new TrangThaiSanh());
+        }
     }
 }
