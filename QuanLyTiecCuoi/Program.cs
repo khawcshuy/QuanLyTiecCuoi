@@ -1,4 +1,5 @@
 ﻿using QuanLyTiecCuoi.DESIGN;
+using QuanLyTiecCuoi.Private;
 using System;
 using System.Collections.Generic;
 using System.Linq;

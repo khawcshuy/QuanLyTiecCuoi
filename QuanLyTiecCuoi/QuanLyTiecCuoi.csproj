@@ -222,6 +222,13 @@
     <Compile Include="FOOD\InsertFood.Designer.cs">
       <DependentUpon>InsertFood.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\FormMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\FormMessageBox.Designer.cs">
+      <DependentUpon>FormMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\RJMessageBox.cs" />
     <Compile Include="TrangThaiSanh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +307,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FOOD\InsertFood.resx">
       <DependentUpon>InsertFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\FormMessageBox.resx">
+      <DependentUpon>FormMessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TrangThaiSanh.resx">
       <DependentUpon>TrangThaiSanh.cs</DependentUpon>
@@ -385,6 +395,7 @@
     <None Include="Resources\5087607.png" />
     <None Include="Resources\74ab48240e34df5e05a398e997a42b0e.png" />
     <None Include="Resources\5582931.png" />
+    <None Include="Resources\chat.png" />
     <Content Include="Resources\sanh1.jpg" />
     <None Include="Resources\Venue-Icon.png" />
     <None Include="QUANLYTIECCUOIDataSet.xsc">

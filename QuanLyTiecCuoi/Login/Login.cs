@@ -1,4 +1,5 @@
 ﻿using QuanLyTiecCuoi.DESIGN;
+using QuanLyTiecCuoi.Login;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,15 +42,16 @@ namespace QuanLyTiecCuoi
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.Application.Exit();
+            RJMessageBox.Show("Bạn có muốn thoát khỏi chương trình?", "Exit Message", MessageBoxButtons.OKCancel);
         }
 
         private void fLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(System.Windows.Forms.MessageBox.Show("Bạn có thật sự muốn thoát chương trình không?","Thông báo", MessageBoxButtons.OKCancel ) != System.Windows.Forms.DialogResult.OK)
+            if(RJMessageBox.Show("This is an example of an OK, Cancel Button Message Box.", "OK-Cancel Button", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
             {
                 e.Cancel = true;
             }
+            
         }
 
         private void fLogin_Load(object sender, EventArgs e)

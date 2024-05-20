@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -36,14 +39,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.txbUserName = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -66,6 +66,37 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(300, 530);
             this.panel1.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(180, 245);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(118, 47);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "System";
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(3, 210);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(318, 47);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Wedding Management";
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(78, 175);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(228, 47);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Welcome To The";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // btnExit
             // 
@@ -159,36 +190,20 @@
             this.panel4.Size = new System.Drawing.Size(450, 530);
             this.panel4.TabIndex = 1;
             // 
-            // label3
+            // button1
             // 
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(78, 175);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(228, 47);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Welcome To The";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(3, 210);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(318, 47);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Wedding Management";
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(180, 245);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(118, 47);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "System";
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.button1.Location = new System.Drawing.Point(182, 316);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(120, 25);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Forgot Password?";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // label6
             // 
@@ -231,21 +246,6 @@
             this.pictureBox3.TabStop = false;
             this.pictureBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox3_MouseDown);
             this.pictureBox3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox3_MouseUp);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.button1.Location = new System.Drawing.Point(182, 316);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 25);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Forgot Password?";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // fLogin
             // 
