@@ -45,6 +45,7 @@
             this.Image = new System.Windows.Forms.DataGridViewImageColumn();
             this.VenueName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VenueType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VenueState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaxTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MinTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,17 +63,19 @@
             this.Image,
             this.VenueName,
             this.VenueType,
+            this.VenueState,
             this.MaxTable,
             this.MinTable,
             this.Note});
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 106);
+            this.dataGridView1.Location = new System.Drawing.Point(10, 86);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 100;
-            this.dataGridView1.Size = new System.Drawing.Size(946, 571);
+            this.dataGridView1.Size = new System.Drawing.Size(710, 464);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
@@ -90,17 +93,18 @@
             this.panel1.Controls.Add(this.ChangeVenue);
             this.panel1.Controls.Add(this.AddVenue);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 14);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(9, 11);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(977, 734);
+            this.panel1.Size = new System.Drawing.Size(733, 596);
             this.panel1.TabIndex = 1;
             // 
             // Confirm
             // 
             this.Confirm.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Confirm.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Confirm.Location = new System.Drawing.Point(799, 683);
+            this.Confirm.Location = new System.Drawing.Point(599, 555);
+            this.Confirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Confirm.Name = "Confirm";
             this.Confirm.Size = new System.Drawing.Size(0, 0);
             this.Confirm.TabIndex = 44;
@@ -112,9 +116,10 @@
             // 
             this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button3.Location = new System.Drawing.Point(714, 64);
+            this.button3.Location = new System.Drawing.Point(536, 52);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(160, 32);
+            this.button3.Size = new System.Drawing.Size(120, 26);
             this.button3.TabIndex = 8;
             this.button3.Text = "- Xóa Sảnh";
             this.button3.UseVisualStyleBackColor = false;
@@ -122,27 +127,30 @@
             // 
             // SearchVenue
             // 
-            this.SearchVenue.Location = new System.Drawing.Point(96, 69);
+            this.SearchVenue.Location = new System.Drawing.Point(72, 56);
+            this.SearchVenue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SearchVenue.Name = "SearchVenue";
-            this.SearchVenue.Size = new System.Drawing.Size(179, 22);
+            this.SearchVenue.Size = new System.Drawing.Size(135, 20);
             this.SearchVenue.TabIndex = 7;
             this.SearchVenue.TextChanged += new System.EventHandler(this.SearchVenue_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 72);
+            this.label2.Location = new System.Drawing.Point(9, 58);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 16);
+            this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Tìm Sảnh";
             // 
             // ChangeVenue
             // 
             this.ChangeVenue.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ChangeVenue.Location = new System.Drawing.Point(522, 64);
+            this.ChangeVenue.Location = new System.Drawing.Point(392, 52);
+            this.ChangeVenue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ChangeVenue.Name = "ChangeVenue";
-            this.ChangeVenue.Size = new System.Drawing.Size(160, 32);
+            this.ChangeVenue.Size = new System.Drawing.Size(120, 26);
             this.ChangeVenue.TabIndex = 5;
             this.ChangeVenue.Text = "Chỉnh sửa sảnh";
             this.ChangeVenue.UseVisualStyleBackColor = false;
@@ -152,9 +160,10 @@
             // 
             this.AddVenue.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.AddVenue.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.AddVenue.Location = new System.Drawing.Point(332, 64);
+            this.AddVenue.Location = new System.Drawing.Point(249, 52);
+            this.AddVenue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddVenue.Name = "AddVenue";
-            this.AddVenue.Size = new System.Drawing.Size(160, 32);
+            this.AddVenue.Size = new System.Drawing.Size(120, 26);
             this.AddVenue.TabIndex = 4;
             this.AddVenue.Text = "+ Thêm Sảnh Mới";
             this.AddVenue.UseVisualStyleBackColor = false;
@@ -164,10 +173,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label1.Location = new System.Drawing.Point(1, 13);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(1, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(320, 36);
+            this.label1.Size = new System.Drawing.Size(254, 29);
             this.label1.TabIndex = 2;
             this.label1.Text = "QUẢN LÝ SẢNH CƯỚI";
             // 
@@ -215,6 +223,12 @@
             this.VenueType.ReadOnly = true;
             this.VenueType.Width = 125;
             // 
+            // VenueState
+            // 
+            this.VenueState.HeaderText = "Trạng Thái Sảnh";
+            this.VenueState.Name = "VenueState";
+            this.VenueState.ReadOnly = true;
+            // 
             // MaxTable
             // 
             this.MaxTable.HeaderText = "Số lượng bàn tối đa";
@@ -241,10 +255,11 @@
             // 
             // Venue
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1001, 759);
+            this.ClientSize = new System.Drawing.Size(751, 617);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Venue";
             this.Text = "Venue";
             this.Load += new System.EventHandler(this.Venue_Load);
@@ -274,6 +289,7 @@
         private System.Windows.Forms.DataGridViewImageColumn Image;
         private System.Windows.Forms.DataGridViewTextBoxColumn VenueName;
         private System.Windows.Forms.DataGridViewTextBoxColumn VenueType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VenueState;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaxTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn MinTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn Note;

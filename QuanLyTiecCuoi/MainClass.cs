@@ -10,7 +10,7 @@ namespace QuanLyTiecCuoi
 {
     internal class MainClass
     {
-        public static readonly string con_string = "Data Source=Doraemon\\SQLEXPRESS;Initial Catalog=RestaurantManagement;Integrated Security=True;Encrypt=False";
+        public static readonly string con_string = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=QUANLYTIECCUOI1;Integrated Security=True;Encrypt=False";
         public static SqlConnection con = new SqlConnection(con_string);
 
 

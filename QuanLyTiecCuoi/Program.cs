@@ -15,7 +15,7 @@ namespace QuanLyTiecCuoi
         [STAThread]
         static void Main()
         {
-            string conString = @"Data Source = Doraemon\SQLEXPRESS; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
+            string conString = @"Data Source = MSI\SQLEXPRESS; Initial Catalog = QUANLYTIECCUOI1; Integrated Security = True";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new QuanLyTiecCuoi.Service.Service(conString, null));
@@ -37,7 +37,7 @@ namespace QuanLyTiecCuoi
 
             // GỌI BOOKING 
             //MainForm mainForm = new MainForm(conString);
-            fLogin fLogin = new fLogin();
+            fLogin fLogin = new fLogin(conString);
             Application.Run(fLogin);
             /*TrangThaiSanh form1 = new TrangThaiSanh();
             Application.Run(form1);*/

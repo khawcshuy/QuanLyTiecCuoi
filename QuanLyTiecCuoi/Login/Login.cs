@@ -1,9 +1,11 @@
-﻿using QuanLyTiecCuoi.DESIGN;
+﻿using FontAwesome.Sharp;
+using QuanLyTiecCuoi.DESIGN;
 using QuanLyTiecCuoi.Login;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,10 +17,11 @@ namespace QuanLyTiecCuoi
 {
     public partial class fLogin : Form
     {
-        private string constring;
-        public fLogin()
+        public string constring;
+        public fLogin(string _conString)
         {
             InitializeComponent();
+            this.constring = _conString;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -28,10 +31,15 @@ namespace QuanLyTiecCuoi
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (MainClass.IsValidUser(txbUserName.Text, txbPassWord.Text) == false) {
-                System.Windows.Forms.MessageBox.Show("Bạn có thật sự muốn thoát chương trình không?", "Thông báo", MessageBoxButtons.OK);
+            if (MainClass.IsValidUser(txbUserName.Text, txbPassWord.Text) == false) 
+            {
+                label1.Visible = true;
+                pictureBox4.Visible = true;
+                txbUserName.ForeColor = Color.Red;
+                txbPassWord.ForeColor = Color.Red;
             }
-            else {
+            else 
+            {
                 MainForm mainApp = new MainForm(constring);
                 this.Hide();
                 mainApp.ShowDialog();
@@ -39,19 +47,17 @@ namespace QuanLyTiecCuoi
             }
 
         }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
-            RJMessageBox.Show("Bạn có muốn thoát khỏi chương trình?", "Exit Message", MessageBoxButtons.OKCancel);
+            this.Close();   
         }
 
         private void fLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(RJMessageBox.Show("This is an example of an OK, Cancel Button Message Box.", "OK-Cancel Button", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
+            if(RJMessageBox.Show("Bạn có muốn thoát khỏi chương trình?", "Exit Message", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
             {
                 e.Cancel = true;
             }
-            
         }
 
         private void fLogin_Load(object sender, EventArgs e)

@@ -396,6 +396,7 @@
     <None Include="Resources\74ab48240e34df5e05a398e997a42b0e.png" />
     <None Include="Resources\5582931.png" />
     <None Include="Resources\chat.png" />
+    <None Include="Resources\error.png" />
     <Content Include="Resources\sanh1.jpg" />
     <None Include="Resources\Venue-Icon.png" />
     <None Include="QUANLYTIECCUOIDataSet.xsc">

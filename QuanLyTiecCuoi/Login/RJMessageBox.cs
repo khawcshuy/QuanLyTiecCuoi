@@ -14,7 +14,7 @@ namespace QuanLyTiecCuoi.Login
         {
             DialogResult result;
             using (var msgForm = new FormMessageBox(text, caption, buttons))
-                result = msgForm.ShowDialog();
+            result = msgForm.ShowDialog();
             return result;
         }
     }
