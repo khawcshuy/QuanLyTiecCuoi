@@ -157,5 +157,11 @@ namespace QuanLyTiecCuoi.DESIGN
             ActivateButton(sender, RGBColors.color6);
             OpenChildForm(new TrangThaiSanh());
         }
+       
+        private void NavigationList_Click(object sender, EventArgs e)
+        {
+            TraCuu tracuu = new TraCuu(conString);
+            tracuu.Show();
+        }
     }
 }

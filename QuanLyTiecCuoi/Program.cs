@@ -36,9 +36,9 @@ namespace QuanLyTiecCuoi
             //Application.Run(foodform);
 
             // GỌI BOOKING 
-            //MainForm mainForm = new MainForm(conString);
-            fLogin fLogin = new fLogin(conString);
-            Application.Run(fLogin);
+            MainForm mainForm = new MainForm(conString);
+            //fLogin fLogin = new fLogin(conString);
+            Application.Run(mainForm);
             /*TrangThaiSanh form1 = new TrangThaiSanh();
             Application.Run(form1);*/
         }

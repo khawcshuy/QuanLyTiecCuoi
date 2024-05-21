@@ -30,28 +30,29 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.panelLogo = new System.Windows.Forms.Panel();
-            this.panelDesktop = new System.Windows.Forms.Panel();
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.iconButtonVenueState = new FontAwesome.Sharp.IconButton();
             this.iconButtonVenue = new FontAwesome.Sharp.IconButton();
             this.iconButtonService = new FontAwesome.Sharp.IconButton();
             this.iconButtonMenu = new FontAwesome.Sharp.IconButton();
             this.iconButtonBooking = new FontAwesome.Sharp.IconButton();
             this.iconButtonDashBoard = new FontAwesome.Sharp.IconButton();
+            this.panelLogo = new System.Windows.Forms.Panel();
             this.ButtonHome = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panelDesktop = new System.Windows.Forms.Panel();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.NavigationList = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ButtonHome)).BeginInit();
             this.panelDesktop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ButtonHome)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(45)))), ((int)(((byte)(93)))));
             this.panelMenu.Controls.Add(this.iconButtonVenueState);
+            this.panelMenu.Controls.Add(this.NavigationList);
             this.panelMenu.Controls.Add(this.iconButtonVenue);
             this.panelMenu.Controls.Add(this.iconButtonService);
             this.panelMenu.Controls.Add(this.iconButtonMenu);
@@ -60,44 +61,11 @@
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(2);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(180, 535);
             this.panelMenu.TabIndex = 0;
             this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
-            // 
-            // panelLogo
-            // 
-            this.panelLogo.Controls.Add(this.ButtonHome);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(180, 146);
-            this.panelLogo.TabIndex = 1;
-            // 
-            // panelDesktop
-            // 
-            this.panelDesktop.Controls.Add(this.button1);
-            this.panelDesktop.Controls.Add(this.pictureBoxLogo);
-            this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(180, 0);
-            this.panelDesktop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(654, 535);
-            this.panelDesktop.TabIndex = 1;
-            // 
-            // pictureBoxLogo
-            // 
-            this.pictureBoxLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogo.Image")));
-            this.pictureBoxLogo.Location = new System.Drawing.Point(256, 186);
-            this.pictureBoxLogo.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(138, 159);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxLogo.TabIndex = 1;
-            this.pictureBoxLogo.TabStop = false;
             // 
             // iconButtonVenueState
             // 
@@ -112,7 +80,7 @@
             this.iconButtonVenueState.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButtonVenueState.IconSize = 32;
             this.iconButtonVenueState.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButtonVenueState.Location = new System.Drawing.Point(0, 431);
+            this.iconButtonVenueState.Location = new System.Drawing.Point(0, 488);
             this.iconButtonVenueState.Margin = new System.Windows.Forms.Padding(2);
             this.iconButtonVenueState.Name = "iconButtonVenueState";
             this.iconButtonVenueState.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -249,6 +217,16 @@
             this.iconButtonDashBoard.UseVisualStyleBackColor = false;
             this.iconButtonDashBoard.Click += new System.EventHandler(this.iconButtonDashBoard_Click);
             // 
+            // panelLogo
+            // 
+            this.panelLogo.Controls.Add(this.ButtonHome);
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(2);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(180, 146);
+            this.panelLogo.TabIndex = 1;
+            // 
             // ButtonHome
             // 
             this.ButtonHome.Image = ((System.Drawing.Image)(resources.GetObject("ButtonHome.Image")));
@@ -261,14 +239,52 @@
             this.ButtonHome.TabStop = false;
             this.ButtonHome.Click += new System.EventHandler(this.ButtonHome_Click);
             // 
-            // button1
+            // panelDesktop
             // 
-            this.button1.Location = new System.Drawing.Point(256, 431);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 40);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.panelDesktop.Controls.Add(this.pictureBoxLogo);
+            this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDesktop.Location = new System.Drawing.Point(180, 0);
+            this.panelDesktop.Margin = new System.Windows.Forms.Padding(2);
+            this.panelDesktop.Name = "panelDesktop";
+            this.panelDesktop.Size = new System.Drawing.Size(654, 535);
+            this.panelDesktop.TabIndex = 1;
+            // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogo.Image")));
+            this.pictureBoxLogo.Location = new System.Drawing.Point(256, 186);
+            this.pictureBoxLogo.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(138, 159);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLogo.TabIndex = 1;
+            this.pictureBoxLogo.TabStop = false;
+            // 
+            // NavigationList
+            // 
+            this.NavigationList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(45)))), ((int)(((byte)(93)))));
+            this.NavigationList.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NavigationList.FlatAppearance.BorderSize = 0;
+            this.NavigationList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NavigationList.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            this.NavigationList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(248)))));
+            this.NavigationList.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.NavigationList.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(248)))));
+            this.NavigationList.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.NavigationList.IconSize = 32;
+            this.NavigationList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.NavigationList.Location = new System.Drawing.Point(0, 431);
+            this.NavigationList.Margin = new System.Windows.Forms.Padding(2);
+            this.NavigationList.Name = "NavigationList";
+            this.NavigationList.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.NavigationList.Size = new System.Drawing.Size(180, 57);
+            this.NavigationList.TabIndex = 8;
+            this.NavigationList.Text = "Navigation";
+            this.NavigationList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.NavigationList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.NavigationList.UseVisualStyleBackColor = false;
+            this.NavigationList.Click += new System.EventHandler(this.NavigationList_Click);
             // 
             // MainForm
             // 
@@ -279,7 +295,7 @@
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelMenu);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -287,9 +303,9 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ButtonHome)).EndInit();
             this.panelDesktop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ButtonHome)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -307,6 +323,6 @@
         private System.Windows.Forms.Panel panelDesktop;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
         private FontAwesome.Sharp.IconButton iconButtonVenueState;
-        private System.Windows.Forms.Button button1;
+        private FontAwesome.Sharp.IconButton NavigationList;
     }
 }

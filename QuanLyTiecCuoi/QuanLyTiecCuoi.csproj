@@ -229,6 +229,12 @@
       <DependentUpon>FormMessageBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\RJMessageBox.cs" />
+    <Compile Include="TraCuu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TraCuu.Designer.cs">
+      <DependentUpon>TraCuu.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrangThaiSanh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +265,15 @@
     </Compile>
     <Compile Include="DESIGN\ToggleButton.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UIDesign\ButtonUI.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UIDesign\TextBoxUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UIDesign\TextBoxUI.Designer.cs">
+      <DependentUpon>TextBoxUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Venue\InsertVenue.cs">
       <SubType>Form</SubType>
@@ -311,6 +326,9 @@
     <EmbeddedResource Include="Login\FormMessageBox.resx">
       <DependentUpon>FormMessageBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TraCuu.resx">
+      <DependentUpon>TraCuu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TrangThaiSanh.resx">
       <DependentUpon>TrangThaiSanh.cs</DependentUpon>
     </EmbeddedResource>
@@ -338,6 +356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Service\myService.resx">
       <DependentUpon>myService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIDesign\TextBoxUI.resx">
+      <DependentUpon>TextBoxUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Venue\InsertVenue.resx">
       <DependentUpon>InsertVenue.cs</DependentUpon>
