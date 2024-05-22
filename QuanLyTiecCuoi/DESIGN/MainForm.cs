@@ -95,7 +95,7 @@ namespace QuanLyTiecCuoi.DESIGN
 
         }
 
-    
+
 
         private void iconButtonDashBoard_Click(object sender, EventArgs e)
         {
@@ -186,22 +186,22 @@ namespace QuanLyTiecCuoi.DESIGN
         {
             const int WM_NCCALCSIZE = 0x0083;
             const int WM_SYSCOMMAND = 0x0112;
-            const int SC_MINIMIZE = 0xF020; 
-            const int SC_RESTORE = 0xF120; 
+            const int SC_MINIMIZE = 0xF020;
+            const int SC_RESTORE = 0xF120;
             const int WM_NCHITTEST = 0x0084;
             const int resizeAreaSize = 10;
             #region Form Resize
-            const int HTCLIENT = 1; 
-            const int HTLEFT = 10;  
-            const int HTRIGHT = 11; 
-            const int HTTOP = 12;   
+            const int HTCLIENT = 1;
+            const int HTLEFT = 10;
+            const int HTRIGHT = 11;
+            const int HTTOP = 12;
             const int HTTOPLEFT = 13;
             const int HTTOPRIGHT = 14;
-            const int HTBOTTOM = 15; 
+            const int HTBOTTOM = 15;
             const int HTBOTTOMLEFT = 16;
             const int HTBOTTOMRIGHT = 17;
             if (m.Msg == WM_NCHITTEST)
-            { 
+            {
                 base.WndProc(ref m);
                 if (this.WindowState == FormWindowState.Normal)
                 {
@@ -211,7 +211,7 @@ namespace QuanLyTiecCuoi.DESIGN
                         Point clientPoint = this.PointToClient(screenPoint); //Computes the location of the screen point into client coordinates                          
                         if (clientPoint.Y <= resizeAreaSize)//If the pointer is at the top of the form (within the resize area- X coordinate)
                         {
-                            if (clientPoint.X <= resizeAreaSize) 
+                            if (clientPoint.X <= resizeAreaSize)
                                 m.Result = (IntPtr)HTTOPLEFT; //Resize diagonally to the left
                             else if (clientPoint.X < (this.Size.Width - resizeAreaSize))//If the pointer is at the coordinate X=11 or less than the width of the form(X=Form.Width-resizeArea)
                                 m.Result = (IntPtr)HTTOP; //Resize vertically up
@@ -331,6 +331,36 @@ namespace QuanLyTiecCuoi.DESIGN
                     menuButton.Padding = new Padding(10, 0, 0, 0);
                 }
             }
+        }
+
+        private void RestoreMainForm()
+        {
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                Form openForm = Application.OpenForms[i];
+
+                // Use the != operator and the is keyword separately
+                if (!(openForm is MainForm))
+                {
+                    openForm.Close();
+                }
+            }
+            DisableButton();
+            leftBorderButton.Visible = false;
+            currentButton = null;
+        }
+       
+        private void pictureBoxLogo_Click(object sender, EventArgs e)
+        {
+            RestoreMainForm();
+        }
+
+        private void iconSignOut_Click(object sender, EventArgs e)
+        {
+            fLogin login = new fLogin(conString);
+            login.Show();
+            this.Hide();
+            login.FormClosed += (s, args) => this.Close();
         }
     }
 }
