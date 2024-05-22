@@ -72,6 +72,7 @@ namespace QuanLyTiecCuoi
 
         private void txbUserName_Click(object sender, EventArgs e)
         {
+            txbUserName.ForeColor = System.Drawing.Color.FromArgb(41, 128, 185);
             txbUserName.BackColor = Color.White;
             panel2.BackColor = Color.White;
             panel3.BackColor = System.Drawing.SystemColors.Control;
@@ -80,6 +81,7 @@ namespace QuanLyTiecCuoi
 
         private void txbPassWord_Click(object sender, EventArgs e)
         {
+            txbPassWord.ForeColor = System.Drawing.Color.FromArgb(41, 128, 185);
             txbPassWord.BackColor = Color.White;
             panel3.BackColor = Color.White;
             panel2.BackColor = System.Drawing.SystemColors.Control;
