@@ -21,7 +21,8 @@ namespace QuanLyTiecCuoi.DESIGN
         private IconButton currentButton;
         private Panel leftBorderButton;
         private Form currentChildForm;
-
+        private Random random;
+        private int tempIndex;
         //OtherFields
         private int borderSize = 2;
         private Size formSize;
@@ -30,6 +31,7 @@ namespace QuanLyTiecCuoi.DESIGN
         {
             InitializeComponent();
             CollapseMenu();
+            random = new Random();
             leftBorderButton = new Panel();
             leftBorderButton.Size = new Size(7, 70);
             panelMenu.Controls.Add(leftBorderButton);
@@ -43,24 +45,41 @@ namespace QuanLyTiecCuoi.DESIGN
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         //Methods
-        private void ActivateButton(object senderBtn, Color color)
+
+        private Color SelectThemeColor()
+        {
+            int index = random.Next(ThemeColor.ColorList.Count);
+            while (tempIndex == index)
+            {
+                index = random.Next(ThemeColor.ColorList.Count);
+            }
+            tempIndex = index;
+            string color = ThemeColor.ColorList[index];
+            return ColorTranslator.FromHtml(color);
+        }
+        private void ActivateButton(object senderBtn)
         {
             if (senderBtn != null)
             {
-                DisableButton();
-                //Button
-                currentButton = (IconButton)senderBtn;
-                currentButton.BackColor = Color.FromArgb(98, 102, 244);
-                currentButton.ForeColor = color;
-                currentButton.TextAlign = ContentAlignment.MiddleCenter;
-                currentButton.IconColor = color;
-                currentButton.TextImageRelation = TextImageRelation.TextBeforeImage;
-                currentButton.ImageAlign = ContentAlignment.MiddleRight;
-                //Left border button
-                leftBorderButton.BackColor = color;
-                leftBorderButton.Location = new Point(0, currentButton.Location.Y);
-                leftBorderButton.Visible = true;
-                leftBorderButton.BringToFront();
+                if (currentButton != (IconButton)senderBtn)
+                {
+                    DisableButton();
+                    Color color = SelectThemeColor();
+                    currentButton = (IconButton)senderBtn;
+                    currentButton.BackColor = color;
+                    currentButton.ForeColor = Color.White;
+                    currentButton.TextAlign = ContentAlignment.MiddleCenter;
+                    currentButton.IconColor = color;
+                    currentButton.TextImageRelation = TextImageRelation.TextBeforeImage;
+                    currentButton.ImageAlign = ContentAlignment.MiddleLeft;
+                    currentButton.IconColor = ThemeColor.ChangeColorBrightness(color, -0.3);
+                    panelTitleBar.BackColor = color;
+                    btnClose.BackColor = color;
+                    btnMaximize.BackColor = color;
+                    btnMinimize.BackColor = color;
+                    ThemeColor.PrimaryColor = color;
+                    ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
+                }
             }
 
         }
@@ -99,33 +118,36 @@ namespace QuanLyTiecCuoi.DESIGN
 
         private void iconButtonDashBoard_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color1);
-            OpenChildForm(new Report(conString));
+            OpenChildForm(new Report(conString), sender);
         }
 
 
         private void iconButtonMenu_Click_1(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color2);
-            OpenChildForm(new Food(conString));
+            Form MenuForm = new Food(conString);
+            MenuForm.Text = "MENU";
+            OpenChildForm(MenuForm, sender);
         }
 
         private void iconButtonService_Click_1(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color3);
-            OpenChildForm(new myService(conString));
+            Form ServiceForm = new myService(conString);
+            ServiceForm.Text = "SERVICE";
+            OpenChildForm(ServiceForm, sender);
         }
 
         private void iconButtonVenue_Click_1(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color4);
-            OpenChildForm(new Venue(null, conString));
+            Form VenueForm = new Venue(null, conString);
+            VenueForm.Text = "VENUE";
+            OpenChildForm(VenueForm, sender);
         }
 
         private void iconButtonBooking_Click_1(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color5);
-            OpenChildForm(new Booking(conString));
+            Form bookingForm = new Booking(conString);
+            bookingForm.Text = "BOOKING";
+            OpenChildForm(bookingForm, sender);
         }
         private void ButtonHome_Click(object sender, EventArgs e)
         {
@@ -142,22 +164,24 @@ namespace QuanLyTiecCuoi.DESIGN
             leftBorderButton.Visible = false;
         }
 
-        private void OpenChildForm(Form childForm)
+        private void OpenChildForm(Form childForm, object btnSender)
         {
             //open only form
             if (currentChildForm != null)
             {
                 currentChildForm.Close();
             }
+            ActivateButton(btnSender);
             currentChildForm = childForm;
             //End
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            panelDesktop.Controls.Add(childForm);
-            panelDesktop.Tag = childForm;
+            this.panelDesktop.Controls.Add(childForm);
+            this.panelDesktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
+            lblTitle.Text = childForm.Text;
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -166,13 +190,15 @@ namespace QuanLyTiecCuoi.DESIGN
 
         private void iconButtonVenueState_Click_1(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color6);
-            OpenChildForm(new TrangThaiSanh());
+            Form trangThaiSanhForm = new TrangThaiSanh();
+            trangThaiSanhForm.Text = "STATE";
+            OpenChildForm(trangThaiSanhForm, sender);
         }
         private void NavigationList_Click_1(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color7);
-            OpenChildForm(new TraCuu(conString));
+            Form traCuuForm = new TraCuu(conString);
+            traCuuForm.Text = "SEARCH";
+            OpenChildForm(traCuuForm, sender);
         }
 
         private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
@@ -348,6 +374,11 @@ namespace QuanLyTiecCuoi.DESIGN
             DisableButton();
             leftBorderButton.Visible = false;
             currentButton = null;
+            lblTitle.Text = currentChildForm.Text;
+            panelTitleBar.BackColor = Color.FromArgb(98, 102, 244);
+            btnMinimize.BackColor = Color.FromArgb(98, 102, 244);
+            btnMaximize.BackColor = Color.FromArgb(98, 102, 244);
+            btnClose.BackColor = Color.FromArgb(98, 102, 244);
         }
        
         private void pictureBoxLogo_Click(object sender, EventArgs e)

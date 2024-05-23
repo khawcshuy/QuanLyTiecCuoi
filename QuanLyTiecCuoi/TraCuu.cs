@@ -67,7 +67,8 @@ namespace QuanLyTiecCuoi
         }
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(rjTextBox1.Text))
+            string sodienthoai = rjTextBox1.Texts.Trim();
+            if (!string.IsNullOrEmpty(sodienthoai))
             {
                 using (SqlConnection conn = new SqlConnection(constring))
                 {
@@ -79,7 +80,7 @@ namespace QuanLyTiecCuoi
                              WHERE K.DIENTHOAI = @PhoneNumber";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@PhoneNumber", rjTextBox1.Text.Trim());
+                        cmd.Parameters.AddWithValue("@PhoneNumber", sodienthoai);
                         SqlDataReader reader = cmd.ExecuteReader();
                         if (reader.HasRows)
                         {

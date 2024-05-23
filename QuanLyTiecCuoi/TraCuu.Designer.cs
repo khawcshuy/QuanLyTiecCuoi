@@ -43,7 +43,7 @@
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(1, 165);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 161);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(880, 430);
@@ -71,7 +71,7 @@
             this.rjTextBox1.BorderSize1 = 2;
             this.rjTextBox1.BorderSize2 = 2;
             this.rjTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox1.ForeColor = System.Drawing.Color.White;
+            this.rjTextBox1.ForeColor = System.Drawing.Color.Black;
             this.rjTextBox1.IsFocused = false;
             this.rjTextBox1.IsFocused1 = false;
             this.rjTextBox1.Location = new System.Drawing.Point(307, 69);

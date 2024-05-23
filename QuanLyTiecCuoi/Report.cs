@@ -82,7 +82,7 @@ namespace QuanLyTiecCuoi
                     con.Open();
                     cmd.ExecuteNonQuery();
 
-                    // Retrieve the values from the output parameters and handle nulls
+                    //Retrieve the values from the output parameters and handle nulls
                     var total = totalParam.Value != DBNull.Value ? (decimal)totalParam.Value : 0;
                     var totalVenue = totalVenueParam.Value != DBNull.Value ? (int)totalVenueParam.Value : 0;
                     var totalParty = totalPartyParam.Value != DBNull.Value ? (int)totalPartyParam.Value : 0;
