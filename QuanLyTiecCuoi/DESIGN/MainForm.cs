@@ -323,9 +323,9 @@ namespace QuanLyTiecCuoi.DESIGN
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
+            
         }
-
         private void btnMenu_Click(object sender, EventArgs e)
         {
             CollapseMenu();

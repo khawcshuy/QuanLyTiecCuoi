@@ -42,10 +42,15 @@ namespace QuanLyTiecCuoi
             {
                 MainForm mainApp = new MainForm(constring);
                 this.Hide();
-                mainApp.ShowDialog();
-                this.Show();
+                mainApp.FormClosed += MainForm_FormClosed;
+                mainApp.Show();
             }
 
+        }
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Close the login form when MainForm is closed
+            this.Close();
         }
         private void btnExit_Click(object sender, EventArgs e)
         {

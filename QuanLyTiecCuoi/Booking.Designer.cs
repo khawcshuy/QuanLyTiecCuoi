@@ -107,6 +107,7 @@
             // 
             // panel4
             // 
+            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.panel1);
@@ -136,6 +137,7 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.DepositeRatio);
             this.panel1.Controls.Add(this.label11);
@@ -152,7 +154,7 @@
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.NumberTableFee);
             this.panel1.Location = new System.Drawing.Point(490, 273);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(227, 288);
             this.panel1.TabIndex = 28;
@@ -412,7 +414,7 @@
             "Trưa",
             "Tối"});
             this.ShiftParty.Location = new System.Drawing.Point(148, 171);
-            this.ShiftParty.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ShiftParty.Margin = new System.Windows.Forms.Padding(2);
             this.ShiftParty.Name = "ShiftParty";
             this.ShiftParty.Size = new System.Drawing.Size(182, 21);
             this.ShiftParty.TabIndex = 32;
@@ -446,7 +448,7 @@
             this.PhoneNumber});
             this.SearchResult.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.SearchResult.Location = new System.Drawing.Point(148, 64);
-            this.SearchResult.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SearchResult.Margin = new System.Windows.Forms.Padding(2);
             this.SearchResult.Name = "SearchResult";
             this.SearchResult.ReadOnly = true;
             this.SearchResult.RowHeadersVisible = false;
@@ -669,10 +671,11 @@
             // 
             // ChooseService
             // 
+            this.ChooseService.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ChooseService.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ChooseService.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ChooseService.Location = new System.Drawing.Point(350, 145);
-            this.ChooseService.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ChooseService.Margin = new System.Windows.Forms.Padding(2);
             this.ChooseService.Name = "ChooseService";
             this.ChooseService.Size = new System.Drawing.Size(104, 20);
             this.ChooseService.TabIndex = 45;
@@ -682,10 +685,11 @@
             // 
             // ChooseMenu
             // 
+            this.ChooseMenu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ChooseMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ChooseMenu.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ChooseMenu.Location = new System.Drawing.Point(350, 2);
-            this.ChooseMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ChooseMenu.Margin = new System.Windows.Forms.Padding(2);
             this.ChooseMenu.Name = "ChooseMenu";
             this.ChooseMenu.Size = new System.Drawing.Size(104, 20);
             this.ChooseMenu.TabIndex = 44;
@@ -695,6 +699,7 @@
             // 
             // ServiceBookingView
             // 
+            this.ServiceBookingView.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ServiceBookingView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ServiceBookingView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ServiceId,
@@ -739,6 +744,7 @@
             // 
             // MenuBookingView
             // 
+            this.MenuBookingView.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.MenuBookingView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MenuBookingView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FoodId,
@@ -811,10 +817,11 @@
             // 
             // Confirm
             // 
+            this.Confirm.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Confirm.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Confirm.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Confirm.Location = new System.Drawing.Point(622, 591);
-            this.Confirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Confirm.Margin = new System.Windows.Forms.Padding(2);
             this.Confirm.Name = "Confirm";
             this.Confirm.Size = new System.Drawing.Size(120, 26);
             this.Confirm.TabIndex = 43;
@@ -829,7 +836,7 @@
             this.ClientSize = new System.Drawing.Size(751, 617);
             this.Controls.Add(this.Confirm);
             this.Controls.Add(this.panel4);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Booking";
             this.Text = "Booking";
             this.Load += new System.EventHandler(this.Booking_Load);

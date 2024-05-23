@@ -89,6 +89,54 @@ namespace QuanLyTiecCuoi.Service
             this.Close();
         }
 
-      
+        private void Confirm_Click_1(object sender, EventArgs e)
+        {
+            string ServiceName = ServiceNameAdd.Text;
+            string ServiceType = ServiceTypeAdd.Text;
+            float ServicePrice;
+
+
+            if (!float.TryParse(ServicePriceAdd.Text, out ServicePrice))
+            {
+                MessageBox.Show("Please enter a valid floating-point value for the price of the Venue.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Exit the method if input is invalid
+            }
+
+            string insert_query = "INSERT INTO DICHVU (TENDICHVU, LOAIDICHVU,GIADICHVU)  VALUES(@ServiceName,@ServiceType,@ServicePrice)";
+
+            using (SqlConnection connection = new SqlConnection(conString))
+            {
+                using (SqlCommand cmd = new SqlCommand(insert_query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@ServiceName", ServiceName);
+                    cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
+                    cmd.Parameters.AddWithValue("@ServicePrice", ServicePrice);
+                    ;
+
+
+                    try
+                    {
+                        connection.Open();
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("Service added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occurred while adding the Service: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+
+                }
+            }
+
+            _parentForm.LoadDataGridViewService();
+
+
+            this.Close();
+        }
     }
 }

@@ -18,10 +18,49 @@ namespace QuanLyTiecCuoi
         public TraCuu(string _constring)
         {
             InitializeComponent();
+            this.BackColor = Color.FromArgb(224, 247, 250);
+            dataGridView1.BackgroundColor = Color.FromArgb(224, 247, 250);
+            lblSoDienThoai.ForeColor = Color.FromArgb(1, 87, 155);
+            lblSoDienThoai.BackColor = Color.FromArgb(179, 229, 252);
+            // Textbox (rjTextBox1)
+            rjTextBox1.BackColor = Color.FromArgb(255, 255, 255);
+            rjTextBox1.ForeColor = Color.FromArgb(1, 87, 155);
+            // Button (button1)
+            button1.BackColor = Color.FromArgb(79, 195, 247);
+            button1.ForeColor = Color.FromArgb(255, 255, 255);
+
+            // Panel (panel1)
+            panel1.BackColor = Color.FromArgb(179, 229, 252);
             this.constring = _constring;
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.DefaultCellStyle.BackColor = Color.FromArgb(224, 247, 250);
+            dataGridView1.GridColor = Color.LightGray; // Set a neutral grid color
+
+            // Subscribe to the Paint event for custom border
+            dataGridView1.Paint += new PaintEventHandler(dataGridView1_Paint);
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(224, 247, 250);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Verdana", 12, FontStyle.Bold);
         }
 
+        private void dataGridView1_Paint(object sender, PaintEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+
+            // Define the custom border color
+            Color borderColor = Color.FromArgb(79, 195, 247); // Light Blue
+
+            // Define the border width
+            int borderWidth = 2;
+
+            // Draw the border
+            using (Pen pen = new Pen(borderColor, borderWidth))
+            {
+                Rectangle rect = new Rectangle(0, 0, dgv.Width, dgv.Height);
+                e.Graphics.DrawRectangle(pen, rect);
+            }
+        }
         private void TraCuu_Load(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(constring);
