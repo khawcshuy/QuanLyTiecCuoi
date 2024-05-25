@@ -20,8 +20,8 @@ namespace QuanLyTiecCuoi
             InitializeComponent();
             this.BackColor = Color.FromArgb(224, 247, 250);
             dataGridView1.BackgroundColor = Color.FromArgb(224, 247, 250);
-            lblSoDienThoai.ForeColor = Color.FromArgb(1, 87, 155);
-            lblSoDienThoai.BackColor = Color.FromArgb(179, 229, 252);
+            //lblSoDienThoai.ForeColor = Color.FromArgb(1, 87, 155);
+            lblSoDienThoai.BackColor = Color.FromArgb(224, 247, 250);
             // Textbox (rjTextBox1)
             rjTextBox1.BackColor = Color.FromArgb(255, 255, 255);
             rjTextBox1.ForeColor = Color.FromArgb(1, 87, 155);
@@ -30,7 +30,7 @@ namespace QuanLyTiecCuoi
             button1.ForeColor = Color.FromArgb(255, 255, 255);
 
             // Panel (panel1)
-            panel1.BackColor = Color.FromArgb(179, 229, 252);
+            panel1.BackColor = Color.FromArgb(224, 247, 250);
             this.constring = _constring;
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             dataGridView1.BorderStyle = BorderStyle.None;
@@ -41,6 +41,7 @@ namespace QuanLyTiecCuoi
             dataGridView1.Paint += new PaintEventHandler(dataGridView1_Paint);
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(224, 247, 250);
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(0, 0, 139);
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Verdana", 12, FontStyle.Bold);
         }
 
@@ -49,7 +50,7 @@ namespace QuanLyTiecCuoi
             DataGridView dgv = sender as DataGridView;
 
             // Define the custom border color
-            Color borderColor = Color.FromArgb(79, 195, 247); // Light Blue
+            Color borderColor = Color.FromArgb(224, 247, 250); // Light Blue
 
             // Define the border width
             int borderWidth = 2;
@@ -70,20 +71,20 @@ namespace QuanLyTiecCuoi
             DataTable dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
-            dataGridView1.Columns[0].Width = 100;
+            dataGridView1.Columns[0].Width = 40;
             dataGridView1.Columns[0].HeaderText = "STT";
             dataGridView1.Columns[1].HeaderText = "Tên Chú Rể";
             dataGridView1.Columns[1].Width = 100;
             dataGridView1.Columns[2].HeaderText = "Tên Cô Dâu";
-            dataGridView1.Columns[2].Width = 100;
+            dataGridView1.Columns[2].Width = 80;
             dataGridView1.Columns[3].HeaderText = "Sảnh";
             dataGridView1.Columns[3].Width = 100;
             dataGridView1.Columns[4].HeaderText = "Ngày Tổ Chức";
             dataGridView1.Columns[4].Width = 100;
             dataGridView1.Columns[5].HeaderText = "Giờ";
-            dataGridView1.Columns[5].Width = 100;
+            dataGridView1.Columns[5].Width = 50;
             dataGridView1.Columns[6].HeaderText = "Số Lượng Bàn";
-            dataGridView1.Columns[6].Width = 100;
+            dataGridView1.Columns[6].Width = 170;
         }
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {

@@ -118,7 +118,9 @@ namespace QuanLyTiecCuoi.DESIGN
 
         private void iconButtonDashBoard_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Report(conString), sender);
+            Form ReportForm = new Report(conString);
+            ReportForm.Text = "DASHBOARD";
+            OpenChildForm(ReportForm, sender);
         }
 
 
@@ -176,7 +178,7 @@ namespace QuanLyTiecCuoi.DESIGN
             //End
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
+            childForm.Dock = DockStyle.Top;
             this.panelDesktop.Controls.Add(childForm);
             this.panelDesktop.Tag = childForm;
             childForm.BringToFront();

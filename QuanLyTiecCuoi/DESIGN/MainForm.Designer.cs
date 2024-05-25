@@ -400,9 +400,9 @@
             this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(382, 9);
+            this.lblTitle.Location = new System.Drawing.Point(375, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(155, 39);
+            this.lblTitle.Size = new System.Drawing.Size(187, 39);
             this.lblTitle.TabIndex = 6;
             this.lblTitle.Text = "HOME";
             // 

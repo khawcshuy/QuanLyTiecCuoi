@@ -61,7 +61,7 @@ namespace QuanLyTiecCuoi.SERVICE
             }
 
             // SQL query to insert a new venue
-            string insert_query = "INSERT INTO food (TENMONAN, DONGIA, NOTE, PICTURE) VALUES (@FoodName, @FoodPrice, @Note, @Image)";
+            string insert_query = "INSERT INTO FOOD (TENMONAN, DONGIA, PICTURE, NOTE) VALUES (@FoodName, @FoodPrice, @Image, @Note)";
 
             // Create a new connection
             using (SqlConnection connection = new SqlConnection(conString))
@@ -72,8 +72,6 @@ namespace QuanLyTiecCuoi.SERVICE
                     // Add parameters to the command
                     cmd.Parameters.AddWithValue("@FoodName", FoodName);
                     cmd.Parameters.AddWithValue("@FoodPrice", FoodPrice);
-                    cmd.Parameters.AddWithValue("@Note", note);
-
                     try
                     {
                         // Check if an image is provided
@@ -88,7 +86,7 @@ namespace QuanLyTiecCuoi.SERVICE
                             MessageBox.Show("Please upload an image.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return; // Exit the method
                         }
-
+                    cmd.Parameters.AddWithValue("@Note", note);
                         try
                         {
                             // Open connection

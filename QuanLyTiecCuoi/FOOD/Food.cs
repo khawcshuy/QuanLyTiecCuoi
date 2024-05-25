@@ -95,7 +95,7 @@ namespace QuanLyTiecCuoi
 
         public void LoadDataGridViewFood()
         {
-            String query = "SELECT ID,Picture,DONGIA,NOTE TENMONAN FROM FOOD where TRANGTHAIMONAN = 1";
+            String query = "SELECT ID,Picture,DONGIA,NOTE, TENMONAN FROM FOOD where TRANGTHAIMONAN = 1";
 
             using (SqlConnection connection = new SqlConnection(_conString))
             {
@@ -122,7 +122,7 @@ namespace QuanLyTiecCuoi
                         selectColumn.HeaderText = "Select";
                         selectColumn.Name = "Select";
                         selectColumn.DataPropertyName = "SELECT";
-                        selectColumn.ReadOnly = false; 
+                        selectColumn.ReadOnly = false;
                         dataGridViewFood.Columns.Add(selectColumn);
                         Confirm.Size = new System.Drawing.Size(180, 40);
                     }
@@ -146,7 +146,7 @@ namespace QuanLyTiecCuoi
                 {
                     imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                 }
-
+                dataGridViewFood.RowHeadersDefaultCellStyle.Font = new Font("Verdana", 12, FontStyle.Bold);
                 dataGridViewFood.DataSource = dataTable;
                 if (_parentForm != null)
                 {

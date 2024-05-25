@@ -120,7 +120,7 @@
             this.panel4.Controls.Add(this.panel2);
             this.panel4.Controls.Add(this.OrderDate);
             this.panel4.Controls.Add(this.label21);
-            this.panel4.Location = new System.Drawing.Point(10, 11);
+            this.panel4.Location = new System.Drawing.Point(79, 11);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(732, 576);
             this.panel4.TabIndex = 21;
@@ -820,7 +820,7 @@
             this.Confirm.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Confirm.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Confirm.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Confirm.Location = new System.Drawing.Point(622, 591);
+            this.Confirm.Location = new System.Drawing.Point(691, 591);
             this.Confirm.Margin = new System.Windows.Forms.Padding(2);
             this.Confirm.Name = "Confirm";
             this.Confirm.Size = new System.Drawing.Size(120, 26);
@@ -833,7 +833,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 617);
+            this.ClientSize = new System.Drawing.Size(888, 617);
             this.Controls.Add(this.Confirm);
             this.Controls.Add(this.panel4);
             this.Margin = new System.Windows.Forms.Padding(2);
