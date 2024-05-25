@@ -211,6 +211,12 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DESIGN\ThemeColor.cs" />
+    <Compile Include="DESIGN\Widget.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DESIGN\Widget.Designer.cs">
+      <DependentUpon>Widget.cs</DependentUpon>
+    </Compile>
     <Compile Include="FOOD\Food.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -317,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DESIGN\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DESIGN\Widget.resx">
+      <DependentUpon>Widget.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FOOD\Food.resx">
       <DependentUpon>Food.cs</DependentUpon>
