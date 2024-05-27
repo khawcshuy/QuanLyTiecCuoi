@@ -26,6 +26,7 @@ namespace QuanLyTiecCuoi.DESIGN
         //OtherFields
         private int borderSize = 2;
         private Size formSize;
+        private bool IsCollapse = false;
         //Constructor
         public MainForm(string _conString)
         {
@@ -71,7 +72,14 @@ namespace QuanLyTiecCuoi.DESIGN
                     currentButton.TextAlign = ContentAlignment.MiddleCenter;
                     currentButton.IconColor = color;
                     currentButton.TextImageRelation = TextImageRelation.TextBeforeImage;
-                    currentButton.ImageAlign = ContentAlignment.MiddleLeft;
+                    if (IsCollapse == true)
+                    {
+                        currentButton.ImageAlign = ContentAlignment.MiddleCenter;
+                    }
+                    else
+                    {
+                        currentButton.ImageAlign = ContentAlignment.MiddleLeft;
+                    }
                     currentButton.IconColor = ThemeColor.ChangeColorBrightness(color, -0.3);
                     panelTitleBar.BackColor = color;
                     btnClose.BackColor = color;
@@ -105,7 +113,14 @@ namespace QuanLyTiecCuoi.DESIGN
                 currentButton.TextAlign = ContentAlignment.MiddleCenter;
                 currentButton.IconColor = Color.Gainsboro;
                 currentButton.TextImageRelation = TextImageRelation.ImageBeforeText;
-                currentButton.ImageAlign = ContentAlignment.MiddleLeft;
+                if (IsCollapse == true)
+                {
+                    currentButton.ImageAlign = ContentAlignment.MiddleCenter;
+                }
+                else
+                {
+                    currentButton.ImageAlign = ContentAlignment.MiddleLeft;
+                }
             }
 
         }
@@ -201,6 +216,13 @@ namespace QuanLyTiecCuoi.DESIGN
             Form traCuuForm = new TraCuu(conString);
             traCuuForm.Text = "SEARCH";
             OpenChildForm(traCuuForm, sender);
+        }
+
+        private void BtnCustomer_Click(object sender, EventArgs e)
+        {
+            Form nhanVienForm = new NhanVien(conString);
+            nhanVienForm.Text = "EMPLOYEE";
+            OpenChildForm(nhanVienForm, sender);
         }
 
         private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
@@ -346,6 +368,7 @@ namespace QuanLyTiecCuoi.DESIGN
                     menuButton.ImageAlign = ContentAlignment.MiddleCenter;
                     menuButton.Padding = new Padding(0);
                 }
+                IsCollapse = true;
             }
             else
             { //Expand menu
@@ -358,6 +381,7 @@ namespace QuanLyTiecCuoi.DESIGN
                     menuButton.ImageAlign = ContentAlignment.MiddleLeft;
                     menuButton.Padding = new Padding(10, 0, 0, 0);
                 }
+                IsCollapse = false;
             }
         }
 
@@ -376,7 +400,7 @@ namespace QuanLyTiecCuoi.DESIGN
             DisableButton();
             leftBorderButton.Visible = false;
             currentButton = null;
-            lblTitle.Text = currentChildForm.Text;
+            lblTitle.Text = "DASHBOARD";
             panelTitleBar.BackColor = Color.FromArgb(98, 102, 244);
             btnMinimize.BackColor = Color.FromArgb(98, 102, 244);
             btnMaximize.BackColor = Color.FromArgb(98, 102, 244);
@@ -395,5 +419,6 @@ namespace QuanLyTiecCuoi.DESIGN
             this.Hide();
             login.FormClosed += (s, args) => this.Close();
         }
+
     }
 }

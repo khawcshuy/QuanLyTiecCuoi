@@ -23,8 +23,8 @@ namespace QuanLyTiecCuoi
             //lblSoDienThoai.ForeColor = Color.FromArgb(1, 87, 155);
             lblSoDienThoai.BackColor = Color.FromArgb(224, 247, 250);
             // Textbox (rjTextBox1)
-            rjTextBox1.BackColor = Color.FromArgb(255, 255, 255);
-            rjTextBox1.ForeColor = Color.FromArgb(1, 87, 155);
+            searchTextbox.BackColor = Color.FromArgb(255, 255, 255);
+            searchTextbox.ForeColor = Color.FromArgb(1, 87, 155);
             // Button (button1)
             button1.BackColor = Color.FromArgb(79, 195, 247);
             button1.ForeColor = Color.FromArgb(255, 255, 255);
@@ -107,7 +107,7 @@ namespace QuanLyTiecCuoi
         }
         private void button1_Click_1(object sender, EventArgs e)
         {
-            string sodienthoai = rjTextBox1.Texts.Trim();
+            string sodienthoai = searchTextbox.Texts.Trim();
             if (!string.IsNullOrEmpty(sodienthoai))
             {
                 using (SqlConnection conn = new SqlConnection(constring))
