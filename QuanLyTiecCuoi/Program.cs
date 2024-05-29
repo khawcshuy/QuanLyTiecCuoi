@@ -1,4 +1,5 @@
 ﻿using QuanLyTiecCuoi.DESIGN;
+using QuanLyTiecCuoi.NHANVIEN;
 using QuanLyTiecCuoi.Private;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,15 @@ namespace QuanLyTiecCuoi
         [STAThread]
         static void Main()
         {
-            string conString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=QUANLYTIECCUOI1;Integrated Security=True";
+            //string conString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=QUANLYTIECCUOI1;Integrated Security=True";
+            string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new QuanLyTiecCuoi.Service.Service(conString, null));
-            //application.run(new receipt(constring));
-            //Food foodform = new Food(conString, null);
-
+            //NhanVien nhanVien = new NhanVien(conString);
+            //Application.Run(new NhanVien(conString));
+            //InsertNV NHANVIEN = new InsertNV(conString,null);
+            //Application.Run(NHANVIEN);
             //Application.Run(foodform);
             ////Application.Run(new Report(conString));
 
@@ -31,13 +34,22 @@ namespace QuanLyTiecCuoi
             ////// Hiển thị form Food
 
 
+
+
+
+            TrangThaiSanh trangThaiSanh = new TrangThaiSanh(conString);
+            Application.Run(trangThaiSanh);
+
+
+
+
             //// pass the bookingform instance to the food form constructor
             //Food foodform = new Food(conString, null);
             //Application.Run(foodform);
 
             // GỌI BOOKING 
-            MainForm mainForm = new MainForm(conString);
-            Application.Run(mainForm);
+            //MainForm mainForm = new MainForm(conString);
+            //Application.Run(mainForm);
             //TraCuu tracuuform = new TraCuu(conString);
             //Application.Run(tracuuform);
             //fLogin fLogin = new fLogin(conString);

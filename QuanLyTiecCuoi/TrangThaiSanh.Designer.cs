@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.widget4 = new QuanLyTiecCuoi.DESIGN.Widget();
+            this.widget3 = new QuanLyTiecCuoi.DESIGN.Widget();
+            this.widget2 = new QuanLyTiecCuoi.DESIGN.Widget();
+            this.widget1 = new QuanLyTiecCuoi.DESIGN.Widget();
+            this.pictureBoxVenueImage = new System.Windows.Forms.PictureBox();
             this.IdKhachhang = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.Bride = new System.Windows.Forms.TextBox();
@@ -41,14 +46,9 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.labelTenSanh = new System.Windows.Forms.Label();
-            this.pictureBoxVenueImage = new System.Windows.Forms.PictureBox();
-            this.iconButtonBill = new FontAwesome.Sharp.IconButton();
-            this.widget4 = new QuanLyTiecCuoi.DESIGN.Widget();
-            this.widget3 = new QuanLyTiecCuoi.DESIGN.Widget();
-            this.widget2 = new QuanLyTiecCuoi.DESIGN.Widget();
-            this.widget1 = new QuanLyTiecCuoi.DESIGN.Widget();
             this.myToggleButton1 = new QuanLyTiecCuoi.myToggleButton();
+            this.iconButtonBill = new FontAwesome.Sharp.IconButton();
+            this.labelTenSanh = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -91,6 +91,44 @@
             this.splitContainer1.Size = new System.Drawing.Size(1129, 965);
             this.splitContainer1.SplitterDistance = 668;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // widget4
+            // 
+            this.widget4.Location = new System.Drawing.Point(12, 804);
+            this.widget4.Name = "widget4";
+            this.widget4.Size = new System.Drawing.Size(437, 258);
+            this.widget4.TabIndex = 4;
+            // 
+            // widget3
+            // 
+            this.widget3.Location = new System.Drawing.Point(12, 540);
+            this.widget3.Name = "widget3";
+            this.widget3.Size = new System.Drawing.Size(437, 258);
+            this.widget3.TabIndex = 3;
+            // 
+            // widget2
+            // 
+            this.widget2.Location = new System.Drawing.Point(12, 276);
+            this.widget2.Name = "widget2";
+            this.widget2.Size = new System.Drawing.Size(437, 258);
+            this.widget2.TabIndex = 2;
+            // 
+            // widget1
+            // 
+            this.widget1.Location = new System.Drawing.Point(12, 12);
+            this.widget1.Name = "widget1";
+            this.widget1.Size = new System.Drawing.Size(437, 258);
+            this.widget1.TabIndex = 1;
+            // 
+            // pictureBoxVenueImage
+            // 
+            this.pictureBoxVenueImage.Image = global::QuanLyTiecCuoi.Properties.Resources.Food_icon;
+            this.pictureBoxVenueImage.Location = new System.Drawing.Point(34, 92);
+            this.pictureBoxVenueImage.Name = "pictureBoxVenueImage";
+            this.pictureBoxVenueImage.Size = new System.Drawing.Size(209, 200);
+            this.pictureBoxVenueImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxVenueImage.TabIndex = 104;
+            this.pictureBoxVenueImage.TabStop = false;
             // 
             // IdKhachhang
             // 
@@ -206,25 +244,19 @@
             this.label20.TabIndex = 92;
             this.label20.Text = "Người lập hóa đơn";
             // 
-            // labelTenSanh
+            // myToggleButton1
             // 
-            this.labelTenSanh.AutoSize = true;
-            this.labelTenSanh.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
-            this.labelTenSanh.Location = new System.Drawing.Point(283, 95);
-            this.labelTenSanh.Name = "labelTenSanh";
-            this.labelTenSanh.Size = new System.Drawing.Size(98, 23);
-            this.labelTenSanh.TabIndex = 90;
-            this.labelTenSanh.Text = "Tên Sảnh";
-            // 
-            // pictureBoxVenueImage
-            // 
-            this.pictureBoxVenueImage.Image = global::QuanLyTiecCuoi.Properties.Resources.Food_icon;
-            this.pictureBoxVenueImage.Location = new System.Drawing.Point(34, 92);
-            this.pictureBoxVenueImage.Name = "pictureBoxVenueImage";
-            this.pictureBoxVenueImage.Size = new System.Drawing.Size(209, 200);
-            this.pictureBoxVenueImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxVenueImage.TabIndex = 104;
-            this.pictureBoxVenueImage.TabStop = false;
+            this.myToggleButton1.AutoSize = true;
+            this.myToggleButton1.Location = new System.Drawing.Point(409, 95);
+            this.myToggleButton1.MinimumSize = new System.Drawing.Size(45, 22);
+            this.myToggleButton1.Name = "myToggleButton1";
+            this.myToggleButton1.OffBackColor = System.Drawing.Color.Gray;
+            this.myToggleButton1.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.myToggleButton1.OnBackColor = System.Drawing.Color.LightSkyBlue;
+            this.myToggleButton1.OnToggleColor = System.Drawing.Color.PowderBlue;
+            this.myToggleButton1.Size = new System.Drawing.Size(45, 22);
+            this.myToggleButton1.TabIndex = 91;
+            this.myToggleButton1.UseVisualStyleBackColor = true;
             // 
             // iconButtonBill
             // 
@@ -239,48 +271,17 @@
             this.iconButtonBill.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButtonBill.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButtonBill.UseVisualStyleBackColor = true;
+            this.iconButtonBill.Click += new System.EventHandler(this.iconButtonBill_Click_1);
             // 
-            // widget4
+            // labelTenSanh
             // 
-            this.widget4.Location = new System.Drawing.Point(12, 804);
-            this.widget4.Name = "widget4";
-            this.widget4.Size = new System.Drawing.Size(437, 258);
-            this.widget4.TabIndex = 4;
-            // 
-            // widget3
-            // 
-            this.widget3.Location = new System.Drawing.Point(12, 540);
-            this.widget3.Name = "widget3";
-            this.widget3.Size = new System.Drawing.Size(437, 258);
-            this.widget3.TabIndex = 3;
-            // 
-            // widget2
-            // 
-            this.widget2.Location = new System.Drawing.Point(12, 276);
-            this.widget2.Name = "widget2";
-            this.widget2.Size = new System.Drawing.Size(437, 258);
-            this.widget2.TabIndex = 2;
-            // 
-            // widget1
-            // 
-            this.widget1.Location = new System.Drawing.Point(12, 12);
-            this.widget1.Name = "widget1";
-            this.widget1.Size = new System.Drawing.Size(437, 258);
-            this.widget1.TabIndex = 1;
-            // 
-            // myToggleButton1
-            // 
-            this.myToggleButton1.AutoSize = true;
-            this.myToggleButton1.Location = new System.Drawing.Point(409, 95);
-            this.myToggleButton1.MinimumSize = new System.Drawing.Size(45, 22);
-            this.myToggleButton1.Name = "myToggleButton1";
-            this.myToggleButton1.OffBackColor = System.Drawing.Color.Gray;
-            this.myToggleButton1.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.myToggleButton1.OnBackColor = System.Drawing.Color.LightSkyBlue;
-            this.myToggleButton1.OnToggleColor = System.Drawing.Color.PowderBlue;
-            this.myToggleButton1.Size = new System.Drawing.Size(45, 22);
-            this.myToggleButton1.TabIndex = 91;
-            this.myToggleButton1.UseVisualStyleBackColor = true;
+            this.labelTenSanh.AutoSize = true;
+            this.labelTenSanh.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            this.labelTenSanh.Location = new System.Drawing.Point(283, 95);
+            this.labelTenSanh.Name = "labelTenSanh";
+            this.labelTenSanh.Size = new System.Drawing.Size(98, 23);
+            this.labelTenSanh.TabIndex = 90;
+            this.labelTenSanh.Text = "Tên Sảnh";
             // 
             // TrangThaiSanh
             // 

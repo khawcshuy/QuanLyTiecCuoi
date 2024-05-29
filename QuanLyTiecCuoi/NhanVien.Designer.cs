@@ -31,53 +31,112 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.rjButton3 = new QuanLyTiecCuoi.UIDesign.RJButton();
-            this.rjButton2 = new QuanLyTiecCuoi.UIDesign.RJButton();
-            this.rjButton1 = new QuanLyTiecCuoi.UIDesign.RJButton();
+            this.deleteEmployee = new QuanLyTiecCuoi.UIDesign.RJButton();
+            this.ChangeInforEmployee = new QuanLyTiecCuoi.UIDesign.RJButton();
+            this.addEmployee = new QuanLyTiecCuoi.UIDesign.RJButton();
+            this.dataGridViewEmployee = new System.Windows.Forms.DataGridView();
             this.rjTextBox1 = new QuanLyTiecCuoi.UIDesign.RJTextBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel1.Controls.Add(this.rjButton3);
-            this.panel1.Controls.Add(this.rjButton2);
-            this.panel1.Controls.Add(this.rjButton1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.deleteEmployee);
+            this.panel1.Controls.Add(this.ChangeInforEmployee);
+            this.panel1.Controls.Add(this.addEmployee);
+            this.panel1.Controls.Add(this.dataGridViewEmployee);
             this.panel1.Controls.Add(this.rjTextBox1);
             this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(0, 37);
+            this.panel1.Location = new System.Drawing.Point(0, 46);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(991, 615);
+            this.panel1.Size = new System.Drawing.Size(1321, 757);
             this.panel1.TabIndex = 1;
             // 
-            // label1
+            // deleteEmployee
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label1.Location = new System.Drawing.Point(118, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Search";
+            this.deleteEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.deleteEmployee.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.deleteEmployee.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.deleteEmployee.BorderColor1 = System.Drawing.Color.PaleVioletRed;
+            this.deleteEmployee.BorderRadius = 0;
+            this.deleteEmployee.BorderRadius1 = 0;
+            this.deleteEmployee.BorderSize = 0;
+            this.deleteEmployee.BorderSize1 = 0;
+            this.deleteEmployee.FlatAppearance.BorderSize = 0;
+            this.deleteEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteEmployee.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteEmployee.ForeColor = System.Drawing.Color.White;
+            this.deleteEmployee.Location = new System.Drawing.Point(996, 25);
+            this.deleteEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.deleteEmployee.Name = "deleteEmployee";
+            this.deleteEmployee.Size = new System.Drawing.Size(200, 49);
+            this.deleteEmployee.TabIndex = 5;
+            this.deleteEmployee.Text = "Xóa";
+            this.deleteEmployee.TextColor = System.Drawing.Color.White;
+            this.deleteEmployee.UseVisualStyleBackColor = false;
+            this.deleteEmployee.Click += new System.EventHandler(this.deleteEmployee_Click);
             // 
-            // dataGridView1
+            // ChangeInforEmployee
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(210)))), ((int)(((byte)(245)))));
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.ChangeInforEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.ChangeInforEmployee.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.ChangeInforEmployee.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.ChangeInforEmployee.BorderColor1 = System.Drawing.Color.PaleVioletRed;
+            this.ChangeInforEmployee.BorderRadius = 0;
+            this.ChangeInforEmployee.BorderRadius1 = 0;
+            this.ChangeInforEmployee.BorderSize = 0;
+            this.ChangeInforEmployee.BorderSize1 = 0;
+            this.ChangeInforEmployee.FlatAppearance.BorderSize = 0;
+            this.ChangeInforEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChangeInforEmployee.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangeInforEmployee.ForeColor = System.Drawing.Color.White;
+            this.ChangeInforEmployee.Location = new System.Drawing.Point(752, 25);
+            this.ChangeInforEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.ChangeInforEmployee.Name = "ChangeInforEmployee";
+            this.ChangeInforEmployee.Size = new System.Drawing.Size(200, 49);
+            this.ChangeInforEmployee.TabIndex = 4;
+            this.ChangeInforEmployee.Text = "Sửa";
+            this.ChangeInforEmployee.TextColor = System.Drawing.Color.White;
+            this.ChangeInforEmployee.UseVisualStyleBackColor = false;
+            this.ChangeInforEmployee.Click += new System.EventHandler(this.ChangeInforEmployee_Click);
+            // 
+            // addEmployee
+            // 
+            this.addEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.addEmployee.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.addEmployee.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.addEmployee.BorderColor1 = System.Drawing.Color.PaleVioletRed;
+            this.addEmployee.BorderRadius = 0;
+            this.addEmployee.BorderRadius1 = 0;
+            this.addEmployee.BorderSize = 0;
+            this.addEmployee.BorderSize1 = 0;
+            this.addEmployee.FlatAppearance.BorderSize = 0;
+            this.addEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addEmployee.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addEmployee.ForeColor = System.Drawing.Color.White;
+            this.addEmployee.Location = new System.Drawing.Point(512, 25);
+            this.addEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.addEmployee.Name = "addEmployee";
+            this.addEmployee.Size = new System.Drawing.Size(200, 49);
+            this.addEmployee.TabIndex = 3;
+            this.addEmployee.Text = "Thêm";
+            this.addEmployee.TextColor = System.Drawing.Color.White;
+            this.addEmployee.UseVisualStyleBackColor = false;
+            this.addEmployee.Click += new System.EventHandler(this.addEmployee_Click);
+            // 
+            // dataGridViewEmployee
+            // 
+            this.dataGridViewEmployee.AllowUserToAddRows = false;
+            this.dataGridViewEmployee.AllowUserToDeleteRows = false;
+            this.dataGridViewEmployee.AllowUserToResizeRows = false;
+            this.dataGridViewEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewEmployee.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(210)))), ((int)(((byte)(245)))));
+            this.dataGridViewEmployee.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewEmployee.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.DodgerBlue;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -85,91 +144,27 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeight = 30;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(210)))), ((int)(((byte)(245)))));
-            this.dataGridView1.Location = new System.Drawing.Point(22, 101);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridViewEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewEmployee.ColumnHeadersHeight = 30;
+            this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewEmployee.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dataGridViewEmployee.EnableHeadersVisualStyles = false;
+            this.dataGridViewEmployee.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(210)))), ((int)(((byte)(245)))));
+            this.dataGridViewEmployee.Location = new System.Drawing.Point(29, 124);
+            this.dataGridViewEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewEmployee.Name = "dataGridViewEmployee";
+            this.dataGridViewEmployee.ReadOnly = true;
+            this.dataGridViewEmployee.RowHeadersVisible = false;
+            this.dataGridViewEmployee.RowHeadersWidth = 51;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightCyan;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Indigo;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.GhostWhite;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(906, 490);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // rjButton3
-            // 
-            this.rjButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
-            this.rjButton3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
-            this.rjButton3.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton3.BorderColor1 = System.Drawing.Color.PaleVioletRed;
-            this.rjButton3.BorderRadius = 0;
-            this.rjButton3.BorderRadius1 = 0;
-            this.rjButton3.BorderSize = 0;
-            this.rjButton3.BorderSize1 = 0;
-            this.rjButton3.FlatAppearance.BorderSize = 0;
-            this.rjButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton3.ForeColor = System.Drawing.Color.White;
-            this.rjButton3.Location = new System.Drawing.Point(747, 20);
-            this.rjButton3.Name = "rjButton3";
-            this.rjButton3.Size = new System.Drawing.Size(150, 40);
-            this.rjButton3.TabIndex = 5;
-            this.rjButton3.Text = "Xóa";
-            this.rjButton3.TextColor = System.Drawing.Color.White;
-            this.rjButton3.UseVisualStyleBackColor = false;
-            // 
-            // rjButton2
-            // 
-            this.rjButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
-            this.rjButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
-            this.rjButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton2.BorderColor1 = System.Drawing.Color.PaleVioletRed;
-            this.rjButton2.BorderRadius = 0;
-            this.rjButton2.BorderRadius1 = 0;
-            this.rjButton2.BorderSize = 0;
-            this.rjButton2.BorderSize1 = 0;
-            this.rjButton2.FlatAppearance.BorderSize = 0;
-            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton2.ForeColor = System.Drawing.Color.White;
-            this.rjButton2.Location = new System.Drawing.Point(564, 20);
-            this.rjButton2.Name = "rjButton2";
-            this.rjButton2.Size = new System.Drawing.Size(150, 40);
-            this.rjButton2.TabIndex = 4;
-            this.rjButton2.Text = "Sửa";
-            this.rjButton2.TextColor = System.Drawing.Color.White;
-            this.rjButton2.UseVisualStyleBackColor = false;
-            // 
-            // rjButton1
-            // 
-            this.rjButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
-            this.rjButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
-            this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton1.BorderColor1 = System.Drawing.Color.PaleVioletRed;
-            this.rjButton1.BorderRadius = 0;
-            this.rjButton1.BorderRadius1 = 0;
-            this.rjButton1.BorderSize = 0;
-            this.rjButton1.BorderSize1 = 0;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton1.ForeColor = System.Drawing.Color.White;
-            this.rjButton1.Location = new System.Drawing.Point(384, 20);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(150, 40);
-            this.rjButton1.TabIndex = 3;
-            this.rjButton1.Text = "Thêm";
-            this.rjButton1.TextColor = System.Drawing.Color.White;
-            this.rjButton1.UseVisualStyleBackColor = false;
+            this.dataGridViewEmployee.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewEmployee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewEmployee.Size = new System.Drawing.Size(1208, 603);
+            this.dataGridViewEmployee.TabIndex = 1;
             // 
             // rjTextBox1
             // 
@@ -180,33 +175,33 @@
             this.rjTextBox1.BorderSize = 2;
             this.rjTextBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox1.Location = new System.Drawing.Point(109, 24);
-            this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox1.Location = new System.Drawing.Point(145, 30);
+            this.rjTextBox1.Margin = new System.Windows.Forms.Padding(5);
             this.rjTextBox1.Multiline = false;
             this.rjTextBox1.Name = "rjTextBox1";
-            this.rjTextBox1.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.rjTextBox1.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
             this.rjTextBox1.PasswordChar = false;
             this.rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.rjTextBox1.PlaceholderText = "";
-            this.rjTextBox1.Size = new System.Drawing.Size(213, 32);
+            this.rjTextBox1.Size = new System.Drawing.Size(284, 40);
             this.rjTextBox1.TabIndex = 0;
             this.rjTextBox1.Texts = "";
             this.rjTextBox1.UnderlinedStyle = false;
-            this.rjTextBox1.Enter += new System.EventHandler(this.rjTextBox1_Enter);
+            this.rjTextBox1._TextChanged += new System.EventHandler(this.rjTextBox1__TextChanged);
             // 
             // NhanVien
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(210)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(951, 711);
+            this.ClientSize = new System.Drawing.Size(1268, 875);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "NhanVien";
             this.Text = "NhanVien";
             this.Load += new System.EventHandler(this.NhanVien_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -215,10 +210,9 @@
 
         private UIDesign.RJTextBox rjTextBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label1;
-        private UIDesign.RJButton rjButton3;
-        private UIDesign.RJButton rjButton2;
-        private UIDesign.RJButton rjButton1;
+        private System.Windows.Forms.DataGridView dataGridViewEmployee;
+        private UIDesign.RJButton deleteEmployee;
+        private UIDesign.RJButton ChangeInforEmployee;
+        private UIDesign.RJButton addEmployee;
     }
 }

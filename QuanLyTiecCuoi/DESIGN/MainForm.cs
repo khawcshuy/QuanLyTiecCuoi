@@ -207,7 +207,7 @@ namespace QuanLyTiecCuoi.DESIGN
 
         private void iconButtonVenueState_Click_1(object sender, EventArgs e)
         {
-            Form trangThaiSanhForm = new TrangThaiSanh();
+            Form trangThaiSanhForm = new TrangThaiSanh(conString);
             trangThaiSanhForm.Text = "STATE";
             OpenChildForm(trangThaiSanhForm, sender);
         }

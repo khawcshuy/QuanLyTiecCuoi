@@ -1,0 +1,7 @@
+update : 
+
+phần nhân viên làm được search + thêm + xóa + sửa 
+
+phần xóa thì làm giốg những cái còn lại nên thêm vào bảng nhân viên cột TRANGTHAINHANVIEN
+
+và chạy 1 proc trong csdl

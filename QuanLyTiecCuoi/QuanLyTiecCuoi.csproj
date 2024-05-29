@@ -242,6 +242,12 @@
     <Compile Include="NhanVien.Designer.cs">
       <DependentUpon>NhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="NHANVIEN\InsertNV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NHANVIEN\InsertNV.Designer.cs">
+      <DependentUpon>InsertNV.cs</DependentUpon>
+    </Compile>
     <Compile Include="TraCuu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -344,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien.resx">
       <DependentUpon>NhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NHANVIEN\InsertNV.resx">
+      <DependentUpon>InsertNV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TraCuu.resx">
       <DependentUpon>TraCuu.cs</DependentUpon>
@@ -479,8 +488,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="class\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

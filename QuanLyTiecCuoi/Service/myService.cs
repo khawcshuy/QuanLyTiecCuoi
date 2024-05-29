@@ -38,7 +38,6 @@ namespace QuanLyTiecCuoi.Service
         public List<string> SelectedService;
 
 
-        private bool ChangingState = false;
 
         private bool isEditing = false;
         private Booking booking;

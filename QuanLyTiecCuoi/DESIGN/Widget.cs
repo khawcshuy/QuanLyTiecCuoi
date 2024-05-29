@@ -12,9 +12,19 @@ namespace QuanLyTiecCuoi.DESIGN
 {
     public partial class Widget : UserControl
     {
+        //public Label IDTIEC;
         public Widget()
         {
             InitializeComponent();
+     }
+
+        private void StateName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Widget_Load(object sender, EventArgs e)
+        {
         }
     }
 }

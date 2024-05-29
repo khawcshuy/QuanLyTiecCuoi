@@ -20,12 +20,15 @@ namespace QuanLyTiecCuoi
 
         private string conString;
 
+        private TrangThaiSanh _parenform;
 
-        public Receipt(String conString)
+        public Receipt(String conString, TrangThaiSanh parenform)
         {
             InitializeComponent();
             this.conString = conString;
-        }
+            _parenform = parenform;
+            //this.Customerid = 
+     }
 
         public class CustomerInfo
         {

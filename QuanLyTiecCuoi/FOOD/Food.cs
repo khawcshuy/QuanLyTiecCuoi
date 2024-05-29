@@ -161,7 +161,11 @@ namespace QuanLyTiecCuoi
         {
             string searchText = SearchFood.Text.Trim();
 
-            string query = "SELECT * FROM FOOD WHERE [ID] LIKE '%' + @searchText + '%' OR [TENMONAN] LIKE '%' + @searchText + '%' OR [DONGIA] LIKE '%' + @searchText + '%' OR [NOTE] LIKE '%' + @searchText";
+            string query = "SELECT * FROM FOOD WHERE [ID] LIKE '%' + @searchText + '%' OR [TENMONAN] " +
+                "LIKE '%' + @searchText + '%' OR [DONGIA] LIKE '%' + @searchText + '%' " +
+                "OR [NOTE] LIKE '%' + @searchText";
+
+
 
             using (SqlConnection connection = new SqlConnection(_conString))
             {
