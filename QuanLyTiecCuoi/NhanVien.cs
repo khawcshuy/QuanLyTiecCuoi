@@ -111,14 +111,14 @@ namespace QuanLyTiecCuoi
             if (dataGridViewEmployee.ReadOnly == true)
             {
                 dataGridViewEmployee.ReadOnly = false;
-                ChangeInforEmployee.Text = "Luu Chinh Sua";
+                ChangeInforEmployee.Text = "Lưu Chỉnh Sửa";
                 SaveChangeToDatabase();
 
             }
             else
             {
                 dataGridViewEmployee.ReadOnly = true;
-                ChangeInforEmployee.Text = "Sua";
+                ChangeInforEmployee.Text = "Sửa Nhân Viên";
 
 
             }

@@ -40,7 +40,7 @@ namespace QuanLyTiecCuoi
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.DefaultCellStyle.BackColor = Color.FromArgb(224, 247, 250);
-            dataGridView1.GridColor = Color.LightGray; // Set a neutral grid color
+            dataGridView1.GridColor = Color.Black;
 
             // Subscribe to the Paint event for custom border
             dataGridView1.Paint += new PaintEventHandler(dataGridView1_Paint);

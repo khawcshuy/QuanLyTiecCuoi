@@ -102,5 +102,11 @@ namespace QuanLyTiecCuoi
         {
             txbPassWord.UseSystemPasswordChar = true;
         }
+
+        private void Register_Click(object sender, EventArgs e)
+        {
+            Register registerform = new Register(constring);
+            registerform.Show();
+        }
     }
 }

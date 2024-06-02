@@ -235,6 +235,12 @@
     <Compile Include="Login\FormMessageBox.Designer.cs">
       <DependentUpon>FormMessageBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\RJMessageBox.cs" />
     <Compile Include="NhanVien.cs">
       <SubType>Form</SubType>
@@ -362,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login\FormMessageBox.resx">
       <DependentUpon>FormMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien.resx">
       <DependentUpon>NhanVien.cs</DependentUpon>
