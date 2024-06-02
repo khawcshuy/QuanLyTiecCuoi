@@ -193,7 +193,7 @@ namespace QuanLyTiecCuoi.DESIGN
             //End
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Top;
+            childForm.Dock = DockStyle.Fill;
             this.panelDesktop.Controls.Add(childForm);
             this.panelDesktop.Tag = childForm;
             childForm.BringToFront();

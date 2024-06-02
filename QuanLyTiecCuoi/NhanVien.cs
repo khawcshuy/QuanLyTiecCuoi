@@ -37,7 +37,7 @@ namespace QuanLyTiecCuoi
             using (SqlConnection conn = new SqlConnection(conString))
             {
                 conn.Open();
-                string query = "SELECT ID, TENNHANVIEN, SODIENTHOAI, DIACHI, CHUCVU FROM NHANVIEN WHERE TRANGTHAINHANVIEN = 1 ";
+                string query = "SELECT ID, TENNHANVIEN, SODIENTHOAI, DIACHI, CHUCVU FROM NHANVIEN WHERE TRANGTHAINHANVIEN = 1";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     SqlDataAdapter da = new SqlDataAdapter(cmd);

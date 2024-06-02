@@ -1,6 +1,7 @@
 ﻿using QuanLyTiecCuoi.DESIGN;
 using QuanLyTiecCuoi.NHANVIEN;
 using QuanLyTiecCuoi.Private;
+using QuanLyTiecCuoi.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,8 @@ namespace QuanLyTiecCuoi
         [STAThread]
         static void Main()
         {
-            //string conString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=QUANLYTIECCUOI1;Integrated Security=True";
-            string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
+            string conString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=QUANLYTIECCUOI1;Integrated Security=True";
+            //string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new QuanLyTiecCuoi.Service.Service(conString, null));
@@ -26,19 +27,17 @@ namespace QuanLyTiecCuoi
             //InsertNV NHANVIEN = new InsertNV(conString,null);
             //Application.Run(NHANVIEN);
             //Application.Run(foodform);
-            ////Application.Run(new Report(conString));
+            //Application.Run(new Report(conString));
 
             //Venue Venue = new Venue(null, conString);
-
             //Application.Run(Venue);
             ////// Hiển thị form Food
 
+            //Application.Run(new Booking(conString));
+            Application.Run(new MainForm(conString));
 
-
-
-
-            TrangThaiSanh trangThaiSanh = new TrangThaiSanh(conString);
-            Application.Run(trangThaiSanh);
+            //TrangThaiSanh trangThaiSanh = new TrangThaiSanh(conString);
+            //Application.Run(trangThaiSanh);
 
 
 

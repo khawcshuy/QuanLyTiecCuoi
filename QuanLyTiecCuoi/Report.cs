@@ -307,11 +307,11 @@ namespace QuanLyTiecCuoi
             }
         }
 
-        private void FindMonth_Click(object sender, EventArgs e)
+        private void SearchByMonth_Click(object sender, EventArgs e)
         {
-            string SearchMonthYear = GetMonthYear.Text.Trim();
-            int? Nam = null; // Sử dụng kiểu int? để cho phép giá trị null
-            int? Thang = null; // Sử dụng kiểu int? để cho phép giá trị null
+            string SearchMonthYear = MonthYear.Texts.Trim();
+            int? Nam = null; 
+            int? Thang = null; 
 
             if (!string.IsNullOrEmpty(SearchMonthYear))
             {
@@ -338,6 +338,5 @@ namespace QuanLyTiecCuoi
             GetNearest5month(Thang.HasValue ? Thang.ToString() : null, Nam.HasValue ? Nam.ToString() : null);
             CalculateDailyRevenueRatio(Thang.HasValue ? Thang.ToString() : null, Nam.HasValue ? Nam.ToString() : null);
         }
-
     }
 }

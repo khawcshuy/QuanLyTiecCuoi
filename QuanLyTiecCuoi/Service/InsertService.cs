@@ -16,6 +16,7 @@ namespace QuanLyTiecCuoi.Service
     {
         private myService _parentForm;
         public string conString;
+        private Size formSize;
         public InsertService(myService parentForm)
         {
             InitializeComponent();
@@ -39,21 +40,20 @@ namespace QuanLyTiecCuoi.Service
         //    }
         //}
 
-        private void Confirm_Click(object sender, EventArgs e)
+        private void XacNhan_Click(object sender, EventArgs e)
         {
-            string ServiceName = ServiceNameAdd.Text;
-            string ServiceType = ServiceTypeAdd.Text;
+            string ServiceName = textBoxTenDichVu.Texts.Trim();
+            string ServiceType = comboBoxLoaiDichVu.Texts.Trim();
             float ServicePrice;
 
 
-            if (!float.TryParse(ServicePriceAdd.Text, out ServicePrice))
+            if (!float.TryParse(textBoxDonGia.Texts.Trim(), out ServicePrice))
             {
                 MessageBox.Show("Please enter a valid floating-point value for the price of the Venue.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return; // Exit the method if input is invalid
             }
 
             string insert_query = "INSERT INTO DICHVU (TENDICHVU, LOAIDICHVU,GIADICHVU)  VALUES(@ServiceName,@ServiceType,@ServicePrice)";
-
             using (SqlConnection connection = new SqlConnection(conString))
             {
                 using (SqlCommand cmd = new SqlCommand(insert_query, connection))
@@ -61,82 +61,48 @@ namespace QuanLyTiecCuoi.Service
                     cmd.Parameters.AddWithValue("@ServiceName", ServiceName);
                     cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
                     cmd.Parameters.AddWithValue("@ServicePrice", ServicePrice);
-;
-
-                   
-                        try
-                        {
-                            connection.Open();
-
-                            cmd.ExecuteNonQuery();
-
-                            MessageBox.Show("Service added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("An error occurred while adding the Service: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                 
-
-                }
-            }
-
-            _parentForm.LoadDataGridViewService();
-
-
-            this.Close();
-        }
-
-        private void Confirm_Click_1(object sender, EventArgs e)
-        {
-            string ServiceName = ServiceNameAdd.Text;
-            string ServiceType = ServiceTypeAdd.Text;
-            float ServicePrice;
-
-
-            if (!float.TryParse(ServicePriceAdd.Text, out ServicePrice))
-            {
-                MessageBox.Show("Please enter a valid floating-point value for the price of the Venue.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Exit the method if input is invalid
-            }
-
-            string insert_query = "INSERT INTO DICHVU (TENDICHVU, LOAIDICHVU,GIADICHVU)  VALUES(@ServiceName,@ServiceType,@ServicePrice)";
-
-            using (SqlConnection connection = new SqlConnection(conString))
-            {
-                using (SqlCommand cmd = new SqlCommand(insert_query, connection))
-                {
-                    cmd.Parameters.AddWithValue("@ServiceName", ServiceName);
-                    cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
-                    cmd.Parameters.AddWithValue("@ServicePrice", ServicePrice);
-                    ;
-
-
+                    
                     try
                     {
                         connection.Open();
-
                         cmd.ExecuteNonQuery();
-
                         MessageBox.Show("Service added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("An error occurred while adding the Service: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
-
                 }
             }
-
             _parentForm.LoadDataGridViewService();
-
-
             this.Close();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_NCCALCSIZE = 0x0083;
+            const int WM_SYSCOMMAND = 0x0112;
+            const int SC_MINIMIZE = 0xF020;
+            const int SC_RESTORE = 0xF120;
+            if (m.Msg == WM_NCCALCSIZE && m.WParam.ToInt32() == 1)
+            {
+                return;
+            }
+            if (m.Msg == WM_SYSCOMMAND)
+            {
+                int wParam = (m.WParam.ToInt32() & 0xFFF0);
+                if (wParam == SC_MINIMIZE)  //Before
+                    formSize = this.ClientSize;
+                if (wParam == SC_RESTORE)// Restored form(Before)
+                    this.Size = formSize;
+            }
+            base.WndProc(ref m);
+        }
+
     }
 }

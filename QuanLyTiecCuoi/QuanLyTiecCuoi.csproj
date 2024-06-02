@@ -288,6 +288,21 @@
     <Compile Include="UIDesign\ButtonUI.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UIDesign\ComboBoxUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UIDesign\ComboBoxUI.Designer.cs">
+      <DependentUpon>ComboBoxUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIDesign\DatePickerUI.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UIDesign\TextBoxTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UIDesign\TextBoxTemplate.Designer.cs">
+      <DependentUpon>TextBoxTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="UIDesign\TextBoxUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -385,6 +400,9 @@
     <EmbeddedResource Include="Service\myService.resx">
       <DependentUpon>myService.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIDesign\TextBoxTemplate.resx">
+      <DependentUpon>TextBoxTemplate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIDesign\TextBoxUI.resx">
       <DependentUpon>TextBoxUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -446,6 +464,8 @@
     <None Include="Resources\5582931.png" />
     <None Include="Resources\chat.png" />
     <None Include="Resources\error.png" />
+    <Content Include="Resources\calendarDark.png" />
+    <Content Include="Resources\calendarWhite.png" />
     <Content Include="Resources\sanh1.jpg" />
     <None Include="Resources\Venue-Icon.png" />
     <None Include="QUANLYTIECCUOIDataSet.xsc">

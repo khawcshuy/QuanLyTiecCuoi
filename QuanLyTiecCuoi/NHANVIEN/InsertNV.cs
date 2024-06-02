@@ -15,6 +15,7 @@ namespace QuanLyTiecCuoi.NHANVIEN
     {
         private NhanVien _parentForm;
         public string conString;
+        private Size formSize;
         public InsertNV( string conString_, NhanVien parentForm)
         {
             InitializeComponent();
@@ -28,29 +29,24 @@ namespace QuanLyTiecCuoi.NHANVIEN
 
         }
 
-
-
-        private void ConfirmAddButton_Click(object sender, EventArgs e)
+        private void XacNhan_Click(object sender, EventArgs e)
         {
-            // Get the values from the input fields
-            string employeeNameValue = employeeNameAdd.Text;
-            string employeeAddressValue = employeeAdressAdd.Text;
-            string employeePhoneValue = employeePhoneAdd.Text;
-            string employeePositionValue = employeePositionAdd.Text;
-            string username = userName.Text;
-            string password = Password.Text;
+            string employeeNameValue = textBoxTenNhanVien.Texts.Trim();
+            string employeeAddressValue = textBoxDiaChi.Texts.Trim();
+            string employeePhoneValue = textBoxSoDienThoai.Texts.Trim();
+            string employeePositionValue = textBoxChucVu.Texts.Trim();
+            string username = textBoxTenTaiKhoan.Texts.Trim();
+            string password = textBoxMatKhau.Texts.Trim();
 
-            // Check if any required field is empty
             if (string.IsNullOrEmpty(employeeNameValue) ||
                 string.IsNullOrEmpty(employeeAddressValue) ||
                 string.IsNullOrEmpty(employeePhoneValue) ||
                 string.IsNullOrEmpty(employeePositionValue))
             {
                 MessageBox.Show("Please fill in all required fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Exit the method without executing the SQL command
+                return; 
             }
 
-            // Proceed with adding the new employee
             using (SqlConnection connection = new SqlConnection(conString))
             {
                 connection.Open();
@@ -58,8 +54,6 @@ namespace QuanLyTiecCuoi.NHANVIEN
                 using (SqlCommand command = new SqlCommand("AddNhanVien", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
-
-                    // Set parameter values
                     command.Parameters.AddWithValue("@TENNHANVIEN", employeeNameValue);
                     command.Parameters.AddWithValue("@SODIENTHOAI", employeePhoneValue);
                     command.Parameters.AddWithValue("@DIACHI", employeeAddressValue);
@@ -85,7 +79,7 @@ namespace QuanLyTiecCuoi.NHANVIEN
 
                     try
                     {
-                        
+
                         command.ExecuteNonQuery();
                         MessageBox.Show("NhanVien added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -99,6 +93,31 @@ namespace QuanLyTiecCuoi.NHANVIEN
         }
 
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_NCCALCSIZE = 0x0083;
+            const int WM_SYSCOMMAND = 0x0112;
+            const int SC_MINIMIZE = 0xF020;
+            const int SC_RESTORE = 0xF120;
+            if (m.Msg == WM_NCCALCSIZE && m.WParam.ToInt32() == 1)
+            {
+                return;
+            }
+            if (m.Msg == WM_SYSCOMMAND)
+            {
+                int wParam = (m.WParam.ToInt32() & 0xFFF0);
+                if (wParam == SC_MINIMIZE)  //Before
+                    formSize = this.ClientSize;
+                if (wParam == SC_RESTORE)// Restored form(Before)
+                    this.Size = formSize;
+            }
+            base.WndProc(ref m);
+        }
 
     }
 }

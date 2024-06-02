@@ -40,7 +40,7 @@ namespace QuanLyTiecCuoi.Service
 
 
         private bool isEditing = false;
-        private Booking booking;
+       // private Booking booking;
 
         //private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
 
@@ -89,7 +89,7 @@ namespace QuanLyTiecCuoi.Service
                         selectColumn.DataPropertyName = "SELECT"; // Replace "SELECT" with the actual column name in your database
                         selectColumn.ReadOnly = false; // Allow selection
                         dataGridViewService.Columns.Add(selectColumn);
-                        Confirm.Size = new System.Drawing.Size(180, 40);
+                       Confirm.Size = new System.Drawing.Size(180, 40);
                     }
                 }
                 adapter.Fill(dataTable);
@@ -104,10 +104,34 @@ namespace QuanLyTiecCuoi.Service
                     }
                 }
                 connection.Close();
-
-
                 dataGridViewService.DataSource = dataTable;
+                if (dataGridViewService.Columns["TrangThaiDichVu"] != null)
+                {
+                    dataGridViewService.Columns["TrangThaiDichVu"].Visible = false;
+                }
+                if (dataGridViewService.Columns["ServiceId"] != null)
+                {
+                    dataGridViewService.Columns["ServiceId"].Width = 100; // Set width as per your requirement
+                }
+                if (dataGridViewService.Columns["ServiceName"] != null)
+                {
+                    dataGridViewService.Columns["ServiceName"].Width = 225; // Set width as per your requirement
+                }
+                if (dataGridViewService.Columns["ServiceType"] != null)
+                {
+                    dataGridViewService.Columns["ServiceType"].Width = 175; // Set width as per your requirement
+                }
+                if (dataGridViewService.Columns["ServicePrice"] != null)
+                {
+                    dataGridViewService.Columns["ServicePrice"].Width = 150; // Set width as per your requirement
+                }
+                if (dataGridViewService.Columns["Picture"] != null)
+                {
+                    dataGridViewService.Columns["Picture"].HeaderText = "Picture";
+                    dataGridViewService.Columns["Picture"].Width = 172;
+                }
             }
+            Confirm.Visible = false;
         }
 
 
@@ -153,27 +177,26 @@ namespace QuanLyTiecCuoi.Service
                 }
             }
             dataGridViewService.ReadOnly = false;
-            ChangeService.Text = "Chỉnh sửa";
             isEditing = false;
         }
 
-        private void ChangeService_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             if (!isEditing)
             {
                 dataGridViewService.ReadOnly = false;
-                ChangeService.Text = "Lưu chỉnh sửa";
+                dataGridViewService.SelectionMode = DataGridViewSelectionMode.CellSelect;
+                btnEdit.Text = "Lưu Chỉnh Sửa";
                 isEditing = true;
             }
             else
             {
-                ChangeService.Text = "Chỉnh sửa dịch vụ";
+                btnEdit.Text = "Chỉnh Sửa";
+                dataGridViewService.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 SaveChangesToDatabase();
             }
         }
-
-
-       
+  
 
         private void AddFood_Click(object sender, EventArgs e)
         {
@@ -182,9 +205,9 @@ namespace QuanLyTiecCuoi.Service
             insertServiceForm.ShowDialog();
         }
 
-        private void SearchService_TextChanged(object sender, EventArgs e)
+        private void searchFoodname__TextChanged(object sender, EventArgs e)
         {
-            string searchText = SearchService.Text.Trim();
+            string searchText = searchServicename.Texts.Trim();
 
             string query = "SELECT * FROM DICHVU WHERE [ID] LIKE '%' + @searchText + '%' OR [TENDICHVU] LIKE '%' + @searchText + '%' OR [GIADICHVU] LIKE '%' + @searchText + '%'"; // Thay đổi từ FOOD sang DICHVU, TENDICHVU, GIADICHVU
 
@@ -201,9 +224,6 @@ namespace QuanLyTiecCuoi.Service
                 }
             }
         }
-
-
-
         public delegate void ConfirmEventHandler(List<string> SelectedService);
 
         public event ConfirmEventHandler ConfirmEvent;
@@ -251,8 +271,7 @@ namespace QuanLyTiecCuoi.Service
                 }
             }
         }
-
-        private void AddService_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             InsertService insertServiceForm = new InsertService(this);
             insertServiceForm.conString = conString;
@@ -287,6 +306,48 @@ namespace QuanLyTiecCuoi.Service
                             MessageBox.Show("Record updated/deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                            LoadDataGridViewService();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("An error occurred while updating/deleting the record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a record to update/delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Int32 selectedCellCount = dataGridViewService.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                int currentIndex = dataGridViewService.CurrentCell.RowIndex;
+
+                int ID = Convert.ToInt32(dataGridViewService.Rows[currentIndex].Cells["ServiceId"].Value);
+
+                string storedProcedureName = "CheckAndUpdateServiceStatus";
+
+                using (SqlConnection connection = new SqlConnection(conString))
+                {
+                    using (SqlCommand command = new SqlCommand(storedProcedureName, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@IDDICHVU", ID);
+
+                        try
+                        {
+                            connection.Open();
+
+                            command.ExecuteNonQuery();
+
+                            MessageBox.Show("Record updated/deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            LoadDataGridViewService();
                         }
                         catch (Exception ex)
                         {

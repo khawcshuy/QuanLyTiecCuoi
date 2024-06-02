@@ -15,13 +15,18 @@ namespace QuanLyTiecCuoi
     public partial class TraCuu : Form
     {
         public string constring;
+        private Rectangle button1OriginalRect;
+        private Rectangle searchTextboxOriginalRect;
+        private Rectangle datagridview1OriginalRect;
+        private Rectangle panel1OriginalRect;
+        private Size originalFormSize;
         public TraCuu(string _constring)
         {
             InitializeComponent();
+            //button1.Visible = false;
+            //searchTextbox.Visible = false;
             this.BackColor = Color.FromArgb(224, 247, 250);
             dataGridView1.BackgroundColor = Color.FromArgb(224, 247, 250);
-            //lblSoDienThoai.ForeColor = Color.FromArgb(1, 87, 155);
-            lblSoDienThoai.BackColor = Color.FromArgb(224, 247, 250);
             // Textbox (rjTextBox1)
             searchTextbox.BackColor = Color.FromArgb(255, 255, 255);
             searchTextbox.ForeColor = Color.FromArgb(1, 87, 155);
@@ -64,6 +69,11 @@ namespace QuanLyTiecCuoi
         }
         private void TraCuu_Load(object sender, EventArgs e)
         {
+            originalFormSize = this.Size;
+            button1OriginalRect = new Rectangle(button1.Location, button1.Size);
+            searchTextboxOriginalRect = new Rectangle(searchTextbox.Location, searchTextbox.Size);
+            datagridview1OriginalRect = new Rectangle(dataGridView1.Location, dataGridView1.Size);
+            panel1OriginalRect = new Rectangle(panel1.Location, panel1.Size);
             SqlConnection conn = new SqlConnection(constring);
             SqlCommand cmd = new SqlCommand("SELECT T.ID, TENCHURE, TENCODAU, S.TENSANH, NGAYTOCHUC, CA, SOLUONGBAN FROM TIEC T, SANHINFOR S WHERE T.IDLOAISANH = S.ID", conn);
             SqlDataAdapter da = new SqlDataAdapter();
@@ -76,7 +86,7 @@ namespace QuanLyTiecCuoi
             dataGridView1.Columns[1].HeaderText = "Tên Chú Rể";
             dataGridView1.Columns[1].Width = 100;
             dataGridView1.Columns[2].HeaderText = "Tên Cô Dâu";
-            dataGridView1.Columns[2].Width = 80;
+            dataGridView1.Columns[2].Width = 100;
             dataGridView1.Columns[3].HeaderText = "Sảnh";
             dataGridView1.Columns[3].Width = 100;
             dataGridView1.Columns[4].HeaderText = "Ngày Tổ Chức";
@@ -140,6 +150,42 @@ namespace QuanLyTiecCuoi
             {
                 MessageBox.Show("Vui Lòng Nhập Số Điện Thoại!");
             }
+        }
+
+        private void TraCuu_Resize(object sender, EventArgs e)
+        {
+            if (originalFormSize.Width == 0 || originalFormSize.Height == 0) return;
+            float xRatio = (float)this.Width / originalFormSize.Width;
+            float yRatio = (float)this.Height / originalFormSize.Height;
+            ResizeControl(button1OriginalRect, button1, xRatio, yRatio);
+            ResizeControl(searchTextboxOriginalRect, searchTextbox, xRatio, yRatio);
+            ResizeControl(datagridview1OriginalRect, dataGridView1, xRatio, yRatio);
+            ResizeControl(panel1OriginalRect, panel1, xRatio, yRatio);
+        }
+
+        private void ResizeControl(Rectangle originalRect, Control control, float xRatio, float yRatio)
+        {
+            int newX = (int)(originalRect.X * xRatio);
+            int newY = (int)(originalRect.Y * yRatio);
+            int newWidth = (int)(originalRect.Width * xRatio);
+            int newHeight = (int)(originalRect.Height * yRatio);
+            newX = Math.Max(newX, 0);
+            newY = Math.Max(newY, 0);
+            newWidth = Math.Max(newWidth, 10); // Minimum width
+            newHeight = Math.Max(newHeight, 10); // Minimum height
+
+            // Adjust the width and height if the control exceeds the form's client area
+            if (newX + newWidth > this.ClientSize.Width)
+            {
+                newWidth = this.ClientSize.Width - newX;
+            }
+            if (newY + newHeight > this.ClientSize.Height)
+            {
+                newHeight = this.ClientSize.Height - newY;
+            }
+            Console.WriteLine($"Resizing {control.Name}: New Location ({newX}, {newY}), New Size ({newWidth}, {newHeight})");
+            control.Location = new Point(newX, newY);
+            control.Size = new Size(newWidth, newHeight);
         }
     }
 }

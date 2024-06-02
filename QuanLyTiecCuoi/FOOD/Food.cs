@@ -89,6 +89,21 @@ namespace QuanLyTiecCuoi
 
         private void Food_Load(object sender, EventArgs e)
         {
+            if (isChoosing == true)
+            {
+                btnAdd.Visible = false;
+                btnEdit.Visible = false;
+                btnDelete.Visible = false;
+                Confirm.Visible = false;
+                XacNhan.Visible = true;
+            }    
+            else
+            {
+                btnAdd.Visible = true;
+                btnEdit.Visible = true;
+                btnDelete.Visible = true;
+                Confirm.Visible = true;
+            }    
             LoadDataGridViewFood();
         }
 
@@ -155,11 +170,9 @@ namespace QuanLyTiecCuoi
             }
         }
 
-
-
-        private void SearchFood_TextChanged(object sender, EventArgs e)
+        private void searchFoodname__TextChanged(object sender, EventArgs e)
         {
-            string searchText = SearchFood.Text.Trim();
+            string searchText = searchFoodname.Texts.Trim();
 
             string query = "SELECT * FROM FOOD WHERE [ID] LIKE '%' + @searchText + '%' OR [TENMONAN] " +
                 "LIKE '%' + @searchText + '%' OR [DONGIA] LIKE '%' + @searchText + '%' " +
@@ -181,7 +194,6 @@ namespace QuanLyTiecCuoi
                 }
             }
         }
-
 
         private void SaveChangesToDatabase()
         {
@@ -247,28 +259,27 @@ namespace QuanLyTiecCuoi
             LoadDataGridViewFood();
 
             dataGridView1.ReadOnly = false;
-            ChangeVenue.Text = "Chỉnh sửa";
+            btnEdit.Text = "Chỉnh Sửa";
+            dataGridViewFood.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             isEditing = false;
         }
 
-
-       
-        private void button2_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             if (!isEditing)
             {
                 dataGridViewFood.ReadOnly = false;
-                ChangeFood.Text = "Lưu chỉnh sửa";
+                dataGridViewFood.SelectionMode = DataGridViewSelectionMode.CellSelect;
+                btnEdit.Text = "Lưu Chỉnh Sửa";
                 isEditing = true;
             }
             else
             {
-
                 SaveChangesToDatabase();
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
             Int32 selectedCellCount = dataGridViewFood.GetCellCount(DataGridViewElementStates.Selected);
             if (selectedCellCount > 0)
@@ -312,7 +323,7 @@ namespace QuanLyTiecCuoi
 
         public string imglocation = "";
 
-
+        
         private void dataGridViewFood_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (isEditing && dataGridViewFood.Columns[e.ColumnIndex].Name == "PictureFood" && e.RowIndex != -1)
@@ -329,7 +340,7 @@ namespace QuanLyTiecCuoi
             }
                 
             if(isChoosing)
-            { 
+            {
                 dataGridViewFood.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 int currentRowIndex = e.RowIndex;
                 if (currentRowIndex >= 0 && currentRowIndex < dataGridViewFood.Rows.Count)
@@ -356,12 +367,12 @@ namespace QuanLyTiecCuoi
             }
         }
 
-        private void AddFood_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            // Corrected variable name to insertVenueForm
             InsertFood insertFoodForm = new InsertFood(this, _conString);
             insertFoodForm.ShowDialog();
         }
+
 
         public delegate void ConfirmEventHandler(List<string> selectedFoods);
 
@@ -373,6 +384,26 @@ namespace QuanLyTiecCuoi
         private void Confirm_Click_1(object sender, EventArgs e)
         {
 
+            SelectedFoods = new List<string>();
+            // Iterate through the DataGridView to collect selected food IDs
+            foreach (DataGridViewRow row in dataGridViewFood.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["SELECT"].Value))
+                {
+                    string foodID = row.Cells["FoodId"].Value.ToString(); // Assuming the ID column name is "ID"
+                    SelectedFoods.Add(foodID);
+                }
+            }
+
+            // Raise the event and pass the list
+            ConfirmEvent?.Invoke(SelectedFoods);
+
+            // Close the Food form
+            this.Close();
+        }
+
+        private void XacNhan_Click(object sender, EventArgs e)
+        {
             SelectedFoods = new List<string>();
             // Iterate through the DataGridView to collect selected food IDs
             foreach (DataGridViewRow row in dataGridViewFood.Rows)

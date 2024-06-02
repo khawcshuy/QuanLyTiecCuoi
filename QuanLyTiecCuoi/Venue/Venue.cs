@@ -21,7 +21,7 @@ namespace QuanLyTiecCuoi
         private Booking _parentForm;
 
         public string conString;
-        public Venue(Booking parentForm = null, string conString = null)
+        public Venue(Booking parentForm = null, String _conString = null)
         {
             if (parentForm == null)
             {
@@ -33,7 +33,7 @@ namespace QuanLyTiecCuoi
                 _parentForm = parentForm;
             }
 
-            this.conString = conString;
+            conString = _conString;
         }
 
 
@@ -57,7 +57,7 @@ namespace QuanLyTiecCuoi
         private void Venue_Load(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
-            }
+        }
 
 
 
@@ -194,18 +194,17 @@ namespace QuanLyTiecCuoi
         // Method to handle the click event of the "AddVenue" button
         private void AddVenue_Click(object sender, EventArgs e)
         {
-            // Corrected variable name to insertVenueForm
             ChangingState = true;
             dataGridView1.ReadOnly = false;
-            ChangeVenue.Text = "Chỉnh sửa";
-            isEditing = false;
-
-
-
-            InsertVenue insertVenueForm = new InsertVenue(this);
+            //ChangeVenue.Text = "Chỉnh sửa";
+            InsertVenue insertVenueForm = new InsertVenue(this, conString);
             insertVenueForm.ShowDialog();
         }
-
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            InsertVenue insertVenueForm = new InsertVenue(this, conString);
+            insertVenueForm.ShowDialog();
+        }
 
 
         private void SelectedVenue(bool isChoosing)
@@ -234,13 +233,11 @@ namespace QuanLyTiecCuoi
             }
         }
 
-
-
-        private void SearchVenue_TextChanged(object sender, EventArgs e)
+        private void searchFoodname__TextChanged(object sender, EventArgs e)
         {
-            string searchText = SearchVenue.Text.Trim();
+            string searchText = searchVenuename.Texts.Trim();
 
-            string query = "SELECT * FROM SANHINFOR WHERE [ID] LIKE '%' + @searchText + '%' OR [TENSANH] LIKE '%' + @searchText + '%' OR [LOAISANH] LIKE '%' + @searchText + '%' OR [TRANGTHAISANH] LIKE '%' + @searchText + '%' OR [MINMONEY] LIKE '%' + @searchText + '%' OR [MAXTABLE] LIKE '%' + @searchText + '%'";
+            string query = "SELECT ID, PICTURE, TENSANH, LOAISANH, MAXTABLE, MINMONEY, NOTE FROM SANHINFOR WHERE [ID] LIKE '%' + @searchText + '%' OR [TENSANH] LIKE '%' + @searchText + '%' OR [LOAISANH] LIKE '%' + @searchText + '%' OR [TRANGTHAISANH] LIKE '%' + @searchText + '%' OR [MINMONEY] LIKE '%' + @searchText + '%' OR [MAXTABLE] LIKE '%' + @searchText + '%'";
 
             using (SqlConnection connection = new SqlConnection(conString))
             {
@@ -257,26 +254,24 @@ namespace QuanLyTiecCuoi
             }
         }
 
-
-
-        private void button3_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
             Int32 selectedCellCount = dataGridView1.GetCellCount(DataGridViewElementStates.Selected);
-            if (    selectedCellCount > 0)
+            if (selectedCellCount > 0)
             {
                 int currentIndex = dataGridView1.CurrentCell.RowIndex;
 
                 int ID = Convert.ToInt32(dataGridView1.Rows[currentIndex].Cells["VenueId"].Value);
 
-                string storedProcedureName = "CheckAndUpdateSanhStatus"; 
+                string storedProcedureName = "CheckAndUpdateSanhStatus";
 
                 using (SqlConnection connection = new SqlConnection(conString))
                 {
                     using (SqlCommand command = new SqlCommand(storedProcedureName, connection))
                     {
-                        command.CommandType = CommandType.StoredProcedure; 
+                        command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@IDSanh", ID); 
+                        command.Parameters.AddWithValue("@IDSanh", ID);
 
                         try
                         {
@@ -301,20 +296,17 @@ namespace QuanLyTiecCuoi
             }
         }
 
-
-
-
-        private void ChangeVenue_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (!isEditing) 
+            if (!isEditing)
             {
                 dataGridView1.ReadOnly = false;
-                ChangeVenue.Text = "Lưu chỉnh sửa";
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
+                btnEdit.Text = "Lưu Chỉnh Sửa";
                 isEditing = true;
             }
             else
             {
-
                 SaveChangesToDatabase(ChangingState);
             }
         }
@@ -386,9 +378,9 @@ namespace QuanLyTiecCuoi
                     ChangingState = false;
                 }
                 LoadDataIntoDataGridView();
-
                 dataGridView1.ReadOnly = false;
-                ChangeVenue.Text = "Chỉnh sửa";
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                btnEdit.Text = "Chỉnh Sửa Sảnh";
                 isEditing = false;
             }
         }
@@ -461,6 +453,7 @@ namespace QuanLyTiecCuoi
 
             this.Close();
         }
+
     }
 }
 
