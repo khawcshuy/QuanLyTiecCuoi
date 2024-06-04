@@ -21,7 +21,7 @@ namespace QuanLyTiecCuoi
         {
             InitializeComponent();
             this.conString = conString;
-
+            pictureBoxVenueImage.Paint += new PaintEventHandler(pictureBoxVenueImage_Paint);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -29,6 +29,17 @@ namespace QuanLyTiecCuoi
 
         }
 
+        private void pictureBoxVenueImage_Paint(object sender, PaintEventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            int borderWidth = 4;
+            Color borderColor = Color.FromArgb(0, 36, 107);
+            ControlPaint.DrawBorder(e.Graphics, pb.ClientRectangle, borderColor, borderWidth, ButtonBorderStyle.Solid,
+                    borderColor, borderWidth, ButtonBorderStyle.Solid,
+                    borderColor, borderWidth, ButtonBorderStyle.Solid,
+                    borderColor, borderWidth, ButtonBorderStyle.Solid);
+            
+        }
         private void TrangThaiSanh_Load(object sender, EventArgs e)
         {
             splitContainer1.Panel1.Controls.Clear();
@@ -80,6 +91,11 @@ namespace QuanLyTiecCuoi
         }
 
         private void widget1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

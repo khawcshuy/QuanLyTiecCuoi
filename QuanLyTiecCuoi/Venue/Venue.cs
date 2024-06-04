@@ -64,10 +64,10 @@ namespace QuanLyTiecCuoi
 
         public void LoadDataIntoDataGridView()
         {
-            string query = "SELECT ID,PICTURE, TENSANH,LOAISANH,MAXTABLE,MINMONEY,NOTE FROM SANHINFOR where TRANGTHAISANH = 1 ";
+            string query = "SELECT ID,PICTURE, TENSANH,LOAISANH,MAXTABLE,MINMONEY,NOTE FROM SANHINFOR WHERE TRANGTHAISANH = 1";
             if (_parentForm != null)
             {
-                 query = "SELECT ID,PICTURE, TENSANH,LOAISANH,MAXTABLE,MINMONEY,NOTE FROM SANHINFOR WHERE ID NOT IN (SELECT IDLOAISANH FROM TIEC WHERE NGAYTOCHUC = @Ngay AND CA = @Ca ) AND TRANGTHAISANH = 1 ";
+                query = "SELECT ID,PICTURE, TENSANH,LOAISANH,MAXTABLE,MINMONEY,NOTE FROM SANHINFOR WHERE ID NOT IN (SELECT IDLOAISANH FROM TIEC WHERE NGAYTOCHUC = @Ngay AND CA = @Ca ) AND TRANGTHAISANH = 1 ";
 
                 using (SqlConnection connection = new SqlConnection(conString))
                 {
@@ -86,7 +86,7 @@ namespace QuanLyTiecCuoi
                         MaxTable.DataPropertyName = "MAXTABLE";
                         MinTable.DataPropertyName = "MINMONEY";
                         Note.DataPropertyName = "NOTE";
-
+                        VenueState.DataPropertyName = "TRANGTHAISANH";
 
 
                         bool selectColumnExists = false;
@@ -133,11 +133,7 @@ namespace QuanLyTiecCuoi
 
                     adapter.Fill(dataTable);
 
-                    // Close the connection
-                    connection.Close();
-
-
-                   
+                    connection.Close();    
                     VenueId.DataPropertyName = "ID";
                     Image.DataPropertyName = "PICTURE";
                     VenueName.DataPropertyName = "TENSANH";
@@ -145,8 +141,8 @@ namespace QuanLyTiecCuoi
                     MaxTable.DataPropertyName = "MAXTABLE";
                     MinTable.DataPropertyName = "MINMONEY";
                     Note.DataPropertyName = "NOTE";
-
-                        dataGridView1.DataSource = dataTable;
+                    VenueState.DataPropertyName = "TRANGHTHAISANH";
+                    dataGridView1.DataSource = dataTable;
                     }
                 catch (Exception ex)
                 {
