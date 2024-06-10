@@ -42,7 +42,7 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel1.Controls.Add(this.deleteEmployee);
             this.panel1.Controls.Add(this.ChangeInforEmployee);
             this.panel1.Controls.Add(this.addEmployee);
@@ -50,10 +50,11 @@
             this.panel1.Controls.Add(this.rjTextBox1);
             this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(2, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1051, 711);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // deleteEmployee
             // 
@@ -146,7 +147,7 @@
             this.dataGridViewEmployee.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridViewEmployee.EnableHeadersVisualStyles = false;
             this.dataGridViewEmployee.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(210)))), ((int)(((byte)(245)))));
-            this.dataGridViewEmployee.Location = new System.Drawing.Point(22, 122);
+            this.dataGridViewEmployee.Location = new System.Drawing.Point(3, 135);
             this.dataGridViewEmployee.Name = "dataGridViewEmployee";
             this.dataGridViewEmployee.ReadOnly = true;
             this.dataGridViewEmployee.RowHeadersVisible = false;
@@ -158,7 +159,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.GhostWhite;
             this.dataGridViewEmployee.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewEmployee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewEmployee.Size = new System.Drawing.Size(986, 490);
+            this.dataGridViewEmployee.Size = new System.Drawing.Size(1048, 490);
             this.dataGridViewEmployee.TabIndex = 1;
             // 
             // rjTextBox1
@@ -172,7 +173,7 @@
             this.rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.rjTextBox1.Location = new System.Drawing.Point(128, 45);
             this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox1.Multiline = false;
+            this.rjTextBox1.Multiline = true;
             this.rjTextBox1.Name = "rjTextBox1";
             this.rjTextBox1.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.rjTextBox1.PasswordChar = false;
@@ -189,11 +190,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(210)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(1051, 711);
+            this.ClientSize = new System.Drawing.Size(1054, 711);
             this.Controls.Add(this.panel1);
             this.Name = "NhanVien";
             this.Text = "NhanVien";
             this.Load += new System.EventHandler(this.NhanVien_Load);
+            this.Resize += new System.EventHandler(this.NhanVien_Resize);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).EndInit();
             this.ResumeLayout(false);

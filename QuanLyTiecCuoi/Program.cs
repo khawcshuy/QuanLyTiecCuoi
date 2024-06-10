@@ -17,15 +17,15 @@ namespace QuanLyTiecCuoi
         [STAThread]
         static void Main()
         {
-            //string conString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=QUANLYTIECCUOI1;Integrated Security=True";
-            string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
+            string conString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=QUANLYTIECCUOI1;Integrated Security=True";
+            //string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new QuanLyTiecCuoi.Service.Service(conString, null));
             //NhanVien nhanVien = new NhanVien(conString);
             //Application.Run(new NhanVien(conString));
             //InsertNV NHANVIEN = new InsertNV(conString,null);
-            //Application.Run(NHANVIEN);
+            //Application.Run(nhanVien);
             //Application.Run(foodform);
             //Application.Run(new Report(conString));
 
@@ -34,7 +34,7 @@ namespace QuanLyTiecCuoi
             ////// Hiển thị form Food
 
             //Application.Run(new Booking(conString));
-            Application.Run(new MainForm(conString));
+            //Application.Run(new MainForm(conString));
 
             //TrangThaiSanh trangThaiSanh = new TrangThaiSanh(conString);
             //Application.Run(trangThaiSanh);
@@ -47,8 +47,8 @@ namespace QuanLyTiecCuoi
             //Application.Run(foodform);
 
             // GỌI BOOKING 
-            //MainForm mainForm = new MainForm(conString);
-            //Application.Run(mainForm);
+            MainForm mainForm = new MainForm(conString);
+            Application.Run(mainForm);
             //TraCuu tracuuform = new TraCuu(conString);
             //Application.Run(tracuuform);
             //fLogin fLogin = new fLogin(conString);

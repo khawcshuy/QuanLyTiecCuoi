@@ -23,6 +23,14 @@ namespace QuanLyTiecCuoi
         public string conString;
 
         public bool FromBookingSate = false;
+
+        private Rectangle btnAddOriginalRect;
+        private Rectangle btnEditOriginalRect;
+        private Rectangle btnDeleteOriginalRect;
+        private Rectangle searchVenuenameOriginalRect;
+        private Rectangle datagridview1OriginalRect;
+        private Rectangle panel1OriginalRect;
+        private Size originalFormSize;
         public Venue(Booking parentForm = null, String _conString = null)
         {
             if (parentForm == null)
@@ -63,6 +71,13 @@ namespace QuanLyTiecCuoi
         private void Venue_Load(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
+            originalFormSize = this.Size;
+            btnAddOriginalRect = new Rectangle(btnAdd.Location, btnAdd.Size);
+            btnEditOriginalRect = new Rectangle(btnEdit.Location, btnEdit.Size);
+            btnDeleteOriginalRect = new Rectangle(btnDelete.Location, btnDelete.Size);
+            searchVenuenameOriginalRect = new Rectangle(searchVenuename.Location, searchVenuename.Size);
+            datagridview1OriginalRect = new Rectangle(dataGridView1.Location, dataGridView1.Size);
+            panel1OriginalRect = new Rectangle(panel1.Location, panel1.Size);
         }
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -429,14 +444,49 @@ namespace QuanLyTiecCuoi
 
         }
 
+        private void Venue_Resize(object sender, EventArgs e)
+        {
+            if (originalFormSize.Width == 0 || originalFormSize.Height == 0) return;
+            float xRatio = (float)this.Width / originalFormSize.Width;
+            float yRatio = (float)this.Height / originalFormSize.Height;
+            ResizeControl(btnAddOriginalRect, btnAdd, xRatio, yRatio);
+            ResizeControl(btnEditOriginalRect, btnEdit, xRatio, yRatio);
+            ResizeControl(btnDeleteOriginalRect, btnDelete, xRatio, yRatio);
+            ResizeControl(searchVenuenameOriginalRect, searchVenuename, xRatio, yRatio);
+            ResizeControl(datagridview1OriginalRect, dataGridView1, xRatio, yRatio);
+            ResizeControl(panel1OriginalRect, panel1, xRatio, yRatio);
+        }
 
+        private void ResizeControl(Rectangle originalRect, Control control, float xRatio, float yRatio)
+        {
+            int newX = (int)(originalRect.X * xRatio);
+            int newY = (int)(originalRect.Y * yRatio);
+            int newWidth = (int)(originalRect.Width * xRatio);
+            int newHeight = (int)(originalRect.Height * yRatio);
+            newX = Math.Max(newX, 0);
+            newY = Math.Max(newY, 0);
+            newWidth = Math.Max(newWidth, 10); // Minimum width
+            newHeight = Math.Max(newHeight, 10); // Minimum height
+
+            if (newX + newWidth > this.ClientSize.Width)
+            {
+                newWidth = this.ClientSize.Width - newX;
+            }
+            if (newY + newHeight > this.ClientSize.Height)
+            {
+                newHeight = this.ClientSize.Height - newY;
+            }
+            Console.WriteLine($"Resizing {control.Name}: New Location ({newX}, {newY}), New Size ({newWidth}, {newHeight})");
+            control.Location = new Point(newX, newY);
+            control.Size = new Size(newWidth, newHeight);
+        }
         //public delegate void ConfirmEventHandler(int VenueSelectedId);
 
         //public event ConfirmEventHandler ConfirmEvent; 
 
         //private void Confirm_Click(object sender, EventArgs e)
         //{
-           
+
         //    foreach (DataGridViewRow row in dataGridView1.Rows)
         //    {
         //        if (Convert.ToBoolean(row.Cells["SELECT"].Value))

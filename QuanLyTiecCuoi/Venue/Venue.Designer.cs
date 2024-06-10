@@ -39,7 +39,6 @@ namespace QuanLyTiecCuoi
             this.btnEdit = new QuanLyTiecCuoi.UIDesign.RJButton();
             this.btnAdd = new QuanLyTiecCuoi.UIDesign.RJButton();
             this.searchVenuename = new QuanLyTiecCuoi.UIDesign.TextBoxTemplate();
-            this.label3 = new System.Windows.Forms.Label();
             this.Confirm = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.VenueId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,18 +63,17 @@ namespace QuanLyTiecCuoi
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnEdit);
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.searchVenuename);
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.Confirm);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(5, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(-1, -1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1381, 740);
+            this.panel1.Size = new System.Drawing.Size(1041, 648);
             this.panel1.TabIndex = 1;
             // 
             // btnDelete
@@ -92,10 +90,9 @@ namespace QuanLyTiecCuoi
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(1099, 32);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Location = new System.Drawing.Point(828, 14);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(185, 43);
+            this.btnDelete.Size = new System.Drawing.Size(170, 40);
             this.btnDelete.TabIndex = 49;
             this.btnDelete.Text = "Xóa Sảnh";
             this.btnDelete.TextColor = System.Drawing.Color.White;
@@ -116,10 +113,9 @@ namespace QuanLyTiecCuoi
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(864, 32);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEdit.Location = new System.Drawing.Point(614, 14);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(216, 43);
+            this.btnEdit.Size = new System.Drawing.Size(170, 40);
             this.btnEdit.TabIndex = 48;
             this.btnEdit.Text = "Chỉnh Sửa Sảnh";
             this.btnEdit.TextColor = System.Drawing.Color.White;
@@ -140,10 +136,9 @@ namespace QuanLyTiecCuoi
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(636, 32);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdd.Location = new System.Drawing.Point(400, 14);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(208, 43);
+            this.btnAdd.Size = new System.Drawing.Size(170, 40);
             this.btnAdd.TabIndex = 47;
             this.btnAdd.Text = "Thêm Sảnh Mới";
             this.btnAdd.TextColor = System.Drawing.Color.White;
@@ -152,45 +147,33 @@ namespace QuanLyTiecCuoi
             // 
             // searchVenuename
             // 
-            this.searchVenuename.BackColor = System.Drawing.SystemColors.Control;
+            this.searchVenuename.BackColor = System.Drawing.Color.White;
             this.searchVenuename.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(102)))));
             this.searchVenuename.BorderFocusColor = System.Drawing.Color.SpringGreen;
             this.searchVenuename.BorderRadius = 0;
             this.searchVenuename.BorderSize = 2;
-            this.searchVenuename.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchVenuename.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchVenuename.ForeColor = System.Drawing.Color.Black;
-            this.searchVenuename.Location = new System.Drawing.Point(285, 31);
-            this.searchVenuename.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.searchVenuename.Location = new System.Drawing.Point(92, 14);
+            this.searchVenuename.Margin = new System.Windows.Forms.Padding(4);
             this.searchVenuename.Multiline = false;
             this.searchVenuename.Name = "searchVenuename";
-            this.searchVenuename.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.searchVenuename.Padding = new System.Windows.Forms.Padding(7);
             this.searchVenuename.PasswordChar = false;
-            this.searchVenuename.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.searchVenuename.PlaceholderText = "";
-            this.searchVenuename.Size = new System.Drawing.Size(273, 45);
+            this.searchVenuename.PlaceholderColor = System.Drawing.Color.DimGray;
+            this.searchVenuename.PlaceholderText = "Tìm Sảnh";
+            this.searchVenuename.Size = new System.Drawing.Size(259, 37);
             this.searchVenuename.TabIndex = 46;
             this.searchVenuename.Texts = "";
             this.searchVenuename.UnderlinedStyle = true;
             this.searchVenuename._TextChanged += new System.EventHandler(this.searchFoodname__TextChanged);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.Control;
-            this.label3.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(147, 34);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 33);
-            this.label3.TabIndex = 45;
-            this.label3.Text = "Tìm Sảnh:";
-            // 
             // Confirm
             // 
             this.Confirm.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Confirm.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Confirm.Location = new System.Drawing.Point(799, 683);
-            this.Confirm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Confirm.Location = new System.Drawing.Point(599, 555);
+            this.Confirm.Margin = new System.Windows.Forms.Padding(2);
             this.Confirm.Name = "Confirm";
             this.Confirm.Size = new System.Drawing.Size(0, 0);
             this.Confirm.TabIndex = 44;
@@ -200,6 +183,7 @@ namespace QuanLyTiecCuoi
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -232,8 +216,8 @@ namespace QuanLyTiecCuoi
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(102)))));
-            this.dataGridView1.Location = new System.Drawing.Point(20, 98);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 79);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -241,12 +225,10 @@ namespace QuanLyTiecCuoi
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 100;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1359, 608);
+            this.dataGridView1.Size = new System.Drawing.Size(1033, 575);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
-            // Trong InitializeComponent hoặc Designer file
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-
             // 
             // VenueId
             // 
@@ -274,7 +256,6 @@ namespace QuanLyTiecCuoi
             this.VenueName.MinimumWidth = 6;
             this.VenueName.Name = "VenueName";
             this.VenueName.ReadOnly = true;
-            this.VenueName.Width = 125;
             // 
             // VenueType
             // 
@@ -282,7 +263,6 @@ namespace QuanLyTiecCuoi
             this.VenueType.MinimumWidth = 6;
             this.VenueType.Name = "VenueType";
             this.VenueType.ReadOnly = true;
-            this.VenueType.Width = 125;
             // 
             // MaxTable
             // 
@@ -290,7 +270,6 @@ namespace QuanLyTiecCuoi
             this.MaxTable.MinimumWidth = 6;
             this.MaxTable.Name = "MaxTable";
             this.MaxTable.ReadOnly = true;
-            this.MaxTable.Width = 200;
             // 
             // MinTable
             // 
@@ -298,7 +277,6 @@ namespace QuanLyTiecCuoi
             this.MinTable.MinimumWidth = 6;
             this.MinTable.Name = "MinTable";
             this.MinTable.ReadOnly = true;
-            this.MinTable.Width = 175;
             // 
             // Note
             // 
@@ -306,7 +284,6 @@ namespace QuanLyTiecCuoi
             this.Note.MinimumWidth = 6;
             this.Note.Name = "Note";
             this.Note.ReadOnly = true;
-            this.Note.Width = 125;
             // 
             // VenueState
             // 
@@ -315,7 +292,6 @@ namespace QuanLyTiecCuoi
             this.VenueState.Name = "VenueState";
             this.VenueState.ReadOnly = true;
             this.VenueState.Visible = false;
-            this.VenueState.Width = 125;
             // 
             // openFileDialog1
             // 
@@ -327,16 +303,17 @@ namespace QuanLyTiecCuoi
             // 
             // Venue
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1385, 740);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1039, 658);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Venue";
             this.Text = "Venue";
             this.Load += new System.EventHandler(this.Venue_Load);
+            this.Resize += new System.EventHandler(this.Venue_Resize);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.venueBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -353,7 +330,6 @@ namespace QuanLyTiecCuoi
         private UIDesign.RJButton btnEdit;
         private UIDesign.RJButton btnAdd;
         private UIDesign.TextBoxTemplate searchVenuename;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn VenueId;
         private System.Windows.Forms.DataGridViewImageColumn Image;

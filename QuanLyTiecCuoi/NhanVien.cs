@@ -16,6 +16,13 @@ namespace QuanLyTiecCuoi
     public partial class NhanVien : Form
     {
         public string conString;
+        private Rectangle buttonaddEmployeeOriginalRect;
+        private Rectangle buttonchangeInforEmployeeOriginalRect;
+        private Rectangle buttondeleteEmployeeOriginalRect;
+        private Rectangle searchTextboxOriginalRect;
+        private Rectangle datagridviewEmployeeOriginalRect;
+        private Rectangle panel1OriginalRect;
+        private Size originalFormSize;
         public NhanVien(string _constring)
         {
             InitializeComponent();
@@ -29,7 +36,14 @@ namespace QuanLyTiecCuoi
 
         private void NhanVien_Load(object sender, EventArgs e)
         {
+            originalFormSize = this.Size;
             loadNhanVienGridView();
+            buttonaddEmployeeOriginalRect = new Rectangle(addEmployee.Location, addEmployee.Size);
+            buttonchangeInforEmployeeOriginalRect = new Rectangle(ChangeInforEmployee.Location, ChangeInforEmployee.Size);
+            buttondeleteEmployeeOriginalRect = new Rectangle(deleteEmployee.Location, deleteEmployee.Size);
+            searchTextboxOriginalRect = new Rectangle(rjTextBox1.Location, rjTextBox1.Size);
+            datagridviewEmployeeOriginalRect = new Rectangle(dataGridViewEmployee.Location, dataGridViewEmployee.Size);
+            panel1OriginalRect = new Rectangle(panel1.Location, panel1.Size);
         }
 
         private void loadNhanVienGridView()
@@ -212,7 +226,47 @@ namespace QuanLyTiecCuoi
 
         }
 
-     
+        private void NhanVien_Resize(object sender, EventArgs e)
+        {
+            if (originalFormSize.Width == 0 || originalFormSize.Height == 0) return;
+            float xRatio = (float)this.Width / originalFormSize.Width;
+            float yRatio = (float)this.Height / originalFormSize.Height;
+            ResizeControl(buttonaddEmployeeOriginalRect, addEmployee, xRatio, yRatio);
+            ResizeControl(buttonchangeInforEmployeeOriginalRect, ChangeInforEmployee, xRatio, yRatio);
+            ResizeControl(buttondeleteEmployeeOriginalRect, deleteEmployee, xRatio, yRatio);
+            ResizeControl(searchTextboxOriginalRect, rjTextBox1, xRatio, yRatio);
+            ResizeControl(datagridviewEmployeeOriginalRect, dataGridViewEmployee, xRatio, yRatio);
+            ResizeControl(panel1OriginalRect, panel1, xRatio, yRatio);
+        }
+
+        private void ResizeControl(Rectangle originalRect, Control control, float xRatio, float yRatio)
+        {
+            int newX = (int)(originalRect.X * xRatio);
+            int newY = (int)(originalRect.Y * yRatio);
+            int newWidth = (int)(originalRect.Width * xRatio);
+            int newHeight = (int)(originalRect.Height * yRatio);
+            newX = Math.Max(newX, 0);
+            newY = Math.Max(newY, 0);
+            newWidth = Math.Max(newWidth, 10); // Minimum width
+            newHeight = Math.Max(newHeight, 10); // Minimum height
+
+            if (newX + newWidth > this.ClientSize.Width)
+            {
+                newWidth = this.ClientSize.Width - newX;
+            }
+            if (newY + newHeight > this.ClientSize.Height)
+            {
+                newHeight = this.ClientSize.Height - newY;
+            }
+            Console.WriteLine($"Resizing {control.Name}: New Location ({newX}, {newY}), New Size ({newWidth}, {newHeight})");
+            control.Location = new Point(newX, newY);
+            control.Size = new Size(newWidth, newHeight);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
     
     }

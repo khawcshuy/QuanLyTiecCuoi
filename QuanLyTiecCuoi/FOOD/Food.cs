@@ -1,4 +1,5 @@
 ﻿using QuanLyTiecCuoi.SERVICE;
+using QuanLyTiecCuoi.UIDesign;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,14 @@ namespace QuanLyTiecCuoi
 
         private Booking _parentForm;
         public string _conString;
-
+        private Rectangle btnAddOriginalRect;
+        private Rectangle btnEditOriginalRect;
+        private Rectangle btnDeleteOriginalRect;
+        //private Rectangle btnXacNhanOriginalRect;
+        private Rectangle searchFoodnameOriginalRect;
+        private Rectangle datagridviewFoodOriginalRect;
+        private Rectangle panel2OriginalRect;
+        private Size originalFormSize;
 
         public Food(string conString, Booking parentForm = null)
         {
@@ -105,6 +113,14 @@ namespace QuanLyTiecCuoi
                 Confirm.Visible = true;
             }    
             LoadDataGridViewFood();
+            originalFormSize = this.Size;
+            btnAddOriginalRect = new Rectangle(btnAdd.Location, btnAdd.Size);
+            btnEditOriginalRect = new Rectangle(btnEdit.Location, btnEdit.Size);
+            btnDeleteOriginalRect = new Rectangle(btnDelete.Location, btnDelete.Size);
+            //btnDeleteOriginalRect = new Rectangle(XacNhan.Location, XacNhan.Size);
+            searchFoodnameOriginalRect = new Rectangle(searchFoodname.Location, searchFoodname.Size);
+            datagridviewFoodOriginalRect = new Rectangle(dataGridViewFood.Location, dataGridViewFood.Size);
+            panel2OriginalRect = new Rectangle(panel2.Location, panel2.Size);
         }
 
 
@@ -420,6 +436,44 @@ namespace QuanLyTiecCuoi
 
             // Close the Food form
             this.Close();
+        }
+
+        private void Food_Resize(object sender, EventArgs e)
+        {
+            if (originalFormSize.Width == 0 || originalFormSize.Height == 0) return;
+            float xRatio = (float)this.Width / originalFormSize.Width;
+            float yRatio = (float)this.Height / originalFormSize.Height;
+            ResizeControl(btnAddOriginalRect, btnAdd, xRatio, yRatio);
+            ResizeControl(btnEditOriginalRect, btnEdit, xRatio, yRatio);
+            ResizeControl(btnDeleteOriginalRect, btnDelete, xRatio, yRatio);
+            //ResizeControl(btnXacNhanOriginalRect, XacNhan, xRatio, yRatio);
+            ResizeControl(searchFoodnameOriginalRect, searchFoodname, xRatio, yRatio);
+            ResizeControl(datagridviewFoodOriginalRect, dataGridViewFood, xRatio, yRatio);
+            ResizeControl(panel2OriginalRect, panel2, xRatio, yRatio);
+        }
+
+        private void ResizeControl(Rectangle originalRect, Control control, float xRatio, float yRatio)
+        {
+            int newX = (int)(originalRect.X * xRatio);
+            int newY = (int)(originalRect.Y * yRatio);
+            int newWidth = (int)(originalRect.Width * xRatio);
+            int newHeight = (int)(originalRect.Height * yRatio);
+            newX = Math.Max(newX, 0);
+            newY = Math.Max(newY, 0);
+            newWidth = Math.Max(newWidth, 10); // Minimum width
+            newHeight = Math.Max(newHeight, 10); // Minimum height
+
+            if (newX + newWidth > this.ClientSize.Width)
+            {
+                newWidth = this.ClientSize.Width - newX;
+            }
+            if (newY + newHeight > this.ClientSize.Height)
+            {
+                newHeight = this.ClientSize.Height - newY;
+            }
+            Console.WriteLine($"Resizing {control.Name}: New Location ({newX}, {newY}), New Size ({newWidth}, {newHeight})");
+            control.Location = new Point(newX, newY);
+            control.Size = new Size(newWidth, newHeight);
         }
     }
 }
