@@ -22,13 +22,15 @@ namespace QuanLyTiecCuoi
 
         private TrangThaiSanh _parenform;
 
-        public Receipt(String conString, TrangThaiSanh parenform)
+       
+        public Receipt(string conString, TrangThaiSanh parenform, int idtiec)
         {
             InitializeComponent();
             this.conString = conString;
             _parenform = parenform;
-            //this.Customerid = 
-     }
+            tiecId.Text = idtiec.ToString();
+        }
+
 
         public class CustomerInfo
         {
@@ -68,21 +70,28 @@ namespace QuanLyTiecCuoi
 
         private CustomerInfo LoadCustomerInfo(string IdTiec)
         {
-            CustomerInfo customerInfo = null;
+            int parsedIdTiec;
 
+            CustomerInfo customerInfo = null;
+            if (!int.TryParse(IdTiec, out parsedIdTiec))
+            {
+                MessageBox.Show("ID Tiệc không hợp lệ. Vui lòng nhập lại!");
+                return customerInfo;
+            }
             using (SqlConnection con = new SqlConnection(conString))
             {
                 con.Open();
                 string query = "SELECT *,T.ID AS IDTIEC FROM KHACHHANGINFOR I inner join TIEC T ON I.ID = T.IDTHONGTINKHACHHANG  WHERE T.ID = @IdTiec";
+
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@IdTiec", IdTiec);
+                    cmd.Parameters.AddWithValue("@IdTiec", parsedIdTiec);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
                             customerInfo = new CustomerInfo(reader);
-                            LoadCustomerInfoToUI(customerInfo); // Thêm dữ liệu khách hàng vào giao diện
+                            LoadCustomerInfoToUI(customerInfo);
                         }
                         else
                         {
@@ -97,7 +106,6 @@ namespace QuanLyTiecCuoi
 
         private void LoadCustomerInfoToUI(CustomerInfo customer)
         {
-            // Gán dữ liệu khách hàng vào các thành phần của giao diện
             CustomerName.Text = customer.CustomerName;
             Address.Text = customer.Address;
             Email.Text = customer.Email;
@@ -128,7 +136,6 @@ namespace QuanLyTiecCuoi
 
                     foreach (DataRow row in dt.Rows)
                     {
-                        // Lấy giá trị từ cột DONGIA của mỗi dòng và cộng dồn vào biến totalMenu
                         decimal dongia = (decimal)row["DONGIA"];
                         total += dongia;
 
@@ -139,7 +146,6 @@ namespace QuanLyTiecCuoi
                     {
                         Menuview.DataSource = dt;
 
-                        // Đặt lại tên của các cột
                         Menuview.Columns[0].HeaderText = "Tên Món Ăn";
                         Menuview.Columns[1].HeaderText = "Đơn Giá";
                         Menuview.Columns[2].HeaderText = "Ghi Chú";
@@ -148,7 +154,6 @@ namespace QuanLyTiecCuoi
                     }
                     else
                     {
-                        // Xóa dữ liệu cũ của DataGridView và chỉ hiển thị tên cột
                         Menuview.DataSource = null;
                         Menuview.Columns.Clear();
                     }
@@ -186,14 +191,12 @@ namespace QuanLyTiecCuoi
                         }
                         ServiceView.DataSource = dt;
 
-                        // Đặt lại tên của các cột
                         ServiceView.Columns["TENDICHVU"].HeaderText = "Tên Dịch Vụ";
                         ServiceView.Columns["LOAIDICHVU"].HeaderText = "Loại Dịch Vụ";
                         ServiceView.Columns["GIADICHVU"].HeaderText = "Giá Dịch Vụ";
                         totalService.Text = totalSer.ToString();
 
 
-                        // Thiết lập AutoSizeMode để cột tự động điều chỉnh độ rộng
                         foreach (DataGridViewColumn column in ServiceView.Columns)
                         {
                             column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -201,7 +204,6 @@ namespace QuanLyTiecCuoi
                     }
                     else
                     {
-                        // Xóa dữ liệu cũ của DataGridView và chỉ hiển thị tên cột
                         ServiceView.DataSource = null;
                         ServiceView.Columns.Clear();
                     }
@@ -233,7 +235,7 @@ namespace QuanLyTiecCuoi
                     cmd.Parameters.AddWithValue("@customerId", customerId);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        if (reader.Read()) // Kiểm tra nếu có dòng dữ liệu được trả về
+                        if (reader.Read()) 
                         {
                             VenuePrice = reader.GetDecimal(reader.GetOrdinal("MINMONEY"));
                             VenueFee.Text = VenuePrice.ToString();
@@ -241,7 +243,6 @@ namespace QuanLyTiecCuoi
                         else
                         {
                             VenueFee.Text = "0";
-                             // Thoát khỏi phương thức nếu không tìm thấy dữ liệu
                         }
                     }
                 }
@@ -260,10 +261,8 @@ namespace QuanLyTiecCuoi
         
         public static int CalculateDaysLate(DateTime partyDate)
         {
-            // Lấy ngày hiện tại
             DateTime currentDate = DateTime.Today;
 
-            // Tính số ngày trễ bằng cách trừ ngày tổ chức tiệc từ ngày hiện tại
             TimeSpan difference = currentDate - partyDate;
 
             int days = difference.Days;
@@ -271,27 +270,26 @@ namespace QuanLyTiecCuoi
             {
                 days = 0;
             }
-            // Trả về số ngày trễ, lấy giá trị tuyệt đối để đảm bảo kết quả không âm
             return days;
         }
 
 
-        
-        private void RecalculateTotal()
+
+        private void RecalculateTotal(CustomerInfo customer)
         {
-            string customerId = tiecId.Text;
-            CustomerInfo customer = LoadCustomerInfo(customerId);
-            DateTime partyDate = customer.DueDate;
-
-            decimal Venue = LoadHD(customerId);
-
-            decimal totalFood = loadFood(customerId);
-
-            decimal totalService = LoadService(customerId);
-
-            decimal TienPhat = (PenaltyRatioValue * (decimal)CalculateDaysLate(partyDate));
+            
 
            
+
+            DateTime partyDate = customer.DueDate;
+
+            decimal Venue = LoadHD(customer.Customerid);
+
+            decimal totalFood = loadFood(customer.Customerid);
+
+            decimal totalService = LoadService(customer.Customerid);
+
+            decimal TienPhat = (PenaltyRatioValue * (decimal)CalculateDaysLate(partyDate));
 
             int discount;
             if (!int.TryParse(Discount.Text, out discount))
@@ -300,22 +298,29 @@ namespace QuanLyTiecCuoi
             }
 
             decimal total = (customer.numberOftable * totalFood) + totalService + Venue;
-            decimal totalHD = total + total*TienPhat;
+            decimal totalHD = total + total * TienPhat;
             Total.Text = totalHD.ToString();
             decimal Paid = totalHD - customer.Deposit;
 
             Paidment.Text = Paid.ToString();
         }
 
+
         private void btnSearchClick_Click(object sender, EventArgs e)
         {
-            RecalculateTotal();
+            string IdTiec = tiecId.Text;
+
+            CustomerInfo customer = LoadCustomerInfo(IdTiec);
+            if (customer == null)
+            {
+                return;
+            }
+            RecalculateTotal(customer);
             decimal totalFood = 0.0m;
             decimal totalSer = 0.0m;
             DateTime partyDate = DateTime.Today;
-            string IdTiec = tiecId.Text;
         
-            CustomerInfo customer = LoadCustomerInfo(IdTiec);
+            
             totalFood = loadFood(customer.Customerid);
             partyDate = customer.DueDate;
             totalSer = LoadService(customer.Customerid);
@@ -333,18 +338,19 @@ namespace QuanLyTiecCuoi
 
         private void PenaltyRatio_TextChanged(object sender, EventArgs e)
         {
+            CustomerInfo customer = LoadCustomerInfo(tiecId.Text);
             if (decimal.TryParse(PenaltyRatio.Text, out decimal newRatio))
             {
                 // Cập nhật giá trị của biến tỉ số phạt
                 PenaltyRatioValue = newRatio;
-                RecalculateTotal();
+        
 
             }
             else
             {
                 MessageBox.Show("Vui lòng nhập một giá trị số hợp lệ cho tỉ số phạt.");
             }
-            RecalculateTotal();
+            RecalculateTotal(customer);
         }
 
         public class hoaDon
@@ -470,53 +476,72 @@ namespace QuanLyTiecCuoi
 
         private void Receipt_Load(object sender, EventArgs e)
         {
+            if(_parenform != null)
+            {
+                string IdTiec = tiecId.Text;
 
+                CustomerInfo customer = LoadCustomerInfo(IdTiec);
+                if (customer == null)
+                {
+                    return;
+                }
+                RecalculateTotal(customer);
+                decimal totalFood = 0.0m;
+                decimal totalSer = 0.0m;
+                DateTime partyDate = DateTime.Today;
+
+
+                totalFood = loadFood(customer.Customerid);
+                partyDate = customer.DueDate;
+                totalSer = LoadService(customer.Customerid);
+                LoadHD(customer.Customerid);
+                PenaltyRatio.Text = PenaltyRatioValue.ToString();
+                DateLate.Text = CalculateDaysLate(partyDate).ToString();
+
+            }
         }
 
         private void customerID_TextChanged(object sender, EventArgs e)
         {
-            string SearchText = tiecId.Text.Trim();
-            string FindIdTiec = "SELECT T.ID , TENKHACHHANG FROM TIEC T, KHACHHANGINFOR K WHERE T.IDTHONGTINKHACHHANG = K.ID AND( K.DIENTHOAI LIKE '%' + @searchText + '%' OR T.ID LIKE '%' + @searchText + '%' OR TENKHACHHANG LIKE '%' + @searchText + '%' )";
+            //string SearchText = tiecId.Text.Trim();
+            //string FindIdTiec = "SELECT T.ID , TENKHACHHANG FROM TIEC T, KHACHHANGINFOR K WHERE T.IDTHONGTINKHACHHANG = K.ID AND( K.DIENTHOAI LIKE '%' + @searchText + '%' OR T.ID LIKE '%' + @searchText + '%' OR TENKHACHHANG LIKE '%' + @searchText + '%' )";
 
-            if (tiecId.TextLength > 1)
-            {
-               
+            //if (tiecId.TextLength > 1)
+            //{
+            //    using (SqlConnection con = new SqlConnection(conString))
+            //    {
 
+            //        using (SqlCommand cmd = new SqlCommand(FindIdTiec, con))
+            //        {
+            //            cmd.Parameters.AddWithValue("@searchText", SearchText);
+            //            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            //            DataTable table = new DataTable();
+            //            adapter.Fill(table);
+            //            if (table.Rows.Count > 0 && table != null)
+            //            {
+            //                IdTiec.DataPropertyName = "ID";
+            //                CustomerNameFind.DataPropertyName = "TENKHACHHANG";
+            //                SearchTiecAndKhachHang.DataSource = table;
+            //                int rowHeight = 30;
+            //                int headerHeight = 20; 
 
-                using (SqlConnection con = new SqlConnection(conString))
-                {
+            //                SearchTiecAndKhachHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //                SearchTiecAndKhachHang.ColumnHeadersHeight = headerHeight;
 
-                    using (SqlCommand cmd = new SqlCommand(FindIdTiec, con))
-                    {
-                        cmd.Parameters.AddWithValue("@searchText", SearchText);
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable table = new DataTable();
-                        adapter.Fill(table);
-                        if (table.Rows.Count > 0 && table != null)
-                        {
-                            IdTiec.DataPropertyName = "ID";
-                            CustomerNameFind.DataPropertyName = "TENKHACHHANG";
-                            SearchTiecAndKhachHang.DataSource = table;
-                            int rowHeight = 30;
-                            int headerHeight = 20; 
-
-                            SearchTiecAndKhachHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                            SearchTiecAndKhachHang.ColumnHeadersHeight = headerHeight;
-
-                            int totalHeight = SearchTiecAndKhachHang.Rows.Count * rowHeight + headerHeight;
-                            SearchTiecAndKhachHang.Height = totalHeight;
-                        }
-                        else
-                        {
-                            SearchTiecAndKhachHang.Height = 0;
-                        }
-                    }
-                }
-            }
-            else if (Phone.TextLength <= 0)
-            {
-                SearchTiecAndKhachHang.Height = 0;
-            }
+            //                int totalHeight = SearchTiecAndKhachHang.Rows.Count * rowHeight + headerHeight;
+            //                SearchTiecAndKhachHang.Height = totalHeight;
+            //            }
+            //            else
+            //            {
+            //                SearchTiecAndKhachHang.Height = 0;
+            //            }
+            //        }
+            //    }
+            //}
+            //else if (Phone.TextLength <= 0)
+            //{
+            //    SearchTiecAndKhachHang.Height = 0;
+            //}
         }
 
         private void SearchTiecAndKhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -532,19 +557,31 @@ namespace QuanLyTiecCuoi
             }
 
 
-            RecalculateTotal();
-            decimal totalFood = 0.0m;
-            decimal totalSer = 0.0m;
-            DateTime partyDate = DateTime.Today;
             string IdTiec = tiecId.Text;
 
             CustomerInfo customer = LoadCustomerInfo(IdTiec);
+            if (customer == null)
+            {
+                return;
+            }
+            RecalculateTotal(customer);
+            decimal totalFood = 0.0m;
+            decimal totalSer = 0.0m;
+            DateTime partyDate = DateTime.Today;
+
+
             totalFood = loadFood(customer.Customerid);
             partyDate = customer.DueDate;
             totalSer = LoadService(customer.Customerid);
             LoadHD(customer.Customerid);
             PenaltyRatio.Text = PenaltyRatioValue.ToString();
             DateLate.Text = CalculateDaysLate(partyDate).ToString();
+
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

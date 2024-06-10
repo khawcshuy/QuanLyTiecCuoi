@@ -26,6 +26,7 @@ namespace QuanLyTiecCuoi
             InitializeComponent();
             CalculateTotal();
             conString = _conString;
+
         }
         //private string conString = @"Data Source=DESKTOP-M4GHD5G\LUCY;Initial Catalog=QUANLYTIECCUOI;Persist Security Info=True;User ID=sa;Password=140403";
 
@@ -287,7 +288,7 @@ namespace QuanLyTiecCuoi
 
 
 
-        private void VenueForm_ConfirmEvent(int VenueSelectedId)
+        public void VenueForm_ConfirmEvent(int VenueSelectedId)
         {
             string query = "SELECT ID, TENSANH, TIENSANH, MaxTable, MINMONEY FROM SANHINFOR WHERE ID = @VenueId";
 
@@ -312,7 +313,6 @@ namespace QuanLyTiecCuoi
                     {
                         DataRow row = dataTable.Rows[0];
 
-                        //Venue.Text = row["TENSANH"].ToString();
                         VenueFee.Text = row["TIENSANH"].ToString();
                         MaxTableOfVenue = (int)row["MaxTable"];
                         MaxTable1.Text = row["MaxTable"].ToString();
@@ -342,14 +342,14 @@ namespace QuanLyTiecCuoi
         {
             if (ShiftParty.Text != "Chọn Ca")
             {
-                Venue VenueForm = new Venue(null);
-                VenueForm.ConfirmEvent += VenueForm_ConfirmEvent;
+                Venue VenueForm = new Venue(this);
                 VenueForm.VenueSelectedId = this.VenueSelectedId;
                 VenueForm.AvailableVenueDate = Date.Value.Date;
                 VenueForm.conString = conString;
                 VenueForm.AvailableVenueShift = ShiftParty.Text;
                 VenueForm.isChoosing = true;
                 VenueForm.Show();
+                VenueForm.FromBookingSate = true;
             }
             else
             {
@@ -362,8 +362,7 @@ namespace QuanLyTiecCuoi
         {
             if (ShiftParty.Text != "Chọn Ca")
             {
-                Venue VenueForm = new Venue(null);
-                VenueForm.ConfirmEvent += VenueForm_ConfirmEvent;
+                Venue VenueForm = new Venue(this);
                 VenueForm.VenueSelectedId = this.VenueSelectedId;
                 VenueForm.AvailableVenueDate = Date.Value.Date;
                 VenueForm.conString = conString
@@ -371,6 +370,8 @@ namespace QuanLyTiecCuoi
                 VenueForm.AvailableVenueShift = ShiftParty.Text;
                 VenueForm.isChoosing = true;
                 VenueForm.Show();
+                VenueForm.FromBookingSate = true;
+
             }
             else
             {
@@ -422,12 +423,12 @@ namespace QuanLyTiecCuoi
         {
             QuanLyTiecCuoi.Service.myService serviceForm = new QuanLyTiecCuoi.Service.myService(this, conString);
             serviceForm.ConfirmEvent += ServiceForm_ConfirmEvent;
-            if (ListSelectedFood != null)
+            if (ListSelectedService != null)
             {
                 serviceForm.SelectedService = ListSelectedService;
             }
             serviceForm.conString = conString;
-            serviceForm.Show();
+            serviceForm.ShowDialog();
         }
 
 

@@ -420,5 +420,6 @@ namespace QuanLyTiecCuoi.DESIGN
             login.FormClosed += (s, args) => this.Close();
         }
 
+       
     }
 }

@@ -63,6 +63,9 @@ namespace QuanLyTiecCuoi
             this.tiecId = new System.Windows.Forms.TextBox();
             this.btnSearchClick = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.SearchTiecAndKhachHang = new System.Windows.Forms.DataGridView();
+            this.IdTiec = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerNameFind = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label24 = new System.Windows.Forms.Label();
@@ -87,16 +90,13 @@ namespace QuanLyTiecCuoi
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.ConfirmButton = new System.Windows.Forms.Button();
-            this.SearchTiecAndKhachHang = new System.Windows.Forms.DataGridView();
-            this.IdTiec = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerNameFind = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TTHD.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ServiceView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Menuview)).BeginInit();
             this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchTiecAndKhachHang)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -453,6 +453,49 @@ namespace QuanLyTiecCuoi
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(991, 685);
             this.panel4.TabIndex = 20;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
+            // 
+            // SearchTiecAndKhachHang
+            // 
+            this.SearchTiecAndKhachHang.AllowUserToAddRows = false;
+            this.SearchTiecAndKhachHang.AllowUserToDeleteRows = false;
+            this.SearchTiecAndKhachHang.AllowUserToResizeColumns = false;
+            this.SearchTiecAndKhachHang.AllowUserToResizeRows = false;
+            this.SearchTiecAndKhachHang.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SearchTiecAndKhachHang.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchTiecAndKhachHang.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.SearchTiecAndKhachHang.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.SearchTiecAndKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SearchTiecAndKhachHang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdTiec,
+            this.CustomerNameFind});
+            this.SearchTiecAndKhachHang.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SearchTiecAndKhachHang.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SearchTiecAndKhachHang.Location = new System.Drawing.Point(732, 49);
+            this.SearchTiecAndKhachHang.Name = "SearchTiecAndKhachHang";
+            this.SearchTiecAndKhachHang.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.SearchTiecAndKhachHang.RowHeadersVisible = false;
+            this.SearchTiecAndKhachHang.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.SearchTiecAndKhachHang.RowTemplate.Height = 24;
+            this.SearchTiecAndKhachHang.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.SearchTiecAndKhachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.SearchTiecAndKhachHang.Size = new System.Drawing.Size(174, 0);
+            this.SearchTiecAndKhachHang.TabIndex = 19;
+            this.SearchTiecAndKhachHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SearchTiecAndKhachHang_CellContentClick);
+            // 
+            // IdTiec
+            // 
+            this.IdTiec.HeaderText = "ID Tiệc";
+            this.IdTiec.MinimumWidth = 6;
+            this.IdTiec.Name = "IdTiec";
+            this.IdTiec.Width = 60;
+            // 
+            // CustomerNameFind
+            // 
+            this.CustomerNameFind.HeaderText = "Tên KH";
+            this.CustomerNameFind.MinimumWidth = 6;
+            this.CustomerNameFind.Name = "CustomerNameFind";
+            this.CustomerNameFind.Width = 125;
             // 
             // label5
             // 
@@ -701,48 +744,6 @@ namespace QuanLyTiecCuoi
             this.ConfirmButton.UseVisualStyleBackColor = false;
             this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
-            // SearchTiecAndKhachHang
-            // 
-            this.SearchTiecAndKhachHang.AllowUserToAddRows = false;
-            this.SearchTiecAndKhachHang.AllowUserToDeleteRows = false;
-            this.SearchTiecAndKhachHang.AllowUserToResizeColumns = false;
-            this.SearchTiecAndKhachHang.AllowUserToResizeRows = false;
-            this.SearchTiecAndKhachHang.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SearchTiecAndKhachHang.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SearchTiecAndKhachHang.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.SearchTiecAndKhachHang.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.SearchTiecAndKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SearchTiecAndKhachHang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdTiec,
-            this.CustomerNameFind});
-            this.SearchTiecAndKhachHang.Cursor = System.Windows.Forms.Cursors.Default;
-            this.SearchTiecAndKhachHang.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SearchTiecAndKhachHang.Location = new System.Drawing.Point(732, 49);
-            this.SearchTiecAndKhachHang.Name = "SearchTiecAndKhachHang";
-            this.SearchTiecAndKhachHang.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.SearchTiecAndKhachHang.RowHeadersVisible = false;
-            this.SearchTiecAndKhachHang.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.SearchTiecAndKhachHang.RowTemplate.Height = 24;
-            this.SearchTiecAndKhachHang.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.SearchTiecAndKhachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SearchTiecAndKhachHang.Size = new System.Drawing.Size(174, 0);
-            this.SearchTiecAndKhachHang.TabIndex = 19;
-            this.SearchTiecAndKhachHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SearchTiecAndKhachHang_CellContentClick);
-            // 
-            // IdTiec
-            // 
-            this.IdTiec.HeaderText = "ID Tiệc";
-            this.IdTiec.MinimumWidth = 6;
-            this.IdTiec.Name = "IdTiec";
-            this.IdTiec.Width = 60;
-            // 
-            // CustomerNameFind
-            // 
-            this.CustomerNameFind.HeaderText = "Tên KH";
-            this.CustomerNameFind.MinimumWidth = 6;
-            this.CustomerNameFind.Name = "CustomerNameFind";
-            this.CustomerNameFind.Width = 125;
-            // 
             // Receipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -764,9 +765,9 @@ namespace QuanLyTiecCuoi
             ((System.ComponentModel.ISupportInitialize)(this.Menuview)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchTiecAndKhachHang)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchTiecAndKhachHang)).EndInit();
             this.ResumeLayout(false);
 
         }

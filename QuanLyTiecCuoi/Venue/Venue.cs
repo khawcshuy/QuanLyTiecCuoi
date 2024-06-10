@@ -21,6 +21,8 @@ namespace QuanLyTiecCuoi
         private Booking _parentForm;
 
         public string conString;
+
+        public bool FromBookingSate = false;
         public Venue(Booking parentForm = null, String _conString = null)
         {
             if (parentForm == null)
@@ -31,9 +33,13 @@ namespace QuanLyTiecCuoi
             {
                 InitializeComponent();
                 _parentForm = parentForm;
+
+
             }
+            dataGridView1.CellDoubleClick += new DataGridViewCellEventHandler(dataGridView1_CellDoubleClick);
 
             conString = _conString;
+
         }
 
 
@@ -58,6 +64,31 @@ namespace QuanLyTiecCuoi
         {
             LoadDataIntoDataGridView();
         }
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count &&
+       e.ColumnIndex >= 0 && e.ColumnIndex < dataGridView1.Columns.Count)
+            {
+                var venueIdValue = dataGridView1.Rows[e.RowIndex].Cells["VenueId"].Value;
+
+                if (venueIdValue != null && int.TryParse(venueIdValue.ToString(), out int venueId))
+                {
+                    if (_parentForm != null)
+                    {
+                        _parentForm.VenueForm_ConfirmEvent(venueId);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Parent form is not set.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid VenueId.");
+                }
+            }
+        }
 
 
 
@@ -65,10 +96,11 @@ namespace QuanLyTiecCuoi
         public void LoadDataIntoDataGridView()
         {
             string query = "SELECT ID,PICTURE, TENSANH,LOAISANH,MAXTABLE,MINMONEY,NOTE FROM SANHINFOR WHERE TRANGTHAISANH = 1";
-            if (_parentForm != null)
+            if (_parentForm != null && FromBookingSate)
             {
                 query = "SELECT ID,PICTURE, TENSANH,LOAISANH,MAXTABLE,MINMONEY,NOTE FROM SANHINFOR WHERE ID NOT IN (SELECT IDLOAISANH FROM TIEC WHERE NGAYTOCHUC = @Ngay AND CA = @Ca ) AND TRANGTHAISANH = 1 ";
-
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                this.Controls.Add(dataGridView1);
                 using (SqlConnection connection = new SqlConnection(conString))
                 {
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -89,29 +121,8 @@ namespace QuanLyTiecCuoi
                         VenueState.DataPropertyName = "TRANGTHAISANH";
 
 
-                        bool selectColumnExists = false;
-                      
-                            foreach (DataGridViewColumn column in dataGridView1.Columns)
-                            {
-                                if (column.Name == "Select")
-                                {
-                                    selectColumnExists = true;
-                                    break;
-                                }
-                            }
-
-                            if (!selectColumnExists)
-                            {
-                                DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
-                                selectColumn.HeaderText = "Select";
-                                selectColumn.Name = "Select";
-                                selectColumn.DataPropertyName = "SELECT"; 
-                                selectColumn.ReadOnly = false;
-                                dataGridView1.Columns.Add(selectColumn);
-                                Confirm.Size = new System.Drawing.Size(180, 40);
-                            }
-                      
-                        SelectRowById();
+                       
+                        Controls.Add(dataGridView1);
                         dataGridView1.DataSource = table;
                     }
                 }
@@ -157,34 +168,30 @@ namespace QuanLyTiecCuoi
             }
         }
 
-        private void SelectRowById()
-        {
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                int rowId;
-                if (int.TryParse(row.Cells["ID"].Value.ToString(), out rowId))
-                {
-                    // Kiểm tra xem ID của hàng có trùng với ID đã chọn hay không
-                    if (rowId == VenueSelectedId)
-                    {
-                        // Lấy ô checkbox từ cột "SELECT"
-                        DataGridViewCheckBoxCell checkBoxCell = row.Cells["SELECT"] as DataGridViewCheckBoxCell;
-                        if (checkBoxCell != null)
-                        {
-                            // Thiết lập giá trị của ô checkbox thành true
-                            checkBoxCell.Value = true;
-                        }
+        //private void SelectRowById()
+        //{
+        //    foreach (DataGridViewRow row in dataGridView1.Rows)
+        //    {
+        //        int rowId;
+        //        if (int.TryParse(row.Cells["ID"].Value.ToString(), out rowId))
+        //        {
+        //            if (rowId == VenueSelectedId)
+        //            {
+        //                DataGridViewCheckBoxCell checkBoxCell = row.Cells["SELECT"] as DataGridViewCheckBoxCell;
+        //                if (checkBoxCell != null)
+        //                {
+        //                    checkBoxCell.Value = true;
+        //                }
 
-                        // Thoát khỏi vòng lặp sau khi tìm thấy và thiết lập giá trị
-                        return;
-                    }
-                }
-            }
-
-         
-        }
+        //                return;
+        //            }
+        //        }
+        //    }
 
 
+        //}
+
+      
 
 
         // Method to handle the click event of the "AddVenue" button
@@ -399,56 +406,49 @@ namespace QuanLyTiecCuoi
                 }
             }
 
-            if (isChoosing)
+            if (_parentForm != null)
             {
-                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-                int currentRowIndex = e.RowIndex;
-                if (currentRowIndex >= 0 && currentRowIndex < dataGridView1.Rows.Count)
+                if (e.RowIndex >= 0 && FromBookingSate)
                 {
-                    DataGridViewCell selectedCell = dataGridView1.Rows[currentRowIndex].Cells["SELECT"];
+                    var venueIdValue = dataGridView1.Rows[e.RowIndex].Cells["VenueId"].Value;
 
-                    if (selectedCell != null)
+                    if (venueIdValue != null && int.TryParse(venueIdValue.ToString(), out int venueId))
                     {
-                        selectedCell.Value = true;
-
-                        foreach (DataGridViewRow row in dataGridView1.Rows)
-                        {
-                            if (row.Index != currentRowIndex)
-                            {
-                                DataGridViewCell otherCell = row.Cells["SELECT"];
-                                if (otherCell != null)
-                                {
-                                    otherCell.Value = false;
-                                }
-                            }
-                        }
+                        MessageBox.Show("VenueId: " + venueId);
+                        _parentForm.VenueForm_ConfirmEvent(venueId);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid VenueId.");
                     }
                 }
+
             }
 
         }
 
 
-        public delegate void ConfirmEventHandler(int VenueSelectedId);
+        //public delegate void ConfirmEventHandler(int VenueSelectedId);
 
-        public event ConfirmEventHandler ConfirmEvent; 
+        //public event ConfirmEventHandler ConfirmEvent; 
 
-        private void Confirm_Click(object sender, EventArgs e)
-        {
+        //private void Confirm_Click(object sender, EventArgs e)
+        //{
            
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                if (Convert.ToBoolean(row.Cells["SELECT"].Value))
-                {
-                    int.TryParse(row.Cells["VenueId"].Value.ToString(), out VenueSelectedId); 
-                }
-            }
+        //    foreach (DataGridViewRow row in dataGridView1.Rows)
+        //    {
+        //        if (Convert.ToBoolean(row.Cells["SELECT"].Value))
+        //        {
+        //            int.TryParse(row.Cells["VenueId"].Value.ToString(), out VenueSelectedId); 
+        //        }
+        //    }
 
-            ConfirmEvent?.Invoke(VenueSelectedId);
+        //    ConfirmEvent?.Invoke(VenueSelectedId);
 
-            this.Close();
-        }
+        //    this.Close();
+        //}
 
     }
 }

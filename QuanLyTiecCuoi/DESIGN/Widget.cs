@@ -12,7 +12,8 @@ namespace QuanLyTiecCuoi.DESIGN
 {
     public partial class Widget : UserControl
     {
-        //public Label IDTIEC;
+
+      
         public Widget()
         {
             InitializeComponent();
