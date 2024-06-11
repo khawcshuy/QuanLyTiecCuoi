@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
@@ -44,7 +44,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.DepositeRatio = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.XacNhan = new QuanLyTiecCuoi.UIDesign.RJButton();
             this.Total = new System.Windows.Forms.Label();
             this.totalMenu = new System.Windows.Forms.Label();
             this.totalService = new System.Windows.Forms.Label();
@@ -59,7 +58,6 @@
             this.NumberTableFee = new System.Windows.Forms.TextBox();
             this.TTHD = new System.Windows.Forms.Panel();
             this.MinMoneyValue1 = new System.Windows.Forms.Label();
-            this.ChonSanh = new QuanLyTiecCuoi.UIDesign.RJButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label27 = new System.Windows.Forms.Label();
@@ -89,8 +87,6 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.ChonDichVu = new QuanLyTiecCuoi.UIDesign.RJButton();
-            this.ChonThucDon = new QuanLyTiecCuoi.UIDesign.RJButton();
             this.ServiceBookingView = new System.Windows.Forms.DataGridView();
             this.ServiceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,6 +98,10 @@
             this.FoodPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Service = new System.Windows.Forms.Label();
             this.menu = new System.Windows.Forms.Label();
+            this.XacNhan = new QuanLyTiecCuoi.UIDesign.RJButton();
+            this.ChonSanh = new QuanLyTiecCuoi.UIDesign.RJButton();
+            this.ChonDichVu = new QuanLyTiecCuoi.UIDesign.RJButton();
+            this.ChonThucDon = new QuanLyTiecCuoi.UIDesign.RJButton();
             this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -254,7 +254,7 @@
             // 
             // DepositeRatio
             // 
-            this.DepositeRatio.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DepositeRatio.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DepositeRatio.Location = new System.Drawing.Point(220, 214);
             this.DepositeRatio.Multiline = true;
             this.DepositeRatio.Name = "DepositeRatio";
@@ -272,34 +272,11 @@
             this.label11.TabIndex = 67;
             this.label11.Text = "Tỉ Lệ Cọc Tiền:";
             // 
-            // XacNhan
-            // 
-            this.XacNhan.BackColor = System.Drawing.Color.White;
-            this.XacNhan.BackgroundColor = System.Drawing.Color.White;
-            this.XacNhan.BorderColor = System.Drawing.Color.Black;
-            this.XacNhan.BorderColor1 = System.Drawing.Color.Black;
-            this.XacNhan.BorderRadius = 10;
-            this.XacNhan.BorderRadius1 = 10;
-            this.XacNhan.BorderSize = 2;
-            this.XacNhan.BorderSize1 = 2;
-            this.XacNhan.FlatAppearance.BorderSize = 0;
-            this.XacNhan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.XacNhan.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.XacNhan.ForeColor = System.Drawing.Color.Black;
-            this.XacNhan.Location = new System.Drawing.Point(154, 298);
-            this.XacNhan.Name = "XacNhan";
-            this.XacNhan.Size = new System.Drawing.Size(163, 49);
-            this.XacNhan.TabIndex = 53;
-            this.XacNhan.Text = "Xác Nhận";
-            this.XacNhan.TextColor = System.Drawing.Color.Black;
-            this.XacNhan.UseVisualStyleBackColor = false;
-            this.XacNhan.Click += new System.EventHandler(this.XacNhan_Click);
-            // 
             // Total
             // 
             this.Total.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Total.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Total.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Total.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Total.Location = new System.Drawing.Point(220, 176);
             this.Total.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Total.Name = "Total";
@@ -311,7 +288,7 @@
             // 
             this.totalMenu.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.totalMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.totalMenu.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalMenu.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalMenu.Location = new System.Drawing.Point(220, 100);
             this.totalMenu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.totalMenu.Name = "totalMenu";
@@ -323,7 +300,7 @@
             // 
             this.totalService.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.totalService.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.totalService.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalService.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalService.Location = new System.Drawing.Point(220, 138);
             this.totalService.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.totalService.Name = "totalService";
@@ -335,7 +312,7 @@
             // 
             this.VenueFee.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.VenueFee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.VenueFee.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VenueFee.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VenueFee.Location = new System.Drawing.Point(220, 24);
             this.VenueFee.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.VenueFee.Name = "VenueFee";
@@ -375,7 +352,7 @@
             // 
             // deposit
             // 
-            this.deposit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deposit.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deposit.Location = new System.Drawing.Point(220, 252);
             this.deposit.Multiline = true;
             this.deposit.Name = "deposit";
@@ -417,7 +394,7 @@
             // 
             // NumberTableFee
             // 
-            this.NumberTableFee.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumberTableFee.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NumberTableFee.Location = new System.Drawing.Point(220, 62);
             this.NumberTableFee.Multiline = true;
             this.NumberTableFee.Name = "NumberTableFee";
@@ -467,36 +444,13 @@
             this.MinMoneyValue1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.MinMoneyValue1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MinMoneyValue1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MinMoneyValue1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinMoneyValue1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinMoneyValue1.Location = new System.Drawing.Point(898, 154);
             this.MinMoneyValue1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.MinMoneyValue1.Name = "MinMoneyValue1";
             this.MinMoneyValue1.Size = new System.Drawing.Size(63, 31);
             this.MinMoneyValue1.TabIndex = 36;
             this.MinMoneyValue1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ChonSanh
-            // 
-            this.ChonSanh.BackColor = System.Drawing.Color.White;
-            this.ChonSanh.BackgroundColor = System.Drawing.Color.White;
-            this.ChonSanh.BorderColor = System.Drawing.Color.Black;
-            this.ChonSanh.BorderColor1 = System.Drawing.Color.Black;
-            this.ChonSanh.BorderRadius = 0;
-            this.ChonSanh.BorderRadius1 = 0;
-            this.ChonSanh.BorderSize = 2;
-            this.ChonSanh.BorderSize1 = 2;
-            this.ChonSanh.FlatAppearance.BorderSize = 0;
-            this.ChonSanh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ChonSanh.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChonSanh.ForeColor = System.Drawing.Color.Black;
-            this.ChonSanh.Location = new System.Drawing.Point(782, 62);
-            this.ChonSanh.Name = "ChonSanh";
-            this.ChonSanh.Size = new System.Drawing.Size(181, 31);
-            this.ChonSanh.TabIndex = 45;
-            this.ChonSanh.Text = "Chọn Sảnh";
-            this.ChonSanh.TextColor = System.Drawing.Color.Black;
-            this.ChonSanh.UseVisualStyleBackColor = false;
-            this.ChonSanh.Click += new System.EventHandler(this.ChonSanh_Click_1);
             // 
             // dataGridView1
             // 
@@ -543,7 +497,7 @@
             // 
             // Address1
             // 
-            this.Address1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Address1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Address1.Location = new System.Drawing.Point(150, 107);
             this.Address1.Multiline = true;
             this.Address1.Name = "Address1";
@@ -552,7 +506,7 @@
             // 
             // CustomerName1
             // 
-            this.CustomerName1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CustomerName1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CustomerName1.Location = new System.Drawing.Point(151, 13);
             this.CustomerName1.Multiline = true;
             this.CustomerName1.Name = "CustomerName1";
@@ -570,15 +524,16 @@
             // 
             // Date
             // 
-            this.Date.CalendarFont = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Date.Location = new System.Drawing.Point(159, 200);
+            this.Date.CalendarFont = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Date.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Date.Location = new System.Drawing.Point(420, 198);
             this.Date.Name = "Date";
-            this.Date.Size = new System.Drawing.Size(178, 20);
+            this.Date.Size = new System.Drawing.Size(294, 26);
             this.Date.TabIndex = 15;
             // 
             // GroomName1
             // 
-            this.GroomName1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GroomName1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroomName1.Location = new System.Drawing.Point(478, 13);
             this.GroomName1.Multiline = true;
             this.GroomName1.Name = "GroomName1";
@@ -587,7 +542,7 @@
             // 
             // BrideName1
             // 
-            this.BrideName1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BrideName1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BrideName1.Location = new System.Drawing.Point(478, 62);
             this.BrideName1.Multiline = true;
             this.BrideName1.Name = "BrideName1";
@@ -599,7 +554,7 @@
             this.MaxTable1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.MaxTable1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MaxTable1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MaxTable1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaxTable1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaxTable1.Location = new System.Drawing.Point(898, 107);
             this.MaxTable1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.MaxTable1.Name = "MaxTable1";
@@ -609,7 +564,7 @@
             // 
             // Email1
             // 
-            this.Email1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Email1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Email1.Location = new System.Drawing.Point(150, 155);
             this.Email1.Multiline = true;
             this.Email1.Name = "Email1";
@@ -633,7 +588,7 @@
             // 
             // NumberOfTable1
             // 
-            this.NumberOfTable1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumberOfTable1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NumberOfTable1.Location = new System.Drawing.Point(478, 107);
             this.NumberOfTable1.Multiline = true;
             this.NumberOfTable1.Name = "NumberOfTable1";
@@ -678,7 +633,7 @@
             // 
             // ReservedTable1
             // 
-            this.ReservedTable1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReservedTable1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReservedTable1.Location = new System.Drawing.Point(478, 155);
             this.ReservedTable1.Multiline = true;
             this.ReservedTable1.Name = "ReservedTable1";
@@ -717,7 +672,7 @@
             // 
             // Phone1
             // 
-            this.Phone1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Phone1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Phone1.Location = new System.Drawing.Point(150, 62);
             this.Phone1.Multiline = true;
             this.Phone1.Name = "Phone1";
@@ -790,7 +745,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(8, 200);
+            this.label22.Location = new System.Drawing.Point(267, 201);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(154, 18);
             this.label22.TabIndex = 4;
@@ -820,64 +775,18 @@
             this.panel2.Size = new System.Drawing.Size(524, 367);
             this.panel2.TabIndex = 13;
             // 
-            // ChonDichVu
-            // 
-            this.ChonDichVu.BackColor = System.Drawing.Color.White;
-            this.ChonDichVu.BackgroundColor = System.Drawing.Color.White;
-            this.ChonDichVu.BorderColor = System.Drawing.Color.Black;
-            this.ChonDichVu.BorderColor1 = System.Drawing.Color.Black;
-            this.ChonDichVu.BorderRadius = 15;
-            this.ChonDichVu.BorderRadius1 = 15;
-            this.ChonDichVu.BorderSize = 2;
-            this.ChonDichVu.BorderSize1 = 2;
-            this.ChonDichVu.FlatAppearance.BorderSize = 0;
-            this.ChonDichVu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ChonDichVu.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChonDichVu.ForeColor = System.Drawing.Color.Black;
-            this.ChonDichVu.Location = new System.Drawing.Point(380, 188);
-            this.ChonDichVu.Name = "ChonDichVu";
-            this.ChonDichVu.Size = new System.Drawing.Size(127, 31);
-            this.ChonDichVu.TabIndex = 55;
-            this.ChonDichVu.Text = "Chọn Dịch Vụ";
-            this.ChonDichVu.TextColor = System.Drawing.Color.Black;
-            this.ChonDichVu.UseVisualStyleBackColor = false;
-            this.ChonDichVu.Click += new System.EventHandler(this.ChonDichVu_Click);
-            // 
-            // ChonThucDon
-            // 
-            this.ChonThucDon.BackColor = System.Drawing.Color.White;
-            this.ChonThucDon.BackgroundColor = System.Drawing.Color.White;
-            this.ChonThucDon.BorderColor = System.Drawing.Color.Black;
-            this.ChonThucDon.BorderColor1 = System.Drawing.Color.Black;
-            this.ChonThucDon.BorderRadius = 15;
-            this.ChonThucDon.BorderRadius1 = 15;
-            this.ChonThucDon.BorderSize = 2;
-            this.ChonThucDon.BorderSize1 = 2;
-            this.ChonThucDon.FlatAppearance.BorderSize = 0;
-            this.ChonThucDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ChonThucDon.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChonThucDon.ForeColor = System.Drawing.Color.Black;
-            this.ChonThucDon.Location = new System.Drawing.Point(380, 8);
-            this.ChonThucDon.Name = "ChonThucDon";
-            this.ChonThucDon.Size = new System.Drawing.Size(127, 31);
-            this.ChonThucDon.TabIndex = 54;
-            this.ChonThucDon.Text = "Chọn Thực Đơn";
-            this.ChonThucDon.TextColor = System.Drawing.Color.Black;
-            this.ChonThucDon.UseVisualStyleBackColor = false;
-            this.ChonThucDon.Click += new System.EventHandler(this.ChonThucDon_Click);
-            // 
             // ServiceBookingView
             // 
             this.ServiceBookingView.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ServiceBookingView.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ServiceBookingView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ServiceBookingView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ServiceBookingView.ColumnHeadersHeight = 27;
             this.ServiceBookingView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ServiceId,
@@ -925,14 +834,14 @@
             // 
             this.MenuBookingView.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.MenuBookingView.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.MenuBookingView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MenuBookingView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.MenuBookingView.ColumnHeadersHeight = 30;
             this.MenuBookingView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FoodId,
@@ -987,6 +896,98 @@
             this.menu.Size = new System.Drawing.Size(112, 23);
             this.menu.TabIndex = 14;
             this.menu.Text = "Thực Đơn";
+            // 
+            // XacNhan
+            // 
+            this.XacNhan.BackColor = System.Drawing.Color.White;
+            this.XacNhan.BackgroundColor = System.Drawing.Color.White;
+            this.XacNhan.BorderColor = System.Drawing.Color.Black;
+            this.XacNhan.BorderColor1 = System.Drawing.Color.Black;
+            this.XacNhan.BorderRadius = 10;
+            this.XacNhan.BorderRadius1 = 10;
+            this.XacNhan.BorderSize = 2;
+            this.XacNhan.BorderSize1 = 2;
+            this.XacNhan.FlatAppearance.BorderSize = 0;
+            this.XacNhan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.XacNhan.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XacNhan.ForeColor = System.Drawing.Color.Black;
+            this.XacNhan.Location = new System.Drawing.Point(154, 298);
+            this.XacNhan.Name = "XacNhan";
+            this.XacNhan.Size = new System.Drawing.Size(163, 49);
+            this.XacNhan.TabIndex = 53;
+            this.XacNhan.Text = "Xác Nhận";
+            this.XacNhan.TextColor = System.Drawing.Color.Black;
+            this.XacNhan.UseVisualStyleBackColor = false;
+            this.XacNhan.Click += new System.EventHandler(this.XacNhan_Click);
+            // 
+            // ChonSanh
+            // 
+            this.ChonSanh.BackColor = System.Drawing.Color.White;
+            this.ChonSanh.BackgroundColor = System.Drawing.Color.White;
+            this.ChonSanh.BorderColor = System.Drawing.Color.Black;
+            this.ChonSanh.BorderColor1 = System.Drawing.Color.Black;
+            this.ChonSanh.BorderRadius = 0;
+            this.ChonSanh.BorderRadius1 = 0;
+            this.ChonSanh.BorderSize = 2;
+            this.ChonSanh.BorderSize1 = 2;
+            this.ChonSanh.FlatAppearance.BorderSize = 0;
+            this.ChonSanh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChonSanh.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChonSanh.ForeColor = System.Drawing.Color.Black;
+            this.ChonSanh.Location = new System.Drawing.Point(782, 62);
+            this.ChonSanh.Name = "ChonSanh";
+            this.ChonSanh.Size = new System.Drawing.Size(181, 31);
+            this.ChonSanh.TabIndex = 45;
+            this.ChonSanh.Text = "Chọn Sảnh";
+            this.ChonSanh.TextColor = System.Drawing.Color.Black;
+            this.ChonSanh.UseVisualStyleBackColor = false;
+            this.ChonSanh.Click += new System.EventHandler(this.ChonSanh_Click_1);
+            // 
+            // ChonDichVu
+            // 
+            this.ChonDichVu.BackColor = System.Drawing.Color.White;
+            this.ChonDichVu.BackgroundColor = System.Drawing.Color.White;
+            this.ChonDichVu.BorderColor = System.Drawing.Color.Black;
+            this.ChonDichVu.BorderColor1 = System.Drawing.Color.Black;
+            this.ChonDichVu.BorderRadius = 15;
+            this.ChonDichVu.BorderRadius1 = 15;
+            this.ChonDichVu.BorderSize = 2;
+            this.ChonDichVu.BorderSize1 = 2;
+            this.ChonDichVu.FlatAppearance.BorderSize = 0;
+            this.ChonDichVu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChonDichVu.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChonDichVu.ForeColor = System.Drawing.Color.Black;
+            this.ChonDichVu.Location = new System.Drawing.Point(380, 188);
+            this.ChonDichVu.Name = "ChonDichVu";
+            this.ChonDichVu.Size = new System.Drawing.Size(127, 31);
+            this.ChonDichVu.TabIndex = 55;
+            this.ChonDichVu.Text = "Chọn Dịch Vụ";
+            this.ChonDichVu.TextColor = System.Drawing.Color.Black;
+            this.ChonDichVu.UseVisualStyleBackColor = false;
+            this.ChonDichVu.Click += new System.EventHandler(this.ChonDichVu_Click);
+            // 
+            // ChonThucDon
+            // 
+            this.ChonThucDon.BackColor = System.Drawing.Color.White;
+            this.ChonThucDon.BackgroundColor = System.Drawing.Color.White;
+            this.ChonThucDon.BorderColor = System.Drawing.Color.Black;
+            this.ChonThucDon.BorderColor1 = System.Drawing.Color.Black;
+            this.ChonThucDon.BorderRadius = 15;
+            this.ChonThucDon.BorderRadius1 = 15;
+            this.ChonThucDon.BorderSize = 2;
+            this.ChonThucDon.BorderSize1 = 2;
+            this.ChonThucDon.FlatAppearance.BorderSize = 0;
+            this.ChonThucDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChonThucDon.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChonThucDon.ForeColor = System.Drawing.Color.Black;
+            this.ChonThucDon.Location = new System.Drawing.Point(380, 8);
+            this.ChonThucDon.Name = "ChonThucDon";
+            this.ChonThucDon.Size = new System.Drawing.Size(127, 31);
+            this.ChonThucDon.TabIndex = 54;
+            this.ChonThucDon.Text = "Chọn Thực Đơn";
+            this.ChonThucDon.TextColor = System.Drawing.Color.Black;
+            this.ChonThucDon.UseVisualStyleBackColor = false;
+            this.ChonThucDon.Click += new System.EventHandler(this.ChonThucDon_Click);
             // 
             // Booking
             // 
