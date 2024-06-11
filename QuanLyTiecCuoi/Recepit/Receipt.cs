@@ -20,10 +20,10 @@ namespace QuanLyTiecCuoi
 
         private string conString;
 
-        private TrangThaiSanh _parenform;
+        private Form _parenform;
 
        
-        public Receipt(string conString, TrangThaiSanh parenform, int idtiec)
+        public Receipt(string conString, Form parenform, int idtiec)
         {
             InitializeComponent();
             this.conString = conString;
@@ -428,7 +428,7 @@ namespace QuanLyTiecCuoi
 
 
 
-
+        public event EventHandler ConfirmClicked;
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
             int customerId = Int16.Parse(tiecId.Text);
@@ -438,8 +438,10 @@ namespace QuanLyTiecCuoi
 
             SaveHoaDon(customerId, IdTiecValue, totalBill, Paid);
 
-            // Hiển thị thông báo "đã lưu thành công"
             MessageBox.Show("Đã lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ConfirmClicked?.Invoke(this, EventArgs.Empty);
+
+            this.Close();
         }
 
         private void Discount_TextChanged(object sender, EventArgs e)

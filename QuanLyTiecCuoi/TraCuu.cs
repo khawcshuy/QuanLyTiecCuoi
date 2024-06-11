@@ -25,6 +25,7 @@ namespace QuanLyTiecCuoi
             InitializeComponent();
             //button1.Visible = false;
             //searchTextbox.Visible = false;
+           
             this.BackColor = Color.FromArgb(224, 247, 250);
             dataGridView1.BackgroundColor = Color.FromArgb(224, 247, 250);
             // Textbox (rjTextBox1)
@@ -48,6 +49,8 @@ namespace QuanLyTiecCuoi
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(224, 247, 250);
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(0, 0, 139);
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Verdana", 12, FontStyle.Bold);
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.ReadOnly = true;
         }
 
         private void dataGridView1_Paint(object sender, PaintEventArgs e)
@@ -95,6 +98,8 @@ namespace QuanLyTiecCuoi
             dataGridView1.Columns[5].Width = 50;
             dataGridView1.Columns[6].HeaderText = "Số Lượng Bàn";
             dataGridView1.Columns[6].Width = 170;
+            IsPartyCheckOut();
+
         }
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -186,6 +191,60 @@ namespace QuanLyTiecCuoi
             Console.WriteLine($"Resizing {control.Name}: New Location ({newX}, {newY}), New Size ({newWidth}, {newHeight})");
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
+        }
+
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                var id = dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+
+                if (id != null && int.TryParse(id.ToString(), out int idTiec))
+                {
+                   
+
+                    Receipt receiptForm = new Receipt(constring, this, idTiec);
+                    receiptForm.ShowDialog();
+                }
+            }
+            
+        }
+        public event EventHandler ConfirmClicked;
+        private void confirmButton_Click(object sender, EventArgs e)
+        {
+          
+            ConfirmClicked?.Invoke(this, EventArgs.Empty);
+
+            this.Close();
+        }
+        private void IsPartyCheckOut()
+        {
+            string query = "SELECT IDTIEC FROM HOADON";
+            List<int> hoadonIds = new List<int>();
+            using (SqlConnection connection = new SqlConnection(constring))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        hoadonIds.Add(reader.GetInt32(0));
+                    }
+
+                    reader.Close();
+                }
+            }
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!hoadonIds.Contains(Convert.ToInt32(row.Cells[0].Value)))
+                {
+                    row.DefaultCellStyle.BackColor = Color.Red;
+
+                }
+
+            }
         }
     }
 }

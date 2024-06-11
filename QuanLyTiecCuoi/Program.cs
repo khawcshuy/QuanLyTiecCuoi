@@ -28,7 +28,7 @@ namespace QuanLyTiecCuoi
             //InsertNV NHANVIEN = new InsertNV(conString,null);
             //Application.Run(nhanVien);
             //Application.Run(foodform);
-            Application.Run(new Report(conString));
+            //Application.Run(new Report(conString));
 
             //Venue Venue = new Venue(null, conString);
             //Application.Run(Venue);
@@ -48,8 +48,8 @@ namespace QuanLyTiecCuoi
             //Application.Run(new Food(conString, null));
 
             // GỌI BOOKING 
-            //fLogin login = new fLogin(conString);
-            //Application.Run(login);
+            fLogin login = new fLogin(conString);
+            Application.Run(login);
             //TraCuu tracuuform = new TraCuu(conString);
             //Application.Run(tracuuform);
             //fLogin fLogin = new fLogin(conString);

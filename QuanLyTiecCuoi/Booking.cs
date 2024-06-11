@@ -397,7 +397,7 @@ namespace QuanLyTiecCuoi
 
                 ServiceId.DataPropertyName = "ID";
                 ServiceType.DataPropertyName = "LOAIDICHVU";
-                ServiceName.DataPropertyName = "TENMONAN";
+                ServiceName.DataPropertyName = "TENDICHVU";
                 ServicePrice.DataPropertyName = "GIADICHVU";
 
                 DataTable dataTable = new DataTable();

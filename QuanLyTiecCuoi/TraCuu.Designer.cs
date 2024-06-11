@@ -31,10 +31,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new QuanLyTiecCuoi.UIDesign.RJButton();
-            this.searchTextbox = new QuanLyTiecCuoi.UIDesign.TextBoxTemplate();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.npgsqlCommandBuilder1 = new Npgsql.NpgsqlCommandBuilder();
+            this.button1 = new QuanLyTiecCuoi.UIDesign.RJButton();
+            this.searchTextbox = new QuanLyTiecCuoi.UIDesign.TextBoxTemplate();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -46,55 +46,11 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.searchTextbox);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(0, 12);
+            this.panel1.Location = new System.Drawing.Point(0, 15);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(991, 590);
+            this.panel1.Size = new System.Drawing.Size(1321, 726);
             this.panel1.TabIndex = 6;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.SlateBlue;
-            this.button1.BackgroundColor = System.Drawing.Color.SlateBlue;
-            this.button1.BorderColor = System.Drawing.Color.MidnightBlue;
-            this.button1.BorderColor1 = System.Drawing.Color.MidnightBlue;
-            this.button1.BorderRadius = 20;
-            this.button1.BorderRadius1 = 20;
-            this.button1.BorderSize = 1;
-            this.button1.BorderSize1 = 1;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(538, 36);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(172, 45);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Search!";
-            this.button1.TextColor = System.Drawing.Color.White;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // searchTextbox
-            // 
-            this.searchTextbox.BackColor = System.Drawing.SystemColors.Window;
-            this.searchTextbox.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.searchTextbox.BorderFocusColor = System.Drawing.Color.Aqua;
-            this.searchTextbox.BorderRadius = 10;
-            this.searchTextbox.BorderSize = 2;
-            this.searchTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchTextbox.ForeColor = System.Drawing.Color.DimGray;
-            this.searchTextbox.Location = new System.Drawing.Point(307, 42);
-            this.searchTextbox.Margin = new System.Windows.Forms.Padding(4);
-            this.searchTextbox.Multiline = false;
-            this.searchTextbox.Name = "searchTextbox";
-            this.searchTextbox.Padding = new System.Windows.Forms.Padding(7);
-            this.searchTextbox.PasswordChar = false;
-            this.searchTextbox.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.searchTextbox.PlaceholderText = "";
-            this.searchTextbox.Size = new System.Drawing.Size(211, 31);
-            this.searchTextbox.TabIndex = 8;
-            this.searchTextbox.Texts = "";
-            this.searchTextbox.UnderlinedStyle = false;
             // 
             // dataGridView1
             // 
@@ -117,7 +73,8 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.GridColor = System.Drawing.Color.CornflowerBlue;
-            this.dataGridView1.Location = new System.Drawing.Point(41, 111);
+            this.dataGridView1.Location = new System.Drawing.Point(55, 137);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
@@ -128,20 +85,69 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(922, 454);
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(1229, 559);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             // 
             // npgsqlCommandBuilder1
             // 
             this.npgsqlCommandBuilder1.QuotePrefix = "\"";
             this.npgsqlCommandBuilder1.QuoteSuffix = "\"";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.SlateBlue;
+            this.button1.BackgroundColor = System.Drawing.Color.SlateBlue;
+            this.button1.BorderColor = System.Drawing.Color.MidnightBlue;
+            this.button1.BorderColor1 = System.Drawing.Color.MidnightBlue;
+            this.button1.BorderRadius = 20;
+            this.button1.BorderRadius1 = 20;
+            this.button1.BorderSize = 1;
+            this.button1.BorderSize1 = 1;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(717, 44);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(229, 55);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Search!";
+            this.button1.TextColor = System.Drawing.Color.White;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // searchTextbox
+            // 
+            this.searchTextbox.BackColor = System.Drawing.SystemColors.Window;
+            this.searchTextbox.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.searchTextbox.BorderFocusColor = System.Drawing.Color.Aqua;
+            this.searchTextbox.BorderRadius = 10;
+            this.searchTextbox.BorderSize = 2;
+            this.searchTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchTextbox.ForeColor = System.Drawing.Color.DimGray;
+            this.searchTextbox.Location = new System.Drawing.Point(409, 52);
+            this.searchTextbox.Margin = new System.Windows.Forms.Padding(5);
+            this.searchTextbox.Multiline = false;
+            this.searchTextbox.Name = "searchTextbox";
+            this.searchTextbox.Padding = new System.Windows.Forms.Padding(9);
+            this.searchTextbox.PasswordChar = false;
+            this.searchTextbox.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.searchTextbox.PlaceholderText = "";
+            this.searchTextbox.Size = new System.Drawing.Size(281, 39);
+            this.searchTextbox.TabIndex = 8;
+            this.searchTextbox.Texts = "";
+            this.searchTextbox.UnderlinedStyle = false;
+            // 
             // TraCuu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(975, 614);
+            this.ClientSize = new System.Drawing.Size(1300, 756);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TraCuu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TraCuu";

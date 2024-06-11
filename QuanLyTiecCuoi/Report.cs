@@ -60,7 +60,8 @@ namespace QuanLyTiecCuoi
             MonthYear.Format = DateTimePickerFormat.Custom;
             MonthYear.CustomFormat = "MM/yyyy";
             MonthYear.MaxDate = maxDate;
-            MonthYear.MinDate = minDate; 
+            MonthYear.MinDate = minDate;
+            MonthYear.Value = DateTime.Now;
         }
 
 
