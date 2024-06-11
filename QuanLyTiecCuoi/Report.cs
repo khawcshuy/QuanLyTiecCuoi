@@ -251,6 +251,8 @@ namespace QuanLyTiecCuoi
                     }
 
                     var chartData = new List<Tuple<string, decimal, int, int, int>>();
+                    
+
 
                     for (int i = 0; i < 5; i++)
                     {
@@ -260,6 +262,7 @@ namespace QuanLyTiecCuoi
                             chartData.Add(Tuple.Create(monthLabel, DTThangValues[i].Value, SoLuongTiecValues[i].Value, MonthValues[i].Value, YearValues[i].Value));
                         }
                     }
+                    chartData = chartData.OrderBy(data => new DateTime(data.Item5, data.Item4, 1)).ToList();
                     chart1.Series.Clear();
                    var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
                     {
@@ -269,7 +272,6 @@ namespace QuanLyTiecCuoi
                     };
                     chart1.Series.Add(series1);
 
-                    // Create Series2 for line chart (events)
                     var series2 = new System.Windows.Forms.DataVisualization.Charting.Series
                     {
                         Name = "Số Lượng Tiệc",
@@ -280,7 +282,6 @@ namespace QuanLyTiecCuoi
 
                     foreach (var data in chartData)
                     {
-                        // Add data to Series1 (column chart)
                         if (data.Item2 != 0)
                         {
                             var point = series1.Points.AddXY($"{data.Item1}", data.Item2);
@@ -316,7 +317,6 @@ namespace QuanLyTiecCuoi
                     con.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    // Clear existing data in the pie chart
                     chart2.Series.Clear();
                     var series = new System.Windows.Forms.DataVisualization.Charting.Series
                     {
@@ -325,15 +325,17 @@ namespace QuanLyTiecCuoi
                         ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
                     };
                     chart2.Series.Add(series);
+                    chart2.Legends[0].Title = "Ngày trong tháng";
+                    chart2.Titles.Add("Biểu đồ tỉ lệ doanh thu theo ngày trong tháng");
 
-                    // Add data to the pie chart
+
                     while (reader.Read())
                     {
                         int dayOfMonth = reader.GetInt32(0);
                         decimal dailyRevenue = reader.GetDecimal(1);
                         decimal revenueRatio = reader.GetDecimal(2);
 
-                        if (dailyRevenue != 0)  // Only add if daily revenue is not 0
+                        if (dailyRevenue != 0)  
                         {
                             series.Points.AddXY($"Day {dayOfMonth}", revenueRatio);
                         }
