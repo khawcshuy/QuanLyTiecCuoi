@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using QuanLyTiecCuoi.Login;
 namespace QuanLyTiecCuoi
 {
     public partial class NhanVien : Form
@@ -162,8 +162,7 @@ namespace QuanLyTiecCuoi
 
                             command.ExecuteNonQuery();
 
-                            MessageBox.Show("Record updated/deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                            RJMessageBox.Show("Record updated/deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             loadNhanVienGridView();
                         }
                         catch (Exception ex)
@@ -175,7 +174,7 @@ namespace QuanLyTiecCuoi
             }
             else
             {
-                MessageBox.Show("Please select a record to update/delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RJMessageBox.Show("Please select a record to update/delete!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

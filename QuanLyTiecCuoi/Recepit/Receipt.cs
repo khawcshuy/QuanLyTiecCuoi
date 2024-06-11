@@ -1,4 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using QuanLyTiecCuoi.Login;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -435,23 +436,22 @@ namespace QuanLyTiecCuoi
 
 
         public event EventHandler ConfirmClicked;
-        private void ConfirmButton_Click(object sender, EventArgs e)
+        private void XacNhan_Click(object sender, EventArgs e)
         {
             int customerId = Int16.Parse(IdKhachhang.Text);
-            float totalBill = float.Parse(Total.Text); 
+            float totalBill = float.Parse(Total.Text);
             int IdTiecValue = Int16.Parse(tiecId.Text);
-            float Paid  = float.Parse(Paidment.Text);
+            float Paid = float.Parse(Paidment.Text);
 
             bool success = SaveHoaDon(customerId, IdTiecValue, totalBill, Paid);
 
             if (success)
             {
-                MessageBox.Show("Đã lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RJMessageBox.Show("Đã lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ConfirmClicked?.Invoke(this, EventArgs.Empty);
                 this.Close();
             }
         }
-
         private void Discount_TextChanged(object sender, EventArgs e)
         {
             string customerId = tiecId.Text;
@@ -594,6 +594,8 @@ namespace QuanLyTiecCuoi
         {
 
         }
+
+
     }
 }
 

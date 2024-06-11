@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
-
+using QuanLyTiecCuoi.Login;
 namespace QuanLyTiecCuoi
 {
     public partial class Venue : Form
@@ -95,7 +95,7 @@ namespace QuanLyTiecCuoi
                     }
                     else
                     {
-                        MessageBox.Show("Parent form is not set.");
+                        //MessageBox.Show("Parent form is not set.");
                     }
                 }
                 else
@@ -296,9 +296,7 @@ namespace QuanLyTiecCuoi
                             connection.Open();
 
                             command.ExecuteNonQuery();
-
-                            MessageBox.Show("Record updated/deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                            RJMessageBox.Show("Record updated/deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadDataIntoDataGridView();
                         }
                         catch (Exception ex)
@@ -310,7 +308,7 @@ namespace QuanLyTiecCuoi
             }
             else
             {
-                MessageBox.Show("Please select a record to update/delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RJMessageBox.Show("Please select a record to update/delete!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -392,7 +390,7 @@ namespace QuanLyTiecCuoi
 
                 if(!ChangingState)
                 {
-                    MessageBox.Show("All records updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RJMessageBox.Show("All records updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ChangingState = false;
                 }
                 LoadDataIntoDataGridView();

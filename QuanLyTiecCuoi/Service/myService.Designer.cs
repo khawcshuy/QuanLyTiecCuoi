@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnDelete = new QuanLyTiecCuoi.UIDesign.RJButton();
             this.btnEdit = new QuanLyTiecCuoi.UIDesign.RJButton();
@@ -56,9 +56,9 @@
             this.panel2.Controls.Add(this.Confirm);
             this.panel2.Controls.Add(this.dataGridViewService);
             this.panel2.Location = new System.Drawing.Point(0, -2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1305, 838);
+            this.panel2.Size = new System.Drawing.Size(979, 681);
             this.panel2.TabIndex = 4;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -76,10 +76,9 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(1021, 20);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Location = new System.Drawing.Point(766, 16);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(227, 49);
+            this.btnDelete.Size = new System.Drawing.Size(170, 40);
             this.btnDelete.TabIndex = 49;
             this.btnDelete.Text = "Xóa Dịch Vụ";
             this.btnDelete.TextColor = System.Drawing.Color.White;
@@ -100,10 +99,9 @@
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(756, 20);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEdit.Location = new System.Drawing.Point(567, 16);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(227, 49);
+            this.btnEdit.Size = new System.Drawing.Size(170, 40);
             this.btnEdit.TabIndex = 48;
             this.btnEdit.Text = "Chỉnh Sửa";
             this.btnEdit.TextColor = System.Drawing.Color.White;
@@ -124,10 +122,9 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(492, 20);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdd.Location = new System.Drawing.Point(369, 16);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(227, 49);
+            this.btnAdd.Size = new System.Drawing.Size(170, 40);
             this.btnAdd.TabIndex = 47;
             this.btnAdd.Text = "Thêm Dịch Vụ";
             this.btnAdd.TextColor = System.Drawing.Color.White;
@@ -143,15 +140,15 @@
             this.searchServicename.BorderSize = 2;
             this.searchServicename.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchServicename.ForeColor = System.Drawing.Color.Black;
-            this.searchServicename.Location = new System.Drawing.Point(65, 17);
-            this.searchServicename.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.searchServicename.Location = new System.Drawing.Point(49, 14);
+            this.searchServicename.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.searchServicename.Multiline = false;
             this.searchServicename.Name = "searchServicename";
-            this.searchServicename.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.searchServicename.Padding = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.searchServicename.PasswordChar = false;
             this.searchServicename.PlaceholderColor = System.Drawing.Color.DimGray;
             this.searchServicename.PlaceholderText = "Tìm Dịch Vụ";
-            this.searchServicename.Size = new System.Drawing.Size(341, 47);
+            this.searchServicename.Size = new System.Drawing.Size(256, 37);
             this.searchServicename.TabIndex = 46;
             this.searchServicename.Texts = "";
             this.searchServicename.UnderlinedStyle = true;
@@ -163,13 +160,14 @@
             this.Confirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Confirm.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
             this.Confirm.ForeColor = System.Drawing.Color.White;
-            this.Confirm.Location = new System.Drawing.Point(1076, 773);
-            this.Confirm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Confirm.Location = new System.Drawing.Point(362, 15);
+            this.Confirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Confirm.Name = "Confirm";
-            this.Confirm.Size = new System.Drawing.Size(215, 50);
+            this.Confirm.Size = new System.Drawing.Size(178, 50);
             this.Confirm.TabIndex = 44;
             this.Confirm.Text = "Xác Nhận";
             this.Confirm.UseVisualStyleBackColor = false;
+            this.Confirm.Visible = false;
             this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
             // 
             // dataGridViewService
@@ -179,14 +177,14 @@
             this.dataGridViewService.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewService.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewService.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Montserrat ExtraBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewService.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Montserrat ExtraBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewService.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewService.ColumnHeadersHeight = 70;
             this.dataGridViewService.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewService.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -195,18 +193,18 @@
             this.ServiceType,
             this.ServicePrice});
             this.dataGridViewService.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewService.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewService.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewService.EnableHeadersVisualStyles = false;
             this.dataGridViewService.GridColor = System.Drawing.Color.RoyalBlue;
-            this.dataGridViewService.Location = new System.Drawing.Point(0, 98);
-            this.dataGridViewService.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridViewService.Location = new System.Drawing.Point(0, 80);
+            this.dataGridViewService.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridViewService.Name = "dataGridViewService";
             this.dataGridViewService.ReadOnly = true;
             this.dataGridViewService.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -214,7 +212,7 @@
             this.dataGridViewService.RowHeadersWidth = 51;
             this.dataGridViewService.RowTemplate.Height = 100;
             this.dataGridViewService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewService.Size = new System.Drawing.Size(1303, 665);
+            this.dataGridViewService.Size = new System.Drawing.Size(977, 572);
             this.dataGridViewService.TabIndex = 0;
             this.dataGridViewService.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewService_CellContentClick);
             // 
@@ -253,12 +251,12 @@
             // 
             // myService
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1303, 832);
+            this.ClientSize = new System.Drawing.Size(977, 676);
             this.Controls.Add(this.panel2);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "myService";
             this.Text = "Service";
             this.Load += new System.EventHandler(this.Service_Load);

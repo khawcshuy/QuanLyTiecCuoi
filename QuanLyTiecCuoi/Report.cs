@@ -20,10 +20,10 @@ namespace QuanLyTiecCuoi
     public partial class Report : Form
     {
         public string conString;
-        public Report(string conSring)
+        public Report(string conString)
         {
             InitializeComponent();
-            this.conString = conSring;
+            this.conString = conString;
             LimitMonthYear();
 
         }
@@ -73,7 +73,7 @@ namespace QuanLyTiecCuoi
                 MonthYear.CustomFormat = "MM/yyyy";
                 MonthYear.MaxDate = maxDate;
                 MonthYear.MinDate = minDate;
-                MonthYear.Value = DateTime.Now;
+                //MonthYear.Value = DateTime.Now;
             }
 
 

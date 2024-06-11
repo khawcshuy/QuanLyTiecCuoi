@@ -496,6 +496,9 @@
     <Content Include="Resources\calendarDark.png" />
     <Content Include="Resources\calendarWhite.png" />
     <None Include="Resources\fa6-regular--pen-to-square.png" />
+    <None Include="Resources\exclamation.png" />
+    <None Include="Resources\information.png" />
+    <None Include="Resources\question.png" />
     <Content Include="Resources\sanh1.jpg" />
     <None Include="Resources\Venue-Icon.png" />
     <None Include="QUANLYTIECCUOIDataSet.xsc">

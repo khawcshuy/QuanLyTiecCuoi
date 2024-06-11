@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using QuanLyTiecCuoi.Login;
 namespace QuanLyTiecCuoi.NHANVIEN
 {
     public partial class InsertNV : Form
@@ -81,7 +81,7 @@ namespace QuanLyTiecCuoi.NHANVIEN
                     {
 
                         command.ExecuteNonQuery();
-                        MessageBox.Show("NhanVien added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RJMessageBox.Show("NhanVien added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (SqlException ex)
                     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyTiecCuoi.Login;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -104,8 +105,7 @@ namespace QuanLyTiecCuoi.SERVICE
 
                             cmd.ExecuteNonQuery();
 
-                            MessageBox.Show("Venue added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                            RJMessageBox.Show("Thêm Thông Tin Món Ăn Thành Công!","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
 
                         }
                         catch (Exception ex)

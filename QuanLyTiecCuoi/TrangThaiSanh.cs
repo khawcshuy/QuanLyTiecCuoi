@@ -278,9 +278,26 @@ WHERE @ID = T.ID
 
         private void BillExport_Click(object sender, EventArgs e)
         {
-            int idTiecCHeckOut = Convert.ToInt32(textBoxIdTiec.Texts);
-            Receipt receiptForm = new Receipt(conString, this, idTiecCHeckOut);
-            receiptForm.ShowDialog();
+            try
+            {
+                if (string.IsNullOrWhiteSpace(textBoxIdTiec.Texts))
+                {
+                    MessageBox.Show("Vui Lòng Nhập Mã Tiệc!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int idTiecCHeckOut = Convert.ToInt32(textBoxIdTiec.Texts);
+                Receipt receiptForm = new Receipt(conString, this, idTiecCHeckOut);
+                receiptForm.ShowDialog();
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Mã Tiệc không hợp lệ!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

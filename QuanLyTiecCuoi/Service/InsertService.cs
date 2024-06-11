@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyTiecCuoi.Login;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -66,7 +67,7 @@ namespace QuanLyTiecCuoi.Service
                     {
                         connection.Open();
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("Service added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RJMessageBox.Show("Thêm Thông Tin Dịch Vụ Thành Công!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.IdentityModel.Tokens;
 using QuanLyTiecCuoi.Service;
-
+using QuanLyTiecCuoi.Login;
 
 namespace QuanLyTiecCuoi.Service
 {
@@ -86,6 +86,10 @@ namespace QuanLyTiecCuoi.Service
                 if (_parentForm != null && isBookingForm)
                 {
                     Confirm.Visible = true;
+                    btnAdd.Visible = false;
+                    btnDelete.Visible = false;
+                    btnEdit.Visible = false;
+
                     foreach (DataGridViewColumn column in dataGridViewService.Columns)
                     {
                         if (column.Name == "Select")
@@ -186,9 +190,8 @@ namespace QuanLyTiecCuoi.Service
 
                         updateCmd.ExecuteNonQuery();
 
-                        MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        LoadDataGridViewService();
+                            RJMessageBox.Show("Sửa Thông Tin Dịch Vụ Thành Công!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadDataGridViewService();
 
                         
                     }
@@ -264,7 +267,7 @@ namespace QuanLyTiecCuoi.Service
             }
             if (SelectedService.Count == 0)
             {
-                MessageBox.Show("Please choose a service.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RJMessageBox.Show("Vui Lòng Chọn Dịch Vụ!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             ConfirmEvent?.Invoke(SelectedService);
@@ -330,9 +333,8 @@ namespace QuanLyTiecCuoi.Service
 
                             command.ExecuteNonQuery();
 
-                            MessageBox.Show("Record updated/deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                           LoadDataGridViewService();
+                            RJMessageBox.Show("Thông Tin Dịch Vụ Được Cập Nhật/Xóa Thành Công!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadDataGridViewService();
                         }
                         catch (Exception ex)
                         {
@@ -343,7 +345,7 @@ namespace QuanLyTiecCuoi.Service
             }
             else
             {
-                MessageBox.Show("Please select a record to update/delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RJMessageBox.Show("Chọn Dịch Vụ Cần Để Cập Nhật/Xóa!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -372,7 +374,7 @@ namespace QuanLyTiecCuoi.Service
 
                             command.ExecuteNonQuery();
 
-                            MessageBox.Show("Record updated/deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            RJMessageBox.Show("Thêm Thông Tin Dịch Vụ Thành Công!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             LoadDataGridViewService();
                         }
@@ -385,7 +387,7 @@ namespace QuanLyTiecCuoi.Service
             }
             else
             {
-                MessageBox.Show("Please select a record to update/delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RJMessageBox.Show("Vui Lòng Chọn Dịch Vụ Để Cập Nhật/Xóa!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

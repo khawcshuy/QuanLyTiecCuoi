@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO; // Add this line to import the System.IO namespace
-
+using QuanLyTiecCuoi.Login;
 
 namespace QuanLyTiecCuoi
 {
@@ -114,7 +114,7 @@ namespace QuanLyTiecCuoi
                     {
                         connection.Open();
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("Venue added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RJMessageBox.Show("Sửa Thông Tin Sảnh Thành Công!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {

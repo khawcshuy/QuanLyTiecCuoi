@@ -1,4 +1,5 @@
-﻿using QuanLyTiecCuoi.SERVICE;
+﻿using QuanLyTiecCuoi.Login;
+using QuanLyTiecCuoi.SERVICE;
 using QuanLyTiecCuoi.UIDesign;
 using System;
 using System.Collections.Generic;
@@ -319,9 +320,7 @@ namespace QuanLyTiecCuoi
                             connection.Open();
 
                             command.ExecuteNonQuery();
-
-                            MessageBox.Show("Record updated/deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                            RJMessageBox.Show("Xóa Món Ăn Thành Công!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadDataGridViewFood();
                         }
                         catch (Exception ex)
@@ -333,7 +332,7 @@ namespace QuanLyTiecCuoi
             }
             else
             {
-                MessageBox.Show("Please select a record to update/delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RJMessageBox.Show("Vui Lòng Chọn Món Ăn Cần Xóa!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

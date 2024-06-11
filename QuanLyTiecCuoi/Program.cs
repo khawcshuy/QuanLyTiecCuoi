@@ -35,7 +35,7 @@ namespace QuanLyTiecCuoi
             ////// Hiển thị form Food
 
             //Application.Run(new Booking(conString));
-            //Application.Run(new MainForm(conString));
+            //Application.Run(new AdminMainForm(conString));
 
             //TrangThaiSanh trangThaiSanh = new TrangThaiSanh(conString);
             //Application.Run(trangThaiSanh);
