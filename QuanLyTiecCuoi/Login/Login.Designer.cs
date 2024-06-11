@@ -64,7 +64,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(300, 530);
             this.panel1.TabIndex = 0;
@@ -120,7 +120,7 @@
             this.btnExit.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnExit.Location = new System.Drawing.Point(410, 0);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(40, 40);
             this.btnExit.TabIndex = 4;
@@ -134,8 +134,8 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(15, 318);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogin.Location = new System.Drawing.Point(22, 319);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(148, 35);
             this.btnLogin.TabIndex = 3;
@@ -149,7 +149,7 @@
             this.panel3.Controls.Add(this.txbPassWord);
             this.panel3.Controls.Add(this.pictureBox3);
             this.panel3.Location = new System.Drawing.Point(0, 238);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(450, 45);
             this.panel3.TabIndex = 2;
@@ -160,7 +160,7 @@
             this.txbPassWord.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbPassWord.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbPassWord.Location = new System.Drawing.Point(55, 15);
-            this.txbPassWord.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbPassWord.Margin = new System.Windows.Forms.Padding(2);
             this.txbPassWord.Name = "txbPassWord";
             this.txbPassWord.Size = new System.Drawing.Size(370, 20);
             this.txbPassWord.TabIndex = 2;
@@ -186,7 +186,7 @@
             this.panel2.Controls.Add(this.txbUserName);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Location = new System.Drawing.Point(0, 185);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(450, 45);
             this.panel2.TabIndex = 0;
@@ -197,7 +197,7 @@
             this.txbUserName.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.txbUserName.Location = new System.Drawing.Point(55, 12);
-            this.txbUserName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbUserName.Margin = new System.Windows.Forms.Padding(2);
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.Size = new System.Drawing.Size(370, 20);
             this.txbUserName.TabIndex = 1;
@@ -223,7 +223,7 @@
             this.panel4.Controls.Add(this.panel3);
             this.panel4.Controls.Add(this.btnLogin);
             this.panel4.Controls.Add(this.btnExit);
-            this.panel4.Location = new System.Drawing.Point(400, 0);
+            this.panel4.Location = new System.Drawing.Point(299, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(450, 530);
@@ -233,7 +233,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::QuanLyTiecCuoi.Properties.Resources.error;
-            this.pictureBox4.Location = new System.Drawing.Point(27, 359);
+            this.pictureBox4.Location = new System.Drawing.Point(21, 293);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(16, 16);
@@ -246,7 +246,7 @@
             // 
             this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(38, 291);
+            this.label1.Location = new System.Drawing.Point(38, 292);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(234, 26);
             this.label1.TabIndex = 8;
@@ -257,7 +257,7 @@
             // 
             this.label6.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.label6.Location = new System.Drawing.Point(24, 136);
+            this.label6.Location = new System.Drawing.Point(22, 136);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(299, 47);
             this.label6.TabIndex = 6;
@@ -271,7 +271,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";
