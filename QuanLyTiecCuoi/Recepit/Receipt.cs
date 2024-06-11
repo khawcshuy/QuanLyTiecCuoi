@@ -437,9 +437,9 @@ namespace QuanLyTiecCuoi
         public event EventHandler ConfirmClicked;
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            int customerId = Int16.Parse(tiecId.Text);
+            int customerId = Int16.Parse(IdKhachhang.Text);
             float totalBill = float.Parse(Total.Text); 
-            int IdTiecValue = Int16.Parse(IdKhachhang.Text);
+            int IdTiecValue = Int16.Parse(tiecId.Text);
             float Paid  = float.Parse(Paidment.Text);
 
             bool success = SaveHoaDon(customerId, IdTiecValue, totalBill, Paid);
