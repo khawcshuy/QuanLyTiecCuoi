@@ -10,6 +10,7 @@ CREATE TABLE USERS
 )
 
 INSERT INTO USERS VALUES(N'admin',N'Khongcho1')
+INSERT INTO USERS VALUES(N'nhanvien',N'Khongcho1')
 SELECT * FROM USERS 
 WHERE USERNAME = 'admin' and UPASS = 'Khongcho1'
 

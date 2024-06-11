@@ -204,11 +204,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DESIGN\MainForm.cs">
+    <Compile Include="DESIGN\NVMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DESIGN\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="DESIGN\NVMainForm.Designer.cs">
+      <DependentUpon>NVMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DESIGN\AdminMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DESIGN\AdminMainForm.Designer.cs">
+      <DependentUpon>AdminMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DESIGN\ThemeColor.cs" />
     <Compile Include="DESIGN\Widget.cs">
@@ -354,8 +360,11 @@
     <EmbeddedResource Include="ChartReport.resx">
       <DependentUpon>ChartReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DESIGN\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="DESIGN\NVMainForm.resx">
+      <DependentUpon>NVMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DESIGN\AdminMainForm.resx">
+      <DependentUpon>AdminMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DESIGN\Widget.resx">
       <DependentUpon>Widget.cs</DependentUpon>
@@ -443,6 +452,11 @@
     <None Include="DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Venue.datasource" />
     <None Include="Properties\Settings.settings">
@@ -476,6 +490,9 @@
     <None Include="Resources\calendar-pen.png" />
     <None Include="Resources\calendar-pen %282%29.png" />
     <None Include="Resources\calendar-pen1.png" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Resources\calendarDark.png" />
     <Content Include="Resources\calendarWhite.png" />
     <None Include="Resources\fa6-regular--pen-to-square.png" />

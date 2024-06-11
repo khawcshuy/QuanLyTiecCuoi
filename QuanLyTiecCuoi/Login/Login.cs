@@ -40,10 +40,20 @@ namespace QuanLyTiecCuoi
             }
             else 
             {
-                MainForm mainApp = new MainForm(constring);
-                this.Hide();
-                mainApp.FormClosed += MainForm_FormClosed;
-                mainApp.Show();
+                if (txbUserName.Text == "admin")
+                {
+                    AdminMainForm mainApp = new AdminMainForm(constring);
+                    this.Hide();
+                    mainApp.FormClosed += MainForm_FormClosed;
+                    mainApp.Show();
+                }
+                else
+                {
+                    NVMainForm mainApp = new NVMainForm(constring);
+                    this.Hide();
+                    mainApp.FormClosed += MainForm_FormClosed;
+                    mainApp.Show();
+                }
             }
 
         }
@@ -107,6 +117,11 @@ namespace QuanLyTiecCuoi
         {
             Register registerform = new Register(constring);
             registerform.Show();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

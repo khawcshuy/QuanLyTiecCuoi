@@ -1,6 +1,6 @@
 ﻿namespace QuanLyTiecCuoi.DESIGN
 {
-    partial class MainForm
+    partial class AdminMainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminMainForm));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.BtnCustomer = new FontAwesome.Sharp.IconButton();
             this.iconSignOut = new FontAwesome.Sharp.IconButton();

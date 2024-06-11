@@ -14,7 +14,7 @@ using QuanLyTiecCuoi.SERVICE;
 
 namespace QuanLyTiecCuoi.DESIGN
 {
-    public partial class MainForm : Form
+    public partial class NVMainForm : Form
     {
         public string conString;
         //Fields
@@ -28,7 +28,7 @@ namespace QuanLyTiecCuoi.DESIGN
         private Size formSize;
         private bool IsCollapse = false;
         //Constructor
-        public MainForm(string _conString)
+        public NVMainForm(string _conString)
         {
             InitializeComponent();
             CollapseMenu();
@@ -392,7 +392,7 @@ namespace QuanLyTiecCuoi.DESIGN
                 Form openForm = Application.OpenForms[i];
 
                 // Use the != operator and the is keyword separately
-                if (!(openForm is MainForm))
+                if (!(openForm is AdminMainForm))
                 {
                     openForm.Close();
                 }
