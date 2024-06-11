@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -182,7 +183,7 @@ namespace QuanLyTiecCuoi
                     adapter.Fill(dt);
 
 
-                    if (dt.Rows.Count > 0) // Kiểm tra nếu DataTable có ít nhất một dòng dữ liệu
+                    if (dt.Rows.Count > 0) 
                     {
                         foreach (DataRow row in dt.Rows)
                         {
@@ -224,7 +225,7 @@ namespace QuanLyTiecCuoi
 
         private decimal LoadHD(string customerId)
         {
-            decimal VenuePrice = 0.0m; // Khởi tạo VenuePrice ban đầu
+            decimal VenuePrice = 0.0m; 
 
             using (SqlConnection con = new SqlConnection(conString))
             {
@@ -363,19 +364,21 @@ namespace QuanLyTiecCuoi
             public DateTime ngayxuatHD { get; set; }
 
         }
-        private void SaveHoaDon(int customerId, int idTiec, float totalBill, float paid)
+        private bool SaveHoaDon(int customerId, int idTiec, float totalBill, float paid)
+
         {
+            string idNhanVienVaule = admin.Text;
             int discount;
             if (!int.TryParse(Discount.Text, out discount))
             {
                 discount = 0;
             }
-
+            if (!string.IsNullOrEmpty(idNhanVienVaule)) 
+            {
             using (SqlConnection con = new SqlConnection(conString))
             {
                 con.Open();
 
-                // Check if a record with the given idTiec already exists
                 string checkQuery = "SELECT COUNT(*) FROM HOADON WHERE IDTIEC = @idTiec";
                 using (SqlCommand checkCmd = new SqlCommand(checkQuery, con))
                 {
@@ -384,20 +387,17 @@ namespace QuanLyTiecCuoi
 
                     if (existingRecords > 0)
                     {
-                        // Prompt for confirmation if the record already exists
                         DialogResult result = MessageBox.Show("A record with the given ID already exists. Do you want to overwrite it?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.No)
                         {
-                            // If the user chooses not to overwrite, exit the method
-                            return;
+                            return false;
                         }
                         else
                         {
-                            // Update the existing record
-                            string updateQuery = "UPDATE HOADON SET IDNHANVIEN = @idNhanVien, TONGTIEN = @tongTien, NGAYXUATHOADON = @ngayXuatHoadon, THUCTRA = @paid, GIAMGIA = @discount WHERE IDTIEC = @idTiec";
+                            string updateQuery = "UPDATE HOADON SET TENNHANVIEN = @idNhanVien, TONGTIEN = @tongTien, NGAYXUATHOADON = @ngayXuatHoadon, THUCTRA = @paid, GIAMGIA = @discount WHERE IDTIEC = @idTiec";
                             using (SqlCommand updateCmd = new SqlCommand(updateQuery, con))
                             {
-                                updateCmd.Parameters.AddWithValue("@idNhanVien", "1");
+                                updateCmd.Parameters.AddWithValue("@idNhanVien", idNhanVienVaule);
                                 updateCmd.Parameters.AddWithValue("@tongTien", totalBill);
                                 updateCmd.Parameters.AddWithValue("@ngayXuatHoadon", DateTime.Now);
                                 updateCmd.Parameters.AddWithValue("@paid", paid);
@@ -409,11 +409,10 @@ namespace QuanLyTiecCuoi
                     }
                     else
                     {
-                        // Insert a new record
-                        string insertQuery = "INSERT INTO HOADON (IDNHANVIEN, IDTIEC, TONGTIEN, NGAYXUATHOADON, THUCTRA, GIAMGIA) VALUES (@idNhanVien, @idTiec, @tongTien, @ngayXuatHoadon, @paid, @discount)";
+                        string insertQuery = "INSERT INTO HOADON (TENNHANVIEN, IDTIEC, TONGTIEN, NGAYXUATHOADON, THUCTRA, GIAMGIA) VALUES (@idNhanVien, @idTiec, @tongTien, @ngayXuatHoadon, @paid, @discount)";
                         using (SqlCommand insertCmd = new SqlCommand(insertQuery, con))
                         {
-                            insertCmd.Parameters.AddWithValue("@idNhanVien", "1");
+                            insertCmd.Parameters.AddWithValue("@idNhanVien", idNhanVienVaule);
                             insertCmd.Parameters.AddWithValue("@idTiec", idTiec);
                             insertCmd.Parameters.AddWithValue("@tongTien", totalBill);
                             insertCmd.Parameters.AddWithValue("@ngayXuatHoadon", DateTime.Now);
@@ -422,7 +421,14 @@ namespace QuanLyTiecCuoi
                             insertCmd.ExecuteNonQuery();
                         }
                     }
+                        return true;
                 }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please fill in the 'Nhan vien' field.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 
@@ -436,12 +442,14 @@ namespace QuanLyTiecCuoi
             int IdTiecValue = Int16.Parse(IdKhachhang.Text);
             float Paid  = float.Parse(Paidment.Text);
 
-            SaveHoaDon(customerId, IdTiecValue, totalBill, Paid);
+            bool success = SaveHoaDon(customerId, IdTiecValue, totalBill, Paid);
 
-            MessageBox.Show("Đã lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            ConfirmClicked?.Invoke(this, EventArgs.Empty);
-
-            this.Close();
+            if (success)
+            {
+                MessageBox.Show("Đã lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConfirmClicked?.Invoke(this, EventArgs.Empty);
+                this.Close();
+            }
         }
 
         private void Discount_TextChanged(object sender, EventArgs e)

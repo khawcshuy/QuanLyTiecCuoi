@@ -123,5 +123,10 @@ namespace QuanLyTiecCuoi
         {
 
         }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

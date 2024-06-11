@@ -43,25 +43,40 @@ namespace QuanLyTiecCuoi
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.Read()) 
                         {
-                            DateTime currentMaxDate = reader.GetDateTime(reader.GetOrdinal("MaxDate"));
-                            DateTime currentMinDate = reader.GetDateTime(reader.GetOrdinal("MinDate"));
+                            if (!reader.IsDBNull(reader.GetOrdinal("MaxDate"))) 
+                            {
+                                DateTime currentMaxDate = reader.GetDateTime(reader.GetOrdinal("MaxDate"));
+                                if (currentMaxDate > maxDate)
+                                {
+                                    maxDate = currentMaxDate;
+                                }
+                            }
 
-                            if (currentMaxDate > maxDate)
-                                maxDate = currentMaxDate;
-                            if (currentMinDate < minDate)
-                                minDate = currentMinDate;
+                            if (!reader.IsDBNull(reader.GetOrdinal("MinDate"))) 
+                            {
+                                DateTime currentMinDate = reader.GetDateTime(reader.GetOrdinal("MinDate"));
+                                if (currentMinDate < minDate)
+                                {
+                                    minDate = currentMinDate;
+                                }
+                            }
                         }
                     }
                 }
             }
 
-            MonthYear.Format = DateTimePickerFormat.Custom;
-            MonthYear.CustomFormat = "MM/yyyy";
-            MonthYear.MaxDate = maxDate;
-            MonthYear.MinDate = minDate;
-            MonthYear.Value = DateTime.Now;
+            if (maxDate != DateTime.MinValue && minDate != DateTime.MaxValue)
+            {
+                MonthYear.Format = DateTimePickerFormat.Custom;
+                MonthYear.CustomFormat = "MM/yyyy";
+                MonthYear.MaxDate = maxDate;
+                MonthYear.MinDate = minDate;
+                MonthYear.Value = DateTime.Now;
+            }
+
+
         }
 
 

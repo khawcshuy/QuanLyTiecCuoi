@@ -95,7 +95,7 @@
             // 
             this.pictureBox1.Image = global::QuanLyTiecCuoi.Properties.Resources._703213;
             this.pictureBox1.Location = new System.Drawing.Point(127, 49);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(160, 148);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -174,7 +174,7 @@
             // 
             this.pictureBox3.Image = global::QuanLyTiecCuoi.Properties.Resources._5582931;
             this.pictureBox3.Location = new System.Drawing.Point(20, 12);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(37, 34);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -210,7 +210,7 @@
             // 
             this.pictureBox2.Image = global::QuanLyTiecCuoi.Properties.Resources._74ab48240e34df5e05a398e997a42b0e;
             this.pictureBox2.Location = new System.Drawing.Point(20, 14);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(35, 32);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -227,16 +227,17 @@
             this.panel4.Controls.Add(this.btnLogin);
             this.panel4.Controls.Add(this.btnExit);
             this.panel4.Location = new System.Drawing.Point(400, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(600, 652);
             this.panel4.TabIndex = 1;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // pictureBox4
             // 
             this.pictureBox4.Image = global::QuanLyTiecCuoi.Properties.Resources.error;
             this.pictureBox4.Location = new System.Drawing.Point(27, 359);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(21, 20);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

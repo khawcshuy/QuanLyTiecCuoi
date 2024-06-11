@@ -17,11 +17,12 @@ namespace QuanLyTiecCuoi
         public static SqlConnection con = new SqlConnection(con_string);
 
 
-        public static bool IsValidUser(string User, string Password){
+        public static bool IsValidUser(string User, string Password)
+        {
             using (SqlConnection connection = new SqlConnection(con_string))
             {
                 connection.Open();
-                string query = "SELECT COUNT(1) FROM Users WHERE USERNAME='" + User + "' AND UPASS='" + Password+"'";
+                string query = "SELECT COUNT(1) FROM Users WHERE USERNAME='" + User + "' AND UPASS='" + Password + "'";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@Username", User);
                 cmd.Parameters.AddWithValue("@Password", Password);
