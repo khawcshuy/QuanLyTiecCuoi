@@ -26,23 +26,17 @@ namespace QuanLyTiecCuoi.Service
         private Rectangle datagridviewServiceOriginalRect;
         private Rectangle panel2OriginalRect;
         private Size originalFormSize;
+        public bool isBookingForm = false;
         public myService(string _conString, Form parentForm = null)
         {
             InitializeComponent();
 
             conString = _conString;
-
             _parentForm = parentForm;
-
         }
 
-        public myService(Form booking,string _conString)
-        {
-            this._parentForm = booking;
-            this.conString = _conString;
-        }
 
-        public List<string> SelectedService;
+        public List<string> SelectedService { get; set; }
 
 
 
@@ -56,6 +50,7 @@ namespace QuanLyTiecCuoi.Service
 
         private void Service_Load(object sender, EventArgs e)
         {
+           
             LoadDataGridViewService();
             originalFormSize = this.Size;
             btnAddOriginalRect = new Rectangle(btnAdd.Location, btnAdd.Size);
@@ -83,9 +78,14 @@ namespace QuanLyTiecCuoi.Service
                 ServicePrice.DataPropertyName = "GIADICHVU"; 
                 ServiceType.DataPropertyName = "LOAIDICHVU";
                 DataTable dataTable = new DataTable();
+               
                 bool selectColumnExists = false;
-                if (_parentForm != null)
+                Confirm.Visible = false;
+                connection.Close();
+                dataGridViewService.DataSource = dataTable;
+                if (_parentForm != null && isBookingForm)
                 {
+                    Confirm.Visible = true;
                     foreach (DataGridViewColumn column in dataGridViewService.Columns)
                     {
                         if (column.Name == "Select")
@@ -100,25 +100,33 @@ namespace QuanLyTiecCuoi.Service
                         DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
                         selectColumn.HeaderText = "Select";
                         selectColumn.Name = "Select";
-                        selectColumn.DataPropertyName = "SELECT"; // Replace "SELECT" with the actual column name in your database
+                        selectColumn.DataPropertyName = "Select"; // Replace "SELECT" with the actual column name in your database
                         selectColumn.ReadOnly = false; // Allow selection
                         dataGridViewService.Columns.Add(selectColumn);
-                       Confirm.Size = new System.Drawing.Size(180, 40);
+                      
                     }
+
+
+
                 }
                 adapter.Fill(dataTable);
-                if (SelectedService != null)
+                if (SelectedService != null && isBookingForm )
                 {
-                    foreach (DataRow row in dataTable.Rows)
+                    foreach (DataGridViewRow dataGridViewRow in dataGridViewService.Rows)
                     {
-                        if (SelectedService.Contains(row["ServiceId"].ToString()))
+                        string id = dataGridViewRow.Cells["ServiceId"].Value.ToString();
+
+                        if (SelectedService.Contains(id))
                         {
-                            row["select"] = true;
+                            dataGridViewRow.Cells["Select"].Value = true;
                         }
                     }
+
                 }
-                connection.Close();
-                dataGridViewService.DataSource = dataTable;
+
+
+
+
                 if (dataGridViewService.Columns["TrangThaiDichVu"] != null)
                 {
                     dataGridViewService.Columns["TrangThaiDichVu"].Visible = false;
@@ -145,7 +153,7 @@ namespace QuanLyTiecCuoi.Service
                     dataGridViewService.Columns["Picture"].Width = 172;
                 }
             }
-            Confirm.Visible = false;
+           
         }
 
 
@@ -254,7 +262,11 @@ namespace QuanLyTiecCuoi.Service
                     SelectedService.Add(ServiceID);
                 }
             }
-
+            if (SelectedService.Count == 0)
+            {
+                MessageBox.Show("Please choose a service.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             ConfirmEvent?.Invoke(SelectedService);
 
             this.Close();
@@ -263,7 +275,8 @@ namespace QuanLyTiecCuoi.Service
         private void dataGridViewService_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
  
-            if (_parentForm != null)
+            if (_parentForm != null && isBookingForm)
+
             {
                 dataGridViewService.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 int currentRowIndex = e.RowIndex;
@@ -411,6 +424,11 @@ namespace QuanLyTiecCuoi.Service
             Console.WriteLine($"Resizing {control.Name}: New Location ({newX}, {newY}), New Size ({newWidth}, {newHeight})");
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

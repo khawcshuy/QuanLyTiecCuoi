@@ -388,7 +388,6 @@ namespace QuanLyTiecCuoi
             ListSelectedService = ListService;
             decimal totalServicePrice = 0.0m;
             string query = "SELECT ID, TENDICHVU, GIADICHVU, LOAIDICHVU FROM DICHVU WHERE ID IN (" + string.Join(",", ListSelectedService) + ")";
-
             using (SqlConnection connection = new SqlConnection(conString))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter();
@@ -421,14 +420,14 @@ namespace QuanLyTiecCuoi
 
         private void ChonDichVu_Click(object sender, EventArgs e)
         {
-            QuanLyTiecCuoi.Service.myService serviceForm = new QuanLyTiecCuoi.Service.myService(this, conString);
+            QuanLyTiecCuoi.Service.myService serviceForm = new QuanLyTiecCuoi.Service.myService(conString, this);
             serviceForm.ConfirmEvent += ServiceForm_ConfirmEvent;
+            serviceForm.isBookingForm = true;
             if (ListSelectedService != null)
             {
                 serviceForm.SelectedService = ListSelectedService;
             }
-            serviceForm.conString = conString;
-            serviceForm.ShowDialog();
+            serviceForm.Show();
         }
 
 
