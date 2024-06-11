@@ -196,7 +196,7 @@
             this.txbUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbUserName.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.txbUserName.Location = new System.Drawing.Point(55, 12);
+            this.txbUserName.Location = new System.Drawing.Point(53, 16);
             this.txbUserName.Margin = new System.Windows.Forms.Padding(2);
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.Size = new System.Drawing.Size(370, 20);
