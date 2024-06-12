@@ -454,8 +454,9 @@ namespace QuanLyTiecCuoi
         }
         private void Discount_TextChanged(object sender, EventArgs e)
         {
-            string customerId = tiecId.Text;
+            string customerId = IdKhachhang.Text;
             CustomerInfo customer = LoadCustomerInfo(customerId);
+
             DateTime partyDate = customer.DueDate;
 
             decimal Venue = LoadHD(customerId);
@@ -482,6 +483,10 @@ namespace QuanLyTiecCuoi
             decimal Paid = totalHD - customer.Deposit;
 
             Paidment.Text = Paid.ToString();
+            decimal a = 0.0m;
+            decimal b = 0.0m;
+
+            
         }
 
         private void Receipt_Load(object sender, EventArgs e)

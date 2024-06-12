@@ -579,7 +579,79 @@ namespace QuanLyTiecCuoi
 
         private void Discount_TextChanged(object sender, EventArgs e)
         {
-            CalculateTotal();
+
+            if(ListSelectedFood != null) { 
+            string query = "SELECT ID, TENMONAN, DONGIA FROM FOOD WHERE ID IN (" + string.Join(",", ListSelectedFood) + ")";
+            decimal totalMenuPrice = 0.0m;
+            using (SqlConnection connection = new SqlConnection(conString))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                // Set the DataPropertyName for each column
+                FoodId.DataPropertyName = "ID";
+                FoodName.DataPropertyName = "TENMONAN";
+                FoodPrice.DataPropertyName = "DONGIA";
+
+                DataTable dataTable = new DataTable();
+
+                if (dataTable != null)
+                {
+                    adapter.Fill(dataTable);
+                }
+                connection.Close();
+
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    if (row["DONGIA"] != DBNull.Value && decimal.TryParse(row["DONGIA"].ToString(), out decimal dongia))
+                    {
+                        totalMenuPrice += dongia;
+                    }
+                }
+                totalMenu.Text = totalMenuPrice.ToString();
+
+
+
+                MenuBookingView.DataSource = dataTable;
+                CalculateTotal();
+
+            }
+           
+            }
+            if (ListSelectedService != null) {  
+                decimal totalServicePrice = 0.0m;
+            string query = "SELECT ID, TENDICHVU, GIADICHVU, LOAIDICHVU FROM DICHVU WHERE ID IN (" + string.Join(",", ListSelectedService) + ")";
+            using (SqlConnection connection = new SqlConnection(conString))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                ServiceId.DataPropertyName = "ID";
+                ServiceType.DataPropertyName = "LOAIDICHVU";
+                ServiceName.DataPropertyName = "TENDICHVU";
+                ServicePrice.DataPropertyName = "GIADICHVU";
+
+                DataTable dataTable = new DataTable();
+
+                adapter.Fill(dataTable);
+
+                connection.Close();
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    if (row["GIADICHVU"] != DBNull.Value && decimal.TryParse(row["GIADICHVU"].ToString(), out decimal dongia))
+                    {
+                        totalServicePrice += dongia;
+                    }
+                }
+                totalService.Text = totalServicePrice.ToString();
+                ServiceBookingView.DataSource = dataTable;
+                CalculateTotal();
+            }
+            }
         }
 
         private void XacNhan_Click(object sender, EventArgs e)

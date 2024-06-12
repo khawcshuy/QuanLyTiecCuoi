@@ -396,7 +396,9 @@
             // 
             // ButtonHome
             // 
-            this.ButtonHome.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ButtonHome.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonHome.Image = ((System.Drawing.Image)(resources.GetObject("ButtonHome.Image")));
             this.ButtonHome.Location = new System.Drawing.Point(0, 0);
             this.ButtonHome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
