@@ -1,0 +1,10 @@
+update : 
+
+phần nhân viên làm được search + thêm + xóa + sửa 
+
+phần xóa thì làm giốg những cái còn lại nên thêm vào bảng nhân viên cột TRANGTHAINHANVIEN
+
+và chạy 1 proc trong csdl
+
+
+* phần search trong nhân viên t debug gấp nên xóa cái dấu search rồi, nào chỉnh lại vào để nó lại nha 

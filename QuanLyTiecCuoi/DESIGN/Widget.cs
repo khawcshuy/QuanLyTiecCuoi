@@ -8,13 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyTiecCuoi
+namespace QuanLyTiecCuoi.DESIGN
 {
-    public partial class MainApp : Form
+    public partial class Widget : UserControl
     {
-        public MainApp()
+
+      
+        public Widget()
         {
             InitializeComponent();
+     }
+
+        private void StateName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Widget_Load(object sender, EventArgs e)
+        {
         }
     }
 }
