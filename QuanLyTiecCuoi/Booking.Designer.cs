@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
@@ -62,14 +62,12 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label27 = new System.Windows.Forms.Label();
-            this.Address1 = new System.Windows.Forms.TextBox();
             this.CustomerName1 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.Date = new System.Windows.Forms.DateTimePicker();
             this.GroomName1 = new System.Windows.Forms.TextBox();
             this.BrideName1 = new System.Windows.Forms.TextBox();
             this.MaxTable1 = new System.Windows.Forms.Label();
-            this.Email1 = new System.Windows.Forms.TextBox();
             this.ShiftParty = new System.Windows.Forms.ComboBox();
             this.NumberOfTable1 = new System.Windows.Forms.TextBox();
             this.SearchResult = new System.Windows.Forms.DataGridView();
@@ -87,6 +85,8 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
+            this.Address1 = new System.Windows.Forms.TextBox();
+            this.Email1 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ServiceBookingView = new System.Windows.Forms.DataGridView();
             this.ServiceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -120,13 +120,13 @@
             // 
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.panel5);
-            this.panel4.Controls.Add(this.panel3);
             this.panel4.Controls.Add(this.panel1);
             this.panel4.Controls.Add(this.TTHD);
             this.panel4.Controls.Add(this.panel2);
+            this.panel4.Controls.Add(this.panel3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1312, 863);
             this.panel4.TabIndex = 21;
@@ -136,7 +136,7 @@
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.label10);
             this.panel6.Location = new System.Drawing.Point(705, 361);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(611, 50);
             this.panel6.TabIndex = 55;
@@ -157,7 +157,7 @@
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.label4);
             this.panel5.Location = new System.Drawing.Point(8, 361);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(698, 50);
             this.panel5.TabIndex = 54;
@@ -182,7 +182,7 @@
             this.panel3.Controls.Add(this.label7);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1312, 73);
             this.panel3.TabIndex = 1;
@@ -203,7 +203,7 @@
             this.OrderDate.Enabled = false;
             this.OrderDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.OrderDate.Location = new System.Drawing.Point(1197, 37);
-            this.OrderDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OrderDate.Margin = new System.Windows.Forms.Padding(4);
             this.OrderDate.Name = "OrderDate";
             this.OrderDate.Size = new System.Drawing.Size(101, 22);
             this.OrderDate.TabIndex = 14;
@@ -212,7 +212,7 @@
             // 
             this.IdTiec.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.IdTiec.Location = new System.Drawing.Point(1197, 7);
-            this.IdTiec.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.IdTiec.Margin = new System.Windows.Forms.Padding(4);
             this.IdTiec.Name = "IdTiec";
             this.IdTiec.ReadOnly = true;
             this.IdTiec.Size = new System.Drawing.Size(101, 22);
@@ -269,7 +269,7 @@
             // 
             this.DepositeRatio.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DepositeRatio.Location = new System.Drawing.Point(293, 263);
-            this.DepositeRatio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DepositeRatio.Margin = new System.Windows.Forms.Padding(4);
             this.DepositeRatio.Multiline = true;
             this.DepositeRatio.Name = "DepositeRatio";
             this.DepositeRatio.Size = new System.Drawing.Size(172, 34);
@@ -368,7 +368,7 @@
             // 
             this.deposit.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deposit.Location = new System.Drawing.Point(293, 310);
-            this.deposit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deposit.Margin = new System.Windows.Forms.Padding(4);
             this.deposit.Multiline = true;
             this.deposit.Name = "deposit";
             this.deposit.Size = new System.Drawing.Size(172, 34);
@@ -414,7 +414,7 @@
             // 
             this.NumberTableFee.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NumberTableFee.Location = new System.Drawing.Point(293, 76);
-            this.NumberTableFee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumberTableFee.Margin = new System.Windows.Forms.Padding(4);
             this.NumberTableFee.Multiline = true;
             this.NumberTableFee.Name = "NumberTableFee";
             this.NumberTableFee.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -453,10 +453,11 @@
             this.TTHD.Controls.Add(this.label30);
             this.TTHD.Controls.Add(this.Address1);
             this.TTHD.Controls.Add(this.Email1);
-            this.TTHD.Location = new System.Drawing.Point(22, 81);
-            this.TTHD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TTHD.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TTHD.Location = new System.Drawing.Point(0, 73);
+            this.TTHD.Margin = new System.Windows.Forms.Padding(4);
             this.TTHD.Name = "TTHD";
-            this.TTHD.Size = new System.Drawing.Size(1309, 288);
+            this.TTHD.Size = new System.Drawing.Size(1312, 288);
             this.TTHD.TabIndex = 30;
             // 
             // MinMoneyValue1
@@ -515,21 +516,11 @@
             this.label27.TabIndex = 35;
             this.label27.Text = "Giá Thực Đơn Tối Thiểu:";
             // 
-            // Address1
-            // 
-            this.Address1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Address1.Location = new System.Drawing.Point(200, 132);
-            this.Address1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Address1.Multiline = true;
-            this.Address1.Name = "Address1";
-            this.Address1.Size = new System.Drawing.Size(241, 37);
-            this.Address1.TabIndex = 17;
-            // 
             // CustomerName1
             // 
             this.CustomerName1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CustomerName1.Location = new System.Drawing.Point(201, 16);
-            this.CustomerName1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CustomerName1.Margin = new System.Windows.Forms.Padding(4);
             this.CustomerName1.Multiline = true;
             this.CustomerName1.Name = "CustomerName1";
             this.CustomerName1.Size = new System.Drawing.Size(241, 37);
@@ -550,7 +541,7 @@
             this.Date.CalendarFont = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Date.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Date.Location = new System.Drawing.Point(560, 244);
-            this.Date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Date.Margin = new System.Windows.Forms.Padding(4);
             this.Date.Name = "Date";
             this.Date.Size = new System.Drawing.Size(391, 30);
             this.Date.TabIndex = 15;
@@ -559,7 +550,7 @@
             // 
             this.GroomName1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroomName1.Location = new System.Drawing.Point(637, 16);
-            this.GroomName1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GroomName1.Margin = new System.Windows.Forms.Padding(4);
             this.GroomName1.Multiline = true;
             this.GroomName1.Name = "GroomName1";
             this.GroomName1.Size = new System.Drawing.Size(241, 37);
@@ -569,7 +560,7 @@
             // 
             this.BrideName1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BrideName1.Location = new System.Drawing.Point(637, 76);
-            this.BrideName1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BrideName1.Margin = new System.Windows.Forms.Padding(4);
             this.BrideName1.Multiline = true;
             this.BrideName1.Name = "BrideName1";
             this.BrideName1.Size = new System.Drawing.Size(241, 37);
@@ -586,17 +577,6 @@
             this.MaxTable1.Size = new System.Drawing.Size(83, 38);
             this.MaxTable1.TabIndex = 34;
             this.MaxTable1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Email1
-            // 
-            this.Email1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Email1.Location = new System.Drawing.Point(200, 191);
-            this.Email1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Email1.Multiline = true;
-            this.Email1.Name = "Email1";
-            this.Email1.Size = new System.Drawing.Size(241, 37);
-            this.Email1.TabIndex = 18;
-            this.Email1.TextChanged += new System.EventHandler(this.Email_TextChanged);
             // 
             // ShiftParty
             // 
@@ -616,7 +596,7 @@
             // 
             this.NumberOfTable1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NumberOfTable1.Location = new System.Drawing.Point(637, 132);
-            this.NumberOfTable1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumberOfTable1.Margin = new System.Windows.Forms.Padding(4);
             this.NumberOfTable1.Multiline = true;
             this.NumberOfTable1.Name = "NumberOfTable1";
             this.NumberOfTable1.Size = new System.Drawing.Size(140, 37);
@@ -662,7 +642,7 @@
             // 
             this.ReservedTable1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReservedTable1.Location = new System.Drawing.Point(637, 191);
-            this.ReservedTable1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ReservedTable1.Margin = new System.Windows.Forms.Padding(4);
             this.ReservedTable1.Multiline = true;
             this.ReservedTable1.Name = "ReservedTable1";
             this.ReservedTable1.Size = new System.Drawing.Size(140, 37);
@@ -705,7 +685,7 @@
             // 
             this.Phone1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Phone1.Location = new System.Drawing.Point(200, 76);
-            this.Phone1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Phone1.Margin = new System.Windows.Forms.Padding(4);
             this.Phone1.Multiline = true;
             this.Phone1.Name = "Phone1";
             this.Phone1.Size = new System.Drawing.Size(241, 37);
@@ -801,6 +781,27 @@
             this.label30.TabIndex = 2;
             this.label30.Text = "Người Đặt Tiệc:";
             // 
+            // Address1
+            // 
+            this.Address1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Address1.Location = new System.Drawing.Point(200, 132);
+            this.Address1.Margin = new System.Windows.Forms.Padding(4);
+            this.Address1.Multiline = true;
+            this.Address1.Name = "Address1";
+            this.Address1.Size = new System.Drawing.Size(241, 37);
+            this.Address1.TabIndex = 17;
+            // 
+            // Email1
+            // 
+            this.Email1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Email1.Location = new System.Drawing.Point(200, 191);
+            this.Email1.Margin = new System.Windows.Forms.Padding(4);
+            this.Email1.Multiline = true;
+            this.Email1.Name = "Email1";
+            this.Email1.Size = new System.Drawing.Size(241, 37);
+            this.Email1.TabIndex = 18;
+            this.Email1.TextChanged += new System.EventHandler(this.Email_TextChanged);
+            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -811,7 +812,7 @@
             this.panel2.Controls.Add(this.Service);
             this.panel2.Controls.Add(this.menu);
             this.panel2.Location = new System.Drawing.Point(8, 411);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(698, 451);
             this.panel2.TabIndex = 13;
@@ -820,14 +821,14 @@
             // 
             this.ServiceBookingView.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ServiceBookingView.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ServiceBookingView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ServiceBookingView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ServiceBookingView.ColumnHeadersHeight = 27;
             this.ServiceBookingView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ServiceId,
@@ -836,7 +837,7 @@
             this.ServicePrice});
             this.ServiceBookingView.GridColor = System.Drawing.SystemColors.Control;
             this.ServiceBookingView.Location = new System.Drawing.Point(5, 283);
-            this.ServiceBookingView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ServiceBookingView.Margin = new System.Windows.Forms.Padding(4);
             this.ServiceBookingView.Name = "ServiceBookingView";
             this.ServiceBookingView.RowHeadersVisible = false;
             this.ServiceBookingView.RowHeadersWidth = 51;
@@ -876,30 +877,30 @@
             // 
             this.MenuBookingView.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.MenuBookingView.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.MenuBookingView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MenuBookingView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.MenuBookingView.ColumnHeadersHeight = 30;
             this.MenuBookingView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FoodId,
             this.FoodName,
             this.FoodPrice});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.MenuBookingView.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MenuBookingView.DefaultCellStyle = dataGridViewCellStyle3;
             this.MenuBookingView.GridColor = System.Drawing.SystemColors.Control;
             this.MenuBookingView.Location = new System.Drawing.Point(5, 62);
-            this.MenuBookingView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MenuBookingView.Margin = new System.Windows.Forms.Padding(4);
             this.MenuBookingView.Name = "MenuBookingView";
             this.MenuBookingView.RowHeadersVisible = false;
             this.MenuBookingView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;

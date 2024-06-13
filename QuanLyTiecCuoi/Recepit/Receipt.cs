@@ -470,12 +470,17 @@ namespace QuanLyTiecCuoi
 
 
             decimal discount;
-            if (!decimal.TryParse(Discount.Text, out discount))
+            if (!decimal.TryParse(Discount.Text, out discount) )
+            {
+
+                discount = 0;
+                Discount.Text = "0";
+            }
+            if (discount > 100)
             {
                 discount = 0;
                 Discount.Text = "0";
             }
-
             decimal total = (customer.numberOftable * totalFood) + totalService + Venue;
             total = total - total*discount/100;
             decimal totalHD = total + total * TienPhat;

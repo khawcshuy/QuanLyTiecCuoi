@@ -48,12 +48,12 @@ namespace QuanLyTiecCuoi
             //Application.Run(new Food(conString, null));
 
             // GỌI BOOKING 
-            fLogin login = new fLogin(conString);
-            Application.Run(login);
+            //fLogin login = new fLogin(conString);
+            //Application.Run(login);
             //TraCuu tracuuform = new TraCuu(conString);
             //Application.Run(tracuuform);
-            //fLogin fLogin = new fLogin(conString);
-            //Application.Run(fLogin);
+            fLogin fLogin = new fLogin(conString);
+            Application.Run(fLogin);
             /*TrangThaiSanh form1 = new TrangThaiSanh();
             Application.Run(form1);*/
         }
