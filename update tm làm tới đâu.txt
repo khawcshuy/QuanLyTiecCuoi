@@ -28,6 +28,10 @@ FOREIGN KEY (IDNHANVIEN) REFERENCES NHANVIEN(ID);
 
 sửa lại phần lên hóa đơn là người lên hóa đơn sẽ tự động điền, không cho ng dùng điền
 
-chạy lại proc ProdPeferiod để cập nhật chart
+chạy lại proc ProdPeferiod để cập nhật chỉ số
+chạy lại proc GetNearest5month để chạy lại chart cột
+chạy lại proc 
+
+
 
 
