@@ -20,11 +20,13 @@ namespace QuanLyTiecCuoi
         private Rectangle datagridview1OriginalRect;
         private Rectangle panel1OriginalRect;
         private Size originalFormSize;
-        public TraCuu(string _constring)
+        private string NvName;
+        public TraCuu(string _constring, string NvName=null)
         {
             InitializeComponent();
             //button1.Visible = false;
             //searchTextbox.Visible = false;
+            this.NvName = NvName;
            
             this.BackColor = Color.FromArgb(224, 247, 250);
             dataGridView1.BackgroundColor = Color.FromArgb(224, 247, 250);
@@ -203,7 +205,7 @@ namespace QuanLyTiecCuoi
                 {
                    
 
-                    Receipt receiptForm = new Receipt(constring, this, idTiec);
+                    Receipt receiptForm = new Receipt(constring, this, idTiec, NvName);
                     receiptForm.ShowDialog();
                 }
             }

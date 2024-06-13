@@ -20,17 +20,76 @@ namespace QuanLyTiecCuoi
     public partial class Report : Form
     {
         public string conString;
-        public Report(string conString)
+        private string NvName ;
+        private int idNV;
+        public Report(string conString, string NvName)
         {
             InitializeComponent();
             this.conString = conString;
+            this.NvName = NvName;
             LimitMonthYear();
+            if(NvName == "admin")
+            {
+                NhanVien.Visible = false;
+                NhanVienName.Visible = false;
+            }
+            else
+            {
+                NhanVienName.Text = NvName;
+            }
+            idNV = GetIdNV();
 
+        }
+
+        private int GetIdNV()
+        {
+
+            string query = "SELECT NV.ID, NV.TENNHANVIEN FROM NHANVIEN NV INNER JOIN USERS U ON NV.IDUSERS = U.ID WHERE U.USERNAME = @nhanvien";
+
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                // Mở kết nối
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    // Thêm tham số cho truy vấn
+                    cmd.Parameters.AddWithValue("@nhanvien", NvName);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            idNV = (int)reader["ID"];
+                            NhanVienName.Text = reader["TENNHANVIEN"].ToString();
+                        }
+                    }
+                }
+            }
+
+            return idNV;
         }
 
         private void LimitMonthYear()
         {
-            string query = "SELECT MAX(NGAYXUATHOADON) AS MaxDate, MIN(NGAYXUATHOADON) AS MinDate FROM HOADON";
+            string query;
+            if (NvName == "admin")
+            {
+                query = "SELECT MAX(NGAYXUATHOADON) AS MaxDate, MIN(NGAYXUATHOADON) AS MinDate FROM HOADON";
+            }
+            else
+            {
+                query = @"
+            SELECT 
+                MAX(NGAYXUATHOADON) AS MaxDate, 
+                MIN(NGAYXUATHOADON) AS MinDate 
+            FROM 
+                HOADON HD 
+            INNER JOIN 
+                NHANVIEN NV ON HD.IDNHANVIEN = NV.ID
+            WHERE 
+                NV.ID = @idNV";
+            }
 
             DateTime maxDate = DateTime.MinValue;
             DateTime minDate = DateTime.MaxValue;
@@ -39,13 +98,18 @@ namespace QuanLyTiecCuoi
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    if (NvName != "admin")
+                    {
+                        command.Parameters.AddWithValue("@idNV", idNV);
+                    }
+
                     connection.Open();
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        if (reader.Read()) 
+                        if (reader.Read())
                         {
-                            if (!reader.IsDBNull(reader.GetOrdinal("MaxDate"))) 
+                            if (!reader.IsDBNull(reader.GetOrdinal("MaxDate")))
                             {
                                 DateTime currentMaxDate = reader.GetDateTime(reader.GetOrdinal("MaxDate"));
                                 if (currentMaxDate > maxDate)
@@ -54,7 +118,7 @@ namespace QuanLyTiecCuoi
                                 }
                             }
 
-                            if (!reader.IsDBNull(reader.GetOrdinal("MinDate"))) 
+                            if (!reader.IsDBNull(reader.GetOrdinal("MinDate")))
                             {
                                 DateTime currentMinDate = reader.GetDateTime(reader.GetOrdinal("MinDate"));
                                 if (currentMinDate < minDate)
@@ -73,11 +137,9 @@ namespace QuanLyTiecCuoi
                 MonthYear.CustomFormat = "MM/yyyy";
                 MonthYear.MaxDate = maxDate;
                 MonthYear.MinDate = minDate;
-                //MonthYear.Value = DateTime.Now;
             }
-
-
         }
+
 
 
 
@@ -117,7 +179,16 @@ namespace QuanLyTiecCuoi
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@NAM", Nam);
                     cmd.Parameters.AddWithValue("@THANG", Thang);
+                    if (NvName != "admin")
+                    {
+ cmd.Parameters.AddWithValue("@IDNHANVIEN", idNV);
 
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@IDNHANVIEN", DBNull.Value);
+                    }
+                   
 
 
 
@@ -167,40 +238,62 @@ namespace QuanLyTiecCuoi
             if (Thang == null)
             {
                 Thang = DateTime.Now.Month.ToString();
-
             }
             if (Nam == null)
             {
                 Nam = DateTime.Now.Year.ToString();
             }
-            string query = "SELECT H.ID, IDTIEC, TONGTIEN, NGAYXUATHOADON,GIAMGIA, K.TENKHACHHANG FROM HOADON H, TIEC T, KHACHHANGINFOR K" +
-                " WHERE T.ID = H.IDTIEC AND K.ID = T.IDTHONGTINKHACHHANG AND MONTH(NGAYXUATHOADON) = @THANG AND YEAR(NGAYXUATHOADON) = @NAM";
+
+            string query = @"
+        SELECT H.ID, IDTIEC, TONGTIEN, NGAYXUATHOADON, GIAMGIA, K.TENKHACHHANG 
+        FROM HOADON H
+        INNER JOIN TIEC T ON H.IDTIEC = T.ID
+        INNER JOIN KHACHHANGINFOR K ON T.IDTHONGTINKHACHHANG = K.ID
+        WHERE MONTH(H.NGAYXUATHOADON) = @THANG 
+        AND YEAR(H.NGAYXUATHOADON) = @NAM";
+
+            if (NvName != "admin")
+            {
+                query = @"
+            SELECT H.ID, IDTIEC, TONGTIEN, NGAYXUATHOADON, GIAMGIA, K.TENKHACHHANG 
+            FROM HOADON H
+            INNER JOIN TIEC T ON H.IDTIEC = T.ID
+            INNER JOIN KHACHHANGINFOR K ON T.IDTHONGTINKHACHHANG = K.ID
+            INNER JOIN NHANVIEN NV ON H.IDNHANVIEN = NV.ID
+            WHERE NV.ID = @idNv
+            AND MONTH(H.NGAYXUATHOADON) = @THANG 
+            AND YEAR(H.NGAYXUATHOADON) = @NAM";
+            }
+
             using (SqlConnection con = new SqlConnection(conString))
             {
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@THANG", Thang);
+                    cmd.Parameters.AddWithValue("@NAM", Nam);
 
-                SqlCommand cmd = new SqlCommand(query, con);
+                    if (NvName != "admin")
+                    {
+                        cmd.Parameters.AddWithValue("@idNv", idNV);
+                    }
 
-                cmd.Parameters.AddWithValue("@THANG", Thang);
-                cmd.Parameters.AddWithValue("@NAM", Nam);
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
 
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
+                    ID.DataPropertyName = "ID";
+                    IdTiec.DataPropertyName = "IDTIEC";
+                    CustomerName.DataPropertyName = "TENKHACHHANG";
+                    TotalMoney.DataPropertyName = "TONGTIEN";
+                    InvoiceDate.DataPropertyName = "NGAYXUATHOADON";
+                    DiscountPercent.DataPropertyName = "GIAMGIA";
 
-                ID.DataPropertyName = "ID";
-                IdTiec.DataPropertyName
-                    = "IDTIEC";
-                CustomerName.DataPropertyName = "TENKHACHHANG";
-                TotalMoney.DataPropertyName = "TONGTIEN";
-                InvoiceDate.DataPropertyName = "NGAYXUATHOADON";
-                DiscountPercent.DataPropertyName = "GIAMGIA";
-
-                dataGridViewReport.DataSource = dataTable;
-
-
+                    dataGridViewReport.DataSource = dataTable;
+                }
             }
         }
+
 
         private void GetNearest5month(string Thang = null, string Nam = null)
         {
@@ -223,8 +316,17 @@ namespace QuanLyTiecCuoi
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@NAM", currentYear);
                     cmd.Parameters.AddWithValue("@THANG", currentMonth);
+                    if (NvName != "admin")
+                    {
+                        cmd.Parameters.AddWithValue("@IDNHANVIEN", idNV);
 
-                    // Add output parameters
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@IDNHANVIEN", DBNull.Value);
+                    }
+
+
                     cmd.Parameters.Add("@DTThang1", SqlDbType.Money).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("@DTThang2", SqlDbType.Money).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("@DTThang3", SqlDbType.Money).Direction = ParameterDirection.Output;
@@ -329,6 +431,14 @@ namespace QuanLyTiecCuoi
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Month", currentMonth);
                     cmd.Parameters.AddWithValue("@Year", currentYear);
+                    if (NvName != "admin")
+                    {
+                        cmd.Parameters.AddWithValue("@IDNHANVIEN", idNV);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@IDNHANVIEN", DBNull.Value);
+                    }
 
                     con.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -338,29 +448,25 @@ namespace QuanLyTiecCuoi
                     {
                         Name = "Daily Revenue Ratio",
                         IsValueShownAsLabel = true,
-                        ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
+                        ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line 
                     };
                     chart2.Series.Add(series);
-                    chart2.Legends[0].Title = "Ngày trong tháng";
+                  
                     chart2.Titles.Add("Biểu đồ tỉ lệ doanh thu theo ngày trong tháng");
-
 
                     while (reader.Read())
                     {
                         int dayOfMonth = reader.GetInt32(0);
-                        decimal dailyRevenue = reader.GetDecimal(1);
-                        decimal revenueRatio = reader.GetDecimal(2);
+                        decimal revenueRatio = (decimal)reader["DailyRevenue"]; 
 
-                        if (dailyRevenue != 0)  
-                        {
-                            series.Points.AddXY($"Day {dayOfMonth}", revenueRatio);
-                        }
+                        series.Points.AddXY($"Day {dayOfMonth}", revenueRatio);
                     }
 
                     reader.Close();
                 }
             }
         }
+
 
         private void SearchByMonth_Click(object sender, EventArgs e)
         {
