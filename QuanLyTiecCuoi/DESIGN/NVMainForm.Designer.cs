@@ -47,6 +47,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.ButtonHome = new System.Windows.Forms.PictureBox();
+            this.iconButtonDashBoard = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -58,6 +59,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.panelMenu.Controls.Add(this.iconButtonDashBoard);
             this.panelMenu.Controls.Add(this.iconSignOut);
             this.panelMenu.Controls.Add(this.iconButtonVenueState);
             this.panelMenu.Controls.Add(this.NavigationList);
@@ -379,7 +381,7 @@
             this.lblTitle.Location = new System.Drawing.Point(567, 11);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(249, 48);
+            this.lblTitle.Size = new System.Drawing.Size(367, 48);
             this.lblTitle.TabIndex = 6;
             this.lblTitle.Text = "HOME";
             // 
@@ -407,6 +409,33 @@
             this.ButtonHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ButtonHome.TabIndex = 1;
             this.ButtonHome.TabStop = false;
+            // 
+            // iconButtonDashBoard
+            // 
+            this.iconButtonDashBoard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.iconButtonDashBoard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButtonDashBoard.FlatAppearance.BorderSize = 0;
+            this.iconButtonDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButtonDashBoard.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
+            this.iconButtonDashBoard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(248)))));
+            this.iconButtonDashBoard.IconChar = FontAwesome.Sharp.IconChar.ChartColumn;
+            this.iconButtonDashBoard.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(248)))));
+            this.iconButtonDashBoard.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButtonDashBoard.IconSize = 32;
+            this.iconButtonDashBoard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButtonDashBoard.Location = new System.Drawing.Point(0, 588);
+            this.iconButtonDashBoard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.iconButtonDashBoard.Name = "iconButtonDashBoard";
+            this.iconButtonDashBoard.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.iconButtonDashBoard.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButtonDashBoard.Size = new System.Drawing.Size(307, 75);
+            this.iconButtonDashBoard.TabIndex = 17;
+            this.iconButtonDashBoard.Tag = "Dashboard";
+            this.iconButtonDashBoard.Text = "   Dashboard";
+            this.iconButtonDashBoard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButtonDashBoard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButtonDashBoard.UseVisualStyleBackColor = false;
+            this.iconButtonDashBoard.Click += new System.EventHandler(this.IconButtonDashBoard_Click_1);
             // 
             // NVMainForm
             // 
@@ -455,5 +484,6 @@
         private FontAwesome.Sharp.IconButton btnMinimize;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox ButtonHome;
+        private FontAwesome.Sharp.IconButton iconButtonDashBoard;
     }
 }
