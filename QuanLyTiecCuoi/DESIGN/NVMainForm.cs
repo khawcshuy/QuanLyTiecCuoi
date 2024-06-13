@@ -420,6 +420,11 @@ namespace QuanLyTiecCuoi.DESIGN
             login.FormClosed += (s, args) => this.Close();
         }
 
-       
+        private void IconButtonDashBoard_Click_1(object sender, EventArgs e)
+        {
+            Form ReportForm = new Report(conString);
+            ReportForm.Text = "DASHBOARD";
+            OpenChildForm(ReportForm, sender);
+        }
     }
 }
