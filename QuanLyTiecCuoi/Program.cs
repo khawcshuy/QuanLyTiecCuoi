@@ -17,9 +17,9 @@ namespace QuanLyTiecCuoi
         [STAThread]
         static void Main()
         {
-            //string conString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=QUANLYTIECCUOI1;Integrated Security=True";
+            string conString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=QUANLYTIECCUOI1;Integrated Security=True";
             //string conString = "Data Source=Doraemon\\SQLEXPRESS;Initial Catalog=QUANLYTIECCUOI;Integrated Security=True";
-            string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
+            //string conString = @"Data Source = ADMINISTRATOR; Initial Catalog = QUANLYTIECCUOI; Integrated Security = True";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new QuanLyTiecCuoi.Service.Service(conString, null));
@@ -28,7 +28,8 @@ namespace QuanLyTiecCuoi
             //InsertNV NHANVIEN = new InsertNV(conString,null);
             //Application.Run(nhanVien);
             //Application.Run(foodform);
-            //Application.Run(new Report(conString));
+            
+            //Application.Run(new Report(conString, "admin"));
 
             //Venue Venue = new Venue(null, conString);
             //Application.Run(Venue);
@@ -39,8 +40,8 @@ namespace QuanLyTiecCuoi
 
             //TrangThaiSanh trangThaiSanh = new TrangThaiSanh(conString);
             //Application.Run(trangThaiSanh);
-
-
+            //TestForm test = new TestForm();
+            //Application.Run(test);
 
 
             //// pass the bookingform instance to the food form constructor

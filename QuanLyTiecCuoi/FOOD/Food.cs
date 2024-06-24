@@ -23,7 +23,7 @@ namespace QuanLyTiecCuoi
         private Rectangle btnAddOriginalRect;
         private Rectangle btnEditOriginalRect;
         private Rectangle btnDeleteOriginalRect;
-        //private Rectangle btnXacNhanOriginalRect;
+        private Rectangle btnXacNhanOriginalRect;
         private Rectangle searchFoodnameOriginalRect;
         private Rectangle datagridviewFoodOriginalRect;
         private Rectangle panel2OriginalRect;
@@ -118,7 +118,7 @@ namespace QuanLyTiecCuoi
             btnAddOriginalRect = new Rectangle(btnAdd.Location, btnAdd.Size);
             btnEditOriginalRect = new Rectangle(btnEdit.Location, btnEdit.Size);
             btnDeleteOriginalRect = new Rectangle(btnDelete.Location, btnDelete.Size);
-            //btnDeleteOriginalRect = new Rectangle(XacNhan.Location, XacNhan.Size);
+            btnXacNhanOriginalRect = new Rectangle(XacNhan.Location, XacNhan.Size);
             searchFoodnameOriginalRect = new Rectangle(searchFoodname.Location, searchFoodname.Size);
             datagridviewFoodOriginalRect = new Rectangle(dataGridViewFood.Location, dataGridViewFood.Size);
             panel2OriginalRect = new Rectangle(panel2.Location, panel2.Size);
@@ -445,7 +445,9 @@ namespace QuanLyTiecCuoi
             ResizeControl(btnAddOriginalRect, btnAdd, xRatio, yRatio);
             ResizeControl(btnEditOriginalRect, btnEdit, xRatio, yRatio);
             ResizeControl(btnDeleteOriginalRect, btnDelete, xRatio, yRatio);
-            //ResizeControl(btnXacNhanOriginalRect, XacNhan, xRatio, yRatio);
+            if (isEditing) { 
+            ResizeControl(btnXacNhanOriginalRect, XacNhan, xRatio, yRatio);
+            }
             ResizeControl(searchFoodnameOriginalRect, searchFoodname, xRatio, yRatio);
             ResizeControl(datagridviewFoodOriginalRect, dataGridViewFood, xRatio, yRatio);
             ResizeControl(panel2OriginalRect, panel2, xRatio, yRatio);
@@ -459,8 +461,8 @@ namespace QuanLyTiecCuoi
             int newHeight = (int)(originalRect.Height * yRatio);
             newX = Math.Max(newX, 0);
             newY = Math.Max(newY, 0);
-            newWidth = Math.Max(newWidth, 10); // Minimum width
-            newHeight = Math.Max(newHeight, 10); // Minimum height
+            newWidth = Math.Max(newWidth, 10); 
+            newHeight = Math.Max(newHeight, 10); 
 
             if (newX + newWidth > this.ClientSize.Width)
             {

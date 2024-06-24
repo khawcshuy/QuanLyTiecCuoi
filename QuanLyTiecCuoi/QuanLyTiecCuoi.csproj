@@ -260,6 +260,12 @@
     <Compile Include="NHANVIEN\InsertNV.Designer.cs">
       <DependentUpon>InsertNV.cs</DependentUpon>
     </Compile>
+    <Compile Include="TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TraCuu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -386,6 +392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NHANVIEN\InsertNV.resx">
       <DependentUpon>InsertNV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TraCuu.resx">
       <DependentUpon>TraCuu.cs</DependentUpon>
