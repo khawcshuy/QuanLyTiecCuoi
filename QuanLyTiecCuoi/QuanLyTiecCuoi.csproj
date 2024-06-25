@@ -193,7 +193,6 @@
     <Compile Include="ChartReport.Designer.cs">
       <DependentUpon>ChartReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Constant.cs" />
     <Compile Include="DatabaseDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
