@@ -16,15 +16,17 @@ using static System.Windows.Forms.AxHost;
 
 namespace QuanLyTiecCuoi
 {
-    public partial class TrangThaiSanh : Form
+    public partial class VenueState : Form
     {
         private string conString;
         private int idTiecValue = -1 ;
-        public TrangThaiSanh(string conString)
+        private string NvName; 
+        public VenueState(string conString,string NvName)
         {
             InitializeComponent();
             this.conString = conString;
             pictureBoxVenueImage.Paint += new PaintEventHandler(pictureBoxVenueImage_Paint);
+            this.NvName = NvName;
         }
 
        
@@ -287,7 +289,7 @@ WHERE @ID = T.ID
                 }
 
                 int idTiecCHeckOut = Convert.ToInt32(textBoxIdTiec.Texts);
-                Receipt receiptForm = new Receipt(conString, this, idTiecCHeckOut);
+                Receipt receiptForm = new Receipt(conString, this, idTiecCHeckOut, NvName);
                 receiptForm.ShowDialog();
             }
             catch (FormatException)

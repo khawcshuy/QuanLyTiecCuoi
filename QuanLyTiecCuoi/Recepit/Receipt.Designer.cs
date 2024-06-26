@@ -67,6 +67,7 @@ namespace QuanLyTiecCuoi
             this.tiecId = new System.Windows.Forms.TextBox();
             this.btnSearchClick = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.XacNhan = new QuanLyTiecCuoi.UIDesign.RJButton();
             this.SearchTiecAndKhachHang = new System.Windows.Forms.DataGridView();
             this.IdTiec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerNameFind = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,7 +94,6 @@ namespace QuanLyTiecCuoi
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.XacNhan = new QuanLyTiecCuoi.UIDesign.RJButton();
             this.TTHD.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ServiceView)).BeginInit();
@@ -451,7 +451,7 @@ namespace QuanLyTiecCuoi
             // btnSearchClick
             // 
             this.btnSearchClick.Location = new System.Drawing.Point(746, 9);
-            this.btnSearchClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSearchClick.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearchClick.Name = "btnSearchClick";
             this.btnSearchClick.Size = new System.Drawing.Size(69, 34);
             this.btnSearchClick.TabIndex = 18;
@@ -480,6 +480,29 @@ namespace QuanLyTiecCuoi
             this.panel4.TabIndex = 20;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
+            // XacNhan
+            // 
+            this.XacNhan.BackColor = System.Drawing.Color.White;
+            this.XacNhan.BackgroundColor = System.Drawing.Color.White;
+            this.XacNhan.BorderColor = System.Drawing.Color.Black;
+            this.XacNhan.BorderColor1 = System.Drawing.Color.Black;
+            this.XacNhan.BorderRadius = 15;
+            this.XacNhan.BorderRadius1 = 15;
+            this.XacNhan.BorderSize = 3;
+            this.XacNhan.BorderSize1 = 3;
+            this.XacNhan.FlatAppearance.BorderSize = 0;
+            this.XacNhan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.XacNhan.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XacNhan.ForeColor = System.Drawing.Color.Black;
+            this.XacNhan.Location = new System.Drawing.Point(607, 595);
+            this.XacNhan.Name = "XacNhan";
+            this.XacNhan.Size = new System.Drawing.Size(154, 52);
+            this.XacNhan.TabIndex = 22;
+            this.XacNhan.Text = "Xác Nhận";
+            this.XacNhan.TextColor = System.Drawing.Color.Black;
+            this.XacNhan.UseVisualStyleBackColor = false;
+            this.XacNhan.Click += new System.EventHandler(this.XacNhan_Click);
+            // 
             // SearchTiecAndKhachHang
             // 
             this.SearchTiecAndKhachHang.AllowUserToAddRows = false;
@@ -497,7 +520,7 @@ namespace QuanLyTiecCuoi
             this.SearchTiecAndKhachHang.Cursor = System.Windows.Forms.Cursors.Default;
             this.SearchTiecAndKhachHang.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.SearchTiecAndKhachHang.Location = new System.Drawing.Point(549, 40);
-            this.SearchTiecAndKhachHang.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SearchTiecAndKhachHang.Margin = new System.Windows.Forms.Padding(2);
             this.SearchTiecAndKhachHang.Name = "SearchTiecAndKhachHang";
             this.SearchTiecAndKhachHang.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.SearchTiecAndKhachHang.RowHeadersVisible = false;
@@ -677,7 +700,7 @@ namespace QuanLyTiecCuoi
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(48, 237);
+            this.label13.Location = new System.Drawing.Point(50, 237);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(65, 14);
             this.label13.TabIndex = 23;
@@ -687,7 +710,7 @@ namespace QuanLyTiecCuoi
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(48, 206);
+            this.label12.Location = new System.Drawing.Point(50, 206);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(73, 14);
             this.label12.TabIndex = 22;
@@ -717,7 +740,7 @@ namespace QuanLyTiecCuoi
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(48, 109);
+            this.label9.Location = new System.Drawing.Point(50, 109);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(111, 14);
             this.label9.TabIndex = 19;
@@ -727,7 +750,7 @@ namespace QuanLyTiecCuoi
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(48, 12);
+            this.label8.Location = new System.Drawing.Point(50, 12);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(74, 14);
             this.label8.TabIndex = 18;
@@ -737,7 +760,7 @@ namespace QuanLyTiecCuoi
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(46, 78);
+            this.label7.Location = new System.Drawing.Point(50, 78);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(123, 14);
             this.label7.TabIndex = 17;
@@ -747,34 +770,11 @@ namespace QuanLyTiecCuoi
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(48, 45);
+            this.label6.Location = new System.Drawing.Point(50, 45);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 14);
             this.label6.TabIndex = 16;
             this.label6.Text = "Số Bàn Tiệc:";
-            // 
-            // XacNhan
-            // 
-            this.XacNhan.BackColor = System.Drawing.Color.White;
-            this.XacNhan.BackgroundColor = System.Drawing.Color.White;
-            this.XacNhan.BorderColor = System.Drawing.Color.Black;
-            this.XacNhan.BorderColor1 = System.Drawing.Color.Black;
-            this.XacNhan.BorderRadius = 15;
-            this.XacNhan.BorderRadius1 = 15;
-            this.XacNhan.BorderSize = 3;
-            this.XacNhan.BorderSize1 = 3;
-            this.XacNhan.FlatAppearance.BorderSize = 0;
-            this.XacNhan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.XacNhan.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.XacNhan.ForeColor = System.Drawing.Color.Black;
-            this.XacNhan.Location = new System.Drawing.Point(607, 595);
-            this.XacNhan.Name = "XacNhan";
-            this.XacNhan.Size = new System.Drawing.Size(154, 52);
-            this.XacNhan.TabIndex = 22;
-            this.XacNhan.Text = "Xác Nhận";
-            this.XacNhan.TextColor = System.Drawing.Color.Black;
-            this.XacNhan.UseVisualStyleBackColor = false;
-            this.XacNhan.Click += new System.EventHandler(this.XacNhan_Click);
             // 
             // Receipt
             // 

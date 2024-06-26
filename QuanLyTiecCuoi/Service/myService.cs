@@ -389,6 +389,7 @@ namespace QuanLyTiecCuoi.Service
             {
                 RJMessageBox.Show("Vui Lòng Chọn Dịch Vụ Để Cập Nhật/Xóa!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            LoadDataGridViewService();
         }
 
         private void myService_Resize(object sender, EventArgs e)

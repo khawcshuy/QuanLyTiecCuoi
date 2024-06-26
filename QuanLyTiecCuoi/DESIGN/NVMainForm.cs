@@ -28,9 +28,14 @@ namespace QuanLyTiecCuoi.DESIGN
         private Size formSize;
         private bool IsCollapse = false;
         //Constructor
-        public NVMainForm(string _conString)
+
+
+        private string NvName;
+        public NVMainForm(string _conString,string NVUserName)
         {
+            
             InitializeComponent();
+            NvName = NVUserName;
             CollapseMenu();
             random = new Random();
             leftBorderButton = new Panel();
@@ -133,7 +138,7 @@ namespace QuanLyTiecCuoi.DESIGN
 
         private void iconButtonDashBoard_Click(object sender, EventArgs e)
         {
-            Form ReportForm = new Report(conString);
+            Form ReportForm = new Report(conString,NvName);
             ReportForm.Text = "DASHBOARD";
             OpenChildForm(ReportForm, sender);
         }
@@ -207,20 +212,20 @@ namespace QuanLyTiecCuoi.DESIGN
 
         private void iconButtonVenueState_Click_1(object sender, EventArgs e)
         {
-            Form trangThaiSanhForm = new TrangThaiSanh(conString);
+            Form trangThaiSanhForm = new VenueState(conString, NvName);
             trangThaiSanhForm.Text = "STATE";
             OpenChildForm(trangThaiSanhForm, sender);
         }
         private void NavigationList_Click_1(object sender, EventArgs e)
         {
-            Form traCuuForm = new TraCuu(conString);
+            Form traCuuForm = new SearchBooking(conString, NvName);
             traCuuForm.Text = "SEARCH";
             OpenChildForm(traCuuForm, sender);
         }
 
         private void BtnCustomer_Click(object sender, EventArgs e)
         {
-            Form nhanVienForm = new NhanVien(conString);
+            Form nhanVienForm = new Employee(conString);
             nhanVienForm.Text = "EMPLOYEE";
             OpenChildForm(nhanVienForm, sender);
         }
@@ -420,6 +425,11 @@ namespace QuanLyTiecCuoi.DESIGN
             login.FormClosed += (s, args) => this.Close();
         }
 
-       
+        private void IconButtonDashBoard_Click_1(object sender, EventArgs e)
+        {
+            Form ReportForm = new Report(conString, NvName);
+            ReportForm.Text = "DASHBOARD";
+            OpenChildForm(ReportForm, sender);
+        }
     }
 }

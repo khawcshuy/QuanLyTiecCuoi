@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using FontAwesome.Sharp;
 using QuanLyTiecCuoi.Service;
 using QuanLyTiecCuoi.SERVICE;
@@ -27,8 +28,9 @@ namespace QuanLyTiecCuoi.DESIGN
         private int borderSize = 2;
         private Size formSize;
         private bool IsCollapse = false;
+        private string NvName; 
         //Constructor
-        public AdminMainForm(string _conString)
+        public AdminMainForm(string _conString, string nvName)
         {
             InitializeComponent();
             CollapseMenu();
@@ -39,6 +41,8 @@ namespace QuanLyTiecCuoi.DESIGN
             this.conString = _conString;
             this.Padding = new Padding(borderSize); //Border Size
             this.BackColor = Color.FromArgb(98, 102, 244); //Border Color
+            this.NvName = nvName;
+
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -133,7 +137,7 @@ namespace QuanLyTiecCuoi.DESIGN
 
         private void iconButtonDashBoard_Click(object sender, EventArgs e)
         {
-            Form ReportForm = new Report(conString);
+            Form ReportForm = new Report(conString,NvName);
             ReportForm.Text = "DASHBOARD";
             OpenChildForm(ReportForm, sender);
         }
@@ -207,20 +211,20 @@ namespace QuanLyTiecCuoi.DESIGN
 
         private void iconButtonVenueState_Click_1(object sender, EventArgs e)
         {
-            Form trangThaiSanhForm = new TrangThaiSanh(conString);
+            Form trangThaiSanhForm = new VenueState(conString, NvName);
             trangThaiSanhForm.Text = "STATE";
             OpenChildForm(trangThaiSanhForm, sender);
         }
         private void NavigationList_Click_1(object sender, EventArgs e)
         {
-            Form traCuuForm = new TraCuu(conString);
+            Form traCuuForm = new SearchBooking(conString, NvName);
             traCuuForm.Text = "SEARCH";
             OpenChildForm(traCuuForm, sender);
         }
 
         private void BtnCustomer_Click(object sender, EventArgs e)
         {
-            Form nhanVienForm = new NhanVien(conString);
+            Form nhanVienForm = new Employee(conString);
             nhanVienForm.Text = "EMPLOYEE";
             OpenChildForm(nhanVienForm, sender);
         }

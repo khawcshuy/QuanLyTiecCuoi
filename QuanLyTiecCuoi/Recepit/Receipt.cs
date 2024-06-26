@@ -24,13 +24,17 @@ namespace QuanLyTiecCuoi
 
         private Form _parenform;
 
-       
-        public Receipt(string conString, Form parenform, int idtiec)
+        private string NvName;
+
+
+
+        public Receipt(string conString, Form parenform, int idtiec, string nvName=null)
         {
             InitializeComponent();
             this.conString = conString;
             _parenform = parenform;
             tiecId.Text = idtiec.ToString();
+            this.NvName = nvName;
         }
 
 
@@ -69,6 +73,7 @@ namespace QuanLyTiecCuoi
                 IdTiec = (Int32)reader["IDTIEC"];
             }
         }
+      
 
         private CustomerInfo LoadCustomerInfo(string IdTiec)
         {
@@ -365,17 +370,15 @@ namespace QuanLyTiecCuoi
             public DateTime ngayxuatHD { get; set; }
 
         }
-        private bool SaveHoaDon(int customerId, int idTiec, float totalBill, float paid)
+        private bool SaveHoaDon(int idNV,int customerId, int idTiec, float totalBill, float paid)
 
-        {
-            string idNhanVienVaule = admin.Text;
+        {   
             int discount;
             if (!int.TryParse(Discount.Text, out discount))
             {
                 discount = 0;
             }
-            if (!string.IsNullOrEmpty(idNhanVienVaule)) 
-            {
+           
             using (SqlConnection con = new SqlConnection(conString))
             {
                 con.Open();
@@ -395,10 +398,10 @@ namespace QuanLyTiecCuoi
                         }
                         else
                         {
-                            string updateQuery = "UPDATE HOADON SET TENNHANVIEN = @idNhanVien, TONGTIEN = @tongTien, NGAYXUATHOADON = @ngayXuatHoadon, THUCTRA = @paid, GIAMGIA = @discount WHERE IDTIEC = @idTiec";
+                            string updateQuery = "UPDATE HOADON SET IDNHANVIEN = @idNhanVien, TONGTIEN = @tongTien, NGAYXUATHOADON = @ngayXuatHoadon, THUCTRA = @paid, GIAMGIA = @discount WHERE IDTIEC = @idTiec";
                             using (SqlCommand updateCmd = new SqlCommand(updateQuery, con))
                             {
-                                updateCmd.Parameters.AddWithValue("@idNhanVien", idNhanVienVaule);
+                                updateCmd.Parameters.AddWithValue("@idNhanVien", idNV);
                                 updateCmd.Parameters.AddWithValue("@tongTien", totalBill);
                                 updateCmd.Parameters.AddWithValue("@ngayXuatHoadon", DateTime.Now);
                                 updateCmd.Parameters.AddWithValue("@paid", paid);
@@ -410,10 +413,10 @@ namespace QuanLyTiecCuoi
                     }
                     else
                     {
-                        string insertQuery = "INSERT INTO HOADON (TENNHANVIEN, IDTIEC, TONGTIEN, NGAYXUATHOADON, THUCTRA, GIAMGIA) VALUES (@idNhanVien, @idTiec, @tongTien, @ngayXuatHoadon, @paid, @discount)";
+                        string insertQuery = "INSERT INTO HOADON (IDNHANVIEN, IDTIEC, TONGTIEN, NGAYXUATHOADON, THUCTRA, GIAMGIA) VALUES (@idNhanVien, @idTiec, @tongTien, @ngayXuatHoadon, @paid, @discount)";
                         using (SqlCommand insertCmd = new SqlCommand(insertQuery, con))
                         {
-                            insertCmd.Parameters.AddWithValue("@idNhanVien", idNhanVienVaule);
+                            insertCmd.Parameters.AddWithValue("@idNhanVien", idNV);
                             insertCmd.Parameters.AddWithValue("@idTiec", idTiec);
                             insertCmd.Parameters.AddWithValue("@tongTien", totalBill);
                             insertCmd.Parameters.AddWithValue("@ngayXuatHoadon", DateTime.Now);
@@ -425,12 +428,7 @@ namespace QuanLyTiecCuoi
                         return true;
                 }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Please fill in the 'Nhan vien' field.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+           
         }
 
 
@@ -442,8 +440,8 @@ namespace QuanLyTiecCuoi
             float totalBill = float.Parse(Total.Text);
             int IdTiecValue = Int16.Parse(tiecId.Text);
             float Paid = float.Parse(Paidment.Text);
-
-            bool success = SaveHoaDon(customerId, IdTiecValue, totalBill, Paid);
+            int IDNV = LoadNVReceipt();
+            bool success = SaveHoaDon(IDNV,customerId, IdTiecValue, totalBill, Paid);
 
             if (success)
             {
@@ -470,12 +468,17 @@ namespace QuanLyTiecCuoi
 
 
             decimal discount;
-            if (!decimal.TryParse(Discount.Text, out discount))
+            if (!decimal.TryParse(Discount.Text, out discount) )
+            {
+
+                discount = 0;
+                Discount.Text = "0";
+            }
+            if (discount > 100)
             {
                 discount = 0;
                 Discount.Text = "0";
             }
-
             decimal total = (customer.numberOftable * totalFood) + totalService + Venue;
             total = total - total*discount/100;
             decimal totalHD = total + total * TienPhat;
@@ -488,12 +491,41 @@ namespace QuanLyTiecCuoi
 
             
         }
+        private int LoadNVReceipt()
+        {
+            int idNV = -1;
+            string query = "SELECT NV.ID, NV.TENNHANVIEN FROM NHANVIEN NV INNER JOIN USERS U ON NV.IDUSERS = U.ID WHERE U.USERNAME = @nhanvien";
+
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                // Mở kết nối
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    // Thêm tham số cho truy vấn
+                    cmd.Parameters.AddWithValue("@nhanvien", NvName);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            idNV = (int)reader["ID"];
+                            admin.Text = reader["TENNHANVIEN"].ToString();
+                        }
+                    }
+                }
+            }
+
+            return idNV;
+        }
 
         private void Receipt_Load(object sender, EventArgs e)
         {
             if(_parenform != null)
             {
                 string IdTiec = tiecId.Text;
+                int idNV = LoadNVReceipt();
 
                 CustomerInfo customer = LoadCustomerInfo(IdTiec);
                 if (customer == null)

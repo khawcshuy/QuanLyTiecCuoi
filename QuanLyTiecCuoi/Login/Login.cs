@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace QuanLyTiecCuoi
 {
@@ -40,16 +41,19 @@ namespace QuanLyTiecCuoi
             }
             else 
             {
+                
                 if (txbUserName.Text == "admin")
                 {
-                    AdminMainForm mainApp = new AdminMainForm(constring);
+                    string nvName = txbUserName.Text;
+                    AdminMainForm mainApp = new AdminMainForm(constring, nvName);
                     this.Hide();
                     mainApp.FormClosed += MainForm_FormClosed;
                     mainApp.Show();
                 }
                 else
                 {
-                    NVMainForm mainApp = new NVMainForm(constring);
+                    string nvName = txbUserName.Text;
+                    NVMainForm mainApp = new NVMainForm(constring, nvName);
                     this.Hide();
                     mainApp.FormClosed += MainForm_FormClosed;
                     mainApp.Show();

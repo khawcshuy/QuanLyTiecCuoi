@@ -13,10 +13,10 @@ namespace QuanLyTiecCuoi.NHANVIEN
 {
     public partial class InsertNV : Form
     {
-        private NhanVien _parentForm;
+        private Employee _parentForm;
         public string conString;
         private Size formSize;
-        public InsertNV( string conString_, NhanVien parentForm)
+        public InsertNV( string conString_, Employee parentForm)
         {
             InitializeComponent();
 

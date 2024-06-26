@@ -1,6 +1,6 @@
 ﻿namespace QuanLyTiecCuoi
 {
-    partial class NhanVien
+    partial class Employee
     {
         /// <summary>
         /// Required designer variable.

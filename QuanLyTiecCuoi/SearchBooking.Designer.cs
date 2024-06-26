@@ -1,6 +1,6 @@
 ﻿namespace QuanLyTiecCuoi
 {
-    partial class TraCuu
+    partial class SearchBooking
     {
         /// <summary>
         /// Required designer variable.

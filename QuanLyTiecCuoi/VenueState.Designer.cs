@@ -1,6 +1,6 @@
 ﻿namespace QuanLyTiecCuoi
 {
-    partial class TrangThaiSanh
+    partial class VenueState
     {
         /// <summary>
         /// Required designer variable.

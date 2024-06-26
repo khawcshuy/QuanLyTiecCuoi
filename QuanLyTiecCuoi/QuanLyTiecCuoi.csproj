@@ -247,29 +247,35 @@
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\RJMessageBox.cs" />
-    <Compile Include="NhanVien.cs">
+    <Compile Include="Employee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhanVien.Designer.cs">
-      <DependentUpon>NhanVien.cs</DependentUpon>
+    <Compile Include="Employee.Designer.cs">
+      <DependentUpon>Employee.cs</DependentUpon>
     </Compile>
-    <Compile Include="NHANVIEN\InsertNV.cs">
+    <Compile Include="Employee\InsertNV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NHANVIEN\InsertNV.Designer.cs">
+    <Compile Include="Employee\InsertNV.Designer.cs">
       <DependentUpon>InsertNV.cs</DependentUpon>
     </Compile>
-    <Compile Include="TraCuu.cs">
+    <Compile Include="TestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TraCuu.Designer.cs">
-      <DependentUpon>TraCuu.cs</DependentUpon>
+    <Compile Include="TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TrangThaiSanh.cs">
+    <Compile Include="SearchBooking.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TrangThaiSanh.Designer.cs">
-      <DependentUpon>TrangThaiSanh.cs</DependentUpon>
+    <Compile Include="SearchBooking.Designer.cs">
+      <DependentUpon>SearchBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VenueState.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VenueState.Designer.cs">
+      <DependentUpon>VenueState.cs</DependentUpon>
     </Compile>
     <Compile Include="QUANLYTIECCUOIDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -380,17 +386,20 @@
     <EmbeddedResource Include="Login\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanVien.resx">
-      <DependentUpon>NhanVien.cs</DependentUpon>
+    <EmbeddedResource Include="Employee.resx">
+      <DependentUpon>Employee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NHANVIEN\InsertNV.resx">
+    <EmbeddedResource Include="Employee\InsertNV.resx">
       <DependentUpon>InsertNV.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TraCuu.resx">
-      <DependentUpon>TraCuu.cs</DependentUpon>
+    <EmbeddedResource Include="TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TrangThaiSanh.resx">
-      <DependentUpon>TrangThaiSanh.cs</DependentUpon>
+    <EmbeddedResource Include="SearchBooking.resx">
+      <DependentUpon>SearchBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VenueState.resx">
+      <DependentUpon>VenueState.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report.resx">
       <DependentUpon>Report.cs</DependentUpon>

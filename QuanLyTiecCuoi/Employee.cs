@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using QuanLyTiecCuoi.Login;
 namespace QuanLyTiecCuoi
 {
-    public partial class NhanVien : Form
+    public partial class Employee : Form
     {
         public string conString;
         private Rectangle buttonaddEmployeeOriginalRect;
@@ -23,7 +23,7 @@ namespace QuanLyTiecCuoi
         private Rectangle datagridviewEmployeeOriginalRect;
         private Rectangle panel1OriginalRect;
         private Size originalFormSize;
-        public NhanVien(string _constring)
+        public Employee(string _constring)
         {
             InitializeComponent();
             this.conString = _constring;

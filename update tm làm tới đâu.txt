@@ -8,3 +8,30 @@ và chạy 1 proc trong csdl
 
 
 * phần search trong nhân viên t debug gấp nên xóa cái dấu search rồi, nào chỉnh lại vào để nó lại nha 
+
+
+
+6/13
+cập nhật xong dashboard cho mỗi nhân viên
+
+đĩnh kh phục lại database như ban đầu mới chạy được nha
+
+code nè
+EXEC sp_rename 'HOADON.TENNHANVIEN', 'IDNHANVIEN', 'COLUMN';
+
+-- Đổi kiểu dữ liệu của cột
+ALTER TABLE HOADON ALTER COLUMN IDNHANVIEN INT;
+
+ALTER TABLE HOADON
+ADD CONSTRAINT fk_idnhanvien
+FOREIGN KEY (IDNHANVIEN) REFERENCES NHANVIEN(ID);
+
+sửa lại phần lên hóa đơn là người lên hóa đơn sẽ tự động điền, không cho ng dùng điền
+
+chạy lại proc ProdPeferiod để cập nhật chỉ số
+chạy lại proc GetNearest5month để chạy lại chart cột
+chạy lại proc 
+
+
+
+
